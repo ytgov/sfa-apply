@@ -1,0 +1,17 @@
+/* Extending Vuetify forms styles */
+
+
+form.v-form {
+  > fieldset {
+    border: none;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    > legend {
+      font-size: 2rem;
+    }
+    &.group {
+      margin-top: 3rem;
+      margin-bottom: 1rem; 
+    }
+  }
+}

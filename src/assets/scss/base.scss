@@ -1,0 +1,23 @@
+
+
+
+/* Extending Vuetify main styles */
+
+main.v-main {
+  > div {
+    max-width: 1024px;
+    width: 100%;
+    margin: 50px auto; 
+  }
+}
+
+div.v-card {
+  padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+/* Imports */
+
+@import "forms.scss";
