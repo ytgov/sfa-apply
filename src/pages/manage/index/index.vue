@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
 
-  	<v-banner icon="mdi-cash-register">
+  	<v-banner outlined icon="mdi-cash-register">
       You have started an application that has not been submitted.
       <p>
       	<nuxt-link to="/manage/application">Continue to application</nuxt-link>

@@ -2,7 +2,7 @@
   <v-container fluid>
     <h1>Profile</h1>
 
-    <v-banner icon="mdi-cash-register">
+    <v-banner  icon="mdi-cash-register">
       <h2>Form help</h2>
       Help text can go in here to make the form more
     </v-banner>
@@ -99,7 +99,7 @@
         </fieldset>
       </v-form>
 
-      <v-banner icon="mdi-alert-circle" class="problem mt-4" v-if="invalid">
+      <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="invalid">
         <h3>There is a problem</h3>
         <ul>
           <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
