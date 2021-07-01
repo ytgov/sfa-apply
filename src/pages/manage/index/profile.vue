@@ -1,5 +1,5 @@
 <template>
-  <v-main fluid>
+  <v-container fluid>
     <h1>Profile</h1>
 
     <v-banner icon="mdi-cash-register">
@@ -107,7 +107,7 @@
       </v-banner>
     </ValidationObserver>
 
-  </v-main>
+  </v-container>
 </template>
 
 <script>

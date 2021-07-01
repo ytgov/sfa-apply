@@ -1,5 +1,5 @@
 <template>
-  <v-main fluid>
+  <v-container fluid>
 
   	<v-banner icon="mdi-cash-register">
       You have started an application that has not been submitted.
@@ -80,7 +80,7 @@
 	    	<p>There are no past applications.</p>
 	    </div>
     </v-card>
-  </v-main>
+  </v-container>
 </template>
 
 

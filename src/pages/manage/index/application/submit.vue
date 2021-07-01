@@ -1,7 +1,7 @@
 <template>
-	<v-main>
+	<v-container fluid>
 
-	</v-main>
+	</v-container>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<v-main>	
+	<v-container fluid>
 		<h1>Supporting Documents</h1>
 		<p>
 			Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.
@@ -27,7 +27,7 @@
       You cannot sumbit your application until all your documents are uploaded.
     </v-banner>
 
-	</v-main>
+	</v-container>
 </template>
 
 <style lang="scss" scoped>

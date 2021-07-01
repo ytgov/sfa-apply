@@ -1,5 +1,5 @@
 <template>
-	<v-main>
+	<v-container fluid>
 		<h1>Thank you for submitting your application.</h1>
 
 		<p>
@@ -23,7 +23,7 @@
 		</p>
 
 
-	</v-main>
+	</v-container>
 </template>
 
 <script>

@@ -4,8 +4,6 @@
 
 
 <script>
-
-
 export default {
   mounted() {
     this.$store.dispatch('users/logout').then(()=>{
@@ -13,5 +11,4 @@ export default {
     })
   }
 }
-
 </script>
