@@ -9,7 +9,7 @@
 		<div class="documents">
 			<div v-for="doc in supporting">
 				<div>{{doc.status}}</div>
-				<div>{{doc.name}}</div>
+				<div><strong>{{doc.name}}</strong></div>
 				<div v-if="doc.status=='Verified'">
 					<a>Delete</a>
 				</div>
