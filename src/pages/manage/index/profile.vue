@@ -122,8 +122,13 @@ export default {
     AddressSelector
   },
   computed: {
-    profile() {
-      return this.$store.getters['profile/GET']
+    profile: {
+      get() {
+        return this.$store.getters['profile/GET']
+      },
+      set(values) {
+        this.$store.commit('profile/SET')(values)
+      }
     }
   },
   data() {
@@ -139,7 +144,7 @@ export default {
     submit() {
       alert('Valid Form')
       //this.$refs.observer.validate();
-      //this.$store.getters['profile/SET'](this.profile)
+      //this.$store.dispatch('profile/SAVE')
     },
   }
 };

@@ -26,11 +26,23 @@ $ npm run deploy-production
 ```
 
 
-API DOCUMENTATION
+# API DOCUMENTATION
 
+Swager Documents
 https://app.swaggerhub.com/apis/GOY/Student-Financial-Assistance/0.2
 
-Endpoint: https://api.gov.yk.ca
+Endpoint
+https://api.gov.yk.ca
+
+
+# SFA CLient Admin Example
+https://sfa-client-test.azurewebsites.net/dashboard
+
+
+# Mobile Prototype
+https://projects.invisionapp.com/share/S3VQVAVUKGJ#/screens/404316806
+
+
 
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

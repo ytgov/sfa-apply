@@ -55,7 +55,21 @@ export default {
     ['@nuxtjs/axios', {
       endpoint: environment.config.api.endpoint
     }],
-    ['@nuxtjs/device']
+    ['@nuxtjs/device'],
+    ['nuxt-i18n', {
+      defaultLocale: 'fr',
+      locales: [
+        {
+           code: 'en',
+           name: 'English'
+        },
+        {
+           code: 'fr',
+           name: 'Français'
+        }
+      ],
+      vueI18n: i18n
+    }]
   ],
   buildModules: [
     ['@nuxtjs/vuetify', { 

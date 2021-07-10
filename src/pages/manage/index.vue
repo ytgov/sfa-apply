@@ -56,6 +56,18 @@
         Application
       </v-toolbar-title>
       <v-spacer></v-spacer>
+
+      <div class="lang-dropdown">
+        <select v-model="$i18n.locale">
+          <option
+            v-for="lang in $i18n.locales"
+            :key="lang.code"
+            :value="lang.code"
+            >{{ lang.name }}</option
+          >
+        </select>
+      </div>
+
       <v-list-item-avatar @click="toggleDrawer()">
         <img src="https://randomuser.me/api/portraits/women/81.jpg">
       </v-list-item-avatar>
@@ -80,6 +92,14 @@ export default {
   components: {
     Logo
   },
+  computed: {
+    ...mapGetter({
+      locale: 'languages/locale'
+    }),
+    l() {
+      return locales[this.locale]
+    }
+  },
   data () {
     return {
       drawer: false,
@@ -94,7 +114,20 @@ export default {
   methods: {
     toggleDrawer() {
       this.drawer = !this.drawer
+    },
+    setLocale(locale) {
+      this.$store.commit('languages/locale')
     }
+  }
+}
+
+
+var locales = {
+  en: {
+
+  },
+  fr: {
+
   }
 }
 </script>
