@@ -24,6 +24,7 @@
     "moment": "^2.24.0",
     "nuxt": "^2.15.3",
     "nuxt-google-maps-module": "^1.6.0",
+    "nuxt-i18n": "^6.27.3",
     "slugify": "^1.5.3",
     "vee-validate": "^3.4.10",
     "vuex-persist": "^2.2.0"

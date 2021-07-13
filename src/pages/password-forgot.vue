@@ -36,6 +36,17 @@
   </article>
 </template>
 
+<i18n>
+{
+  "en": {
+
+  },
+  "fr": {
+    
+  }
+}
+</i18n>
+
 <script>
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
@@ -77,3 +88,5 @@ export default {
   }
 }
 </script>
+
+

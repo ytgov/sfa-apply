@@ -57,7 +57,7 @@ export default {
     }],
     ['@nuxtjs/device'],
     ['nuxt-i18n', {
-      defaultLocale: 'fr',
+      defaultLocale: 'en',
       locales: [
         {
            code: 'en',
@@ -68,7 +68,7 @@ export default {
            name: 'Français'
         }
       ],
-      vueI18n: i18n
+      vueI18nLoader: true
     }]
   ],
   buildModules: [

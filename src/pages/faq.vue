@@ -16,8 +16,22 @@
   </v-container>
 </template>
 
+<i18n>
+{
+  "en": {
+
+  },
+  "fr": {
+    
+  }
+}
+</i18n>
+
 <script>
 export default {
 	
 }
 </script>
+
+
+

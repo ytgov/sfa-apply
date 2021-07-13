@@ -110,6 +110,17 @@
   </v-container>
 </template>
 
+<i18n>
+{
+  "en": {
+    "hello": "Hello i18n in SFC!"
+  },
+  "fr": {
+    
+  }
+}
+</i18n>
+
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 import { ValidationProvider, ValidationObserver } from 'vee-validate';

@@ -1,9 +1,9 @@
 <template>
   <article data-layout="inset">
     <section>
-      <h2>Login</h2>
+      <h2>{{ $t('title') }}</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.
+        {{ $t('excerpt') }}
       </p>
       <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
         <v-form @submit.prevent="login" v-model="valid">
@@ -30,16 +30,16 @@
           </fieldset>
           <fieldset class="buttons">
             <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
-              Login
+              {{$t('login')}}
             </v-btn>
           </fieldset>
           <fieldset class="options">
-            <span> Need an account? <nuxt-link to="/signup" v-if="false">Signup</nuxt-link> </span><br />
-            <span> <nuxt-link to="/password-forgot">Forgot&nbsp;your&nbsp;password?</nuxt-link> | <nuxt-link to="/">Home</nuxt-link> </span>
+            <span> {{$t('need_an_account')}} <nuxt-link to="/signup">{{$t('signup')}}</nuxt-link> </span><br />
+            <span> <nuxt-link to="/password-forgot">{{$t('forgot_password')}}</nuxt-link> | <nuxt-link to="/">{{$t('home')}}</nuxt-link> </span>
           </fieldset>
           <fieldset>
             <br /><br />
-            <h4>Or, login with:</h4>
+            <h4>{{$t('or_login_with')}}</h4>
           </fieldset>
           <section class="social">
             <a @click="providerSignUp('Google')">
@@ -57,6 +57,32 @@
     </section>
   </article>
 </template>
+
+<i18n>
+{
+  "en": {
+    "title": "Login",
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
+    "login": "Login",
+    "signup": "Signup",
+    "need_an_account": "Need an account?",
+    "forgot_password": "Forgot your password?",
+    "home": "Home", 
+    "or_login_with": "Or, login with:"
+  },
+  "fr": {
+    "title": "Login",
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
+    "login": "Login",
+    "signup": "Signup",
+    "need_an_account": "Need an account?",
+    "forgot_password": "Forgot your password?",
+    "home": "Home", 
+    "or_login_with": "Or, login with:"
+  }
+}
+</i18n>
+
 <script>
   // https://demo.wpwebelite.com/woocommerce-social-login/my-account/
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
@@ -144,3 +170,4 @@ export default {
   }
 }
 </script>
+

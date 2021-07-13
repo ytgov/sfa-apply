@@ -83,6 +83,16 @@
   </v-app>
 </template>
 
+<i18n>
+{
+  "en": {
+
+  },
+  "fr": {
+    
+  }
+}
+</i18n>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'

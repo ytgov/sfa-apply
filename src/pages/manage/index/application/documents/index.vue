@@ -1,10 +1,9 @@
 <template>
 	<v-container fluid>
-		<h1>Supporting Documents</h1>
-		<p>
-			Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.
-		</p>
-
+    <h2>{{ $t('title') }}</h2>
+    <p>
+      {{ $t('excerpt') }}
+    </p>
 
 		<div class="documents">
 			<div v-for="doc in supporting">
@@ -24,7 +23,7 @@
 
 
     <v-banner icon="mdi-alert-circle" class="problem mt-4">
-      You cannot sumbit your application until all your documents are uploaded.
+      {{ $t('error') }}
     </v-banner>
 
 	</v-container>
@@ -48,6 +47,20 @@ div.documents{
 }
 </style>
 
+<i18n>
+{
+  "en": {
+    "title": "Supporting Documents",
+    "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "error": "You cannot sumbit your application until all your documents are uploaded."
+  },
+  "fr": {
+    "title": "Supporting Documents",
+    "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "error": "You cannot sumbit your application until all your documents are uploaded."
+  }
+}
+</i18n>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
