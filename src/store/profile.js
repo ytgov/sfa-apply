@@ -6,7 +6,13 @@ var defaultData = {
   email: '',
   phone: '',
   dob: '',
-  sin: ''
+  sin: '',
+  citizenship: {
+    is_canadian_citizen: false,
+    are_you_a_perminent_resident: false,
+    are_you_a_protected_person: false,
+    are_you_registered_as_indian: false
+  }
 }
 
 export const state = () => ({

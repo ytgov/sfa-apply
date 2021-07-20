@@ -117,12 +117,13 @@
     "hello": "Hello i18n in SFC!"
   },
   "fr": {
-    
+    "hello": "Hello i18n in SFC!"
   }
 }
 </i18n>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
 export default {
 	data() {
 		return {

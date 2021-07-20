@@ -1,16 +1,19 @@
 <template>
   <v-container fluid>
-    <h1>Profile</h1>
+    <h1>{{ $t('title') }}</h1>
 
     <v-banner  icon="mdi-cash-register">
-      <h2>Form help</h2>
-      Help text can go in here to make the form more
+      <h2>{{ $t('help.title') }}</h2>
+      <p>
+        {{ $t('help.details') }}
+      </p>
+      
     </v-banner>
 
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
-          <legend>Personal Details</legend>
+          <legend>{{ $t('legends.personal_details') }}</legend>
 
           <ValidationProvider name="firstName" rules="required|max:10" tag="span" v-slot="{ errors, valid }">
             <v-text-field
@@ -88,19 +91,19 @@
           </ValidationProvider>
         </fieldset>
         <fieldset class="group">
-          <legend>Address</legend>
+          <legend>{{ $t('legends.address') }}</legend>
           <AddressSelector v-model="profile.address" :value="profile.address" />
         </fieldset>
     
         <fieldset>
           <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
-            Save
+            {{ $t('buttons.save') }}
           </v-btn>
         </fieldset>
       </v-form>
 
       <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="invalid">
-        <h3>There is a problem</h3>
+        <h3>{{ $t('problem.title') }}</h3>
         <ul>
           <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
         </ul>
@@ -113,10 +116,38 @@
 <i18n>
 {
   "en": {
-    "hello": "Hello i18n in SFC!"
+    "title": "Profile",
+    "legends": {
+      "personal_details": "Personal Details",
+      "address": "Address"
+    },
+    "buttons": {
+      "save": "Save"
+    },
+    "help": {
+      "title": "title",
+      "details": "Help text can go in here to make the form more"
+    },
+    "problem": {
+      "title": "There is a problem"
+    }
   },
   "fr": {
-    
+    "title": "Profile",
+    "legends": {
+      "personal_details": "Personal Details",
+      "address": "Address"
+    },
+    "buttons": {
+      "save": "Save"
+    },
+    "help": {
+      "title": "title",
+      "details": "Help text can go in here to make the form more"
+    },
+    "problem": {
+      "title": "There is a problem"
+    }
   }
 }
 </i18n>

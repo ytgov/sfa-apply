@@ -77,7 +77,7 @@
 	    </div>
 
 	    <div v-else>
-	    	<p>There are no past applications.</p>
+	    	<p>{{ $t('no_past_applications') }}</p>
 	    </div>
     </v-card>
   </v-container>
@@ -86,10 +86,10 @@
 <i18n>
 {
   "en": {
-    "hello": "Hello i18n in SFC!"
+    "no_past_applications": "There are no past applications."
   },
   "fr": {
-    
+    "no_past_applications": "There are no past applications."
   }
 }
 </i18n>

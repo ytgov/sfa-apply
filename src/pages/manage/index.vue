@@ -21,6 +21,7 @@
             <v-list-item-subtitle>Logged In</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+        {{locale}}
       </template>
 
       <v-divider></v-divider>
@@ -41,6 +42,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
     </v-navigation-drawer>
 
 
@@ -103,7 +105,7 @@ export default {
     Logo
   },
   computed: {
-    ...mapGetter({
+    ...mapGetters({
       locale: 'languages/locale'
     }),
     l() {
@@ -114,10 +116,9 @@ export default {
     return {
       drawer: false,
       items: [
-        { title: 'Home', icon: 'mdi-home-city', to: '/manage' },
+        { title: 'Applications', icon: 'mdi-home-city', to: '/manage' },
         { title: 'Profile', icon: 'mdi-account-group-outline', to: '/manage/profile' },
-        { title: 'Dcouments', icon: 'mdi-account', to: '/manage/application/documents' },
-        { title: 'My Account', icon: 'mdi-account', to: '/manage/account' },
+        { title: 'Dcouments', icon: 'mdi-account', to: '/manage/application/documents' }
       ],
     }
   },
