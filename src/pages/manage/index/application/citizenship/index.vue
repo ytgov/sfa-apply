@@ -55,9 +55,9 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import Question from '~/compontnets/forms/Question.vue';
-import Buttons from '~/compontnets/forms/Buttons.vue';
-import RadioList from '~/compontnets/forms/RadioList.vue';
+import Question from '~/components/forms/Question.vue';
+import Buttons from '~/components/forms/Buttons.vue';
+import RadioList from '~/components/forms/RadioList.vue';
 
 export default {
   components: {
