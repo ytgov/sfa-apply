@@ -21,7 +21,6 @@
 			</div>
 		</div>
 
-
     <v-banner icon="mdi-alert-circle" class="problem mt-4">
       {{ $t('error') }}
     </v-banner>

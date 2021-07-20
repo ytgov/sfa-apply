@@ -107,6 +107,7 @@ export default {
   },
   env: {
     config: environment.config,
+    endpoints: environment.endpoints,
     ENV: environment.env
   },
   target: 'static',

@@ -1,5 +1,9 @@
 export const strict = false
 
+const endpoints = process.env.endpoints
+
+console.log('ENDPOINTS', endpoints)
+
 export const state = () => ({
   user: false
 })
@@ -24,15 +28,22 @@ export const getters = {
 
 
 export const actions = {
+  async login({ commit }) {
+    await axios.get(endpoints.LOGIN_URL).then(response => {
+      commit("SET_USER", response.data);
+    }).catch(() => {
+      commit("CLEAR");
+    });
+  },
   async validate({ commit }) {
-    await axios.get(AUTH_CHECK_URL).then(response => {
+    await axios.get(endpoints.AUTH_CHECK_URL).then(response => {
       commit("SET_USER", response.data);
     }).catch(() => {
       commit("CLEAR");
     });
   },
   async logout({ commit }) {
-    await axios.get(LOGOUT_URL).then(() => {
+    await axios.get(endpoints.LOGOUT_URL).then(() => {
       commit("CLEAR");
     }).catch(err => {
       console.error(err);
