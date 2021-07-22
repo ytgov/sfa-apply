@@ -12,6 +12,11 @@ var defaultData = {
     are_you_a_perminent_resident: false,
     are_you_a_protected_person: false,
     are_you_registered_as_indian: false
+  },
+  scolorship: {
+    is_high_school_student: false,
+    is_high_school_graduate: false,
+    is_pursuing_aviation: false
   }
 }
 

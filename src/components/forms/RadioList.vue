@@ -1,7 +1,7 @@
 <template>
   <div class="radio">
-    <span v-for="radio in options" @click="select(radio.value)" :class="(selected_radio == radio.value) ? 'active' : ''">
-      <span></span> {{radio.text}} 
+    <span v-for="radio in options" @click="select(radio||radio.value)" :class="(selected_radio == (radio||radio.value)) ? 'active' : ''">
+      <span></span> {{radio.text||radio}} 
     </span>
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
         display: inline-block;
         background: rgba(0,0,0,0.1);
         color: rgba(255,255,255,0.8);
-        border: solid 1px rgba(255,255,255,0.8);
+        border: solid 1px rgba(0,0,0,0.8);
         width: 25px;
         height: 25px;
         margin-right: 10px;
@@ -72,7 +72,7 @@ export default {
 
       &.active {
         > span {
-          background: rgba(255,255,255,0.8);
+          background: rgba(0,0,0,0.8);
         }
       }
     }

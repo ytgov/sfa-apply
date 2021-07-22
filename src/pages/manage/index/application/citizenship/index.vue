@@ -62,7 +62,7 @@ import RadioList from '~/components/forms/RadioList.vue';
 export default {
   components: {
     Question,
-    Radio
+    RadioList
   },
   computed: {
     ...mapGetters({
