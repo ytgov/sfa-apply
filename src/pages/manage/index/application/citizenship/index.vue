@@ -47,7 +47,7 @@
     </section>
 
     <Buttons v-if="valid">
-      <nuxt-link to="/">Next</nuxt-link>
+      <nuxt-link to="/"><button>Next</button></nuxt-link>
     </Buttons>
 
   </v-container>
@@ -62,7 +62,8 @@ import RadioList from '~/components/forms/RadioList.vue';
 export default {
   components: {
     Question,
-    RadioList
+    RadioList,
+    Buttons
   },
   computed: {
     ...mapGetters({
@@ -77,13 +78,14 @@ export default {
       }
     },
     valid() {
+      return this.profile.citizenship.is_canadian_citizen == 'Yes' 
       return 
         (
-          profile.citizenship.is_canadian_citizen == 'Yes' 
+          this.profile.citizenship.is_canadian_citizen == 'Yes' 
         ) || (
-          profile.citizenship.is_canadian_citizen == 'No' 
-          && profile.citizenship.are_you_a_protected_person == 'Yes'
-          && profile.citizenship.are_you_registered_as_indian == 'Yes'
+          this.profile.citizenship.is_canadian_citizen == 'No' 
+          && this.profile.citizenship.are_you_a_protected_person == 'Yes'
+          && this.profile.citizenship.are_you_registered_as_indian == 'Yes'
         )
     }
   }
