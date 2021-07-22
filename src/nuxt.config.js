@@ -26,7 +26,7 @@ export default {
   ],
   router: {
     base: "/",
-    middleware: ['router-auth']
+    middleware: ['router-auth', 'password-protect']
   },
   plugins: [
     { src: '~/plugins/nuxt-client-init.js', ssr: false },
@@ -69,6 +69,19 @@ export default {
         }
       ],
       vueI18nLoader: true
+    }],
+    ['nuxt-password-protect', {
+      enabled: true,
+      formPath: '/password',
+      password: 'hello-world',
+      tokenSeed: 101010,
+      queryString: '_pw',
+      cookieName: '_password',
+      cookie: {
+        prefix: '',
+        expires: 5
+      },
+      ignoredPaths: ['/public-page']
     }]
   ],
   buildModules: [
