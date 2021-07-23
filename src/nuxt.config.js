@@ -90,19 +90,6 @@ export default {
     }]
   ],
   build: {
-    /*
-    optimization: {
-      minimize: true,
-      splitChunks: {
-        name: true
-      }
-    },
-    performance: {
-       hints: true,
-       maxBundleSize: 250,
-       warnAtPercent: 80
-    },
-    */
     transpile: ['vee-validate', 'vee-validate/dist/rules'],
     plugins: [
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

@@ -13,7 +13,7 @@ export default {
 
 <style land="scss" scoped>
 article {
-  max-width:  650px;
+  max-width:  750px;
   margin:  auto;
   margin-top:  100px;
 }

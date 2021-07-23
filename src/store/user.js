@@ -43,7 +43,8 @@ export const actions = {
     });
   },
   async logout({ commit }) {
-    await axios.get(endpoints.LOGOUT_URL).then(() => {
+    alert(endpoints.LOGOUT_URL)
+    await axios.get(endpoints.LOGOUT_URL).then((response) => {
       commit("CLEAR");
     }).catch(err => {
       console.error(err);

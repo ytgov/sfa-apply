@@ -1,45 +1,146 @@
 <template>
-  <v-container fluid>
-    <v-row>
-      <v-col>
-        <v-card class="pa-2" outlined tile>
-          <h2>{{ $t('title') }}</h2>
-          <p>
-            {{ $t('introduction') }}
-          </p>
-          <p>
-            New User <nuxt-link to="/register">Create an Account</nuxt-link>
-          </p>
-        </v-card>
-      </v-col>
-      <v-col>
-        <v-card class="pa-2" outlined tile>
+  <!-- App.vue -->
+  <v-app>
 
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+ 
+    <v-navigation-drawer
+      absolute
+      permanent
+      app
+      right
+      v-if="drawer"
+    >
+      <template v-slot:prepend>
+        <v-list-item two-line>
+          <v-list-item-avatar>
+            <img src="https://randomuser.me/api/portraits/women/81.jpg">
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>Jane Smith</v-list-item-title>
+            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        {{locale}}
+      </template>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              <nuxt-link :to="item.to">{{ item.title }}</nuxt-link>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+    </v-navigation-drawer>
+
+
+    <v-app-bar 
+ 
+      dark
+      app
+    >
+      
+      <nuxt-link to="/">
+        <Logo />
+      </nuxt-link>
+      <v-spacer></v-spacer>
+      <v-toolbar-title>
+        Application
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+
+      <div class="lang-dropdown">
+        <select v-model="$i18n.locale">
+          <option
+            v-for="lang in $i18n.locales"
+            :key="lang.code"
+            :value="lang.code"
+            >{{ lang.name }}</option
+          >
+        </select>
+      </div>
+
+      <v-list-item-avatar @click="toggleDrawer()">
+        <img src="https://randomuser.me/api/portraits/women/81.jpg">
+      </v-list-item-avatar>
+
+    </v-app-bar>
+    <v-main>
+      <nuxt-child  :keep-alive-props="{ exclude: ['modal'] }" />
+    </v-main>
+   
+    <v-footer app>
+      <!-- -->
+    </v-footer>
+  </v-app>
 </template>
-
-<script>
-import { mapMutations, mapGetters } from 'vuex'
-
-export default {
-  layout: 'inset',
-  middleware: 'no-auth',
-}
-</script>
-
-
 
 <i18n>
 {
   "en": {
-    "title": "Good Afternoon",
-    "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh sit amet diam dictum malesuada sit amet sed dui. Nam sit amet neque a purus condimentum dignissim. Nulla facilisi."
+
   },
   "fr": {
     
   }
 }
 </i18n>
+
+<script>
+import { mapMutations, mapGetters } from 'vuex'
+import Logo from "~/components/Logo.vue"
+
+export default {
+  components: {
+    Logo
+  },
+  computed: {
+    ...mapGetters({
+      locale: 'languages/locale'
+    }),
+    l() {
+      return locales[this.locale]
+    }
+  },
+  data () {
+    return {
+      drawer: false,
+      items: [
+        { title: 'Applications', icon: 'mdi-home-city', to: '/manage' },
+        { title: 'Profile', icon: 'mdi-account-group-outline', to: '/manage/profile' },
+        { title: 'Dcouments', icon: 'mdi-account', to: '/manage/application/documents' }
+      ],
+    }
+  },
+  methods: {
+    toggleDrawer() {
+      this.drawer = !this.drawer
+    },
+    setLocale(locale) {
+      this.$store.commit('languages/locale')
+    }
+  }
+}
+
+
+var locales = {
+  en: {
+
+  },
+  fr: {
+
+  }
+}
+</script>

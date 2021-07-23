@@ -4,7 +4,7 @@
   	<v-banner outlined icon="mdi-cash-register">
       You have started an application that has not been submitted.
       <p>
-      	<nuxt-link to="/manage/application">Continue to application</nuxt-link>
+      	<nuxt-link to="/application">Continue to application</nuxt-link>
       </p>
     </v-banner>
 
@@ -41,7 +41,7 @@
 	    <div v-else>
 	    	<p>There are no active applications.</p>
 	    	<p>
-	    		<nuxt-link to="/manage/application">
+	    		<nuxt-link to="/application">
 		    		<v-btn color="primary" class="mr-5">
 		          Apply for Financial Assistance
 		        </v-btn>
