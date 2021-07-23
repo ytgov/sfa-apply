@@ -118,9 +118,12 @@ export default {
     return {
       drawer: false,
       items: [
-        { title: 'Applications', icon: 'mdi-home-city', to: '/manage' },
-        { title: 'Profile', icon: 'mdi-account-group-outline', to: '/manage/profile' },
-        { title: 'Dcouments', icon: 'mdi-account', to: '/manage/application/documents' }
+        { title: 'Applications', icon: 'mdi-home-city', to: '/' },
+        { title: 'Profile', icon: 'mdi-account-group-outline', to: '/profile' },
+        { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
+        { title: 'Change Password', icon: 'mdi-account', to: '/password-reset' },
+        { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
+        { title: 'Contact', icon: 'mdi-account', to: '/contact' }
       ],
     }
   },

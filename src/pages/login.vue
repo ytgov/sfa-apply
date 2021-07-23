@@ -154,7 +154,7 @@ export default {
       }).then(
         response => {
           this.message = { type: "success", text: 'Logging In' }
-          this.$router.push('/manage/dashboard');
+          this.$router.push('/');
           this.$nuxt.$loading.finish()
         },
         error => {
@@ -173,7 +173,7 @@ export default {
       this.$store.dispatch('users/signInWithProvider', { provider }).then(
         response => {
           this.message = { type: "success", text: 'Logging In' }
-          this.$router.push('/manage/dashboard');
+          this.$router.push('/');
           this.$nuxt.$loading.finish()
         },
         error => {

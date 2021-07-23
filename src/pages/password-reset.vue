@@ -100,7 +100,7 @@ export default {
           }).then(
             response => {
               this.message = { type: 'success', text: 'Success! User verified.' }
-              this.$router.push('/manage/dashboard')
+              this.$router.push('/')
               this.$nuxt.$loading.finish()
             },
             error => {

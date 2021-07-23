@@ -15,7 +15,7 @@
 		</p>
 
 		<p>
-			<nuxt-link to="/manage">
+			<nuxt-link to="/">
 				<v-btn color="primary" class="mr-5">
 					Goto Home Page
 				</v-btn>
