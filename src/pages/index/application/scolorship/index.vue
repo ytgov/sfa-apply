@@ -33,11 +33,6 @@
         :value="profile.scolorship.is_pursuing_aviation" 
       />
     </section>
-
-    <Buttons v-if="valid">
-      <nuxt-link to="/">Next</nuxt-link>
-    </Buttons>
-
   </v-container>
 </template>
 
@@ -67,7 +62,12 @@ export default {
       }
     },
     valid() {
-      return;
+      return true;
+    }
+  },
+  watch: {
+    valid(to, from) {
+      this.$emit('input', this.valid)
     }
   }
 }

@@ -1,111 +1,22 @@
 <template>
 	<v-container fluid>
-		<v-stepper v-model="e1">
+		<v-stepper v-model="step">
 	    <v-stepper-header>
-	      <v-stepper-step
-	        :complete="e1 > 1"
-	        step="1"
-	      >
-	        Citizenship
+	      <v-stepper-step v-for="section, index in sections"  :complete="step > index" :step="index" :key="index">
+	        {{section.name}}
 	      </v-stepper-step>
 
 	      <v-divider></v-divider>
-
-	      <v-stepper-step
-	        :complete="e1 > 2"
-	        step="2"
-	      >
-	        Scolorship
-	      </v-stepper-step>
-
-	      <v-divider></v-divider>
-
-	      <v-stepper-step step="3">
-	        Name of step 3
-	      </v-stepper-step>
-
-	      <v-divider></v-divider>
-
-	      <v-stepper-step step="4">
-	        Name of step 4
-	      </v-stepper-step>
 	    </v-stepper-header>
 
 	    <v-stepper-items>
-	      <v-stepper-content step="1">
-	        <v-card
-	          class="mb-12"
-	          color="lighten-1"
-	        >
-	        	<Citizenship v-model="citizenship" />
+	      <v-stepper-content v-for="section, index in sections"  :complete="step > index" :step="index" :key="index">
+	        <v-card class="mb-12" color="lighten-1">
+	        	<Component :is="section.component" v-model="sections[index].valid" />
 	        </v-card>
 
-	        <v-btn
-	          color="primary"
-	          @click="e1 = 2"
-	        >
+	        <v-btn color="primary" @click="step = (index+1)" v-if="sections[index].valid">
 	          Continue
-	        </v-btn>
-
-	        <v-btn text>
-	          Cancel
-	        </v-btn>
-	      </v-stepper-content>
-
-	      <v-stepper-content step="2">
-	        <v-card
-	          class="mb-12"
-	          color="lighten-1"
-	        >
-	        	<Scolorship />
-	        </v-card>
-
-	        <v-btn
-	          color="primary"
-	          @click="e1 = 3"
-	        >
-	          Continue
-	        </v-btn>
-
-	        <v-btn text>
-	          Cancel
-	        </v-btn>
-	      </v-stepper-content>
-
-	      <v-stepper-content step="3">
-	        <v-card
-	          class="mb-12"
-	          color="grey lighten-1"
-	          height="200px"
-	        ></v-card>
-
-	        <v-btn
-	          color="primary"
-	          @click="e1 = 1"
-	        >
-	          Continue
-	        </v-btn>
-
-	        <v-btn text>
-	          Cancel
-	        </v-btn>
-	      </v-stepper-content>
-	      <v-stepper-content step="4">
-	        <v-card
-	          class="mb-12"
-	          color="grey lighten-1"
-	          height="200px"
-	        ></v-card>
-
-	        <v-btn
-	          color="primary"
-	          @click="e1 = 1"
-	        >
-	          Continue
-	        </v-btn>
-
-	        <v-btn text>
-	          Cancel
 	        </v-btn>
 	      </v-stepper-content>
 	    </v-stepper-items>
@@ -116,10 +27,10 @@
 <i18n>
 {
   "en": {
-    "hello": "Hello i18n in SFC!"
+    "Citizenship": "Citizenship"
   },
   "fr": {
-    "hello": "Hello i18n in SFC!"
+    "Citizenship": "Citizenship"
   }
 }
 </i18n>
@@ -140,8 +51,39 @@ export default {
 	},
 	data() {
 		return {
-			e1: 1
+			step: 0,
+			sections: [
+				{
+					name: 'Citizenship',
+					component: Citizenship,
+					valid: false
+				},
+				{
+					name: 'Scolorship',
+					component: Scolorship,
+					valid: false
+				},
+				{
+					name: 'Documents',
+					component: Documents,
+					valid: false
+				}	
+			]
 		}
 	}
 }
 </script>
+
+
+<style lang="scss" scoped>
+
+.v-stepper__header, .v-sheet.v-stepper:not(.v-sheet--outlined), 
+.v-sheet.v-card:not(.v-sheet--outlined)  {
+  box-shadow: none !important;
+}
+
+div.v-card {
+  padding: 0 !important;
+}
+
+</style>

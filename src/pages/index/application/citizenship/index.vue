@@ -46,10 +46,12 @@
       />
     </section>
 
-    <Buttons v-if="valid">
-      <nuxt-link to="/"><button>Next</button></nuxt-link>
-    </Buttons>
+    {{valid}}
 
+    {{profile.citizenship.is_canadian_citizen}}
+    {{profile.citizenship.are_you_a_perminent_resident}}
+    {{profile.citizenship.are_you_a_protected_person}}
+    {{profile.citizenship.are_you_registered_as_indian}}
   </v-container>
 </template>
 
@@ -66,9 +68,6 @@ export default {
     Buttons
   },
   computed: {
-    ...mapGetters({
-
-    }),
     profile: {
       get() {
         return this.$store.getters['profile/GET']
@@ -78,15 +77,19 @@ export default {
       }
     },
     valid() {
-      return this.profile.citizenship.is_canadian_citizen == 'Yes' 
       return 
-        (
-          this.profile.citizenship.is_canadian_citizen == 'Yes' 
-        ) || (
+        this.profile.citizenship.is_canadian_citizen == 'Yes' 
+        || (
           this.profile.citizenship.is_canadian_citizen == 'No' 
+          && this.profile.citizenship.are_you_a_perminent_resident == 'No'
           && this.profile.citizenship.are_you_a_protected_person == 'Yes'
           && this.profile.citizenship.are_you_registered_as_indian == 'Yes'
         )
+    }
+  },
+  watch: {
+    valid(to, from) {
+      this.$emit('input', this.valid)
     }
   }
 }
