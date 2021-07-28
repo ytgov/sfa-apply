@@ -47,7 +47,6 @@
 
 
     <v-app-bar 
- 
       dark
       app
     >
@@ -73,7 +72,10 @@
       </div>
 
       <v-list-item-avatar @click="toggleDrawer()">
-        <img src="https://randomuser.me/api/portraits/women/81.jpg">
+        <img src="https://randomuser.me/api/portraits/women/81.jpg" v-if="!drawer">
+        <em v-else>
+          x
+        </em>
       </v-list-item-avatar>
 
     </v-app-bar>
@@ -136,14 +138,28 @@ export default {
     }
   }
 }
+</script>
 
 
-var locales = {
-  en: {
+<style lang="scss" scoped>
 
-  },
-  fr: {
+div.lang-dropdown {
+  > select {
+    color: #fff;
 
+    ::-moz-selection { /* Code for Firefox */
+      color: red;
+      background: yellow;
+    }
+
+    ::selection {
+      color: red;
+      background: yellow;
+    }
+    > option {
+      color: #fff;
+    }
   }
 }
-</script>
+
+</style>

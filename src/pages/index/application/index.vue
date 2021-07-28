@@ -40,6 +40,8 @@ import { mapMutations, mapGetters } from 'vuex'
 
 import Citizenship from '@/pages/index/application/citizenship/index.vue'
 import Scolorship from '@/pages/index/application/scolorship/index.vue'
+import Residence from '@/pages/index/application/residence/index.vue'
+import ExellenceAward from '@/pages/index/application/yukon-excellence-award/index.vue'
 import Documents from '@/pages/index/application/documents/index.vue'
 
 
@@ -61,6 +63,16 @@ export default {
 				{
 					name: 'Scolorship',
 					component: Scolorship,
+					valid: false
+				},
+				{
+					name: 'Residence',
+					component: Residence,
+					valid: false
+				},
+				{
+					name: 'Yukon Exellence Award',
+					component: ExellenceAward,
 					valid: false
 				},
 				{

@@ -45,11 +45,6 @@
         :value="profile.citizenship.are_you_registered_as_indian" 
       />
     </section>
-
-    <Buttons v-if="valid">
-      <nuxt-link to="/">Next</nuxt-link>
-    </Buttons>
-
   </v-container>
 </template>
 
@@ -62,7 +57,7 @@ import RadioList from '~/components/forms/RadioList.vue';
 export default {
   components: {
     Question,
-    Radio
+    RadioList
   },
   computed: {
     ...mapGetters({

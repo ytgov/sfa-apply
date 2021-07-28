@@ -73,7 +73,7 @@ export default {
     ['nuxt-password-protect', {
       enabled: true,
       formPath: '/password',
-      password: 'hello-world',
+      password: 'letmein',
       tokenSeed: 101010,
       queryString: '_pw',
       cookieName: '_password',

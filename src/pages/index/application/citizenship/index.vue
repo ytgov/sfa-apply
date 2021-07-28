@@ -37,21 +37,14 @@
 
     <section v-if="profile.citizenship.is_canadian_citizen=='No' && profile.citizenship.are_you_a_perminent_resident=='No' && profile.citizenship.are_you_a_protected_person=='Yes'">
       <Question>
-        {{ $t('are_you_registered_as_indian') }}
+        {{ $t('are_you_registered_as_indigenous') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.citizenship.are_you_registered_as_indian" 
-        :value="profile.citizenship.are_you_registered_as_indian" 
+        v-model="profile.citizenship.are_you_registered_as_indigenous" 
+        :value="profile.citizenship.are_you_registered_as_indigenous" 
       />
     </section>
-
-    {{valid}}
-
-    {{profile.citizenship.is_canadian_citizen}}
-    {{profile.citizenship.are_you_a_perminent_resident}}
-    {{profile.citizenship.are_you_a_protected_person}}
-    {{profile.citizenship.are_you_registered_as_indian}}
   </v-container>
 </template>
 
@@ -77,14 +70,19 @@ export default {
       }
     },
     valid() {
-      return 
+      var is_valid =  
         this.profile.citizenship.is_canadian_citizen == 'Yes' 
         || (
           this.profile.citizenship.is_canadian_citizen == 'No' 
+          && this.profile.citizenship.are_you_a_perminent_resident == 'Yes'
+        ) || (
+          this.profile.citizenship.is_canadian_citizen == 'No' 
           && this.profile.citizenship.are_you_a_perminent_resident == 'No'
           && this.profile.citizenship.are_you_a_protected_person == 'Yes'
-          && this.profile.citizenship.are_you_registered_as_indian == 'Yes'
+          && this.profile.citizenship.are_you_registered_as_indigenous == 'Yes'
         )
+
+      return is_valid
     }
   },
   watch: {
@@ -102,13 +100,13 @@ export default {
     "are_you_a_canadian_citizen": "Are you a canadian citizen?",
     "are_you_a_perminent_resident": "Are you a perminent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indian": "Are you registered as an indian?"
+    "are_you_registered_as_indian": "Are you registered as indigenous?"
   },
   "fr": {
     "are_you_a_canadian_citizen": "Are you a canadian citizen?",
     "are_you_a_perminent_resident": "Are you a perminent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indian": "Are you registered as an indian?"
+    "are_you_registered_as_indian": "Are you registered as indigenous?"
   }
 }
 </i18n>

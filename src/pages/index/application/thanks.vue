@@ -21,8 +21,6 @@
 				</v-btn>
 			</nuxt-link>
 		</p>
-
-
 	</v-container>
 </template>
 

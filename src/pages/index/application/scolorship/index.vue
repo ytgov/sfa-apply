@@ -23,7 +23,7 @@
         :value="profile.scolorship.is_high_school_graduate" 
       />
     </section>
-    <section v-if="profile.scolorship.is_high_school_student=='Yes' && profile.scolorship.is_high_school_graduate == 'No'">
+    <section v-if="profile.scolorship.is_high_school_student=='Yes' && profile.scolorship.is_high_school_graduate">
       <Question>
         {{ $t('are_you_pursuing_aviation') }}
       </Question>
@@ -62,7 +62,15 @@ export default {
       }
     },
     valid() {
-      return true;
+      var is_valid = (
+        this.profile.scolorship.is_high_school_student == 'No' ||
+        (
+          this.profile.scolorship.is_high_school_student == 'Yes' 
+          && this.profile.scolorship.is_high_school_graduate == 'Yes'
+          && this.profile.scolorship.is_pursuing_aviation
+        )
+      )
+      return is_valid;
     }
   },
   watch: {
