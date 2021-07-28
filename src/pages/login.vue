@@ -3,15 +3,18 @@
     <v-row>
       <v-col>
         <h2>{{ $t('introduction_title') }}</h2>
+        <br />
         <p>
           {{ $t('introduction') }}
         </p>
+        <br />
         <p>
-          New User <nuxt-link to="/register">Create an Account</nuxt-link>
+          New User <nuxt-link to="/create-account">Create an Account</nuxt-link>
         </p>
       </v-col>
       <v-col>
         <h2>{{ $t('title') }}</h2>
+        <br />
         <p>
           {{ $t('excerpt') }}
         </p>
@@ -28,7 +31,7 @@
               </ValidationProvider>
             </fieldset>
             <fieldset>
-              <ValidationProvider name="Password" rules="required|password" tag="span" v-slot="{ errors, valid }">
+              <ValidationProvider name="Password" rules="required" tag="span" v-slot="{ errors, valid }">
                 <v-text-field
                   type="password"
                   v-model="password"
@@ -106,6 +109,16 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 export default {
   layout: 'inset',
   middleware: 'no-auth',
+  head: {
+    title: 'Yukon Student Financial Portal - Login',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Home page description'
+      }
+    ],
+  },
   components: {
     ValidationProvider,
     ValidationObserver

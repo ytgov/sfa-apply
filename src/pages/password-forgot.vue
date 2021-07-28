@@ -52,6 +52,18 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   layout: 'inset',
+  middleware: 'no-auth',
+  head: {
+    title: 'Yukon Student Financial Portal - Password Forgot',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Home page description'
+      }
+    ],
+  },
+  layout: 'inset',
   components: {
     ValidationProvider,
     ValidationObserver

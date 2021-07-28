@@ -56,23 +56,23 @@
   </article>
 </template>
 
-<i18n>
-{
-  "en": {
 
-  },
-  "fr": {
-
-  }
-}
-</i18n>
 
 <script>
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   layout: 'inset',
-  middleware: 'no-auth',
+  head: {
+    title: 'Yukon Student Financial Portal - Password Reset',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Home page description'
+      }
+    ],
+  },
   components: {
     ValidationProvider,
     ValidationObserver
@@ -114,3 +114,14 @@ export default {
   }
 }
 </script>
+
+<i18n>
+{
+  "en": {
+
+  },
+  "fr": {
+
+  }
+}
+</i18n>

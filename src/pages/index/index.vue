@@ -91,7 +91,7 @@
     "no_past_applications": "There are no past applications."
   },
   "fr": {
-    "no_past_applications": "There are no past applications."
+    "no_past_applications": "There are no past applications. French"
   }
 }
 </i18n>
@@ -99,6 +99,16 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 export default {
+	head: {
+    title: 'Home page',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Home page description'
+      }
+    ],
+  },
 	data() {
 		return {
 			applications: [],

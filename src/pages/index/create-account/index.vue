@@ -58,6 +58,16 @@
             {{ $t('buttons.cancel') }}
           </v-btn>
         </fieldset>
+        <fieldset>
+          <br />
+          <br />
+          <p>
+            Already have an account? <nuxt-link to="/login">Login</nuxt-link>
+          </p>
+          <p>
+            Need Help? <nuxt-link to="/contact">Contact Us</nuxt-link>
+          </p>
+        </fieldset>
       </v-form>
 
       <br />
@@ -72,6 +82,51 @@
 
   </v-container>
 </template>
+
+
+
+<script>
+import { mapMutations, mapGetters } from 'vuex'
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import AddressSelector from "~/components/forms/AddressSelector.vue";
+
+export default {
+  head: {
+    title: 'Yukon Student Financial Portal - Create Account',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Home page description'
+      }
+    ],
+  },
+  components: {
+    ValidationProvider,
+    ValidationObserver,
+    AddressSelector
+  },
+  data() {
+    return {
+      valid: false,
+      dobmenu: false,
+      email: '',
+      password: '',
+      password_confirm: ''
+    };
+  },
+  mounted() {
+    console.log(this.$validator)
+  },
+  methods: {
+    submit() {
+      alert('Valid Form')
+      //this.$refs.observer.validate();
+      //this.$store.dispatch('profile/SAVE')
+    },
+  }
+};
+</script>
 
 <i18n>
 {
@@ -111,36 +166,3 @@
   }
 }
 </i18n>
-
-<script>
-import { mapMutations, mapGetters } from 'vuex'
-import { ValidationProvider, ValidationObserver } from 'vee-validate';
-import AddressSelector from "~/components/forms/AddressSelector.vue";
-
-export default {
-  components: {
-    ValidationProvider,
-    ValidationObserver,
-    AddressSelector
-  },
-  data() {
-    return {
-      valid: false,
-      dobmenu: false,
-      email: '',
-      password: '',
-      password_confirm: ''
-    };
-  },
-  mounted() {
-    console.log(this.$validator)
-  },
-  methods: {
-    submit() {
-      alert('Valid Form')
-      //this.$refs.observer.validate();
-      //this.$store.dispatch('profile/SAVE')
-    },
-  }
-};
-</script>
