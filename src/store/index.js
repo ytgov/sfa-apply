@@ -14,6 +14,9 @@ export const getters = {
 export const mutations = {
   TOGGLE_MENU(state) {
     state.menu_open = !state.menu_open
+  },
+  TOGGLE_MENU_OFF(state) {
+    state.menu_open = false
   }
 }
 

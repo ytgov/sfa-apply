@@ -38,7 +38,7 @@
 
         <v-list-item-content>
           <v-list-item-title>
-            <nuxt-link :to="item.to">{{ item.title }}</nuxt-link>
+            <nuxt-link :to="item.to" @click.native="off()">{{ item.title }}</nuxt-link>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -68,6 +68,9 @@ export default {
   methods: {
     toggleMenu() {
       this.$store.commit('TOGGLE_MENU')
+    },
+    off() {
+      this.$store.commit('TOGGLE_MENU_OFF')
     }
   }
 }
