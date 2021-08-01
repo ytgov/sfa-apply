@@ -1,0 +1,38 @@
+
+
+button.v-btn {
+	background: #00818F;
+	border-radius: 5px;
+	text-align: center;
+	> span.v-btn__content {
+		font-family: 'Montserrat';
+		font-weight: 500;
+		font-size: 16px;
+		color: #FFFFFF;
+		letter-spacing: -0.4px;
+		color: #FFFFFF;
+		text-transform: none;
+	}
+
+	&:hover  {
+		background: #244C5A;
+		cursor: pointer;
+	}
+
+	&.next {
+		> &:after {
+			font-family: FontAwesome;
+			font-size: 22px;
+			color: #FFFFFF;
+			letter-spacing: 0;
+			text-align: left;
+		}
+	}
+}
+
+
+.v-application .primary {
+	background: #244C5A !important;
+	border-color: #244C5A !important;
+}
+

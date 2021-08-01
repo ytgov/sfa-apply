@@ -1,11 +1,20 @@
 export const strict = false
 
 export const state = () => ({
-
+  menu_open: false
 })
 
-export const mutations = {
 
+export const getters = {
+  menu_open(state) {
+    return state.menu_open
+  }
+}
+
+export const mutations = {
+  TOGGLE_MENU(state) {
+    state.menu_open = !state.menu_open
+  }
 }
 
 

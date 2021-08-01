@@ -1,91 +1,17 @@
-<template>
-  <!-- App.vue -->
+<template>  
   <v-app>
+    <Menu />
+    <Header />
+    <Alerts />
+    
+    <Heading>
+      Student Financial Assistance Portal
+    </Heading>
 
- 
-    <v-navigation-drawer
-      absolute
-      permanent
-      app
-      right
-      v-if="drawer"
-    >
-      <template v-slot:prepend>
-        <v-list-item two-line>
-          <v-list-item-avatar>
-            <img src="https://randomuser.me/api/portraits/women/81.jpg">
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title>Jane Smith</v-list-item-title>
-            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        {{locale}}
-      </template>
-
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>
-              <nuxt-link :to="item.to">{{ item.title }}</nuxt-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-
-    </v-navigation-drawer>
-
-
-    <v-app-bar 
-      dark
-      app
-    >
-      
-      <nuxt-link to="/">
-        <Logo />
-      </nuxt-link>
-      <v-spacer></v-spacer>
-      <v-toolbar-title>
-        Application
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-
-      <div class="lang-dropdown">
-        <select v-model="$i18n.locale">
-          <option
-            v-for="lang in $i18n.locales"
-            :key="lang.code"
-            :value="lang.code"
-            >{{ lang.name }}</option
-          >
-        </select>
-      </div>
-
-      <v-list-item-avatar @click="toggleDrawer()">
-        <img src="https://randomuser.me/api/portraits/women/81.jpg" v-if="!drawer">
-        <em v-else>
-          x
-        </em>
-      </v-list-item-avatar>
-
-    </v-app-bar>
     <v-main>
       <nuxt-child  :keep-alive-props="{ exclude: ['modal'] }" />
     </v-main>
-   
-    <v-footer app>
-      <!-- -->
-    </v-footer>
+    <Footer />
   </v-app>
 </template>
 
@@ -102,37 +28,28 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import Logo from "~/components/Logo.vue"
+
+import Header from "~/components/ui/Header.vue"
+import Footer from "~/components/ui/Footer.vue"
+import Menu from "~/components/ui/Menu.vue"
+import Alerts from "~/components/ui/Alerts.vue"
+import Heading from "~/components/Heading.vue"
+
 
 export default {
   components: {
-    Logo
-  },
-  computed: {
-    ...mapGetters({
-      locale: 'languages/locale'
-    }),
-    l() {
-      return locales[this.locale]
-    }
+    Header,
+    Footer,
+    Menu,
+    Alerts,
+    Heading
   },
   data () {
     return {
-      drawer: false,
-      items: [
-        { title: 'Applications', icon: 'mdi-home-city', to: '/' },
-        { title: 'Profile', icon: 'mdi-account-group-outline', to: '/profile' },
-        { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
-        { title: 'Change Password', icon: 'mdi-account', to: '/password-reset' },
-        { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
-        { title: 'Contact', icon: 'mdi-account', to: '/contact' }
-      ],
+    
     }
   },
   methods: {
-    toggleDrawer() {
-      this.drawer = !this.drawer
-    },
     setLocale(locale) {
       this.$store.commit('languages/locale')
     }
@@ -143,23 +60,8 @@ export default {
 
 <style lang="scss" scoped>
 
-div.lang-dropdown {
-  > select {
-    color: #fff;
 
-    ::-moz-selection { /* Code for Firefox */
-      color: red;
-      background: yellow;
-    }
 
-    ::selection {
-      color: red;
-      background: yellow;
-    }
-    > option {
-      color: #fff;
-    }
-  }
-}
+
 
 </style>

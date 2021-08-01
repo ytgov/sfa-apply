@@ -83,6 +83,22 @@ export default {
       },
       ignoredPaths: ['/public-page']
     }]
+    /*
+    ['nuxt-oidc', {
+      issuer: environment.config.oauth.issuer,
+      clientId: environment.config.oauth.clientID,
+      clientSecret: environment.config.oauth.clientSecret,
+      callbackUrl: environment.config.oauth.callbackUrl,
+      scope: environment.config.oauth.scope,
+      // express-session configuration
+      session: {
+        secret: 'adfsdg',
+        cookie: {},
+        resave: false,
+        saveUninitialized: false,
+      }
+    }]
+    */
   ],
   buildModules: [
     ['@nuxtjs/vuetify', { 

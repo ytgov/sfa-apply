@@ -2,7 +2,7 @@
   <v-container fluid>
     <h1>{{ $t('title') }}</h1>
 
-    <v-banner  icon="mdi-cash-register">
+    <v-banner icon="mdi-cash-register">
       <h2>{{ $t('help.title') }}</h2>
       <p>
         {{ $t('help.details') }}

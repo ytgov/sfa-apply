@@ -1,5 +1,11 @@
 
 
+section.limit-width {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+
 
 /* Extending Vuetify main styles */
 
@@ -21,10 +27,23 @@ div.v-banner__icon {
   top: -10px;
 }
 
+
+header.v-toolbar {
+  padding: 1rem 0rem;
+  height: auto !important;
+
+  > div.v-toolbar__content {
+    height: auto !important;
+    max-width: 1024px !important;
+    width: 100% !important;
+    margin: auto !important;
+  }
+}
+
 /* Imports */
 @import "_typeography.scss";
 @import "forms.scss";
-
+@import "btns-and-icons.scss";
 
 
 

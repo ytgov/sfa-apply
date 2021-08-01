@@ -1,5 +1,5 @@
 <template>
-  <img src="/images/logo-white-solid.svg" height="25" />
+  <img src="/images/logo.svg" height="61" />
 </template>
 
 <style>

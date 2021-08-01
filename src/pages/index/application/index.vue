@@ -1,26 +1,23 @@
 <template>
 	<v-container fluid>
-		<v-stepper v-model="step">
-	    <v-stepper-header>
-	      <v-stepper-step v-for="section, index in sections"  :complete="step > index" :step="index" :key="index">
-	        {{section.name}}
-	      </v-stepper-step>
-
-	      <v-divider></v-divider>
-	    </v-stepper-header>
-
-	    <v-stepper-items>
-	      <v-stepper-content v-for="section, index in sections"  :complete="step > index" :step="index" :key="index">
-	        <v-card class="mb-12" color="lighten-1">
+		<article data-section="application-process">
+			<nav>
+				<div v-for="section, index in sections" :key="index">
+					<a @click="step=index" v-if="(step>index)">{{section.name}}</a>
+					<span :class="(step==index) ? 'active' : ''" v-else>{{section.name}}</span>
+				</div>
+			</nav>
+			<section>
+				<div v-if="step==index" v-for="section, index in sections" :key="index">
+					<v-card class="mb-12" color="lighten-1">
 	        	<Component :is="section.component" v-model="sections[index].valid" />
 	        </v-card>
-
-	        <v-btn color="primary" @click="step = (index+1)" v-if="sections[index].valid">
+	        <v-btn class="next" color="primary" @click="step = (index+1)" v-if="sections[index].valid">
 	          Continue
 	        </v-btn>
-	      </v-stepper-content>
-	    </v-stepper-items>
-	  </v-stepper>
+	      </div>
+			</section>
+		</article>
 	</v-container>
 </template>
 
@@ -98,4 +95,40 @@ div.v-card {
   padding: 0 !important;
 }
 
+
+article {
+	display: flex;
+	> nav {
+		width: 30%;
+		> div {
+			padding: 0.5rem 2rem;
+			> span {
+				font-size: 1em;
+				&.active {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	> section {
+		width: 70%;
+		border-left: solid 1px rgba(0,0,0,0.3);
+		padding-left: 3rem;
+	}
+}
+
+</style>
+
+<style lang="scss">
+
+
+article[data-section='application-process'] {
+	> section {
+		> div {
+			h2 {
+				font-size: 2rem;
+			}
+		}
+	}
+}
 </style>

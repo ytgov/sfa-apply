@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Aleo&display=swap');
 
 * {
   box-sizing: border-box;
@@ -23,11 +26,19 @@
 
 
 body, td {
-	font-family: 'Helvetica';
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 	font-size: 1em;
 }
 
 
 h1, h2, h3, h4 {
-	
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: rgb(0, 131, 146);
+  &:link, &:visited, &:active {
+    color: rgb(0, 131, 146);
+    text-decoration: none;
+  }
 }

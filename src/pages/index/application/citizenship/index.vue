@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h1>Citizenship.</h1>
+    <h2>Citizenship.</h2>
 
     <section>
       <Question>
@@ -100,13 +100,13 @@ export default {
     "are_you_a_canadian_citizen": "Are you a canadian citizen?",
     "are_you_a_perminent_resident": "Are you a perminent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indian": "Are you registered as indigenous?"
+    "are_you_registered_as_indigenous": "Are you registered as indigenous?"
   },
   "fr": {
     "are_you_a_canadian_citizen": "Are you a canadian citizen?",
     "are_you_a_perminent_resident": "Are you a perminent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indian": "Are you registered as indigenous?"
+    "are_you_registered_as_indigenous": "Are you registered as indigenous?"
   }
 }
 </i18n>

@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h1>Residence.</h1>
+    <h2>Residence.</h2>
 
     <section>
       <Question>

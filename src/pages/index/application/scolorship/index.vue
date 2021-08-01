@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h1>Scolorship.</h1>
+    <h2>Scolorship.</h2>
 
     <section>
       <Question>

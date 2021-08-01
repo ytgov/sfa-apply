@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h1>Yukon Excellence Award.</h1>
+    <h2>Yukon Excellence Award.</h2>
 
     <section>
       <Question>
