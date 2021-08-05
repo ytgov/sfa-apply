@@ -33,7 +33,7 @@
     <v-divider></v-divider>
 
     <v-list dense>
-      <v-list-item v-for="item in items" :key="item.title">
+      <v-list-item v-for="item in nav[locale].items" :key="item.title">
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -56,18 +56,35 @@ export default {
     ...mapGetters({
       login_url: 'user/login_url',
       menu_open: 'menu_open'
-    })
+    }),
+    locale() {
+      return this.$i18n.locale
+    }
   },
   data() {
     return {
-      items: [
-        { title: 'Applications', icon: 'mdi-home-city', to: '/' },
-        { title: 'Profile', icon: 'mdi-account-group-outline', to: '/profile' },
-        { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
-        { title: 'Change Password', icon: 'mdi-account', to: '/password-reset' },
-        { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
-        { title: 'Contact', icon: 'mdi-account', to: '/contact' }
-      ]
+      nav: {
+        en: {      
+          items: [
+            { title: 'Applications', icon: 'mdi-home-city', to: '/' },
+            { title: 'Profile', icon: 'mdi-account-group-outline', to: '/profile' },
+            { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
+            { title: 'Change Password', icon: 'mdi-account', to: '/password-reset' },
+            { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
+            { title: 'Contact', icon: 'mdi-account', to: '/contact' }
+          ]
+        },
+        fr: {
+          items: [
+            { title: 'Applications', icon: 'mdi-home-city', to: '/fr' },
+            { title: 'Profil', icon: 'mdi-account-group-outline', to: '/fr/profile' },
+            { title: 'Dcouments', icon: 'mdi-account', to: '/fr/application/documents' },
+            { title: 'Changer le mot de passe', icon: 'mdi-account', to: '/fr/password-reset' },
+            { title: 'FAQ', icon: 'mdi-account', to: '/fr/faq' },
+            { title: 'Contact', icon: 'mdi-account', to: '/fr/contact' }
+          ]
+        }
+      }
     }
   },
   created() {

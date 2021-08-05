@@ -26,8 +26,12 @@ var oauth = {
 }
 
 /*
-curl --location -g --request GET 'https://yukon.vivvocloud.com/oauth/v2/authorize?client_id=06829d34-e307-4289-800d-24ff9d438ee8&redirect_uri=http://localhost:3000/oidc/callback&response_type=code&scope=openid,profile,email,phone,address&state=ewgergerg'
+curl --location -g --request GET 'https://yukon.vivvocloud.com/oauth/v2/authorize?client_id=06829d34-e307-4289-800d-24ff9d438ee8&redirect_uri=http://localhost:3000/oidc/callback&response_type=code&scope=openid&state=ewgergerg'
 
+
+https://yukon.vivvocloud.com/oauth/v2/authorize?client_id=06829d34-e307-4289-800d-24ff9d438ee8&redirect_uri=http://localhost:3000/oidc/callback&response_type=code&scope=openid&state=ewgergerg
+
+https://yukon.vivvocloud.com/oauth/v2/authorize?client_id=06829d34-e307-4289-800d-24ff9d438ee8&redirect_uri=https://yukon-gov-sfap.web.app/oidc/callback/&response_type=code&scope=openid&state=vjcai
 */
 
 Issuer.discover(oauth.issuer).then((issuer) => {

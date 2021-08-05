@@ -23,6 +23,9 @@ export default {
         case 'invalid_state': 
           output = 'Invalid State';
           break;
+        case 'invalid_scope': 
+          output = 'Invalid Scope';
+          break;
       }
       return output;
     }

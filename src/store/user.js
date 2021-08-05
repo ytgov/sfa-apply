@@ -4,7 +4,9 @@ const config = process.env.config
 
 export const state = () => ({
   user: false,
-  state: false//Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8)
+  state: false,
+  scope: 'openid'//'openid profile email phone address' // read:profile write:profile 
+  // openid profile email phone address
 })
 
 export const mutations = {
@@ -14,14 +16,6 @@ export const mutations = {
   SET_STATE(state) {
     if (!state.state) {
       state.state = Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, '').substr(0, 8)
-      /*
-      const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let array = new Uint8Array(40);
-      window.crypto.getRandomValues(array);
-      array = array.map(x => validChars.charCodeAt(x % validChars.length));
-      state.state = String.fromCharCode.apply(null, array);
-      console.log( state.state)
-      */
     }
   },
   CLEAR(state) {
@@ -37,7 +31,8 @@ export const getters = {
     return state.user
   },
   login_url(state) {
-    return `${config.oauth.issuer}oauth/v2/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&scope=openid&state=${state.state}`
+    return `${config.oauth.issuer}oauth/v2/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&state=${state.state}`
+    // &scope=${encodeURI(state.scope)}
   }
 }
 

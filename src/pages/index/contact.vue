@@ -52,11 +52,11 @@
     }
   },
   "fr": {
-    "title": "Contact Us",
+    "title": "Nous contacter",
     "headers": {
-      "general": "General Inquiries",
-      "mailing": "Mailing Address",
-      "office": "Office Address"
+      "general": "Renseignements généraux",
+      "mailing": "Adresse postale",
+      "office": "Adresse de bureau"
     }  
   }
 }

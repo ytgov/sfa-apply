@@ -133,20 +133,20 @@
     }
   },
   "fr": {
-    "title": "Profile",
+    "title": "Profil",
     "legends": {
-      "personal_details": "Personal Details",
-      "address": "Address"
+      "personal_details": "Détails personnels",
+      "address": "Adresse"
     },
     "buttons": {
-      "save": "Save"
+      "save": "Sauver"
     },
     "help": {
-      "title": "title",
-      "details": "Help text can go in here to make the form more"
+      "title": "Titre",
+      "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"
     },
     "problem": {
-      "title": "There is a problem"
+      "title": "Il ya un problème"
     }
   }
 }

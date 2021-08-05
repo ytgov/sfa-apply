@@ -6,17 +6,17 @@
     </p>
 
 		<div class="documents">
-			<div v-for="doc in supporting">
+			<div v-for="doc in documents[locale].supporting">
 				<div>{{doc.status}}</div>
 				<div><strong>{{doc.name}}</strong></div>
-				<div v-if="doc.status=='Verified'">
-					<a>Delete</a>
+				<div v-if="['Verified', 'Vérifié'].includes(doc.status)">
+					<a>{{ $t("buttons.delete") }}</a>
 				</div>
-				<div v-else-if="doc.status=='Uploading'">
-					<a>Cancel</a>
+				<div v-else-if="['Uploading', 'Téléchargement'].includes(doc.status)">
+					<a>{{ $t("buttons.cancel") }}</a>
 				</div>
 				<div v-else>
-					<a>Upload</a>
+					<a>{{ $t("buttons.upload") }}</a>
 				</div>
 			</div>
 		</div>
@@ -38,6 +38,9 @@ div.documents{
 		> div {
 			width: 100%;
 			padding: 2rem;
+			&:nth-of-type(2) {
+				width: 150%;
+			}
 			&:last-of-type {
 				text-align: right;
 			}
@@ -51,12 +54,22 @@ div.documents{
   "en": {
     "title": "Supporting Documents",
     "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
-    "error": "You cannot sumbit your application until all your documents are uploaded."
+    "error": "You cannot sumbit your application until all your documents are uploaded.",
+    "buttons": {
+    	"delete": "Delete",
+    	"cancel": "Cancel",
+    	"upload": "Upload"
+    }
   },
   "fr": {
-    "title": "Supporting Documents",
-    "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
-    "error": "You cannot sumbit your application until all your documents are uploaded."
+    "title": "Documents justificatifs",
+    "excerpt": "Veuillez télécharger les pièces justificatives suivantes... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "error": "Vous ne pouvez pas soumettre votre demande tant que tous vos documents ne sont pas téléchargés.",
+    "buttons": {
+    	"delete": "Supprimer",
+    	"cancel": "Annuler",
+    	"upload": "Télécharger"
+    }
   }
 }
 </i18n>
@@ -71,29 +84,58 @@ export default {
 	computed: {
 		...mapGetters({
 			documents: 'documents/list'
-		})
+		}),
+		locale() {
+      return this.$i18n.locale
+    }
 	},
 	data() {
 		return {
-			supporting: [
-				{
-					name: 'High School Transcript',
-					status: 'Verified'
-				},
-				{
-					name: 'Letter of Acceptance',
-					status: 'Uploading'
-				},
-				{
-					name: 'Spouse Income Tax (2018)',
-					status: 'Pending'
-				},
-				{
-					name: 'Student Income Tax (2018)',
-					status: 'Pending'
-				}
+			documents: {
+				en: {
+					supporting: [
+						{
+							name: 'High School Transcript',
+							status: 'Verified'
+						},
+						{
+							name: 'Letter of Acceptance',
+							status: 'Uploading'
+						},
+						{
+							name: 'Spouse Income Tax (2018)',
+							status: 'Pending'
+						},
+						{
+							name: 'Student Income Tax (2018)',
+							status: 'Pending'
+						}
 
-			]
+					]
+				},
+				fr: {
+					supporting: [
+						{
+							name: 'Relevé de notes du secondaire',
+							status: 'Vérifié'
+						},
+						{
+							name: 'Lettre d\'acceptation',
+							status: 'Téléchargement'
+						},
+						{
+							name: 'Impôt sur le revenu du conjoint (2018)',
+							status: 'En attente'
+						},
+						{
+							name: 'Impôt sur le revenu des étudiants (2018)',
+							status: 'En attente'
+						}
+
+					]
+				}
+			}
+			
 		}
 	}
 }
