@@ -2,15 +2,14 @@
   <header>
     <section class="limit-width">
       <section>
-        <nuxt-link to="/">
+        <nuxt-link :to="home_uri">
           <Logo />
         </nuxt-link>
       </section>
       <section>
         <div>
-          <a @click="toggleLanguage()">
-            {{language}}
-          </a>
+          <nuxt-link :to="switchLocalePath('en')" v-if="locale=='fr'">English</nuxt-link>
+          <nuxt-link :to="switchLocalePath('fr')" v-else>Français</nuxt-link>
         </div>
         <div>
           <a @click="toggleMenu()">
@@ -44,6 +43,12 @@ export default {
   computed: {
     language() {
       return (this.$i18n.locale=="en") ? 'Français' : 'English'
+    },
+    locale() {
+      return this.$i18n.locale
+    },
+    home_uri() {
+      return this.$i18n.locale=="fr" ? '/fr' : '/'
     },
     menu() {
       return this.$store.getters["menu_open"]

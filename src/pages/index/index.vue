@@ -1,15 +1,12 @@
 <template>
   <v-container fluid>
-
-
-
-    <h1>Hello Robert</h1>
+    <h1>{{ $t('hello') }} Robert</h1>
     <p>
-    	A welcome back message... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.
+    	{{ $t('welcome') }}
     </p>
 
     <v-card>
-	    <h2>Current Applications</h2>
+	    <h2>{{ $t("current.header") }}</h2>
 	    	
 	    <div class="applications" v-if="applications.length">
 	    	<div v-for="application in applications">
@@ -33,11 +30,11 @@
 	    </div>
 
 	    <div v-else>
-	    	<p>There are no active applications.</p>
+	    	<p>{{ $t("current.none") }}</p>
 	    	<p>
 	    		<nuxt-link to="/application">
 		    		<v-btn color="primary" class="mr-5">
-		          Apply for Financial Assistance
+		          {{ $t("current.buttons.apply") }}
 		        </v-btn>
 		      </nuxt-link>
 	    	</p>
@@ -47,7 +44,7 @@
 
 	  <v-card>
 
-    	<h2>Past Applications</h2>
+    	<h2>{{ $t("past.header") }}</h2>
 	    	
 	    <div class="applications" v-if="past_applications.length">
 	    	<div v-for="application in past_applications">
@@ -71,7 +68,7 @@
 	    </div>
 
 	    <div v-else>
-	    	<p>{{ $t('no_past_applications') }}</p>
+	    	<p>{{ $t("past.none") }}</p>
 	    </div>
     </v-card>
   </v-container>
@@ -80,10 +77,35 @@
 <i18n>
 {
   "en": {
-    "no_past_applications": "There are no past applications."
+  	"hello": "Hello",
+  	"welcome": "A welcome back message... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "no_past_applications": "There are no past applications.",
+    "current": {
+    	"header": "Current Applications",
+    	"none": "There are no active applications.",
+    	"buttons": {
+    		"apply": "Apply for Financial Assistance"
+    	}
+    },
+    "past": {
+    	"header": "Past Applications",
+    	"none": "There are no past applications."
+    }
   },
   "fr": {
-    "no_past_applications": "There are no past applications. French"
+  	"hello": "Bonjour",
+  	"welcome": "Un message de bienvenue... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "current": {
+    	"header": "Applications actuelles",
+    	"none": "Il n'y a pas d'applications actives.",
+    	"buttons": {
+    		"apply": "Demander une aide financière"
+    	}
+    },
+    "past": {
+    	"header": "Candidatures antérieures",
+    	"none": "Il n'y a pas d'applications antérieures."
+    }
   }
 }
 </i18n>

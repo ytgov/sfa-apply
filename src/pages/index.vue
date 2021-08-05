@@ -5,7 +5,7 @@
     <Alerts />
     
     <Heading>
-      Student Financial Assistance Portal
+      {{ $t('heading') }}
     </Heading>
 
     <v-main>
@@ -18,10 +18,10 @@
 <i18n>
 {
   "en": {
-
+    "heading": "Student Financial Assistance Portal"
   },
   "fr": {
-    
+    "heading": "Portail d'aide financière aux étudiants"
   }
 }
 </i18n>

@@ -2,11 +2,11 @@
   <aside :class="(menu_open) ? 'open' : ''">
     <header>
       <section class="title">
-        Government services and information
+        {{ $t('heading') }}
       </section>
       <section>
         <a href="javascript:void(0)" @click="toggleMenu()">
-          <div>close</div>
+          <div>{{ $t('close') }}</div>
           <div>              
             <svg viewBox="0 0 40 40">
               <path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
@@ -70,6 +70,9 @@ export default {
       ]
     }
   },
+  created() {
+    this.$store.commit('user/SET_STATE')
+  },
   methods: {
     toggleMenu() {
       this.$store.commit('TOGGLE_MENU')
@@ -80,6 +83,19 @@ export default {
   }
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "heading": "Government services and information",
+    "close": "Close"
+  },
+  "fr": {
+     "heading": "Services gouvernementaux et informations",
+    "close": "Fermer"
+  }
+}
+</i18n>
 
 <style lang="scss" scoped>
 aside {

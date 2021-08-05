@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "yukon-gov-sfap"
+    "default": "yukon-gov-sfap",
+    "staging": "yukon-gov-sfap",
+    "production": "paystubs365-production"
   }
 }

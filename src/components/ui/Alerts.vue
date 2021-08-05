@@ -5,10 +5,10 @@
         <i class="fa fa-2x fa-exclamation-triangle" />
       </div>
       <div>
-        <p class="alert-title">Your alerts</p>
+        <p class="alert-title">{{ $t("heading") }}</p>
         <ul>
           <li class="alert" v-for="alert, index in alerts" :key="index">
-            <strong>{{alert.text}}</strong> <nuxt-link :to="alert.link.url">{{alert.link.text}}</nuxt-link>
+            <strong>{{alert[locale].text}}</strong> <nuxt-link :to="alert[locale].link.url">{{alert[locale].link.text}}</nuxt-link>
           </li>
         </ul>
       </div>
@@ -21,11 +21,24 @@ export default {
   computed: {
     alerts() {
       return this.$store.getters['alerts/list']
-    }
+    },
+    locale() {
+      return this.$i18n.locale
+    },
   }
 }
 </script>
 
+<i18n>
+{
+  "en": {
+    "heading": "Your alerts"
+  },
+  "fr": {
+    "heading": "Vos alertes"
+  }
+}
+</i18n>
 
 <style lang="scss" swcoped>
 

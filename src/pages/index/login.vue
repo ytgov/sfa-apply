@@ -8,8 +8,15 @@
           {{ $t('introduction') }}
         </p>
         <br />
+        <h4>
+          New User 
+        </h4>
         <p>
-          New User <nuxt-link to="/create-account">Create an Account</nuxt-link>
+          <nuxt-link to="/create-account">
+            <v-btn color="primary" class="mr-5">
+              Create an Account
+            </v-btn>
+          </nuxt-link>
         </p>
       </v-col>
       <v-col>

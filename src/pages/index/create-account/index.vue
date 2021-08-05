@@ -1,13 +1,10 @@
 <template>
   <v-container fluid>
     <h1>{{ $t('title') }}</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.
+    </p>
 
-    <v-banner icon="mdi-cash-register">
-      <h2>{{ $t('help.title') }}</h2>
-      <p>
-        {{ $t('help.details') }}
-      </p>
-    </v-banner>
 
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
@@ -54,7 +51,7 @@
           <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
             {{ $t('buttons.create_account') }}
           </v-btn>
-           <v-btn color="secondary" class="mr-5" type="reset" :disabled="!valid">
+           <v-btn color="secondary" class="mr-5" type="reset">
             {{ $t('buttons.cancel') }}
           </v-btn>
         </fieldset>

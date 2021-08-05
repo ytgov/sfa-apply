@@ -1,15 +1,28 @@
 export const strict = false
 
-const endpoints = process.env.endpoints
 const config = process.env.config
 
 export const state = () => ({
-  user: false
+  user: false,
+  state: false//Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8)
 })
 
 export const mutations = {
   SET_USER(state, user) {
     state.user = user
+  },
+  SET_STATE(state) {
+    if (!state.state) {
+      state.state = Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, '').substr(0, 8)
+      /*
+      const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let array = new Uint8Array(40);
+      window.crypto.getRandomValues(array);
+      array = array.map(x => validChars.charCodeAt(x % validChars.length));
+      state.state = String.fromCharCode.apply(null, array);
+      console.log( state.state)
+      */
+    }
   },
   CLEAR(state) {
     state.user = false
@@ -24,9 +37,7 @@ export const getters = {
     return state.user
   },
   login_url(state) {
-    var state = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
-
-    return `${config.oauth.issuer}oauth/v2/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&scope=openid&state=${state}`
+    return `${config.oauth.issuer}oauth/v2/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&scope=openid&state=${state.state}`
   }
 }
 
