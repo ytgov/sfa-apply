@@ -8,6 +8,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test:unit": "mocha test/**/*.spec.js",
+    "deploy-development": "ENV=development sh deploy.sh",
     "deploy-staging": "ENV=staging sh deploy.sh",
     "deploy-production": "ENV=production sh deploy.sh"
   },
@@ -22,6 +23,7 @@
     "@nuxtjs/device": "^2.1.0",
     "cookie-universal-nuxt": "^2.1.2",
     "core-js": "^3.9.1",
+    "firebase": "^8.8.1",
     "fs": "0.0.1-security",
     "moment": "^2.24.0",
     "nuxt": "^2.15.3",

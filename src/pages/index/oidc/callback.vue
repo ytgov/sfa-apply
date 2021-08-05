@@ -5,8 +5,11 @@
     <p>
       {{$route.query.error_description}}
     </p>
-    <p v-if="false">
+    <p>
       {{$route.query}}
+    </p>
+    <p v-if="response">
+      {{response}}
     </p>
   </v-main>
 </template>
@@ -30,8 +33,17 @@ export default {
       return output;
     }
   },
+  data() {
+    return {
+      response: false
+    }
+  },
   mounted() {
-    console.log(this.$route.query)
+    if (this.$route.query.code) {
+      this.$store.dispatch('user/token', { code: this.$route.query.code }).then((response)=>{
+        this.response = response
+      })
+    }
   }
 }
 </script>

@@ -1,7 +1,4 @@
-const admin = require('firebase-admin');
-const functions = require('firebase-functions');
-const cors = require('cors')({origin: true}); 
-const request = require('request');
+var request = require('request');
 
 const CONFIG = {
 	development: {
@@ -28,30 +25,20 @@ const CONFIG = {
 
 const config = CONFIG['development']
 
+var code = 'DsiD7hUiRrFXu90JrDMML-NDcOH694NNemO2-mG57q4.VrdUFWk1FFwQcd3l_Il_XUKh9qcYCvPLiGDLSYGo3Zc'
 
-exports.token = functions.https.onRequest((req, res) => {
-  return cors(req, res, async () => {
-    var data = req.body.data;
-    var code = data.code;
+var url = `${config.issuer}oauth/v2/token?grant_type=authorization_code&code=${code}&client_id=${config.clientID}&client_secret=${config.clientSecret}&redirect_uri=${encodeURI(config.callbackURL)}`;
 
- 		var url = `${config.issuer}oauth/v2/token?grant_type=authorization_code&code=${code}&client_id=${config.clientID}&client_secret=${config.clientSecret}&redirect_uri=${encodeURI(config.callbackURL)}`;
-
-    var options = {
-		  'method': 'GET',
-		  'url': url,
-		  'headers': {
-		  }
-		};
-		await request(options, (error, response, body) => {
-			console.log({error, response, body})
-	    res.status(200).send({ 
-	      data: {
-	      	statusCode: (response && response.statusCode),
-	        token: response.body,
-	        url
-	      }
-	    })
-		});
-
-	})
+console.log(url)
+var options = {
+  'method': 'GET',
+  'url': url,
+  'headers': {
+  }
+};
+request(options, (error, response, body) => {
+	console.log('error:', error); 
+  console.log('statusCode:', response && response.statusCode); 
+  console.log(response.toJSON());
 });
+

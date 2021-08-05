@@ -1,11 +1,15 @@
+import { firebase } from '@/services/firebase.js'
+
+
 export const strict = false
 
 const config = process.env.config
 
 export const state = () => ({
   user: false,
+  token: false,
   state: false,
-  scope: 'openid'//'openid profile email phone address' // read:profile write:profile 
+  scope: 'openid profile email phone address'//'openid profile email phone address' // read:profile write:profile 
   // openid profile email phone address
 })
 
@@ -17,6 +21,9 @@ export const mutations = {
     if (!state.state) {
       state.state = Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, '').substr(0, 8)
     }
+  },
+  SET_TOKEN(state, token) {
+    state.token = token
   },
   CLEAR(state) {
     state.user = false
@@ -38,6 +45,19 @@ export const getters = {
 
 
 export const actions = {
+  token({ dispatch, commit, state, rootGetters }, { code }) {
+    var OauthUserToken = firebase.functions().httpsCallable('auth-token');
+    return new Promise((resolve, reject) => {
+      OauthUserToken({ code }).then((response) => {
+        commit('SET_TOKEN', response.data.token)
+        resolve(response.data)
+      }).catch((error) => {
+        console.log("User Token Error", error)
+        reject(error)
+      })
+    })
+  },
+  /*
   async login({ commit }) {
     await axios.get(endpoints.LOGIN_URL).then(response => {
       commit("SET_USER", response.data);
@@ -52,6 +72,7 @@ export const actions = {
       commit("CLEAR");
     });
   },
+  */
   async logout({ commit }) {
     alert(endpoints.LOGOUT_URL)
     await axios.get(endpoints.LOGOUT_URL).then((response) => {
