@@ -1,8 +1,7 @@
 export const strict = false
 
 const endpoints = process.env.endpoints
-
-console.log('ENDPOINTS', endpoints)
+const config = process.env.config
 
 export const state = () => ({
   user: false
@@ -23,6 +22,11 @@ export const getters = {
   },
   user(state) {
     return state.user
+  },
+  login_url(state) {
+    var state = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+
+    return `${config.oauth.issuer}oauth/v2/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&scope=openid&state=${state}`
   }
 }
 

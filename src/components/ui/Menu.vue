@@ -1,5 +1,5 @@
 <template>
-  <aside :class="(menu) ? 'open' : ''">
+  <aside :class="(menu_open) ? 'open' : ''">
     <header>
       <section class="title">
         Government services and information
@@ -23,6 +23,8 @@
       <v-list-item-content>
         <v-list-item-title>UserName</v-list-item-title>
         <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+
+        <div><a :href="login_url">Login</a></div>
       </v-list-item-content>
     </v-list-item>
  
@@ -47,11 +49,14 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
+
 export default {
   computed: {
-    menu() {
-      return this.$store.getters["menu_open"]
-    }
+    ...mapGetters({
+      login_url: 'user/login_url',
+      menu_open: 'menu_open'
+    })
   },
   data() {
     return {

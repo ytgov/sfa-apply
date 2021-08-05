@@ -22,10 +22,10 @@ form {
   border-radius: 6px;
   padding: 2rem;
 
-  input[type=text], select, textarea {
+  .text-field {
     background: #FFFFFF;
     border: 1px solid #D4C7CF;
     border-radius: 3px;
-    padding: 1rem;
+    padding: 1rem !important;
   }
 }

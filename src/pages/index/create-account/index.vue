@@ -22,20 +22,20 @@
               :success="valid"
             />
           </ValidationProvider>
-
-          <ValidationProvider name="password_confirm" rules="required|password" tag="span" v-slot="{ errors, valid }">
+          
+          <ValidationProvider name="password" rules="required|password" tag="span" v-slot="{ errors, valid }">
             <v-text-field
-              v-model="password_confirm"
-              label="Password Confirm"
+              v-model="password"
+              label="Password"
               :error-messages="errors"
               :success="valid"
             />
           </ValidationProvider>
 
-          <ValidationProvider name="password" rules="required|password" tag="span" v-slot="{ errors, valid }">
+          <ValidationProvider name="password_confirm" rules="required|password" tag="span" v-slot="{ errors, valid }">
             <v-text-field
-              v-model="password"
-              label="Password"
+              v-model="password_confirm"
+              label="Password Confirm"
               :error-messages="errors"
               :success="valid"
             />

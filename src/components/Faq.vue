@@ -2,7 +2,7 @@
   <section data-section="faq">
     <header>
       <h2>FAQs</h2>
-      <a href="/faq">More FAQ</a>
+      <nuxt-link to="/faq">More FAQ</nuxt-link>
     </header>
     <section>
       <div v-for="faq,index in faqs" :class="(selected==index) ? 'open' : ''">
