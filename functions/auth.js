@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
-const cors = require('cors')({origin: true}); 
+const cors = require('cors')({origin: '*'}); 
 const request = require('request');
 
 const CONFIG = {
@@ -26,24 +26,28 @@ const CONFIG = {
   }
 }
 
-const config = CONFIG['development']
+const config = CONFIG[process.env.ENV||'development']
 
 
 exports.token = functions.https.onRequest((req, res) => {
   return cors(req, res, async () => {
     var data = req.body.data;
     var code = data.code;
+    var state = data.state;
 
- 		var url = `${config.issuer}oauth/v2/token?grant_type=authorization_code&code=${code}&client_id=${config.clientID}&client_secret=${config.clientSecret}&redirect_uri=${encodeURI(config.callbackURL)}`;
+ 		var url = `${config.issuer}oauth/v2/token?grant_type=authorization_code&code=${encodeURI(code)}&client_id=${config.clientID}&client_secret=${config.clientSecret}&redirect_uri=${encodeURI(config.callbackURL)}&state=${state}`;
 
     var options = {
 		  'method': 'GET',
 		  'url': url,
 		  'headers': {
+		  	'Access-Control-Allow-Methods': 'GET',
+		  	'Access-Control-Allow-Origin': '*',
+		  	'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
 		  }
 		};
 		await request(options, (error, response, body) => {
-			console.log({error, response, body})
+			console.log(JSON.stringify({error, response: response.toJSON(), body}))
 	    res.status(200).send({ 
 	      data: {
 	      	statusCode: (response && response.statusCode),

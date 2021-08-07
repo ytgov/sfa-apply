@@ -17,6 +17,15 @@ var defaultData = {
     is_high_school_student: false,
     is_high_school_graduate: false,
     is_pursuing_aviation: false
+  },
+  studies: {
+    time: false
+  },
+  residence: {
+    have_you_been_out_of_territory_4_months: false,
+    have_you_been_out_of_territory_12_months: false,
+    will_you_be_resident_before_classes_start: false,
+    do_you_file_with_cra_as_yukon_citizen: false
   }
 }
 

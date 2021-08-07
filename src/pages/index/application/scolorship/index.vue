@@ -73,6 +73,9 @@ export default {
       return is_valid;
     }
   },
+  mounted() {
+    this.$emit('input', this.valid)
+  },
   watch: {
     valid(to, from) {
       this.$emit('input', this.valid)

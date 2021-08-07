@@ -35,6 +35,8 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 
+import Introduction from '@/pages/index/application/introduction/index.vue'
+import Studies from '@/pages/index/application/studies/index.vue'
 import Citizenship from '@/pages/index/application/citizenship/index.vue'
 import Scolorship from '@/pages/index/application/scolorship/index.vue'
 import Residence from '@/pages/index/application/residence/index.vue'
@@ -44,14 +46,28 @@ import Documents from '@/pages/index/application/documents/index.vue'
 
 export default {
 	components: {
+		Introduction,
+		Studies,
 		Citizenship,
 		Scolorship,
+		Residence,
+		ExellenceAward,
 		Documents
 	},
 	data() {
 		return {
 			step: 0,
 			sections: [
+				{
+					name: 'Introduction',
+					component: Introduction,
+					valid: true
+				},
+				{
+					name: 'Studies',
+					component: Studies,
+					valid: false
+				},
 				{
 					name: 'Citizenship',
 					component: Citizenship,

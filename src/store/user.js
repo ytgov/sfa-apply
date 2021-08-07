@@ -48,7 +48,7 @@ export const actions = {
   token({ dispatch, commit, state, rootGetters }, { code }) {
     var OauthUserToken = firebase.functions().httpsCallable('auth-token');
     return new Promise((resolve, reject) => {
-      OauthUserToken({ code }).then((response) => {
+      OauthUserToken({ code, state: state.state }).then((response) => {
         commit('SET_TOKEN', response.data.token)
         resolve(response.data)
       }).catch((error) => {

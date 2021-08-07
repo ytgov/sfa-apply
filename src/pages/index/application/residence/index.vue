@@ -4,12 +4,43 @@
 
     <section>
       <Question>
-        {{ $t('are_you_a_canadian_citizen') }}
+        {{ $t('have_you_been_out_of_territory_4_months') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.citizenship.is_canadian_citizen" 
-        :value="profile.citizenship.is_canadian_citizen" 
+        v-model="profile.residence.have_you_been_out_of_territory_4_months" 
+        :value="profile.residence.have_you_been_out_of_territory_4_months" 
+      />
+    </section>
+    <section v-if="profile.residence.have_you_been_out_of_territory_4_months=='Yes'">
+      <Question>
+        {{ $t('will_you_be_resident_before_classes_start') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="profile.residence.will_you_be_resident_before_classes_start" 
+        :value="profile.residence.will_you_be_resident_before_classes_start" 
+      />
+    </section>
+
+    <section v-if="profile.residence.have_you_been_out_of_territory_4_months=='Yes' && profile.residence.will_you_be_resident_before_classes_start">
+      <Question>
+        {{ $t('have_you_been_out_of_territory_12_months') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="profile.residence.have_you_been_out_of_territory_12_months" 
+        :value="profile.residence.have_you_been_out_of_territory_12_months" 
+      />
+    </section>
+    <section v-if="profile.residence.have_you_been_out_of_territory_4_months=='Yes' && profile.residence.will_you_be_resident_before_classes_start && profile.residence.have_you_been_out_of_territory_12_months">
+      <Question>
+        {{ $t('do_you_file_with_cra_as_yukon_citizen') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="profile.residence.do_you_file_with_cra_as_yukon_citizen" 
+        :value="profile.residence.do_you_file_with_cra_as_yukon_citizen" 
       />
     </section>
   </v-container>
@@ -38,14 +69,35 @@ export default {
       }
     },
     valid() {
-      return 
+      var is_valid =  
+        this.profile.residence.have_you_been_out_of_territory_4_months == 'No' ||
         (
-          profile.citizenship.is_canadian_citizen == 'Yes' 
-        ) || (
-          profile.citizenship.is_canadian_citizen == 'No' 
-          && profile.citizenship.are_you_a_protected_person == 'Yes'
-          && profile.citizenship.are_you_registered_as_indian == 'Yes'
+          this.profile.residence.have_you_been_out_of_territory_4_months == 'Yes' &&
+          this.profile.residence.will_you_be_resident_before_classes_start &&
+          this.profile.residence.have_you_been_out_of_territory_12_months &&
+          this.profile.residence.do_you_file_with_cra_as_yukon_citizen 
         )
+        /*
+        || (
+          this.profile.citizenship.is_canadian_citizen == 'No' 
+          && this.profile.citizenship.are_you_a_perminent_resident == 'Yes'
+        ) || (
+          this.profile.citizenship.is_canadian_citizen == 'No' 
+          && this.profile.citizenship.are_you_a_perminent_resident == 'No'
+          && this.profile.citizenship.are_you_a_protected_person == 'Yes'
+          && this.profile.citizenship.are_you_registered_as_indigenous == 'Yes'
+        )
+      */
+
+      return is_valid
+    }
+  },
+  mounted() {
+    this.$emit('input', this.valid)
+  },
+  watch: {
+    valid(to, from) {
+      this.$emit('input', this.valid)
     }
   }
 }
@@ -55,16 +107,13 @@ export default {
 <i18n>
 {
   "en": {
-    "are_you_a_canadian_citizen": "Are you a canadian citizen?",
-    "are_you_a_perminent_resident": "Are you a perminent resident?",
-    "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indian": "Are you registered as an indian?"
+    "have_you_been_out_of_territory_4_months": "Have you been out of the Yukon territory for over 4 months in the last two years?",
+    "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
+    "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
+    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?"
   },
   "fr": {
-    "are_you_a_canadian_citizen": "Are you a canadian citizen?",
-    "are_you_a_perminent_resident": "Are you a perminent resident?",
-    "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indian": "Are you registered as an indian?"
+
   }
 }
 </i18n>
