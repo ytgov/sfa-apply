@@ -51,6 +51,11 @@ section[data-section=faq] {
     }
     > a {
       text-align: right;
+      font-family: "Montserrat";
+      font-weight: bold;
+      font-size: 16px;
+      color: #00818F;
+      letter-spacing: -0.4px;
     }
     > * {
       width: 100%;
@@ -80,7 +85,7 @@ section[data-section=faq] {
           }
           &::before {
             position: absolute;
-            top: 0.15em;
+            top: 0.40em;
             right: 0.15em;
 
             border-style: solid;
