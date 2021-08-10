@@ -77,18 +77,6 @@ export default {
           this.profile.residence.have_you_been_out_of_territory_12_months &&
           this.profile.residence.do_you_file_with_cra_as_yukon_citizen 
         )
-        /*
-        || (
-          this.profile.citizenship.is_canadian_citizen == 'No' 
-          && this.profile.citizenship.are_you_a_perminent_resident == 'Yes'
-        ) || (
-          this.profile.citizenship.is_canadian_citizen == 'No' 
-          && this.profile.citizenship.are_you_a_perminent_resident == 'No'
-          && this.profile.citizenship.are_you_a_protected_person == 'Yes'
-          && this.profile.citizenship.are_you_registered_as_indigenous == 'Yes'
-        )
-      */
-
       return is_valid
     }
   },

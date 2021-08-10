@@ -12,6 +12,9 @@
           New User 
         </h4>
         <p>
+          {{ $t('new_user_intro') }}
+        </p>
+        <p>
           <nuxt-link to="/create-account">
             <v-btn color="primary" class="mr-5">
               Create an Account
@@ -83,6 +86,7 @@
   "en": {
     "introduction_title": "Good Afternoon",
     "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh sit amet diam dictum malesuada sit amet sed dui. Nam sit amet neque a purus condimentum dignissim. Nulla facilisi. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
+    "new_user_intro": "Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
 
     "title": "Login",
     "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
@@ -96,7 +100,7 @@
   "fr": {
     "introduction_title": "Good Afternoon",
     "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh sit amet diam dictum malesuada sit amet sed dui. Nam sit amet neque a purus condimentum dignissim. Nulla facilisi. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
-
+    "new_user_intro": "Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
     "title": "Login",
     "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
     "login": "Login",
@@ -116,15 +120,17 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 export default {
   layout: 'inset',
   middleware: 'no-auth',
-  head: {
-    title: 'Yukon Student Financial Portal - Login',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Home page description'
-      }
-    ],
+  head (){
+    return {
+      title: 'Yukon Student Financial Portal - Login',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description'
+        }
+      ],
+    }
   },
   components: {
     ValidationProvider,

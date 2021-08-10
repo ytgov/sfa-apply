@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
+      <v-col cols="12" sm="12" md="4">
         <h2>{{ $t('headers.general') }}</h2>
         <p>
           <strong>Phone:</strong> 867-667-5929<br />
@@ -16,7 +16,7 @@
           <strong>Email:</strong> <a href="mailto:sfa@gov.yk.ca">sfa@gov.yk.ca</a>
         </p>
       </v-col>
-      <v-col>
+      <v-col cols="12" sm="12" md="4">
         <h2>{{ $t('headers.mailing') }}</h2>
         <p>
           Student Financial Assistance<br />
@@ -27,7 +27,7 @@
         </p>
         </p>
       </v-col>
-      <v-col>
+      <v-col cols="12" sm="12" md="4">
         <h2>{{ $t('headers.office') }}</h2>
         <p>
           1000 Lewes Ave. Boulevard (E-1)<br />
