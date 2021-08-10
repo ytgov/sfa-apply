@@ -65,24 +65,64 @@ section[data-section=faq] {
       }
       > div {
         &.question {
+          position: relative;
           font-weight: bold;
           font-size: 18px;
           line-height: 1.8;
+
+          font-family: "Montserrat";
+          color: #323232;
+          letter-spacing: -0.5px;
+          line-height: 26px;
+
           &:hover {
             cursor: pointer;
+          }
+          &::before {
+            position: absolute;
+            top: 0.15em;
+            right: 0.15em;
+
+            border-style: solid;
+            border-width: 0.25em 0.25em 0 0;
+            content: '';
+            display: inline-block;
+            height: 0.6em;
+       
+            transform: rotate(45deg);
+            vertical-align: top;
+            width: 0.6em;
+
+            color: #00818F;
           }
         }
         &.answer {
           height: 0;
           opacity: 0;
-          font-size: 14px;
+
+
+  
+          font-family: "Montserrat";
+          font-weight: normal;
+          font-size: 16px;
+          color: #323232;
+          letter-spacing: -0.3px;
+          text-align: left;
+          line-height: 26px;
+          width: 96%;
         }
       }
 
       &.open {
+        > div.question {
+          &::before {
+             transform: rotate(135deg);
+          }
+        }
         > div.answer {
           opacity: 1;
           height: auto;
+          margin-top: 1rem;
         }
       }
     }

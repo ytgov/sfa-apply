@@ -66,16 +66,18 @@
 export default {
   layout: 'inset',
   middleware: 'no-auth',
-  head: {
-    title: 'Yukon Student Financial Portal - Contact',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Home page description'
-      }
-    ],
-  },
+  head() {
+    return {
+      title: 'Yukon Student Financial Portal - Contact',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description'
+        }
+      ],
+    }
+  }
 }
 </script>
 
