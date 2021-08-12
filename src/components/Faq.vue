@@ -37,7 +37,6 @@ export default {
 <style lang="scss" scoped>
 
 section[data-section=faq] {
-  width: 70%;
   > header {
     display: flex;
     padding: 1rem 0;
