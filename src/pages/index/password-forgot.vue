@@ -1,12 +1,12 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col>
+      <v-col cols="12" sm="12" md="6">
         <h2>Forgot your password</h2>
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
+      <v-col cols="12" sm="6" md="6">
         <div v-if="!success"> 
           <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
             <v-form @submit.prevent="forgot_password" v-model="valid">
@@ -34,7 +34,7 @@
           An email has been sent to {{email}}.  Check your email and try and <nuxt-link to="/login">login again</nuxt-link>.
         </p>
       </v-col>
-      <v-col>
+      <v-col cols="12" sm="6" md="6">
         <p>
            Please provide the email address that you used when you signed up for your account. We will send you an email that will allow you to reset your password.
         </p>

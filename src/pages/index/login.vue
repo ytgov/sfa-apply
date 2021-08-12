@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col>
+      <v-col cols="12" sm="12" md="6">
         <h2>{{ $t('introduction_title') }}</h2>
         <br />
         <p>
@@ -16,20 +16,20 @@
         </p>
         <p>
           <nuxt-link to="/create-account">
-            <v-btn color="primary" class="mr-5">
               Create an Account
-            </v-btn>
           </nuxt-link>
         </p>
       </v-col>
-      <v-col>
-        <h2>{{ $t('title') }}</h2>
-        <br />
-        <p>
-          {{ $t('excerpt') }}
-        </p>
+      <v-col cols="12" sm="12" md="6">
         <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
           <v-form @submit.prevent="login" v-model="valid">
+            <fieldset>
+              <h2>{{ $t('title') }}</h2>
+              <br />
+              <p>
+                {{ $t('excerpt') }}
+              </p>
+            </fieldset>
             <fieldset>
               <ValidationProvider name="Email" rules="required|email" tag="span" v-slot="{ errors, valid }">
                 <v-text-field
@@ -84,7 +84,7 @@
 <i18n>
 {
   "en": {
-    "introduction_title": "Good Afternoon",
+    "introduction_title": "Hello",
     "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh sit amet diam dictum malesuada sit amet sed dui. Nam sit amet neque a purus condimentum dignissim. Nulla facilisi. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
     "new_user_intro": "Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
 
@@ -98,7 +98,7 @@
     "or_login_with": "Or, login with:"
   },
   "fr": {
-    "introduction_title": "Good Afternoon",
+    "introduction_title": "Bonjour",
     "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh sit amet diam dictum malesuada sit amet sed dui. Nam sit amet neque a purus condimentum dignissim. Nulla facilisi. Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
     "new_user_intro": "Nunc feugiat a lorem ut ornare. Cras suscipit libero vitae ipsum viverra malesuada vitae eget purus. Mauris at cursus velit.",
     "title": "Login",

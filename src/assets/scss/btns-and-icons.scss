@@ -1,38 +1,45 @@
 
 
-button.v-btn {
-	background: #00818F;
-	border-radius: 5px;
-	text-align: center;
-	> span.v-btn__content {
-		font-family: 'Montserrat';
-		font-weight: 500;
-		font-size: 16px;
-		color: #FFFFFF;
-		letter-spacing: -0.4px;
-		color: #FFFFFF;
-		text-transform: none;
+
+.v-application {
+
+	.primary {
+		background: #244C5A !important;
+		border-color: #244C5A !important;
 	}
 
-	&:hover  {
-		background: #244C5A;
-		cursor: pointer;
-	}
 
-	&.next {
-		> &:after {
-			font-family: FontAwesome;
-			font-size: 22px;
-			color: #FFFFFF;
-			letter-spacing: 0;
-			text-align: left;
+	button.v-btn {
+		background: #00818F !important;
+		border-radius: 5px !important;
+		text-align: center !important;
+		padding: 1rem 2rem !important;
+
+		> span.v-btn__content {
+			font-family: 'Montserrat' !important;
+			font-weight: 500 !important;
+			font-size: 16px !important;
+			color: #FFFFFF !important;
+			letter-spacing: -0.4px !important;
+			text-transform: none !important;
+			text-decoration: none !important;
+		}
+
+		&:hover  {
+			background: #244C5A;
+			cursor: pointer;
+		}
+
+		&.next {
+			> &:after {
+				font-family: FontAwesome;
+				font-size: 22px;
+				color: #FFFFFF;
+				letter-spacing: 0;
+				text-align: left;
+			}
 		}
 	}
-}
 
-
-.v-application .primary {
-	background: #244C5A !important;
-	border-color: #244C5A !important;
 }
 

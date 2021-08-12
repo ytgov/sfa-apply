@@ -1,59 +1,63 @@
 <template>
-   <article data-layout="inset">
-    <section style="max-width: 450px;">
-      <h2>Reset your password</h2>
-      <p>
-        One more step. Set a password for your account.
-      </p>
-    
-      <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
-        <v-form @submit.prevent="reset_password" v-model="valid">
-          <fieldset>
-            <ValidationProvider name="Old Password" rules="required|password" tag="span" v-slot="{ errors, valid }">
-              <v-text-field
-                type="password"
-                v-model="oldpassword"
-                label="Old Password"
-                :error-messages="errors"
-                :success="valid"
-              />
-            </ValidationProvider>
-          </fieldset>
-          <fieldset>
-            <ValidationProvider name="New Password" rules="required|password" tag="span" v-slot="{ errors, valid }">
-              <v-text-field
-                type="password"
-                v-model="password"
-                label="New Password"
-                :error-messages="errors"
-                :success="valid"
-              />
-            </ValidationProvider>
-          </fieldset>
-          <fieldset>
-            <ValidationProvider name="New Password Confirmation" rules="required|password" tag="span" v-slot="{ errors, valid }">
-              <v-text-field
-                type="password"
-                v-model="confirmation"
-                label="New Password Confirmation"
-                :error-messages="errors"
-                :success="valid"
-              />
-            </ValidationProvider>
-          </fieldset>
-          <fieldset class="buttons">
-            <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
-               Reset Password 
-            </v-btn>
-            <a @click="$router.go(-1)">
-              Back
-            </a>
-          </fieldset>
-        </v-form>
-      </ValidationObserver>
-
-    </section>
-  </article>
+  <v-container fluid>
+    <v-row>
+      <v-col cols="12" sm="12" md="6">
+        <h2>Reset your password</h2>
+        <p>
+          One more step. Set a password for your account.
+        </p>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" sm="6" md="6">
+        <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
+          <v-form @submit.prevent="reset_password" v-model="valid">
+            <fieldset>
+              <ValidationProvider name="Old Password" rules="required|password" tag="span" v-slot="{ errors, valid }">
+                <v-text-field
+                  type="password"
+                  v-model="oldpassword"
+                  label="Old Password"
+                  :error-messages="errors"
+                  :success="valid"
+                />
+              </ValidationProvider>
+            </fieldset>
+            <fieldset>
+              <ValidationProvider name="New Password" rules="required|password" tag="span" v-slot="{ errors, valid }">
+                <v-text-field
+                  type="password"
+                  v-model="password"
+                  label="New Password"
+                  :error-messages="errors"
+                  :success="valid"
+                />
+              </ValidationProvider>
+            </fieldset>
+            <fieldset>
+              <ValidationProvider name="New Password Confirmation" rules="required|password" tag="span" v-slot="{ errors, valid }">
+                <v-text-field
+                  type="password"
+                  v-model="confirmation"
+                  label="New Password Confirmation"
+                  :error-messages="errors"
+                  :success="valid"
+                />
+              </ValidationProvider>
+            </fieldset>
+            <fieldset class="buttons">
+              <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
+                 Reset Password 
+              </v-btn>
+              <a @click="$router.go(-1)">
+                Back
+              </a>
+            </fieldset>
+          </v-form>
+        </ValidationObserver>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 
@@ -63,15 +67,17 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   layout: 'inset',
-  head: {
-    title: 'Yukon Student Financial Portal - Password Reset',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Home page description'
-      }
-    ],
+  head() { 
+    return {
+      title: 'Yukon Student Financial Portal - Password Reset',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description'
+        }
+      ],
+    }
   },
   components: {
     ValidationProvider,

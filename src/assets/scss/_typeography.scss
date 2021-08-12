@@ -34,6 +34,6 @@ a {
   color: rgb(0, 131, 146);
   &:link, &:visited, &:active {
     color: rgb(0, 131, 146);
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
