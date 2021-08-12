@@ -26,6 +26,10 @@ var defaultData = {
     have_you_been_out_of_territory_12_months: false,
     will_you_be_resident_before_classes_start: false,
     do_you_file_with_cra_as_yukon_citizen: false
+  },
+  designated_institution: {
+    are_you_enrolled_in_post_secondary: false,
+    post_secondary_enrolled_in: false
   }
 }
 
