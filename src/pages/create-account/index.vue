@@ -88,15 +88,17 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import AddressSelector from "~/components/forms/AddressSelector.vue";
 
 export default {
-  head: {
-    title: 'Yukon Student Financial Portal - Create Account',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Home page description'
-      }
-    ],
+  head (){
+    return {
+      title: 'Yukon Student Financial Portal - Create Account',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description'
+        }
+      ],
+    }
   },
   components: {
     ValidationProvider,

@@ -1,6 +1,7 @@
 <template>
   <div class="select">
     <select :name="name" v-model="selected">
+      <option value="">- SELECT -</option>
       <option v-for="o in options" :selected="(selected == (o||o.value)) ? 'selected' : ''">
         {{o.text||o}} 
       </option>
@@ -25,7 +26,7 @@ export default {
   },
   data() {
     return {
-      selected: null
+      selected: ''
     }
   },
   mounted() {

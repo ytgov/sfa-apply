@@ -35,5 +35,9 @@ a {
   &:link, &:visited, &:active {
     color: rgb(0, 131, 146);
     text-decoration: underline;
+
+    &.btn {
+      text-decoration: none; 
+    }
   }
 }

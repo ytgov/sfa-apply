@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h2>Designated Institution</h2>
+    <h2>{{ $t('title') }}</h2>
 
     <section>
       <Question>
@@ -24,18 +24,22 @@
         />
     </section>
 
+
+    <Buttons :valid="valid" :next="next" />
+
   </v-container>
 </template>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import Question from '~/components/forms/Question.vue';
 import Buttons from '~/components/forms/Buttons.vue';
+import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 import Select from '~/components/forms/Select.vue';
 
 export default {
   components: {
+    Buttons,
     Question,
     RadioList,
     Select
@@ -63,6 +67,9 @@ export default {
         )
 
       return is_valid
+    },
+    next() {
+      return '/application/yukon-excellence-award'
     }
   },
   mounted() {
@@ -70,6 +77,7 @@ export default {
   },
   watch: {
     valid(to, from) {
+      this.$store.commit('profile/SET', this.profile)
       this.$emit('input', this.valid)
     }
   }

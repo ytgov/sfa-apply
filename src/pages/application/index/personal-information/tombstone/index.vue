@@ -1,16 +1,20 @@
 <template>
   <v-container fluid>
-    <h2>Scolorship.</h2>
+    <h2>{{ $t('title') }}</h2>
 
     <section>
       <Question>
-        {{ $t('are_you_a_high_school_student') }}
+        {{ $t('do_you_have_existing_alias') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.scolorship.is_high_school_student" 
-        :value="profile.scolorship.is_high_school_student" 
+        v-model="profile.tombstone.has_existing_alias" 
+        :value="profile.tombstone.has_existing_alias" 
       />
+    </section>
+
+    <section>
+      Displays Alias
     </section>
 
     <section v-if="profile.scolorship.is_high_school_student=='Yes'">
@@ -33,6 +37,8 @@
         :value="profile.scolorship.is_pursuing_aviation" 
       />
     </section>
+
+    <Buttons :valid="valid" :next="next" />
   </v-container>
 </template>
 
@@ -40,12 +46,13 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import Question from '~/components/forms/Question.vue';
 import Buttons from '~/components/forms/Buttons.vue';
+import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 
 export default {
   components: {
+    Buttons,
     Question,
     RadioList
   },
@@ -71,6 +78,9 @@ export default {
         )
       )
       return is_valid;
+    },
+    next() {
+      return '/application/personal-information/email'
     }
   },
   mounted() {
@@ -78,6 +88,7 @@ export default {
   },
   watch: {
     valid(to, from) {
+      this.$store.commit('profile/SET', this.profile)
       this.$emit('input', this.valid)
     }
   }
@@ -88,14 +99,12 @@ export default {
 <i18n>
 {
   "en": {
-    "are_you_a_high_school_student": "Are you a grade 12 student attending a Yukon High School and entering the first year of post secondary?",
-    "are_you_a_high_school_graduate": "Are you or will you be a high school graduate from a yukon high school?",
-    "are_you_pursuing_aviation": "Are you pursuing aviation oriented technical training?"
+    "title": "Tombstone",
+    "do_you_have_existing_alias": "Do you have an existing alias?"
   },
   "fr": {
-    "are_you_a_high_school_student": "Are you a grade 12 student attending a Yukon High School and entering the first year of post secondary?",
-    "are_you_a_high_school_graduate": "Are you or will you be a high school graduate from a yukon high school?",
-    "are_you_pursuing_aviation": "Are you pursuing aviation oriented technical training?"
+    "title": "Tombstone",
+    "do_you_have_existing_alias": "Do you have an existing alias?"
   }
 }
 </i18n>

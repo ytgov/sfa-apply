@@ -19,6 +19,18 @@
 import Faq from '~/components/Faq.vue';
 
 export default {
+  head (){
+    return {
+      title: 'Yukon Student Financial Portal - FAQ',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description'
+        }
+      ],
+    }
+  },
 	components: {
     Faq
   },

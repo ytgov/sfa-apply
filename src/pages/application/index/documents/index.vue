@@ -25,6 +25,9 @@
       {{ $t('error') }}
     </v-banner>
 
+
+    <Buttons :valid="valid" :next="next" />
+
 	</v-container>
 </template>
 
@@ -76,10 +79,11 @@ div.documents{
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+import Buttons from '~/components/forms/Buttons.vue';
 
 export default {
 	components: {
-
+		Buttons
 	},
 	computed: {
 		...mapGetters({
@@ -87,6 +91,12 @@ export default {
 		}),
 		locale() {
       return this.$i18n.locale
+    },
+    valid() {
+    	return true
+    },
+    next() {
+      return '/application/submit'
     }
 	},
 	data() {

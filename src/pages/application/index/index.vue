@@ -1,12 +1,12 @@
 <template>
   <v-container fluid>
-    <h2>Introduction</h2>
+    <h2>{{ $t('title') }}</h2>
 
     <section>
       Coming soon.
     </section>
 
-    
+    <Buttons :valid="valid" :next="next" />
   </v-container>
 </template>
 
@@ -18,6 +18,7 @@ import RadioList from '~/components/forms/RadioList.vue';
 
 export default {
   components: {
+    Buttons,
     Question,
     RadioList
   },
@@ -32,6 +33,9 @@ export default {
     },
     valid() {
       return true
+    },
+    next() {
+      return '/application/studies'
     }
   }
 }
@@ -41,10 +45,10 @@ export default {
 <i18n>
 {
   "en": {
-
+    "title": "Introduction"
   },
   "fr": {
-
+    "title": "Introduction"
   }
 }
 </i18n>

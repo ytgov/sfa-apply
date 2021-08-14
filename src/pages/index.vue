@@ -1,67 +1,155 @@
-<template>  
-  <v-app>
-    <Menu />
-    <Header />
-    <Alerts />
-    
-    <Heading>
-      {{ $t('heading') }}
-    </Heading>
+<template>
+  <v-container fluid>
+    <h1>{{ $t('hello') }} Robert</h1>
+    <p>
+    	{{ $t('welcome') }}
+    </p>
 
-    <v-main>
-      <nuxt-child  :keep-alive-props="{ exclude: ['modal'] }" />
-    </v-main>
-    <Footer />
-  </v-app>
+    <v-card>
+	    <h2>{{ $t("current.header") }}</h2>
+	    	
+	    <div class="applications" v-if="applications.length">
+	    	<div v-for="application in applications">
+		    	<div>
+		    		{{application.date}}
+		    	</div>
+					<div>
+						<strong>{{application.name}}</strong><br />
+						{{application.status}}
+					</div>
+					<div v-if="application.status=='Verified'">
+						<a>Delete</a>
+					</div>
+					<div v-else-if="application.status=='Uploading'">
+						<a>Cancel</a>
+					</div>
+					<div v-else>
+						<a>Upload</a>
+					</div>
+				</div>
+	    </div>
+
+	    <div v-else>
+	    	<p>{{ $t("current.none") }}</p>
+	    	<p>
+	    		<nuxt-link to="/application" class="btn">
+		    		<v-btn color="primary" class="mr-5">
+		          {{ $t("current.buttons.apply") }}
+		        </v-btn>
+		      </nuxt-link>
+	    	</p>
+	    </div>
+	  </v-card>
+
+
+	  <v-card>
+
+    	<h2>{{ $t("past.header") }}</h2>
+	    	
+	    <div class="applications" v-if="past_applications.length">
+	    	<div v-for="application in past_applications">
+		    	<div>
+		    		{{application.date}}
+		    	</div>
+					<div>
+						<strong>{{application.name}}</strong><br />
+						{{application.status}}
+					</div>
+					<div v-if="application.status=='Verified'">
+						<a>Delete</a>
+					</div>
+					<div v-else-if="application.status=='Uploading'">
+						<a>Cancel</a>
+					</div>
+					<div v-else>
+						<a>Upload</a>
+					</div>
+				</div>
+	    </div>
+
+	    <div v-else>
+	    	<p>{{ $t("past.none") }}</p>
+	    </div>
+    </v-card>
+  </v-container>
 </template>
 
 <i18n>
 {
   "en": {
-    "heading": "Student Financial Assistance Portal"
+  	"hello": "Hello",
+  	"welcome": "A welcome back message... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "no_past_applications": "There are no past applications.",
+    "current": {
+    	"header": "Current Applications",
+    	"none": "There are no active applications.",
+    	"buttons": {
+    		"apply": "Apply for Financial Assistance"
+    	}
+    },
+    "past": {
+    	"header": "Past Applications",
+    	"none": "There are no past applications."
+    }
   },
   "fr": {
-    "heading": "Portail d'aide financière aux étudiants"
+  	"hello": "Bonjour",
+  	"welcome": "Un message de bienvenue... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "current": {
+    	"header": "Applications actuelles",
+    	"none": "Il n'y a pas d'applications actives.",
+    	"buttons": {
+    		"apply": "Demander une aide financière"
+    	}
+    },
+    "past": {
+    	"header": "Candidatures antérieures",
+    	"none": "Il n'y a pas d'applications antérieures."
+    }
   }
 }
 </i18n>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-
-import Header from "~/components/ui/Header.vue"
-import Footer from "~/components/ui/Footer.vue"
-import Menu from "~/components/ui/Menu.vue"
-import Alerts from "~/components/ui/Alerts.vue"
-import Heading from "~/components/Heading.vue"
-
-
 export default {
-  components: {
-    Header,
-    Footer,
-    Menu,
-    Alerts,
-    Heading
-  },
-  data () {
-    return {
-    
-    }
-  },
-  methods: {
-    setLocale(locale) {
-      this.$store.commit('languages/locale')
-    }
-  }
+	head() {
+		return {
+	    title: 'Home page - Dashboard',
+	    meta: [
+	      {
+	        hid: 'description',
+	        name: 'description',
+	        content: 'Home page description'
+	      }
+	    ],
+	  }
+	},
+	data() {
+		return {
+			applications: [],
+			past_applications: []
+		}
+	}
 }
 </script>
 
 
+
 <style lang="scss" scoped>
-
-
-
-
-
+div.applications{
+	> div {
+		display: flex;
+		border: solid 2px #000;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		> div {
+			width: 100%;
+			padding: 2rem;
+			&:last-of-type {
+				text-align: right;
+			}
+		}
+	}
+}
 </style>

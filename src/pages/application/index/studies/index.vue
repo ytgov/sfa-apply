@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h2>Studies</h2>
+    <h2>{{ $t('title') }}</h2>
 
     <section>
       <Question>
@@ -13,16 +13,19 @@
       />
     </section>
 
+    <Buttons :valid="valid" :next="next" />
   </v-container>
 </template>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 
 export default {
   components: {
+    Buttons,
     Question,
     RadioList
   },
@@ -32,17 +35,24 @@ export default {
         return this.$store.getters['profile/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        //alert(values)
+        //return this.$store.commit('profile/SET', values)
       }
     },
     valid() {
       var is_valid = this.profile.studies.time 
       return is_valid
+    },
+    next() {
+      return '/application/citizenship'
     }
+  },
+  mounted() {
+    this.$emit('input', this.valid)
   },
   watch: {
     valid(to, from) {
-      console.log(true)
+      this.$store.commit('profile/SET', this.profile)
       this.$emit('input', this.valid)
     }
   }
@@ -53,9 +63,11 @@ export default {
 <i18n>
 {
   "en": {
+    "title": "Studies",
     "are_you_full_or_part_time": "Will you be studing full-time or part-time?"
   },
   "fr": {
+    "title": "Studies",
     "are_you_full_or_part_time": "Will you be studing full-time or part-time?"
   }
 }
