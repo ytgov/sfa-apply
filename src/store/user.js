@@ -38,7 +38,8 @@ export const getters = {
     return state.user
   },
   login_url(state) {
-    return `${config.oauth.issuer}oauth/v2/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&state=${state.state}`
+
+    //return `${config.oauth.endpoint}/authorize?client_id=${config.oauth.clientID}&redirect_uri=${encodeURI(config.oauth.callbackURL)}&response_type=code&state=${state.state}`
     // &scope=${encodeURI(state.scope)}
   }
 }

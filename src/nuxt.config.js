@@ -82,6 +82,19 @@ export default {
         expires: 5
       },
       ignoredPaths: ['/public-page']
+    }],
+    ['@nuxtjs/auth-next', {
+      strategies: {
+        auth0: {
+          domain: environment.config.oauth.domain,
+          clientId: environment.config.oauth.clientID,
+          audience: environment.config.oauth.audience,
+          scope: environment.config.oauth.scope,
+          responseType: 'code',
+          grantType: 'authorization_code',
+          codeChallengeMethod: 'S256',
+        }
+      }
     }]
     /*
     ['nuxt-oidc', {
@@ -121,6 +134,21 @@ export default {
       }
     }
   },
+  /*
+  auth: {
+    strategies: {
+      auth0: {
+        domain: environment.config.oauth.domain,
+        clientId: environment.config.oauth.clientID,
+        audience: 'https://my-api-domain.com/',
+        scope: environment.config.oauth.scope,
+        responseType: 'code',
+        grantType: 'authorization_code',
+        codeChallengeMethod: 'S256',
+      }
+    }
+  },
+  */
   env: {
     config: environment.config,
     endpoints: environment.endpoints,

@@ -24,7 +24,7 @@
         <v-list-item-title>UserName</v-list-item-title>
         <v-list-item-subtitle>Logged In</v-list-item-subtitle>
 
-        <div><a :href="login_url">Login</a></div>
+        <div><a @click="login()">Login</a></div>
       </v-list-item-content>
     </v-list-item>
  
@@ -96,6 +96,9 @@ export default {
     },
     off() {
       this.$store.commit('TOGGLE_MENU_OFF')
+    },
+    login() {
+      this.$auth.loginWith('auth0')
     }
   }
 }
