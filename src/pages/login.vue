@@ -8,74 +8,14 @@
           {{ $t('introduction') }}
         </p>
         <br />
-        <h4>
-          New User 
-        </h4>
         <p>
-          {{ $t('new_user_intro') }}
-        </p>
-        <p>
-          <nuxt-link to="/create-account">
-              Create an Account
-          </nuxt-link>
+          <a @click="login()">
+              Login / Register
+          </a>
         </p>
       </v-col>
       <v-col cols="12" sm="12" md="6">
-        <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
-          <v-form @submit.prevent="login" v-model="valid">
-            <fieldset>
-              <h2>{{ $t('title') }}</h2>
-              <br />
-              <p>
-                {{ $t('excerpt') }}
-              </p>
-            </fieldset>
-            <fieldset>
-              <ValidationProvider name="Email" rules="required|email" tag="span" v-slot="{ errors, valid }">
-                <v-text-field
-                  v-model="email"
-                  label="Email / Username"
-                  :error-messages="errors"
-                  :success="valid"
-                />
-              </ValidationProvider>
-            </fieldset>
-            <fieldset>
-              <ValidationProvider name="Password" rules="required" tag="span" v-slot="{ errors, valid }">
-                <v-text-field
-                  type="password"
-                  v-model="password"
-                  label="Password"
-                  :error-messages="errors"
-                  :success="valid"
-                />
-              </ValidationProvider>
-            </fieldset>
-            <fieldset class="buttons">
-              <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
-                {{$t('login')}}
-              </v-btn>
-            </fieldset>
-            <fieldset class="options">
-              <span> <nuxt-link to="/password-forgot">{{$t('forgot_password')}}</nuxt-link></span>
-            </fieldset>
-            <fieldset v-if="false">
-              <br /><br />
-              <h4>{{$t('or_login_with')}}</h4>
-            </fieldset>
-            <section class="social" v-if="false">
-              <a @click="providerSignUp('Google')">
-                <img src="~/static/images/socialsignin/login.google_button.png" />
-              </a>
-              <a @click="providerSignUp('Facebook')">
-                <img src="~/static/images/socialsignin/login.facebook_button.png" />
-              </a>
-              <a @click="providerSignUp('Twitter')"  v-if="false">
-                <img src="~/static/images/socialsignin/login.twitter_button.png" />
-              </a>
-            </section>
-          </v-form>
-        </ValidationObserver>
+       
       </v-col>
     </v-row>
   </v-container>
@@ -116,7 +56,6 @@
 <script>
   // https://demo.wpwebelite.com/woocommerce-social-login/my-account/
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
-
 export default {
   layout: 'inset',
   middleware: 'no-auth',
@@ -151,7 +90,6 @@ export default {
     /*
     this.$store.dispatch('users/logout')
     window.localStorage.removeItem("albumboutique")
-
     this.$nextTick(() => {
       // Start Firebase invisible reCAPTCHA verifierthis.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
       self.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
@@ -168,49 +106,9 @@ export default {
     */
   },
   methods: {
-    login () {
-      this.$store.commit('authenticated', true)
-      /*
-      this.$nuxt.$loading.start()
-      this.message = false
-      
-      this.$store.dispatch('users/signInWithEmail', {
-        email: this.email,
-        password: this.password
-      }).then(
-        response => {
-          this.message = { type: "success", text: 'Logging In' }
-          this.$router.push('/');
-          this.$nuxt.$loading.finish()
-        },
-        error => {
-          this.password = ''
-          this.message = { type: "error", text: error }
-          this.$nuxt.$loading.finish()
-        }
-      )
-      */
-    },
-    providerSignUp(provider) {
-      /*
-      this.$nuxt.$loading.start()
-      this.message = false
-      
-      this.$store.dispatch('users/signInWithProvider', { provider }).then(
-        response => {
-          this.message = { type: "success", text: 'Logging In' }
-          this.$router.push('/');
-          this.$nuxt.$loading.finish()
-        },
-        error => {
-          this.password = ''
-          this.message = { type: "error", text: error }
-          this.$nuxt.$loading.finish()
-        }
-      )
-      */
+    login() {
+      this.$auth.loginWith('auth0')
     }
   }
 }
 </script>
-

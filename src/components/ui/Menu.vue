@@ -16,15 +16,16 @@
       </section>
     </header>
     <v-list-item two-line>
-      <v-list-item-avatar>
-        <img src="https://randomuser.me/api/portraits/women/81.jpg">
+      <v-list-item-avatar v-if="$auth.loggedIn">
+        <img :src="$auth.user.picture">
       </v-list-item-avatar>
 
       <v-list-item-content>
-        <v-list-item-title>UserName</v-list-item-title>
+        <v-list-item-title v-if="$auth.loggedIn">
+          {{$auth.user.nickname}}<br />
+          ({{$auth.user.email}})
+        </v-list-item-title>
         <v-list-item-subtitle>Logged In</v-list-item-subtitle>
-
-        <div><a @click="login()">Login</a></div>
       </v-list-item-content>
     </v-list-item>
  
@@ -71,7 +72,8 @@ export default {
             { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
             { title: 'Change Password', icon: 'mdi-account', to: '/password-reset' },
             { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
-            { title: 'Contact', icon: 'mdi-account', to: '/contact' }
+            { title: 'Contact', icon: 'mdi-account', to: '/contact' },
+            { title: 'Logout', icon: 'mdi-account', to: '/logout' }
           ]
         },
         fr: {
@@ -81,7 +83,8 @@ export default {
             { title: 'Dcouments', icon: 'mdi-account', to: '/fr/application/documents' },
             { title: 'Changer le mot de passe', icon: 'mdi-account', to: '/fr/password-reset' },
             { title: 'FAQ', icon: 'mdi-account', to: '/fr/faq' },
-            { title: 'Contact', icon: 'mdi-account', to: '/fr/contact' }
+            { title: 'Contact', icon: 'mdi-account', to: '/fr/contact' },
+            { title: 'Logout', icon: 'mdi-account', to: '/logout' }
           ]
         }
       }
@@ -97,9 +100,7 @@ export default {
     off() {
       this.$store.commit('TOGGLE_MENU_OFF')
     },
-    login() {
-      this.$auth.loginWith('auth0')
-    }
+
   }
 }
 </script>

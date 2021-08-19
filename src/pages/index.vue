@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h1>{{ $t('hello') }} Robert</h1>
+    <h1>{{ $t('hello') }}  <span v-if="$auth.user">{{$auth.user.nickname}}</span></h1>
     <p>
     	{{ $t('welcome') }}
     </p>
@@ -129,6 +129,11 @@ export default {
 		return {
 			applications: [],
 			past_applications: []
+		}
+	},
+	mounted() {
+		if (!this.$auth.loggedIn) {
+			this.$router.push('/login')
 		}
 	}
 }

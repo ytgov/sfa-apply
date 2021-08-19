@@ -26,7 +26,7 @@ export default {
   ],
   router: {
     base: "/",
-    middleware: ['router-auth', 'password-protect']
+    middleware: [ 'password-protect', 'router-auth']
   },
   plugins: [
     { src: '~/plugins/nuxt-client-init.js', ssr: false },
@@ -84,15 +84,22 @@ export default {
       ignoredPaths: ['/public-page']
     }],
     ['@nuxtjs/auth-next', {
+      redirect: {
+        login: '/login',
+        logout: '/login',
+        callback: '/oidc/callback',
+        home: '/'
+      },
       strategies: {
         auth0: {
           domain: environment.config.oauth.domain,
           clientId: environment.config.oauth.clientID,
-          audience: environment.config.oauth.audience,
-          scope: environment.config.oauth.scope,
-          responseType: 'code',
-          grantType: 'authorization_code',
-          codeChallengeMethod: 'S256',
+          redirectUri: environment.config.oauth.redirectUri
+          //logoutRedirectUri: environment.config.oauth.redirectUri
+          //scope: environment.config.oauth.scope,
+          //responseType: 'code token',
+          //grantType: 'authorization_code',
+          //codeChallengeMethod: 'S256',
         }
       }
     }]

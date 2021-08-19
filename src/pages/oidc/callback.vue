@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <v-main v-if="error">
     <h2>Error / {{error}}</h2>
     <br />
     <p>
@@ -40,9 +40,11 @@ export default {
   },
   mounted() {
     if (this.$route.query.code) {
+      /*
       this.$store.dispatch('user/token', { code: this.$route.query.code }).then((response)=>{
         this.response = response
       })
+      */
     }
   }
 }

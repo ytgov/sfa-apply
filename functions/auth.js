@@ -5,24 +5,20 @@ const request = require('request');
 
 const CONFIG = {
 	development: {
-    issuer: 'https://yukon.vivvocloud.com/',
-    authorizationURL: 'https://yukon.vivvocloud.com/oauth/v2/authorize',
-    tokenURL: 'https://yukon.vivvocloud.com/oauth/v2/token',
-    userInfoURL: 'https://yukon.vivvocloud.com/oauth/v2/userinfo',
-    clientID: '06829d34-e307-4289-800d-24ff9d438ee8',
-    clientSecret: 'fe2aa8ea-aec1-475a-987e-b35659e66a11',
-    callbackURL: "http://localhost:3000/oidc/callback",
-    scope: 'openid profile email phone address'      
+		domain: 'dev-0tc6bn14.eu.auth0.com',
+    clientID: 'ZGlOd5wvf0bL0USl6jD4QBqX6eiDsitQ',
+    clientSecret: 'qwEo6QpvXVgBW8MJ2xXITNF_nluletB-4BrA5rlyWl5VOB9K_taawUe-PEBNJKbH',
+    scope: ['openid', 'profile', 'email'],
+    logoutRedirectUri: 'http://localhost:3000',
+    redirectUri: 'http://localhost:3000/oidc/callback'       
   },
   staging: {
-    issuer: 'https://yukon.vivvocloud.com/',
-    authorizationURL: 'https://yukon.vivvocloud.com/oauth/v2/authorize',
-    tokenURL: 'https://yukon.vivvocloud.com/oauth/v2/token',
-    userInfoURL: 'https://yukon.vivvocloud.com/oauth/v2/userinfo',
-    clientID: "8406d129-defd-4e19-8290-17941b14bcc2",
-    clientSecret: '585d435c-a174-4608-9b40-75b11d929293',
-    callbackURL: 'https://yukon-gov-sfap.web.app/oidc/callback',
-    scope: 'openid profile email phone address' 
+    domain: 'dev-0tc6bn14.eu.auth0.com',
+    clientID: 'ZGlOd5wvf0bL0USl6jD4QBqX6eiDsitQ',
+    clientSecret: 'qwEo6QpvXVgBW8MJ2xXITNF_nluletB-4BrA5rlyWl5VOB9K_taawUe-PEBNJKbH',
+    scope: ['openid', 'profile', 'email'],
+    logoutRedirectUri: 'https://yukon-gov-sfap.web.app/',
+    redirectUri: 'https://yukon-gov-sfap.web.app/oidc/callback'
   }
 }
 
@@ -35,7 +31,7 @@ exports.token = functions.https.onRequest((req, res) => {
     var code = data.code;
     var state = data.state;
 
- 		var url = `${config.issuer}oauth/v2/token?grant_type=authorization_code&code=${encodeURI(code)}&client_id=${config.clientID}&client_secret=${config.clientSecret}&redirect_uri=${encodeURI(config.callbackURL)}&state=${state}`;
+ 		var url = `https://${config.domain}/oauth/token?grant_type=authorization_code&code=${encodeURI(code)}&client_id=${config.clientID}&client_secret=${config.clientSecret}&redirect_uri=${encodeURI(config.redirectUri)}&state=${state}`;
 
     var options = {
 		  'method': 'GET',

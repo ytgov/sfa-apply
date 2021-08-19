@@ -6,7 +6,9 @@
 <script>
 export default {
   mounted() {
-    this.$store.dispatch('users/logout').then(()=>{
+    var auth = this.$auth
+    this.$store.dispatch('user/logout', { auth }).then(()=>{
+      this.$auth.logout()
       this.$router.push('/')
     })
   }

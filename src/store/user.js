@@ -74,12 +74,27 @@ export const actions = {
     });
   },
   */
-  async logout({ commit }) {
+  async logout({ commit }, { auth }) {
+    return new Promise((resolve, reject) => {
+      console.log("Auth", auth)
+      var user = auth.user
+      if (user) {
+        /*
+        profiles.doc(user.uid).set({ 
+          last_online: firebase.firestore.FieldValue.serverTimestamp(),
+          online: false
+        }, { merge: true })
+        */
+      } 
+      resolve()
+    })
+    /*
     alert(endpoints.LOGOUT_URL)
     await axios.get(endpoints.LOGOUT_URL).then((response) => {
       commit("CLEAR");
     }).catch(err => {
       console.error(err);
     });
+    */
   }
 }

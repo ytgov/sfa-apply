@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  layout: 'inset',
+
   middleware: 'no-auth',
   head() {
     return {
