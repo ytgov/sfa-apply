@@ -11,15 +11,40 @@ var defaultData = {
 
 export const state = () => ({
   application: Object.assign({}, defaultData),
-  list: []
+  list: [
+    {
+      date: '2020/21',
+      name: 'Yukon College',
+      status: 'Sumbitted',
+      past: false
+    },
+     {
+      date: '2020/21',
+      name: 'Other College',
+      status: 'Sumbitted',
+      past: false
+    },
+    {
+      date: '2019/20',
+      name: 'Yukon College',
+      status: 'Sumbitted',
+      past: true
+    }
+  ]
 })
 
 export const getters = {
   GET(state) {
     return state.application
   },
+  current(state) {
+    return _.filter(state.list, (o) => { return !o.past })
+  },
+  past(state) {
+    return _.filter(state.list, (o) => { return o.past==true })
+  },
   list(state) {
-    return state.applications
+    return state.list
   }
 }
 

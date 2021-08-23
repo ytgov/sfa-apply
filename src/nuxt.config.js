@@ -95,30 +95,9 @@ export default {
           domain: environment.config.oauth.domain,
           clientId: environment.config.oauth.clientID,
           redirectUri: environment.config.oauth.redirectUri
-          //logoutRedirectUri: environment.config.oauth.redirectUri
-          //scope: environment.config.oauth.scope,
-          //responseType: 'code token',
-          //grantType: 'authorization_code',
-          //codeChallengeMethod: 'S256',
         }
       }
     }]
-    /*
-    ['nuxt-oidc', {
-      issuer: environment.config.oauth.issuer,
-      clientId: environment.config.oauth.clientID,
-      clientSecret: environment.config.oauth.clientSecret,
-      callbackUrl: environment.config.oauth.callbackUrl,
-      scope: environment.config.oauth.scope,
-      // express-session configuration
-      session: {
-        secret: 'adfsdg',
-        cookie: {},
-        resave: false,
-        saveUninitialized: false,
-      }
-    }]
-    */
   ],
   buildModules: [
     ['@nuxtjs/vuetify', { 
@@ -141,21 +120,6 @@ export default {
       }
     }
   },
-  /*
-  auth: {
-    strategies: {
-      auth0: {
-        domain: environment.config.oauth.domain,
-        clientId: environment.config.oauth.clientID,
-        audience: 'https://my-api-domain.com/',
-        scope: environment.config.oauth.scope,
-        responseType: 'code',
-        grantType: 'authorization_code',
-        codeChallengeMethod: 'S256',
-      }
-    }
-  },
-  */
   env: {
     config: environment.config,
     endpoints: environment.endpoints,

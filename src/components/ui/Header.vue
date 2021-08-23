@@ -12,6 +12,12 @@
           <nuxt-link :to="switchLocalePath('fr')" v-else>Français</nuxt-link>
         </div>
         <div>
+          <i class="fas fa-2x fa-envelope"></i>
+          <span>
+            {{messages}}
+          </span>
+        </div>
+        <div>
           <a @click="toggleMenu()">
             <div>
               <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -34,6 +40,7 @@
 
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
 import Logo from "~/components/Logo.vue"
 
 export default {
@@ -52,7 +59,10 @@ export default {
     },
     menu() {
       return this.$store.getters["menu_open"]
-    }
+    },
+    ...mapGetters({
+      messages: 'messages/count'
+    })
   },
   methods: {
     toggleMenu() {
@@ -112,7 +122,7 @@ header {
       width: 100%;
       &:last-of-type {
         width: 30%;
-        min-width: 200px;
+        min-width: 300px;
         text-align: right;
         display: flex;
         align-items: center;
@@ -130,6 +140,33 @@ header {
             > div {
               padding: 0.1rem 0.5rem;
               line-height: 1;
+            }
+          }
+
+          &:nth-of-type(2) {
+            position: relative;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            > span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              right: 20px;
+              top: 15px;
+
+              background: #000;
+              color: #fff;
+              padding: 5px;
+              width: 20px;
+              height: 20px;
+
+              border-radius: 100%;
+              line-height: 0;
+
+              font-size: 10px;
+              font-weight: bold;
             }
           }
         }

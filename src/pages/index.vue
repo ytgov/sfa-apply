@@ -17,14 +17,8 @@
 						<strong>{{application.name}}</strong><br />
 						{{application.status}}
 					</div>
-					<div v-if="application.status=='Verified'">
-						<a>Delete</a>
-					</div>
-					<div v-else-if="application.status=='Uploading'">
-						<a>Cancel</a>
-					</div>
-					<div v-else>
-						<a>Upload</a>
+					<div>
+						<nuxt-link to="/application">Continue</nuxt-link>
 					</div>
 				</div>
 	    </div>
@@ -55,15 +49,10 @@
 						<strong>{{application.name}}</strong><br />
 						{{application.status}}
 					</div>
-					<div v-if="application.status=='Verified'">
-						<a>Delete</a>
+					<div>
+						<nuxt-link to="/application/details/01234">Details</nuxt-link>
 					</div>
-					<div v-else-if="application.status=='Uploading'">
-						<a>Cancel</a>
-					</div>
-					<div v-else>
-						<a>Upload</a>
-					</div>
+			
 				</div>
 	    </div>
 
@@ -125,10 +114,12 @@ export default {
 	    ],
 	  }
 	},
-	data() {
-		return {
-			applications: [],
-			past_applications: []
+	computed: {
+		applications() {
+			return this.$store.getters['applications/current']
+		},
+		past_applications() {
+			return this.$store.getters['applications/past']
 		}
 	},
 	mounted() {
@@ -143,14 +134,26 @@ export default {
 
 <style lang="scss" scoped>
 div.applications{
+	margin-top: 1rem;
 	> div {
 		display: flex;
-		border: solid 2px #000;
-		margin-top: 1rem;
-		margin-bottom: 1rem;
+		align-items: center;
+
+
+		padding: 0.5rem 0;
+
+
+		&:nth-child(odd) {
+			background: #eee;
+		}
+
+		&:nth-child(odd) {
+			background: #eee;
+		}
+		
 		> div {
 			width: 100%;
-			padding: 2rem;
+			padding: 1rem 2rem;
 			&:last-of-type {
 				text-align: right;
 			}
