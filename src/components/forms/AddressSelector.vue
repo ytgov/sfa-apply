@@ -30,7 +30,7 @@
         />
       </section>
       <section v-if="address.zip_postal_code">
-        <div style="padding-top: 17px;">
+        <div style="padding-bottom: 17px;">
           <strong style="font-weight: bolder;">{{city}}, {{region}}</strong>
         </div>
       </section>

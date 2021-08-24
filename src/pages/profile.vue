@@ -7,7 +7,6 @@
       <p>
         {{ $t('help.details') }}
       </p>
-      
     </v-banner>
 
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
@@ -102,7 +101,7 @@
         </fieldset>
       </v-form>
 
-      <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="invalid">
+      <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="!valid">
         <h3>{{ $t('problem.title') }}</h3>
         <ul>
           <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
@@ -125,7 +124,7 @@
       "save": "Save"
     },
     "help": {
-      "title": "title",
+      "title": "Need help?",
       "details": "Help text can go in here to make the form more"
     },
     "problem": {
@@ -142,7 +141,7 @@
       "save": "Sauver"
     },
     "help": {
-      "title": "Titre",
+      "title": "Need help?",
       "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"
     },
     "problem": {
@@ -203,3 +202,5 @@ export default {
   }
 };
 </script>
+
+
