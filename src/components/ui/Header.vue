@@ -153,7 +153,7 @@ header {
               align-items: center;
               justify-content: center;
               position: absolute;
-              right: 20px;
+              left: 60%;
               top: 15px;
 
               background: #000;

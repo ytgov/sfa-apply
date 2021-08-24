@@ -4,6 +4,7 @@
     <p>
     	{{ $t('welcome') }}
     </p>
+    <p>&nbsp;</p>
 
     <v-card>
 	    <h2>{{ $t("current.header") }}</h2>
@@ -23,6 +24,7 @@
 				</div>
 	    </div>
 
+
 	    <div v-else>
 	    	<p>{{ $t("current.none") }}</p>
 	    	<p>
@@ -33,7 +35,18 @@
 		      </nuxt-link>
 	    	</p>
 	    </div>
+	    <p>&nbsp;</p>
+	     <p>
+		  	<nuxt-link to="/application">
+		  		<v-btn color="primary"  class="mr-5" x-large>
+		  			Apply for Financial Assistance
+		  		</v-btn>
+		  	</nuxt-link> 
+		  </p>
 	  </v-card>
+
+	
+	  <p>&nbsp;</p>
 
 
 	  <v-card>
@@ -134,7 +147,7 @@ export default {
 
 <style lang="scss" scoped>
 div.applications{
-	margin-top: 1rem;
+	margin-top: 2rem;
 	> div {
 		display: flex;
 		align-items: center;
