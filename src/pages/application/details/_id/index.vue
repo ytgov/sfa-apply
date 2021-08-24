@@ -7,15 +7,17 @@
 
     <h3>Funding Sources</h3>
 
-    <div class="sources" v-if="sources.length">
-      <div v-for="source in sources">
-        <div>{{source.date}}</div>
+    <div class="funding_sources" v-if="funding_sources.length">
+      <div v-for="source, index in funding_sources" :key="index" onclick="this.classList.toggle('open')">
         <div>
           <strong>{{source.name[locale]}}</strong><br />
-          <small>Application Under Review</small>
+          <small>{{ $t(`funding_sources.statuses.${source.status}`) }}</small>
+          <div class="details">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
         </div>
-        <div>
-          
+        <div style="width:  5%;">
+            
         </div>
       </div>
     </div>
@@ -23,21 +25,27 @@
       <p>{{ $t("sources.none") }}</p>
     </div>
     <p>&nbsp;</p>
+
+
     <h3>Supporting Documents</h3>
 
 
     <div class="supporting_documents" v-if="supporting_documents.length">
-      <div v-for="sd in supporting_documents">
-
-        <div>
-          {{sd.date}}
+      <div v-for="sd, index in supporting_documents" onclick="this.classList.toggle('open')" :key="index">
+        <div style="width: 5%;">
+          <i class="far fa-2x fa-check-square" v-if="sd.status=='VERIFIED'"></i>
+          <i class="far fa-2x fa-clock" v-else-if="sd.status=='PENDING'"></i>
+          <i class="fas fa-2x fa-cloud-upload-alt" v-else-if="sd.status=='UPLOADING'"></i>
         </div>
         <div>
           <strong>{{sd.name[locale]}}</strong><br />
           <small>{{sd.status}}</small>
+          <div class="details">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
         </div>
-        <div>
-
+        <div style="width:  5%;">
+          
         </div>
       </div>
     </div>
@@ -61,16 +69,19 @@
 import { mapMutations, mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return {
+      open: false,
+      active: false
+    }
+  },
   computed: {
     ...mapGetters({
-      sources: 'documents/list',
+      funding_sources: 'funding_sources/list',
       supporting_documents: 'documents/list'
     }),
     locale() {
       return this.$i18n.locale
-    },
-    application() {
-
     }
   }
 }
@@ -80,11 +91,21 @@ export default {
 <i18n>
 {
   "en": {
+    "funding_sources": {
+      "statuses": {
+        "PENDING": "Application Under Review"
+      }
+    },
     "buttons": {
       "continue": "Continue"
     }
   },
   "fr": {
+    "funding_sources": {
+      "statuses": {
+        "PENDING": "Application Under Review"
+      }
+    },
     "buttons": {
       "continue": "Continue"
     }
@@ -94,14 +115,21 @@ export default {
 
 
 <style lang="scss" scoped>
-div.sources, div.supporting_documents{
+div.funding_sources, div.supporting_documents{
   margin-top: 1rem;
+  pointer-events: all; 
   > div {
     display: flex;
     align-items: center;
 
 
     padding: 0.5rem 0;
+
+  
+
+    &:hover {
+      cursor: pointer;
+    }
 
 
     &:nth-child(odd) {
@@ -113,10 +141,58 @@ div.sources, div.supporting_documents{
     }
     
     > div {
-      width: 100%;
+      position: relative;
+      width: auto;
       padding: 1rem 2rem;
+
+
+      > div.details {
+        height: 0;
+        opacity: 0;
+      }
+
+
+          align-self: self-start;
+
       &:last-of-type {
         text-align: right;
+         &::before {
+
+
+
+          position: absolute;
+          top: 1rem;
+          right: 2rem;
+
+          border-style: solid;
+          border-width: 0.25em 0.25em 0 0;
+          content: '';
+          display: inline-block;
+          height: 0.6em;
+     
+          transform: rotate(45deg);
+          vertical-align: top;
+          width: 0.6em;
+
+          color: #00818F;
+          &:hover {
+            cursor: pointer
+          }
+        }
+      }
+    }
+
+    &.open {
+      > div {
+        &:last-of-type {
+          &::before {
+            transform: rotate(135deg);
+          }
+        }
+        > div.details {
+          height: auto;
+          opacity: 1;
+        }
       }
     }
   }
