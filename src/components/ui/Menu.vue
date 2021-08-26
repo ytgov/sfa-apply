@@ -17,11 +17,11 @@
     </header>
     <v-list-item two-line>
       <v-list-item-avatar v-if="$auth.loggedIn">
-        <img :src="$auth.user.picture">
+        <img :src="$auth.user.picture" v-if="$auth.user.picture">
       </v-list-item-avatar>
 
-      <v-list-item-content>
-        <v-list-item-title v-if="$auth.loggedIn">
+      <v-list-item-content v-if="$auth.loggedIn">
+        <v-list-item-title>
           {{$auth.user.nickname}}<br />
           ({{$auth.user.email}})
         </v-list-item-title>
@@ -30,7 +30,6 @@
     </v-list-item>
  
     
-
     <v-divider></v-divider>
 
     <v-list dense>
@@ -70,7 +69,6 @@ export default {
             { title: 'Applications', icon: 'mdi-home-city', to: '/' },
             { title: 'Profile', icon: 'mdi-account-group-outline', to: '/profile' },
             { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
-            { title: 'Change Password', icon: 'mdi-account', to: '/password-reset' },
             { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
             { title: 'Contact', icon: 'mdi-account', to: '/contact' },
             { title: 'Logout', icon: 'mdi-account', to: '/logout' }
@@ -81,7 +79,6 @@ export default {
             { title: 'Applications', icon: 'mdi-home-city', to: '/fr' },
             { title: 'Profil', icon: 'mdi-account-group-outline', to: '/fr/profile' },
             { title: 'Dcouments', icon: 'mdi-account', to: '/fr/application/documents' },
-            { title: 'Changer le mot de passe', icon: 'mdi-account', to: '/fr/password-reset' },
             { title: 'FAQ', icon: 'mdi-account', to: '/fr/faq' },
             { title: 'Contact', icon: 'mdi-account', to: '/fr/contact' },
             { title: 'Logout', icon: 'mdi-account', to: '/logout' }
@@ -99,8 +96,7 @@ export default {
     },
     off() {
       this.$store.commit('TOGGLE_MENU_OFF')
-    },
-
+    }
   }
 }
 </script>
@@ -120,10 +116,10 @@ export default {
 
 <style lang="scss" scoped>
 aside {
-
   width: 30%;
   height: 100%;
   min-width: 400px;
+
 
   background: #fff;
   position: fixed;
@@ -194,6 +190,13 @@ aside {
     transform: translateX(0%);
   }
 
+}
+
+@media only screen and (max-width: 640px) {
+aside {
+  width: 100%;
+  min-width: 100%;
+}
 }
 
 </style>

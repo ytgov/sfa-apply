@@ -1,14 +1,7 @@
 <template>
   <v-container fluid>
     <h1>{{ $t('title') }}</h1>
-
-    <v-banner icon="mdi-cash-register">
-      <h2>{{ $t('help.title') }}</h2>
-      <p>
-        {{ $t('help.details') }}
-      </p>
-    </v-banner>
-
+    
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">

@@ -1,5 +1,5 @@
 <template>
-	<v-container fluid>
+	<article>
     <h2>{{ $t('title') }}</h2>
     <p>
       {{ $t('excerpt') }}
@@ -28,24 +28,36 @@
 
     <Buttons :valid="valid" :next="next" />
 
-	</v-container>
+	</article>
 </template>
 
 <style lang="scss" scoped>
 div.documents{
 	> div {
 		display: flex;
-		border: solid 2px #000;
 		margin-top: 1rem;
 		margin-bottom: 1rem;
+
+		border-top: solid 1px #eee;
+		&:last-of-type {
+			border-bottom: solid 1px #eee;
+		}
+
 		> div {
 			width: 100%;
 			padding: 2rem;
+			&:nth-of-type(1) {
+				min-width: 10%;
+
+			}
 			&:nth-of-type(2) {
-				width: 150%;
+				width: auto;
+				white-space: nowrap;
+				text-align: left;
 			}
 			&:last-of-type {
 				text-align: right;
+				min-width: 10%;
 			}
 		}
 	}

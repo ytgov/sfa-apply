@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <article>
     <h2>{{ $t('title') }}</h2>
     <p>
       You must read and agree to the ATIPP statement. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor urna ac nulla sollicitudin placerat. Cras condimentum ornare mauris at porttitor. Sed bibendum vehicula nulla eu molestie. 
@@ -10,7 +10,7 @@
     </TermsWrapper>
 
     <Buttons :valid="valid" :next="next" />
-  </v-container>
+  </article>
 </template>
 
 <script>

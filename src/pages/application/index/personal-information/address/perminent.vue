@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <article>
     <h2>{{ $t('title') }}</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -16,7 +16,7 @@
     <AddressSelector v-model="profile.address.perminent" :value="profile.address.perminent" />
 
     <Buttons :valid="valid" :next="next" />
-  </v-container>
+  </article>
 </template>
 
 <script>

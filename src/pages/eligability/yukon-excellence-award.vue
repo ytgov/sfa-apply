@@ -1,12 +1,12 @@
 <template>
-  <v-container fluid>
-    <h2>{{ $t('title') }}</h2>
+  <article data-layout="eligability">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
 
     <div class="balance">
-      <div>Balance:</div> <div>$0</div> 
+      <div>Balance:</div> <div>${{balance}}</div> 
     </div>
 
     <section>
@@ -14,11 +14,11 @@
         {{ $t('how_much_would_like_to_apply_for') }}
       </Question>
 
-      <input type="text" v-model="profile.yukon_excellence_award.apply" placeholder="$0" class="input" />
+      <Currency v-model="eligability.yukon_excellence_award.apply" :value="eligability.yukon_excellence_award.apply" :max="balance"/>
     </section>
 
-    <Buttons :valid="valid" :next="next" />
-  </v-container>
+    <Buttons :valid="valid" :next="next" back="true" />
+  </article>
 </template>
 
 <script>
@@ -27,22 +27,22 @@ import Question from '~/components/forms/Question.vue';
 import Buttons from '~/components/forms/Buttons.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 
+import Currency  from '~/components/forms/Currency.vue';
+
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    Currency
   },
   computed: {
-    ...mapGetters({
-
-    }),
-    profile: {
+    eligability: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['eligability/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        return this.$store.commit('eligability/SET', values)
       }
     },
     valid() {
@@ -51,19 +51,22 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/atipp'
+      return '/eligability/scholarship'
+    },
+    balance() {
+      return 1023;
     }
   },
   mounted() {
     this.$emit('input', this.valid)
 
-    if (!this.profile.yukon_excellence_award.apply) {
-      this.profile.yukon_excellence_award.apply = ''
+    if (!this.eligability.yukon_excellence_award.apply) {
+      this.eligability.yukon_excellence_award.apply = ''
     }
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('eligability/SET', this.eligability)
       this.$emit('input', this.valid)
     }
   }

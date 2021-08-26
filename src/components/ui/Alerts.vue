@@ -66,4 +66,20 @@ section[data-section=alerts] {
   }
 }
 
+
+
+@media only screen and (max-width: 640px) {
+  section[data-section=alerts] {
+    > section.limit-width {
+      padding: 1rem;
+      > div {
+       &:nth-of-type(1) {
+          padding-left: 1rem;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}
+
 </style>

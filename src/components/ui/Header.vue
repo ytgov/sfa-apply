@@ -12,10 +12,12 @@
           <nuxt-link :to="switchLocalePath('fr')" v-else>Français</nuxt-link>
         </div>
         <div>
-          <i class="fas fa-2x fa-envelope"></i>
-          <span>
-            {{messages}}
-          </span>
+          <nuxt-link to="/messages">
+            <i class="fas fa-2x fa-envelope" />
+            <span>
+              {{messages}}
+            </span>
+          </nuxt-link>
         </div>
         <div>
           <a @click="toggleMenu()">
@@ -70,41 +72,6 @@ export default {
     }
   }
 }
-
-/*
-
-   
-    <v-app-bar white app v-if="false">
-      <nuxt-link to="/">
-        <Logo />
-      </nuxt-link>
-      <v-spacer></v-spacer>
-      <v-toolbar-title>
-        
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <div class="lang-dropdown">
-        <select v-model="$i18n.locale">
-          <option
-            v-for="lang in $i18n.locales"
-            :key="lang.code"
-            :value="lang.code"
-            >{{ lang.name }}</option
-          >
-        </select>
-      </div>
-      <button v-if="$oidc.isLoggedIn" @click="$oidc.login()">
-        Login
-      </button>
-      <v-list-item-avatar @click="toggleDrawer()" v-else>
-        <img src="https://randomuser.me/api/portraits/women/81.jpg" v-if="!drawer">
-        <em v-else>
-          x
-        </em>
-      </v-list-item-avatar>
-    </v-app-bar>
-
-*/
 </script>
 
 
@@ -148,25 +115,28 @@ header {
             padding-left: 40px;
             padding-right: 40px;
 
-            > span {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              position: absolute;
-              left: 60%;
-              top: 15px;
+            > a {
 
-              background: #000;
-              color: #fff;
-              padding: 5px;
-              width: 20px;
-              height: 20px;
+              > span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                left: 50%;
+                top: 15px;
 
-              border-radius: 100%;
-              line-height: 0;
+                background: #000;
+                color: #fff;
+                padding: 5px;
+                width: 20px;
+                height: 20px;
 
-              font-size: 10px;
-              font-weight: bold;
+                border-radius: 100%;
+                line-height: 0;
+
+                font-size: 10px;
+                font-weight: bold;
+              }
             }
           }
         }
@@ -180,6 +150,39 @@ header {
     > section.limit-width {
       > section {
         padding: 0.5rem 2rem;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 640px) {
+  header {
+    > section.limit-width {
+      > section {
+        padding: 0.5rem 1.5rem;
+        &:last-of-type {
+          width: 100%;
+          min-width: auto;
+          > div {
+            &:nth-of-type(1) {
+              display: none;
+            }
+            &:nth-of-type(2) {
+     
+              padding: 0 20px;
+            }
+            &:nth-of-type(3) {
+              > a {
+                > div {
+                  &:nth-of-type(2) {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

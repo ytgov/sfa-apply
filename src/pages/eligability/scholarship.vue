@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <h2>{{ $t('title') }}</h2>
+  <article data-layout="eligability">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
       <Question>
@@ -8,35 +8,34 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.scolorship.is_high_school_student" 
-        :value="profile.scolorship.is_high_school_student" 
+        v-model="eligability.scolorship.is_high_school_student" 
+        :value="eligability.scolorship.is_high_school_student" 
       />
     </section>
 
-    <section v-if="profile.scolorship.is_high_school_student=='Yes'">
+    <section v-if="eligability.scolorship.is_high_school_student=='Yes'">
       <Question>
         {{ $t('are_you_a_high_school_graduate') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.scolorship.is_high_school_graduate" 
-        :value="profile.scolorship.is_high_school_graduate" 
+        v-model="eligability.scolorship.is_high_school_graduate" 
+        :value="eligability.scolorship.is_high_school_graduate" 
       />
     </section>
-    <section v-if="profile.scolorship.is_high_school_student=='Yes' && profile.scolorship.is_high_school_graduate">
+    <section v-if="eligability.scolorship.is_high_school_student=='Yes' && eligability.scolorship.is_high_school_graduate">
       <Question>
         {{ $t('are_you_pursuing_aviation') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.scolorship.is_pursuing_aviation" 
-        :value="profile.scolorship.is_pursuing_aviation" 
+        v-model="eligability.scolorship.is_pursuing_aviation" 
+        :value="eligability.scolorship.is_pursuing_aviation" 
       />
     </section>
 
-
-    <Buttons :valid="valid" :next="next" />
-  </v-container>
+    <Buttons :valid="valid" :next="next" back="true" />
+  </article>
 </template>
 
 
@@ -57,27 +56,27 @@ export default {
     ...mapGetters({
 
     }),
-    profile: {
+    eligability: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['eligability/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        return this.$store.commit('eligability/SET', values)
       }
     },
     valid() {
       var is_valid = (
-        this.profile.scolorship.is_high_school_student == 'No' ||
+        this.eligability.scolorship.is_high_school_student == 'No' ||
         (
-          this.profile.scolorship.is_high_school_student == 'Yes' 
-          && this.profile.scolorship.is_high_school_graduate == 'Yes'
-          && this.profile.scolorship.is_pursuing_aviation
+          this.eligability.scolorship.is_high_school_student == 'Yes' 
+          && this.eligability.scolorship.is_high_school_graduate == 'Yes'
+          && this.eligability.scolorship.is_pursuing_aviation
         )
       )
       return is_valid;
     },
     next() {
-      return '/application/residence'
+      return '/eligability/studies'
     }
   },
   mounted() {
@@ -85,7 +84,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('eligability/SET', this.eligability)
       this.$emit('input', this.valid)
     }
   }

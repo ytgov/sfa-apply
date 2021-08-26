@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <article>
     <h2>{{ $t('title') }}</h2>
 
 
@@ -36,7 +36,7 @@
 
     <Buttons :valid="valid" :next="next" />
 
-  </v-container>
+  </article>
 </template>
 
 <script>

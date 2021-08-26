@@ -45,20 +45,22 @@ export default {
 
 <style lang="scss" scoped>
   .radio {
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
     > span {
       display: block;
       margin: 20px 10px;
-      margin-right: 35px;
+      margin-right: 0px;
       margin-left: 0;
 
       font-size: 20px;
-
+       border: solid 1px #000;
+       padding: 0.75rem;
 
       > span {
+        display: inline-block;
         position: relative;
-        bottom: -6px;
+        bottom: -5px;
         display: inline-block;
         background: rgba(0,0,0,0.1);
         color: rgba(255,255,255,0.8);
@@ -71,6 +73,7 @@ export default {
       }
 
       &.active {
+        background: #eee;
         > span {
           background: rgba(0,0,0,0.8);
         }

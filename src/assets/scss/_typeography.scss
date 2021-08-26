@@ -32,12 +32,8 @@ h1, h2, h3, h4 {
 
 a {
   color: rgb(0, 131, 146);
+  text-decoration: underline;
   &:link, &:visited, &:active {
     color: rgb(0, 131, 146);
-    text-decoration: underline;
-
-    &.btn {
-      text-decoration: none; 
-    }
   }
 }

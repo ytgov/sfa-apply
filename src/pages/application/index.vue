@@ -1,6 +1,6 @@
 <template>
 	<v-container fluid>
-		<article data-section="application-process">
+		<article data-section="application-process" v-if="false">
 			<nav>
 				<div v-for="section, index in sections" :key="index">
 					<nuxt-link :to="section.route">{{section.name}}</nuxt-link>
@@ -14,6 +14,18 @@
 	      </div>
 			</section>
 		</article>
+
+		<h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
+		<p>
+			<strong>Must read the terms to continue.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero in sapien condimentum volutpat et vel purus. Morbi sed maximus ante, a ultricies leo. Curabitur maximus libero ac massa accumsan egestas. Duis sed aliquet urna. Nam consectetur ex tortor, nec sollicitudin ipsum ullamcorper ac.
+		</p>
+
+
+		<TermsWrapper v-model="profile.atipp.read_terms" :value="profile.atipp.read_terms">
+      <ATIPP  />
+    </TermsWrapper>
+
+    <Buttons :valid="valid" :next="next" />
 	</v-container>
 </template>
 
@@ -34,8 +46,17 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+import Buttons from '~/components/forms/Buttons.vue';
+import TermsWrapper from '~/components/terms/wrapper.vue';
+import ATIPP from '~/components/terms/atipp.vue';
+
 
 export default {
+  components: {
+    Buttons,
+    TermsWrapper,
+    ATIPP
+  },
   head (){
     return {
       title: 'Yukon Student Financial Portal - Application',
@@ -48,9 +69,28 @@ export default {
       ],
     }
   },
+  computed: {
+    profile: {
+      get() {
+        return this.$store.getters['profile/GET']
+      },
+      set(values) {
+        return this.$store.commit('profile/SET', values)
+      }
+    },
+    valid() {
+      var is_valid = this.profile.atipp.read_terms
+
+      return is_valid
+    },
+    next() {
+      return '/application/personal-information/tombstone'
+    }
+  },
 	data() {
 		return {
 			sections: [
+			/*
 				{
 					name: 'Introduction',
 					route: '/application'
@@ -103,11 +143,24 @@ export default {
 					name: 'Documents',
 					route: '/application/documents'
 				}	
+				*/
 			]
 		}
 	}
 }
 </script>
+
+
+<i18n>
+{
+  "en": {
+    "title": "ATIPP Collection Statement"
+  },
+  "fr": {
+    "title": "ATIPP Collection Statement"
+  }
+}
+</i18n>
 
 
 <style lang="scss" scoped>
@@ -128,6 +181,7 @@ article {
 		width: 30%;
 		> div {
 			padding: 0.5rem 2rem;
+			padding-left: 0 !important;
 			> span {
 				font-size: 1em;
 				&.active {
@@ -138,8 +192,9 @@ article {
 	}
 	> section {
 		width: 70%;
-		border-left: solid 1px rgba(0,0,0,0.3);
-		padding-left: 3rem;
+		border-left: solid 1px rgba(0,0,0,0.1);
+		padding-left: 4rem;
+
 	}
 }
 
@@ -153,6 +208,10 @@ article[data-section='application-process'] {
 		> div {
 			h2 {
 				font-size: 2rem;
+			}
+			article {
+				display: block;
+				pointer-events: all;
 			}
 		}
 	}

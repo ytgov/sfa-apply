@@ -45,11 +45,6 @@ export default {
     Alerts,
     Heading
   },
-  data () {
-    return {
-    
-    }
-  },
   methods: {
     setLocale(locale) {
       this.$store.commit('languages/locale')

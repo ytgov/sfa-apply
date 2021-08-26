@@ -1,13 +1,30 @@
 <template>
   <v-container fluid>
-    <h1>{{ $t('hello') }}  <span v-if="$auth.user">{{$auth.user.nickname}}</span></h1>
+    <h2 class="text-h4 mb-7">{{ $t('hello') }}  <span v-if="$auth.user">{{$auth.user.nickname}}</span></h2>
     <p>
     	{{ $t('welcome') }}
     </p>
-    <p>&nbsp;</p>
 
-    <v-card>
-	    <h2>{{ $t("current.header") }}</h2>
+    <v-card v-if="!eligability" style="width: 600px;">
+			<p>
+				Short welcome message for first time users... These trees are so much fun. 
+			</p>
+			<p>
+				A quick intro on what you can do here... I get started on them and I have a hard time stopping. 
+			</p>
+			<p>
+				Gentle CTA to get them started on an application... a tree cannot be straight if it has a crooked trunk.
+    	</p>
+    	<p class="buttons">
+    		<v-btn  to="/eligability" color="primary"  class="mr-5" x-large>
+    			{{ $t("current.buttons.apply") }}
+    		</v-btn>
+    	</p>
+    </v-card>
+
+
+    <v-card v-if="eligability">
+	    <h3 class="text-h5">{{ $t("current.header") }}</h3>
 	    	
 	    <div class="applications" v-if="applications.length">
 	    	<div v-for="application in applications">
@@ -23,36 +40,20 @@
 					</div>
 				</div>
 	    </div>
-
-
 	    <div v-else>
 	    	<p>{{ $t("current.none") }}</p>
-	    	<p>
-	    		<nuxt-link to="/application" class="btn">
-		    		<v-btn color="primary" class="mr-5">
-		          {{ $t("current.buttons.apply") }}
-		        </v-btn>
-		      </nuxt-link>
-	    	</p>
 	    </div>
-	    <p>&nbsp;</p>
-	     <p>
-		  	<nuxt-link to="/application">
-		  		<v-btn color="primary"  class="mr-5" x-large>
-		  			Apply for Financial Assistance
-		  		</v-btn>
-		  	</nuxt-link> 
+	
+	    <p class="buttons">
+	  		<v-btn to="/eligability" color="primary"  class="mr-5" x-large>
+	  			{{ $t("current.buttons.apply") }}
+	  		</v-btn>
 		  </p>
 	  </v-card>
 
-	
-	  <p>&nbsp;</p>
 
-
-	  <v-card>
-
-    	<h2>{{ $t("past.header") }}</h2>
-	    	
+	  <v-card v-if="eligability">
+    	<h3 class="text-h5">{{ $t("past.header") }}</h3>
 	    <div class="applications" v-if="past_applications.length">
 	    	<div v-for="application in past_applications">
 		    	<div>
@@ -65,10 +66,8 @@
 					<div>
 						<nuxt-link to="/application/details/01234">Details</nuxt-link>
 					</div>
-			
 				</div>
 	    </div>
-
 	    <div v-else>
 	    	<p>{{ $t("past.none") }}</p>
 	    </div>
@@ -81,7 +80,6 @@
   "en": {
   	"hello": "Hello",
   	"welcome": "A welcome back message... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
-    "no_past_applications": "There are no past applications.",
     "current": {
     	"header": "Current Applications",
     	"none": "There are no active applications.",
@@ -117,14 +115,7 @@ import { mapMutations, mapGetters } from 'vuex'
 export default {
 	head() {
 		return {
-	    title: 'Home page - Dashboard',
-	    meta: [
-	      {
-	        hid: 'description',
-	        name: 'description',
-	        content: 'Home page description'
-	      }
-	    ],
+	    title: 'Home page - Dashboard'
 	  }
 	},
 	computed: {
@@ -135,10 +126,17 @@ export default {
 			return this.$store.getters['applications/past']
 		}
 	},
+	data() {
+		return {
+			eligability: true
+		}
+	},
 	mounted() {
 		if (!this.$auth.loggedIn) {
 			this.$router.push('/login')
-		}
+		} else if (!this.$store.getters['eligability/status'] && !this.$route.path.includes('/eligability')) {
+			//this.eligability = false
+    }
 	}
 }
 </script>
@@ -155,15 +153,11 @@ div.applications{
 
 		padding: 0.5rem 0;
 
-
-		&:nth-child(odd) {
-			background: #eee;
+		border-top: solid 1px #eee;
+		&:last-of-type {
+			border-bottom: solid 1px #eee;
 		}
 
-		&:nth-child(odd) {
-			background: #eee;
-		}
-		
 		> div {
 			width: 100%;
 			padding: 1rem 2rem;
@@ -172,5 +166,13 @@ div.applications{
 			}
 		}
 	}
+}
+
+.v-card {
+	margin-top: 3rem;
+}
+
+p.buttons {
+	margin-top: 2rem;
 }
 </style>

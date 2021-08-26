@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     
-    </v-row>
+  
   </v-container>
 </template>
 
@@ -20,16 +20,9 @@
 export default {
   layout: 'inset',
   middleware: 'no-auth',
-  head (){
+  head () {
     return {
-      title: 'Yukon Student Financial Portal - Login',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Home page description'
-        }
-      ],
+      title: 'Yukon Student Financial Portal - Login'
     }
   },
   mounted() {

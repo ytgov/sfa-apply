@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <h2>{{ $t('title') }}</h2>
+  <article data-layout="eligability">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
       <Question>
@@ -8,13 +8,13 @@
       </Question>
 
       <RadioList :options="['Full-time', 'Part-time']" 
-        v-model="profile.studies.time" 
-        :value="profile.studies.time" 
+        v-model="eligability.studies.time" 
+        :value="eligability.studies.time" 
       />
     </section>
 
-    <Buttons :valid="valid" :next="next" />
-  </v-container>
+    <Buttons :valid="valid" :next="next" back="true" />
+  </article>
 </template>
 
 <script>
@@ -30,21 +30,21 @@ export default {
     RadioList
   },
   computed: {
-    profile: {
+    eligability: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['eligability/GET']
       },
       set(values) {
         //alert(values)
-        //return this.$store.commit('profile/SET', values)
+        //return this.$store.commit('eligability/SET', values)
       }
     },
     valid() {
-      var is_valid = this.profile.studies.time 
+      var is_valid = this.eligability.studies.time 
       return is_valid
     },
     next() {
-      return '/application/citizenship'
+      return '/eligability/residence'
     }
   },
   mounted() {
@@ -52,7 +52,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('eligability/SET', this.eligability)
       this.$emit('input', this.valid)
     }
   }

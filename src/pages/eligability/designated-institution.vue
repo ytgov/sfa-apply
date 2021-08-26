@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <h2>{{ $t('title') }}</h2>
+  <article data-layout="eligability">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
       <Question>
@@ -8,26 +8,26 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.designated_institution.are_you_enrolled_in_post_secondary" 
-        :value="profile.designated_institution.are_you_enrolled_in_post_secondary" 
+        v-model="eligability.designated_institution.are_you_enrolled_in_post_secondary" 
+        :value="eligability.designated_institution.are_you_enrolled_in_post_secondary" 
       />
     </section>
 
-    <section v-if="profile.designated_institution.are_you_enrolled_in_post_secondary=='Yes'">
+    <section v-if="eligability.designated_institution.are_you_enrolled_in_post_secondary=='Yes'">
       <Question>
         {{ $t('post_secondary_enrolled_in') }}
       </Question>
 
       <Select :options="institutions"
-        v-model="profile.designated_institution.post_secondary_enrolled_in" 
-        :value="profile.designated_institution.post_secondary_enrolled_in" 
+        v-model="eligability.designated_institution.post_secondary_enrolled_in" 
+        :value="eligability.designated_institution.post_secondary_enrolled_in" 
         />
     </section>
 
 
-    <Buttons :valid="valid" :next="next" />
+    <Buttons :valid="valid" :next="next" back="true" />
 
-  </v-container>
+  </article>
 </template>
 
 <script>
@@ -46,30 +46,30 @@ export default {
   },
   data() {
     return {
-      institutions: ["Yukon College", "Alcan Air"]
+      institutions: ["Yukon College", "Alcan Air", "McMaster University", "University of British Columbia", "University of Windsor"]
     }
   },
   computed: {
-    profile: {
+    eligability: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['eligability/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        return this.$store.commit('eligability/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.profile.designated_institution.are_you_enrolled_in_post_secondary == 'No' 
+          this.eligability.designated_institution.are_you_enrolled_in_post_secondary == 'No' 
         ) || (
-          this.profile.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' 
-          && this.profile.designated_institution.post_secondary_enrolled_in
+          this.eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' 
+          && this.eligability.designated_institution.post_secondary_enrolled_in
         )
 
       return is_valid
     },
     next() {
-      return '/application/yukon-excellence-award'
+      return '/eligability/marital'
     }
   },
   mounted() {
@@ -77,7 +77,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('eligability/SET', this.eligability)
       this.$emit('input', this.valid)
     }
   }

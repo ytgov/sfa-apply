@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <h2>{{ $t('title') }}</h2>
+  <article data-layout="eligability">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
       <Question>
@@ -8,44 +8,44 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.residence.have_you_been_out_of_territory_4_months" 
-        :value="profile.residence.have_you_been_out_of_territory_4_months" 
+        v-model="eligability.residence.have_you_been_out_of_territory_4_months" 
+        :value="eligability.residence.have_you_been_out_of_territory_4_months" 
       />
     </section>
-    <section v-if="profile.residence.have_you_been_out_of_territory_4_months=='Yes'">
+    <section v-if="eligability.residence.have_you_been_out_of_territory_4_months=='Yes'">
       <Question>
         {{ $t('will_you_be_resident_before_classes_start') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.residence.will_you_be_resident_before_classes_start" 
-        :value="profile.residence.will_you_be_resident_before_classes_start" 
+        v-model="eligability.residence.will_you_be_resident_before_classes_start" 
+        :value="eligability.residence.will_you_be_resident_before_classes_start" 
       />
     </section>
 
-    <section v-if="profile.residence.have_you_been_out_of_territory_4_months=='Yes' && profile.residence.will_you_be_resident_before_classes_start">
+    <section v-if="eligability.residence.have_you_been_out_of_territory_4_months=='Yes' && eligability.residence.will_you_be_resident_before_classes_start">
       <Question>
         {{ $t('have_you_been_out_of_territory_12_months') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.residence.have_you_been_out_of_territory_12_months" 
-        :value="profile.residence.have_you_been_out_of_territory_12_months" 
+        v-model="eligability.residence.have_you_been_out_of_territory_12_months" 
+        :value="eligability.residence.have_you_been_out_of_territory_12_months" 
       />
     </section>
-    <section v-if="profile.residence.have_you_been_out_of_territory_4_months=='Yes' && profile.residence.will_you_be_resident_before_classes_start && profile.residence.have_you_been_out_of_territory_12_months">
+    <section v-if="eligability.residence.have_you_been_out_of_territory_4_months=='Yes' && eligability.residence.will_you_be_resident_before_classes_start && eligability.residence.have_you_been_out_of_territory_12_months">
       <Question>
         {{ $t('do_you_file_with_cra_as_yukon_citizen') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.residence.do_you_file_with_cra_as_yukon_citizen" 
-        :value="profile.residence.do_you_file_with_cra_as_yukon_citizen" 
+        v-model="eligability.residence.do_you_file_with_cra_as_yukon_citizen" 
+        :value="eligability.residence.do_you_file_with_cra_as_yukon_citizen" 
       />
     </section>
 
-    <Buttons :valid="valid" :next="next" />
-  </v-container>
+    <Buttons :valid="valid" :next="next" :back="true" />
+  </article>
 </template>
 
 
@@ -63,27 +63,27 @@ export default {
     RadioList
   },
   computed: {
-    profile: {
+    eligability: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['eligability/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        return this.$store.commit('eligability/SET', values)
       }
     },
     valid() {
       var is_valid =  
-        this.profile.residence.have_you_been_out_of_territory_4_months == 'No' ||
+        this.eligability.residence.have_you_been_out_of_territory_4_months == 'No' ||
         (
-          this.profile.residence.have_you_been_out_of_territory_4_months == 'Yes' &&
-          this.profile.residence.will_you_be_resident_before_classes_start &&
-          this.profile.residence.have_you_been_out_of_territory_12_months &&
-          this.profile.residence.do_you_file_with_cra_as_yukon_citizen 
+          this.eligability.residence.have_you_been_out_of_territory_4_months == 'Yes' &&
+          this.eligability.residence.will_you_be_resident_before_classes_start &&
+          this.eligability.residence.have_you_been_out_of_territory_12_months &&
+          this.eligability.residence.do_you_file_with_cra_as_yukon_citizen 
         )
       return is_valid
     },
     next() {
-      return '/application/designated-institution'
+      return '/eligability/program'
     }
   },
   mounted() {
@@ -91,7 +91,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('eligability/SET', this.eligability)
       this.$emit('input', this.valid)
     }
   }

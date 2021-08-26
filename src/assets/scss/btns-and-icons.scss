@@ -3,19 +3,12 @@
 
 .v-application {
 
-	.primary {
-		background: #244C5A !important;
-		border-color: #244C5A !important;
-		
-	}
-
-
-	button.v-btn {
+	.v-btn {
 		background: #00818F !important;
+
 		border-radius: 5px !important;
 		text-align: center !important;
 		padding: 1rem 2rem !important;
-		text-decoration: none !important;
 
 		> span.v-btn__content {
 			font-family: 'Montserrat' !important;
@@ -41,6 +34,15 @@
 				text-align: left;
 			}
 		}
+
+		&.hollow {
+			background: #fff !important;	
+			border: solid 1px #244C5A !important;
+			> span {
+				color: #244C5A !important;
+			}
+		}
+
 	}
 
 }
@@ -61,3 +63,12 @@ div.v-banner {
     }
   }
 }
+
+div.buttons {
+  display: flex;
+  align-items: center;
+  > div {
+    width: 100%;
+  }
+}
+

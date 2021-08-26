@@ -1,64 +1,66 @@
 <template>
   <v-container fluid>
-    <h2>2020/2021 - Yukon College </h2>
-    <p>
+    <h2 class="text-h3 mb-7">2020/2021 - Yukon College</h2>
+    <p class="text-body-1">
       Submitted - 2020/06/30
     </p>
 
-    <h3>Funding Sources</h3>
+    <v-card>
+      <h3>Funding Sources</h3>
 
-    <div class="funding_sources" v-if="funding_sources.length">
-      <div v-for="source, index in funding_sources" :key="index" onclick="this.classList.toggle('open')">
-        <div>
-          <strong>{{source.name[locale]}}</strong><br />
-          <small>{{ $t(`funding_sources.statuses.${source.status}`) }}</small>
-          <div class="details">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div class="funding_sources" v-if="funding_sources.length">
+        <div v-for="source, index in funding_sources" :key="index" onclick="this.classList.toggle('open')">
+          <div>
+            <strong>{{source.name[locale]}}</strong><br />
+            <small>{{ $t(`funding_sources.statuses.${source.status}`) }}</small>
+            <div class="details">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </div>
+          <div style="width:  5%;">
+              
           </div>
         </div>
-        <div style="width:  5%;">
+      </div>
+      <div v-else>
+        <p>{{ $t("sources.none") }}</p>
+      </div>
+    </v-card>
+ 
+    <v-card>
+      <h3>Supporting Documents</h3>
+
+
+      <div class="supporting_documents" v-if="supporting_documents.length">
+        <div v-for="sd, index in supporting_documents" onclick="this.classList.toggle('open')" :key="index">
+          <div style="width: 5%;">
+            <i class="far fa-2x fa-check-square" v-if="sd.status=='VERIFIED'"></i>
+            <i class="far fa-2x fa-clock" v-else-if="sd.status=='PENDING'"></i>
+            <i class="fas fa-2x fa-cloud-upload-alt" v-else-if="sd.status=='UPLOADING'"></i>
+          </div>
+          <div>
+            <strong>{{sd.name[locale]}}</strong><br />
+            <small>{{sd.status}}</small>
+            <div class="details">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </div>
+          <div style="width:  5%;">
             
-        </div>
-      </div>
-    </div>
-    <div v-else>
-      <p>{{ $t("sources.none") }}</p>
-    </div>
-    <p>&nbsp;</p>
-
-
-    <h3>Supporting Documents</h3>
-
-
-    <div class="supporting_documents" v-if="supporting_documents.length">
-      <div v-for="sd, index in supporting_documents" onclick="this.classList.toggle('open')" :key="index">
-        <div style="width: 5%;">
-          <i class="far fa-2x fa-check-square" v-if="sd.status=='VERIFIED'"></i>
-          <i class="far fa-2x fa-clock" v-else-if="sd.status=='PENDING'"></i>
-          <i class="fas fa-2x fa-cloud-upload-alt" v-else-if="sd.status=='UPLOADING'"></i>
-        </div>
-        <div>
-          <strong>{{sd.name[locale]}}</strong><br />
-          <small>{{sd.status}}</small>
-          <div class="details">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
         </div>
-        <div style="width:  5%;">
-          
-        </div>
       </div>
-    </div>
-     <div v-else>
-      <p>{{ $t("sd.none") }}</p>
-      <p>
-        <nuxt-link to="/application" class="btn">
-          <v-btn color="primary" class="mr-5">
-            {{ $t("sd.buttons.apply") }}
-          </v-btn>
-        </nuxt-link>
-      </p>
-    </div>
+       <div v-else>
+        <p>{{ $t("sd.none") }}</p>
+        <p>
+          <nuxt-link to="/application" class="btn">
+            <v-btn color="primary" class="mr-5">
+              {{ $t("sd.buttons.apply") }}
+            </v-btn>
+          </nuxt-link>
+        </p>
+      </div>
+    </v-card>
   </v-container>
 </template>
 
@@ -132,12 +134,9 @@ div.funding_sources, div.supporting_documents{
     }
 
 
-    &:nth-child(odd) {
-      background: #eee;
-    }
-
-    &:nth-child(odd) {
-      background: #eee;
+    border-top: solid 1px #eee;
+    &:last-of-type {
+      border-bottom: solid 1px #eee;
     }
     
     > div {

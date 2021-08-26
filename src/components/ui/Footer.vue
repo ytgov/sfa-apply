@@ -86,7 +86,7 @@ footer {
       padding: 3rem 0;
     }
     &[data-section=brand] {
-
+      overflow: hidden;
       background-color: #0d3e4f;
       &:after {
         background-image: url('https://yukon.ca/sites/yukon.ca/themes/yukon_wxt/images/Aurora-main.svg');
@@ -143,6 +143,7 @@ footer {
         padding: 3rem 2rem;
       }
       &[data-section=brand] {
+        position: relative;
         &:after {
           right: -325px;
         }
@@ -151,5 +152,32 @@ footer {
   }
 }
 
+
+@media only screen and (max-width: 640px) {
+  footer {
+    > section {
+      > section.limit-width {
+        display: block;
+        padding: 3rem 2rem;
+      }
+      &[data-section=menu] {
+         > section.limit-width {
+          > section {
+            &:nth-of-type(1) {
+              nav {
+                display: block;
+              }
+            }
+            &:nth-of-type(2) {
+              text-align: left;
+              align-self: end;
+              padding-top: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 </style>

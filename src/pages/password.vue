@@ -1,24 +1,24 @@
 <template>
-<v-app>
-  <v-main>
-    <v-container fluid>
-      <v-row>
-        <v-card outlined tile width="100%">
-          <h2>Password Protected</h2>
-          <p>
-            Enter the password to view the site:
-          </p>
-          <v-form action="/" method="GET">
-            <v-fieldset>
-              <v-text-field type="text" name="_pw" placeholder="Password" />
-              <v-btn color="primary" class="mr-5" type="submit">Send</v-btn>
-            </v-fieldset>
-          </v-form>
-        </v-card>
-      </v-row>
-    </v-container>
-  </v-main>
-</v-app>
+  <v-app>
+    <v-main>
+      <v-container fluid>
+        <v-row>
+          <v-card outlined tile width="100%">
+            <h2>Password Protected</h2>
+            <p>
+              Enter the password to view the site:
+            </p>
+            <v-form action="/" method="GET">
+              <v-fieldset>
+                <v-text-field type="text" name="_pw" placeholder="Password" />
+                <v-btn color="primary" class="mr-5" type="submit">Send</v-btn>
+              </v-fieldset>
+            </v-form>
+          </v-card>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
