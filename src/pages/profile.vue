@@ -213,9 +213,12 @@ div.container {
  
 
   form {
+    padding: 3rem;
     display: grid;
     grid-template-columns: 6fr 6fr;
-    grid-gap: 4rem;
+    grid-template-rows: auto;
+
+    grid-gap: 1rem 3rem;
     > fieldset {
       &:nth-of-type(1) {
         grid-column: 1;
@@ -230,7 +233,31 @@ div.container {
       }
     }
   }
+
+
+
+  @media only screen and (max-width: 768px) {
+    padding: 0;
+    form {
+      padding: 1rem;
+      grid-template-rows: auto auto auto;
+      grid-gap: 1rem 2rem;
+      > fieldset {
+        grid-column:  1/3 !important;
+        &:nth-of-type(1) {
+          grid-row: 1 !important;
+        }
+        &:nth-of-type(2) {
+          grid-row: 2 !important;
+        }
+        &:nth-of-type(3) {
+          grid-row: 3 !important;
+        }
+      }
+    }
+  }
 }
+
 
 .v-input input {
   max-height: 30px !important;

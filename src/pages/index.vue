@@ -165,7 +165,20 @@ div.applications{
 				text-align: right;
 			}
 		}
+
+		@media only screen and (max-width: 768px) {
+			display: block;
+			> div {
+				padding: 0.25rem 0; 
+				text-align: left;
+				&:last-of-type {
+					text-align: left;
+				}
+			}
+		}
 	}
+
+
 }
 
 .v-card {

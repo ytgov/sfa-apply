@@ -49,6 +49,9 @@ export default {
     },
     click(e) {
       this.$emit('click', e)
+    },
+    change() {
+      this.$emit('change')
     }
   }
 }
