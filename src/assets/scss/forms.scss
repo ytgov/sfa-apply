@@ -18,6 +18,9 @@ form.v-form {
     &.group {
       margin-top: 3rem;
       margin-bottom: 1rem; 
+      &:first-of-type {
+        margin-top: 0;
+      }
     }
   }
   
@@ -45,14 +48,21 @@ form.v-form {
             line-height: 26px;
 
           }
-          > input {
-             background: #FFFFFF;
+          > input[type=text] {
+            background: #FFFFFF;
             border-radius: 3px;
             border: 1px solid #D4C7CF !important;
-            padding: 1rem !important;
+            padding: 0.5rem !important;
+            max-height: auto !important;
           }
         }
       }
     }
   }
 }
+
+ .v-text-field .v-input__control .v-input__slot {
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+  }

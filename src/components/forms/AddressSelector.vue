@@ -3,7 +3,7 @@
     <section>
        <section>
         <ValidationProvider name="address_zip_postal_code" rules="required" tag="span" v-slot="{ errors, valid }">
-           <v-text-field
+           <TextField
             v-model="address.zip_postal_code"
             label="Enter the zip or postal code"
             :error-messages="errors"
@@ -12,9 +12,9 @@
           />
         </ValidationProvider>
       </section>
-      <section v-if="address.zip_postal_code">
+      <section>
         <ValidationProvider name="address_first" rules="required" tag="span" v-slot="{ errors, valid }">
-          <v-text-field
+          <TextField
             v-model="address.first"
             label="Enter Street Address"
             :error-messages="errors"
@@ -23,8 +23,8 @@
           />
         </ValidationProvider>
       </section>
-      <section v-if="address.zip_postal_code">
-        <v-text-field
+      <section>
+        <TextField
           v-model="address.second"
           label="Second Line"
         />
@@ -41,11 +41,13 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate';
+import TextField from "~/components/forms/TextField.vue";
 
 export default {
 	props: ['value'],
   components: {
-    ValidationProvider
+    ValidationProvider,
+    TextField
   },
   $_veeValidate: {
     // value getter

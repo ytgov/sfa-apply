@@ -1,56 +1,59 @@
 <template>
   <v-container fluid>
-    <h1>{{ $t('title') }}</h1>
+    <h2 class="text-h4 mb-7">{{ $t('title') }}</h2>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+
     
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
-          <legend>{{ $t('legends.personal_details') }}</legend>
+          <legend class="text-h5">{{ $t('legends.personal_details') }}</legend>
 
           <ValidationProvider name="firstName" rules="required|max:10" tag="span" v-slot="{ errors, valid }">
-            <v-text-field
+            <TextField
+              name="firstName"
               v-model="profile.firstName"
               label="First name (required)"
-              :error-messages="errors"
-              :success="valid"
+              :errors="errors"
+              :valid="valid"
             />
           </ValidationProvider>
 
           <ValidationProvider name="lastName" rules="required|max:10" tag="span"  v-slot="{ errors, valid }">
-            <v-text-field
+            <TextField
+              name="lastName"
               v-model="profile.lastName"
               label="Last name (required)"
-              :error-messages="errors"
-              :success="valid"
+              :error="errors"
+              :valid="valid"
             />
           </ValidationProvider>
    
           <ValidationProvider name="email" rules="required|email"  tag="span"  v-slot="{ errors, valid }">
-            <v-text-field
-              v-model="profile.email"
+            <TextField
+              name="email"
+              v-model="profile.email.value"
               label="Email (required)"
-              :error-messages="errors"
-              :success="valid"
+              :error="errors"
+              :valid="valid"
             />
           </ValidationProvider>
 
           <ValidationProvider name="phone" rules="required|phone" tag="span" v-slot="{ errors, valid }">
-            <v-text-field
+            <TextField
+              name="phone"
               v-model="profile.phone"
               label="Phone Number"
-              :error-messages="errors"
-              :success="valid"
+              :error="errors"
+              :valid="valid"
             />
           </ValidationProvider>
 
           <ValidationProvider name="sin" rules="required|max:9|min:9"  tag="span" v-slot="{ errors, valid }" >
-            <v-text-field
-              v-model="profile.sin"
-              label="Sin Number"
-              :error-messages="errors"
-              :success="valid"
-              maxlength="9"
-            />
+            <SinNumber :value="profile.sin" />
           </ValidationProvider>
        
           <ValidationProvider name="dob" rules="required" tag="span" v-slot="{ errors, valid }"  >
@@ -61,16 +64,19 @@
               transition="scale-transition"
               offset-y
               min-width="auto"
+
             >
               <template v-slot:activator="{ on, attrs }">
-                <v-text-field
+                <TextField
                   v-model="profile.dob"
                   label="Date of Birth"
-                  prepend-icon="mdi-calendar"
+                  placeholder="YYYY-MM-DD"
+                 
                   readonly
                   v-bind="attrs"
                   v-on="on"
-                ></v-text-field>
+                  dense
+                />
               </template>
               <v-date-picker
                 v-model="profile.dob"
@@ -83,7 +89,7 @@
           </ValidationProvider>
         </fieldset>
         <fieldset class="group">
-          <legend>{{ $t('legends.address') }}</legend>
+          <legend class="text-h5">{{ $t('legends.address') }}</legend>
           <AddressSelector v-model="profile.address" :value="profile.address" />
         </fieldset>
     
@@ -148,6 +154,10 @@
 import { mapMutations, mapGetters } from 'vuex'
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import AddressSelector from "~/components/forms/AddressSelector.vue";
+import SinNumber from "~/components/forms/SinNumber.vue";
+import TextField from "~/components/forms/TextField.vue";
+
+
 
 export default {
   head (){
@@ -165,7 +175,9 @@ export default {
   components: {
     ValidationProvider,
     ValidationObserver,
-    AddressSelector
+    TextField,
+    AddressSelector,
+    SinNumber
   },
   computed: {
     profile: {
@@ -195,5 +207,34 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+div.container {
+ 
+
+  form {
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    grid-gap: 4rem;
+    > fieldset {
+      &:nth-of-type(1) {
+        grid-column: 1;
+      }
+      &:nth-of-type(2) {
+        grid-column: 2;
+        margin-top: 0;
+      }
+      &:nth-of-type(3) {
+        grid-column: 1/3;
+        grid-row: 2;
+      }
+    }
+  }
+}
+
+.v-input input {
+  max-height: 30px !important;
+}
+</style>
 
 
