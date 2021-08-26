@@ -18,7 +18,7 @@
         {{ $t('what_type_of_program') }}
       </Question>
 
-      <RadioList :options="['Upgrade', 'Certificate', 'Masters', 'Doctorate', 'None of These']" 
+      <RadioList :options="['Upgrade', 'Certificate', 'Degree', 'Masters', 'Doctorate', 'None of These']" 
         v-model="eligability.program.what_type_of_program" 
         :value="eligability.program.what_type_of_program" 
       />

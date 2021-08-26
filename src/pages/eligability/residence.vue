@@ -44,6 +44,28 @@
       />
     </section>
 
+    <section v-if="eligability.residence.have_you_been_out_of_territory_4_months=='Yes' && eligability.residence.will_you_be_resident_before_classes_start && eligability.residence.have_you_been_out_of_territory_12_months && eligability.residence.do_you_file_with_cra_as_yukon_citizen">
+      <Question>
+        {{ $t('valid_yukon_health_insurance') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="eligability.residence.valid_yukon_health_insurance" 
+        :value="eligability.residence.valid_yukon_health_insurance" 
+      />
+    </section>
+
+    <section v-if="eligability.residence.have_you_been_out_of_territory_4_months=='Yes' && eligability.residence.will_you_be_resident_before_classes_start && eligability.residence.have_you_been_out_of_territory_12_months && eligability.residence.do_you_file_with_cra_as_yukon_citizen && eligability.residence.valid_yukon_health_insurance">
+      <Question>
+        {{ $t('drivers_lisence_another_juristiction') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="eligability.residence.drivers_lisence_another_juristiction" 
+        :value="eligability.residence.drivers_lisence_another_juristiction" 
+      />
+    </section>
+
     <Buttons :valid="valid" :next="next" :back="true" />
   </article>
 </template>
@@ -106,14 +128,18 @@ export default {
     "have_you_been_out_of_territory_4_months": "Have you been out of the Yukon territory for over 4 months in the last two years?",
     "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
     "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
-    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?"
+    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?",
+    "valid_yukon_health_insurance": "Do you have valid Yukon health care insurance",
+    "drivers_lisence_another_juristiction": "Do you have a drivers lisence form another juristiction?"
   },
   "fr": {
     "title": "Residence",
     "have_you_been_out_of_territory_4_months": "Have you been out of the Yukon territory for over 4 months in the last two years?",
     "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
     "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
-    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?"
+    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?",
+    "valid_yukon_health_insurance": "Do you have valid Yukon health care insurance",
+    "drivers_lisence_another_juristiction": "Do you have a drivers lisence form another juristiction?"
   }
 }
 </i18n>

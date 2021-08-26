@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
-    <h2 class="text-h3 mb-7">2020/2021 - Yukon College</h2>
+    <h2 class="text-h3 mb-7">2018/2019 - Yukon College</h2>
     <p class="text-body-1">
-      Submitted - 2020/06/30
+      Submitted - 2018/06/30
     </p>
 
     <v-card>

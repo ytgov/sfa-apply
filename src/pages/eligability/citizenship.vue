@@ -24,7 +24,7 @@
       />
     </section>
 
-    <section v-if="eligability.citizenship.is_canadian_citizen=='No' && eligability.citizenship.are_you_a_perminent_resident=='No'">
+    <section v-if="eligability.citizenship.is_canadian_citizen=='No' && eligability.citizenship.are_you_a_perminent_resident">
       <Question>
         {{ $t('are_you_a_protected_person') }}
       </Question>
@@ -35,7 +35,7 @@
       />
     </section>
 
-    <section v-if="eligability.citizenship.is_canadian_citizen=='No' && eligability.citizenship.are_you_a_perminent_resident=='No' && eligability.citizenship.are_you_a_protected_person=='Yes'">
+    <section v-if="eligability.citizenship.is_canadian_citizen=='No' && eligability.citizenship.are_you_a_perminent_resident && eligability.citizenship.are_you_a_protected_person=='No'">
       <Question>
         {{ $t('are_you_registered_as_indigenous') }}
       </Question>
@@ -76,12 +76,12 @@ export default {
         this.eligability.citizenship.is_canadian_citizen == 'Yes' 
         || (
           this.eligability.citizenship.is_canadian_citizen == 'No' 
-          && this.eligability.citizenship.are_you_a_perminent_resident == 'Yes'
+          && this.eligability.citizenship.are_you_a_perminent_resident
         ) || (
           this.eligability.citizenship.is_canadian_citizen == 'No' 
-          && this.eligability.citizenship.are_you_a_perminent_resident == 'No'
-          && this.eligability.citizenship.are_you_a_protected_person == 'Yes'
-          && this.eligability.citizenship.are_you_registered_as_indigenous == 'Yes'
+          && this.eligability.citizenship.are_you_a_perminent_resident
+          && this.eligability.citizenship.are_you_a_protected_person == 'No'
+          && this.eligability.citizenship.are_you_registered_as_indigenous
         )
 
       return is_valid

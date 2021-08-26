@@ -47,7 +47,8 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligability/yukon-excellence-award'
+      return (this.eligability.studies.are_you_full_or_part_time=='Part-time') ? 
+        '/eligability/part-time-eligability' :  '/eligability/full-time-eligability'
     }
   },
   mounted() {

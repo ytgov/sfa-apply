@@ -89,13 +89,13 @@ export default {
 {
   "en": {
     "title": "Designated Institution",
-    "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary indication?",
-    "post_secondary_enrolled_in": "What post-secondary are you enrolled in?"
+    "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
+    "post_secondary_enrolled_in": "Which institution are you enrolled in?"
   },
   "fr": {
     "title": "Designated Institution",
-    "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary indication?",
-    "post_secondary_enrolled_in": "What post-secondary are you enrolled in?"
+    "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
+    "post_secondary_enrolled_in": "Which institution are you enrolled in?"
   }
 }
 </i18n>

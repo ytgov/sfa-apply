@@ -34,7 +34,9 @@ export const state = () => ({
       have_you_been_out_of_territory_4_months: false,
       have_you_been_out_of_territory_12_months: false,
       will_you_be_resident_before_classes_start: false,
-      do_you_file_with_cra_as_yukon_citizen: false
+      do_you_file_with_cra_as_yukon_citizen: false,
+      valid_yukon_health_insurance: false,
+      drivers_lisence_another_juristiction: false
     },
      designated_institution: {
       are_you_enrolled_in_post_secondary: false,
@@ -63,6 +65,24 @@ export const state = () => ({
     singleparentjuristiction: {
     	most_recently_in_yukon: false
     },
+    parttimeeligability: {
+    	family_size: false,
+      previous_year_gross_family_income: 0,
+      enrolled : false,
+      lived_in_yukon: false,
+      dependants_under_twelve: false
+    },
+    fulltimeeligability: {
+    	program_at_least_2_years: false,
+    	family_size: false,
+      previous_year_gross_family_income: 0,
+      dependants_under_twelve: false,
+      dependants_with_disability: false
+    },
+    disabilities:{
+    	perminent_disability: false,
+    	service_equipment: false
+    },
     atipp: {
       read_terms: false
     },
@@ -70,7 +90,7 @@ export const state = () => ({
       has_existing_alias: false
     },
     yukon_excellence_award: {
-      apply: false
+      apply: 0
     }
   }
 })
