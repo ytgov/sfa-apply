@@ -13,7 +13,7 @@
       />
     </section>
 
-    <section v-if="eligability.parent.responsible_for_child=='No'">
+    <section v-if="eligability.parent.responsible_for_child">
       <Question>
         {{ $t('ever_been_a_single_parent') }}
       </Question>

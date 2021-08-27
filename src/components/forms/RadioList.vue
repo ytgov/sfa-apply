@@ -1,5 +1,5 @@
 <template>
-  <div class="radio">
+  <div class="radio" @click="$emit('click')">
     <span v-for="radio in options" @click="select(radio||radio.value)" :class="(selected_radio == (radio||radio.value)) ? 'active' : ''">
       <span></span> {{radio.text||radio}} 
     </span>

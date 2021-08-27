@@ -19,7 +19,7 @@
         {{ $t('family_size') }}
       </Question>
 
-      <TextField 
+      <NumberField 
         v-model="eligability.fulltimeeligability.family_size" 
         :value="eligability.fulltimeeligability.family_size" 
       />
@@ -33,19 +33,19 @@
       <Currency v-model="eligability.fulltimeeligability.previous_year_gross_family_income" :value="eligability.fulltimeeligability.previous_year_gross_family_income" />
     </section>
 
-    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size && eligability.fulltimeeligability.previous_year_gross_family_income">
+    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size>2 && eligability.fulltimeeligability.previous_year_gross_family_income">
       <Question>
         {{ $t('dependants_under_twelve') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+       <NumberField 
         v-model="eligability.fulltimeeligability.dependants_under_twelve" 
         :value="eligability.fulltimeeligability.dependants_under_twelve" 
       />
     </section>
 
 
-    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size && eligability.fulltimeeligability.previous_year_gross_family_income && eligability.fulltimeeligability.dependants_under_twelve">
+    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size>2 && eligability.fulltimeeligability.previous_year_gross_family_income && eligability.fulltimeeligability.dependants_under_twelve">
       <Question>
         {{ $t('dependants_with_disability') }}
       </Question>
@@ -68,6 +68,7 @@ import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 import TextField from '~/components/forms/TextField.vue';
+import NumberField from '~/components/forms/NumberField.vue';
 import Currency  from '~/components/forms/Currency.vue';
 
 export default {
@@ -76,6 +77,7 @@ export default {
     Question,
     RadioList,
     TextField,
+    NumberField,
     Currency
   },
   computed: {

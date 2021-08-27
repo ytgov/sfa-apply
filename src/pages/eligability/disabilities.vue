@@ -81,12 +81,12 @@ export default {
 {
   "en": {
     "title": "Disabilities",
-    "perminent_disability": "Are you a student with a perminent disability?",
+    "perminent_disability": "Are you a student with a permanent disability?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   },
   "fr": {
     "title": "Disabilities",
-    "perminent_disability": "Are you a student with a perminent disability?",
+    "perminent_disability": "Are you a student with a permanent disability?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   }
 }
