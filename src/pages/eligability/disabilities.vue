@@ -80,12 +80,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Disibilities",
+    "title": "Disabilities",
     "perminent_disability": "Are you a student with a perminent disability?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   },
   "fr": {
-    "title": "Disibilities",
+    "title": "Disabilities",
     "perminent_disability": "Are you a student with a perminent disability?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   }

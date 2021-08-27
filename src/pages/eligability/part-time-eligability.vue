@@ -93,7 +93,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligability/disibilities'
+      return '/eligability/disabilities'
     }
   },
   mounted() {
@@ -115,16 +115,16 @@ export default {
     "title": "Part-time Student Loan Eligability",
     "family_size": "What is your family size?",
     "previous_year_gross_family_income": "What is your gross family income for the previous year?",
-    "enrolled": "Have you been enrolled in a degree, diplmoa, or technical program of at least 12 weeks of study within a 15 week period?",
-    "lived_in_yukon": "While you were not in full-time post secondary studies dd you live in the Yukon for 12 months in a row?",
+    "enrolled": "Have you been enrolled in a degree, diploma, or technical program of at least 12 weeks of study within a 15 week period?",
+    "lived_in_yukon": "While you were not in full-time post secondary studies did you live in the Yukon for 12 months in a row?",
     "dependants_under_twelve": "How many dependants do you have under the age of 12?"
   },
   "fr": {
     "title": "Part-time Student Loan Eligability",
     "family_size": "What is your family size?",
     "previous_year_gross_family_income": "What is your gross family income for the previous year?",
-    "enrolled": "Have you been enrolled in a degree, diplmoa, or technical program of at least 12 weeks of study within a 15 week period?",
-    "lived_in_yukon": "While you were not in full-time post secondary studies dd you live in the Yukon for 12 months in a row?",
+    "enrolled": "Have you been enrolled in a degree, diploma, or technical program of at least 12 weeks of study within a 15 week period?",
+    "lived_in_yukon": "While you were not in full-time post secondary studies did you live in the Yukon for 12 months in a row?",
     "dependants_under_twelve": "How many dependants do you have under the age of 12?"
   }
 }

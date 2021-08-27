@@ -11,6 +11,7 @@ var defaultData = {
 
 export const state = () => ({
   application: Object.assign({}, defaultData),
+  programs: [],
   list: [
     {
       date: '2020/21',
@@ -43,6 +44,9 @@ export const getters = {
   past(state) {
     return _.filter(state.list, (o) => { return o.past==true })
   },
+  programs(state) {
+    return state.programs
+  },
   list(state) {
     return state.list
   }
@@ -54,6 +58,16 @@ export const mutations = {
   },
   CLEAR(state) {
     state.application = Object.assign({}, defaultData)
+  },
+  TOGGLE_APPLICATION_PROGRAM(state, program) {
+    var index = state.programs.indexOf(program)
+    if (index !== -1) {
+      state.programs = state.programs.filter((o) => {
+        return o != program
+      })
+    } else {
+      state.programs.push(program) 
+    }
   }
 }
 

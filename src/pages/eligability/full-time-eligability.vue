@@ -102,7 +102,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligability/disibilities'
+      return '/eligability/disabilities'
     }
   },
   mounted() {

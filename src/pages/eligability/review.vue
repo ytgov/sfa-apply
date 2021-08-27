@@ -2,9 +2,74 @@
   <article data-layout="eligability">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
-   
+    <p>
+      Based on the information you provided:
+    </p>
+    
+    <h4 class="text-h5 mb-3">You <strong>are eligable</strong> to apply for the following sources of funding:</h4>
 
-    <Buttons :valid="valid" :next="next" :back="true" />
+    <div class="programs" v-if="eligable.length">
+      <div v-for="program, index in eligable"  :key="index" :class="program.active?'active':''">
+        <div>
+          <Checkbox v-model="eligable[index].active" @click="toggleApplicationProgram(program)" />
+        </div>
+        <div>
+          <strong>{{program.name[locale]}}</strong><br />
+          <small>
+            {{program.group}}
+          </small>
+        </div>
+        <div>
+          {{ $t(`types.${program.type}`) }}
+        </div>
+      </div>
+    </div>
+    <div v-else>
+      <p>{{ $t("none") }}</p>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <h4 class="text-h5 mb-3">You are not eligable to apply for:</h4>
+    <div class="programs" v-if="ineligable.length" >
+      <div v-for="program, index in ineligable"  :key="index" :class="program.active?'active':''">
+        <div>
+          <Checkbox  v-model="ineligable[index].active" @click="toggleApplicationProgram(program)"/>
+        </div>
+        <div>
+          <strong>{{program.name[locale]}}</strong><br />
+          <small>
+            {{program.group}}
+          </small>
+        </div>
+        <div>
+          {{ $t(`types.${program.type}`) }}
+        </div>
+      </div>
+    </div>
+    <div v-else>
+      <p>{{ $t("none") }}</p>
+    </div>
+
+    <p>
+      Some text about still choosing to aply for the ineligable funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+   
+   
+    <div class="buttons mt-14">
+      <div>
+        <v-btn to="/application" class="continue" color="primary">
+          Start Application
+        </v-btn>
+      </div>
+      <div>
+        <nuxt-link to="/">
+          Cancel
+        </nuxt-link>
+      </div>
+    </div>
+
+
   </article>
 </template>
 
@@ -12,17 +77,25 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import Buttons from '~/components/forms/Buttons.vue';
-import Question from '~/components/forms/Question.vue';
-import RadioList from '~/components/forms/RadioList.vue';
+import Checkbox from '~/components/forms/Checkbox.vue';
 
 export default {
   components: {
-    Buttons,
-    Question,
-    RadioList
+    Checkbox
   },
   computed: {
+    ...mapGetters({
+      programs: 'applications/programs'
+    }),
+    locale() {
+      return this.$i18n.locale
+    },
+    eligable() {
+      return this.$store.getters['programs/eligable']( this.eligability)
+    },
+    ineligable() {
+      return this.$store.getters['programs/ineligable'](this.eligability)
+    },
     eligability: {
       get() {
         return this.$store.getters['eligability/GET']
@@ -30,18 +103,21 @@ export default {
       set(values) {
         return this.$store.commit('eligability/SET', values)
       }
-    },
-    next() {
-      return '/eligability/program'
     }
   },
   mounted() {
+    var self = this;
     this.$emit('input', this.valid)
   },
   watch: {
     valid(to, from) {
       this.$store.commit('eligability/SET', this.eligability)
       this.$emit('input', this.valid)
+    }
+  },
+  methods: {
+    toggleApplicationProgram(program) {
+      this.$store.commit('applications/TOGGLE_APPLICATION_PROGRAM', program)
     }
   }
 }
@@ -51,22 +127,68 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Residence",
-    "have_you_been_out_of_territory_4_months": "Have you been out of the Yukon territory for over 4 months in the last two years?",
-    "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
-    "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
-    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?",
-    "valid_yukon_health_insurance": "Do you have valid Yukon health care insurance",
-    "drivers_lisence_another_juristiction": "Do you have a drivers lisence form another juristiction?"
+    "title": "Eligable Programs",
+    "none": "There are currently no eligable programs.",
+    "types": {
+      "grant": "Grant",
+      "scholarship": "Scholarship",
+      "loan": "Loan"
+    }
   },
   "fr": {
-    "title": "Residence",
-    "have_you_been_out_of_territory_4_months": "Have you been out of the Yukon territory for over 4 months in the last two years?",
-    "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
-    "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
-    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?",
-    "valid_yukon_health_insurance": "Do you have valid Yukon health care insurance",
-    "drivers_lisence_another_juristiction": "Do you have a drivers lisence form another juristiction?"
+     "title": "Eligable Programs",
+    "none": "There are currently no eligable programs.",
+    "types": {
+      "grant": "Grant",
+      "scholarship": "Scholarship",
+      "loan": "Loan"
+    }
   }
 }
 </i18n>
+
+
+
+<style lang="scss" scoped>
+div.programs {
+  margin-top: 2rem;
+  > div {
+    display: flex;
+    align-items: center;
+
+    padding: 0.25rem 0;
+
+    border: solid 2px #000;
+    margin-bottom: 1rem;
+
+    &.active {
+      background: #eee;
+    }
+
+
+    > div {
+      width: 100%;
+      padding: 0.5rem 2rem;
+      &:first-of-type {
+        width: 10%;
+      }
+      &:last-of-type {
+        width: auto;
+        text-align: right;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      display: block;
+      > div {
+        padding: 0.25rem 0; 
+        text-align: left;
+        &:last-of-type {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+</style>

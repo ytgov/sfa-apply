@@ -8,29 +8,29 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scolorship.is_high_school_student" 
-        :value="eligability.scolorship.is_high_school_student" 
+        v-model="eligability.scholorship.is_high_school_student" 
+        :value="eligability.scholorship.is_high_school_student" 
       />
     </section>
 
-    <section v-if="eligability.scolorship.is_high_school_student=='Yes'">
+    <section v-if="eligability.scholorship.is_high_school_student=='Yes'">
       <Question>
         {{ $t('are_you_a_high_school_graduate') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scolorship.is_high_school_graduate" 
-        :value="eligability.scolorship.is_high_school_graduate" 
+        v-model="eligability.scholorship.is_high_school_graduate" 
+        :value="eligability.scholorship.is_high_school_graduate" 
       />
     </section>
-    <section v-if="eligability.scolorship.is_high_school_student=='Yes' && eligability.scolorship.is_high_school_graduate">
+    <section v-if="eligability.scholorship.is_high_school_student=='Yes' && eligability.scholorship.is_high_school_graduate">
       <Question>
         {{ $t('are_you_pursuing_aviation') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scolorship.is_pursuing_aviation" 
-        :value="eligability.scolorship.is_pursuing_aviation" 
+        v-model="eligability.scholorship.is_pursuing_aviation" 
+        :value="eligability.scholorship.is_pursuing_aviation" 
       />
     </section>
 
@@ -66,11 +66,11 @@ export default {
     },
     valid() {
       var is_valid = (
-        this.eligability.scolorship.is_high_school_student == 'No' ||
+        this.eligability.scholorship.is_high_school_student == 'No' ||
         (
-          this.eligability.scolorship.is_high_school_student == 'Yes' 
-          && this.eligability.scolorship.is_high_school_graduate == 'Yes'
-          && this.eligability.scolorship.is_pursuing_aviation
+          this.eligability.scholorship.is_high_school_student == 'Yes' 
+          && this.eligability.scholorship.is_high_school_graduate == 'Yes'
+          && this.eligability.scholorship.is_pursuing_aviation
         )
       )
       return is_valid;
