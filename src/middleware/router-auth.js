@@ -14,7 +14,7 @@ export default function({ store, redirect, route, $auth }) {
        })
        */
     } else {
-      if (!['/login', '/logout'].includes(route.path)) {
+      if (!['/login', '/logout', '/password'].includes(route.path)) {
         redirect('/login')
       }
     }

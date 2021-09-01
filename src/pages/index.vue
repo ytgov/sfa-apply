@@ -5,7 +5,7 @@
     	{{ $t('welcome') }}
     </p>
 
-    <v-card v-if="!eligability" style="width: 600px;">
+    <v-card v-if="!eligibility" style="width: 600px;">
 			<p>
 				Short welcome message for first time users... These trees are so much fun. 
 			</p>
@@ -16,14 +16,14 @@
 				Gentle CTA to get them started on an application... a tree cannot be straight if it has a crooked trunk.
     	</p>
     	<p class="buttons">
-    		<v-btn  to="/eligability" color="primary"  class="mr-5" x-large>
+    		<v-btn  to="/eligibility" color="primary"  class="mr-5" x-large>
     			{{ $t("current.buttons.apply") }}
     		</v-btn>
     	</p>
     </v-card>
 
 
-    <v-card v-if="eligability">
+    <v-card v-if="eligibility">
 	    <h3 class="text-h5">{{ $t("current.header") }}</h3>
 	    	
 	    <div class="applications" v-if="applications.length">
@@ -45,14 +45,14 @@
 	    </div>
 	
 	    <p class="buttons">
-	  		<v-btn to="/eligability" color="primary"  class="mr-5" x-large>
+	  		<v-btn to="/eligibility" color="primary"  class="mr-5" x-large>
 	  			{{ $t("current.buttons.apply") }}
 	  		</v-btn>
 		  </p>
 	  </v-card>
 
 
-	  <v-card v-if="eligability">
+	  <v-card v-if="eligibility">
     	<h3 class="text-h5">{{ $t("past.header") }}</h3>
 	    <div class="applications" v-if="past_applications.length">
 	    	<div v-for="application in past_applications">
@@ -128,14 +128,14 @@ export default {
 	},
 	data() {
 		return {
-			eligability: true
+			eligibility: true
 		}
 	},
 	mounted() {
 		if (!this.$auth.loggedIn) {
 			this.$router.push('/login')
-		} else if (!this.$store.getters['eligability/status'] && !this.$route.path.includes('/eligability')) {
-			//this.eligability = false
+		} else if (!this.$store.getters['eligibility/status'] && !this.$route.path.includes('/eligibility')) {
+			//this.eligibility = false
     }
 	}
 }

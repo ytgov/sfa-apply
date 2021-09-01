@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,8 +8,8 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.singleparentjuristiction.most_recently_in_yukon" 
-        :value="eligability.singleparentjuristiction.most_recently_in_yukon" 
+        v-model="eligibility.singleparentjuristiction.most_recently_in_yukon" 
+        :value="eligibility.singleparentjuristiction.most_recently_in_yukon" 
       />
     </section>
 
@@ -31,24 +31,24 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.singleparentjuristiction.most_recently_in_yukon
+          this.eligibility.singleparentjuristiction.most_recently_in_yukon
         ) 
 
       return is_valid
     },
     next() {
-      return (this.eligability.studies.are_you_full_or_part_time=='Part-time') ? 
-        '/eligability/part-time-eligability' :  '/eligability/full-time-eligability'
+      return (this.eligibility.studies.are_you_full_or_part_time=='Part-time') ? 
+        '/eligibility/part-time-eligibility' :  '/eligibility/full-time-eligibility'
     }
   },
   mounted() {
@@ -56,7 +56,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,19 +8,19 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.parent.responsible_for_child" 
-        :value="eligability.parent.responsible_for_child" 
+        v-model="eligibility.parent.responsible_for_child" 
+        :value="eligibility.parent.responsible_for_child" 
       />
     </section>
 
-    <section v-if="eligability.parent.responsible_for_child">
+    <section v-if="eligibility.parent.responsible_for_child">
       <Question>
         {{ $t('ever_been_a_single_parent') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.parent.ever_been_a_single_parent" 
-        :value="eligability.parent.ever_been_a_single_parent" 
+        v-model="eligibility.parent.ever_been_a_single_parent" 
+        :value="eligibility.parent.ever_been_a_single_parent" 
       />
     </section>
 
@@ -41,26 +41,26 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.parent.responsible_for_child == 'No' 
+          this.eligibility.parent.responsible_for_child == 'No' 
         ) || (
-          this.eligability.parent.responsible_for_child == 'Yes' 
-          && this.eligability.parent.ever_been_a_single_parent
+          this.eligibility.parent.responsible_for_child == 'Yes' 
+          && this.eligibility.parent.ever_been_a_single_parent
         )
 
       return is_valid
     },
     next() {
-      return '/eligability/independent-student'
+      return '/eligibility/independent-student'
     }
   },
   mounted() {
@@ -68,7 +68,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

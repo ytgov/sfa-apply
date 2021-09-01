@@ -26,7 +26,7 @@ import { mapMutations, mapGetters } from 'vuex'
 
 export default {
   layout: 'inset',
-  middleware: 'no-auth',
+  middleware: 'no-auth'
 }
 </script>
 

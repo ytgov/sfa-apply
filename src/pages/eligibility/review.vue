@@ -1,17 +1,17 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <p>
       Based on the information you provided:
     </p>
     
-    <h4 class="text-h5 mb-3">You <strong>are eligable</strong> to apply for the following sources of funding:</h4>
+    <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
 
-    <div class="programs" v-if="eligable.length">
-      <div v-for="program, index in eligable"  :key="index" :class="program.active?'active':''">
+    <div class="programs" v-if="eligible.length">
+      <div v-for="program, index in eligible"  :key="index" :class="program.active?'active':''">
         <div>
-          <Checkbox v-model="eligable[index].active" @click="toggleApplicationProgram(program)" />
+          <Checkbox v-model="eligible[index].active" @click="toggleApplicationProgram(program)" />
         </div>
         <div>
           <strong>{{program.name[locale]}}</strong><br />
@@ -20,7 +20,7 @@
           </small>
         </div>
         <div>
-          {{ $t(`types.${program.type}`) }}
+          
         </div>
       </div>
     </div>
@@ -30,11 +30,11 @@
 
     <p>&nbsp;</p>
 
-    <h4 class="text-h5 mb-3">You are not eligable to apply for:</h4>
-    <div class="programs" v-if="ineligable.length" >
-      <div v-for="program, index in ineligable"  :key="index" :class="program.active?'active':''">
+    <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
+    <div class="programs" v-if="ineligible.length" >
+      <div v-for="program, index in ineligible"  :key="index" :class="program.active?'active':''">
         <div>
-          <Checkbox  v-model="ineligable[index].active" @click="toggleApplicationProgram(program)"/>
+          <Checkbox  v-model="ineligible[index].active" @click="toggleApplicationProgram(program)"/>
         </div>
         <div>
           <strong>{{program.name[locale]}}</strong><br />
@@ -43,7 +43,7 @@
           </small>
         </div>
         <div>
-          {{ $t(`types.${program.type}`) }}
+          
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
     </div>
 
     <p>
-      Some text about still choosing to aply for the ineligable funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Some text about still choosing to aply for the ineligibile funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
    
    
@@ -90,18 +90,22 @@ export default {
     locale() {
       return this.$i18n.locale
     },
-    eligable() {
-      return this.$store.getters['programs/eligable']( this.eligability)
+    eligible() {
+      var eligible = this.$store.getters['programs/eligible'](this.eligibility);
+      eligible.forEach((program)=>{
+        this.toggleApplicationProgram(program)
+      })
+      return eligible
     },
-    ineligable() {
-      return this.$store.getters['programs/ineligable'](this.eligability)
+    ineligible() {
+      return this.$store.getters['programs/ineligible'](this.eligibility)
     },
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     }
   },
@@ -111,7 +115,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   },
@@ -128,7 +132,7 @@ export default {
 {
   "en": {
     "title": "Eligable Programs",
-    "none": "There are currently no eligable programs.",
+    "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",
       "scholarship": "Scholarship",
@@ -137,7 +141,7 @@ export default {
   },
   "fr": {
      "title": "Eligable Programs",
-    "none": "There are currently no eligable programs.",
+    "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",
       "scholarship": "Scholarship",

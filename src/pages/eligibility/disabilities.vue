@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,19 +8,19 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.disabilities.perminent_disability" 
-        :value="eligability.disabilities.perminent_disability" 
+        v-model="eligibility.disabilities.perminent_disability" 
+        :value="eligibility.disabilities.perminent_disability" 
       />
     </section>
 
-    <section v-if="eligability.disabilities.perminent_disability=='Yes'">
+    <section v-if="eligibility.disabilities.perminent_disability=='Yes'">
       <Question>
         {{ $t('service_equipment') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.disabilities.service_equipment" 
-        :value="eligability.disabilities.service_equipment" 
+        v-model="eligibility.disabilities.service_equipment" 
+        :value="eligibility.disabilities.service_equipment" 
       />
     </section>
 
@@ -41,27 +41,27 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.disabilities.perminent_disability == 'No'
+          this.eligibility.disabilities.perminent_disability == 'No'
           || (
-            this.eligability.disabilities.perminent_disability == 'Yes'
-            && this.eligability.disabilities.service_equipment
+            this.eligibility.disabilities.perminent_disability == 'Yes'
+            && this.eligibility.disabilities.service_equipment
           ) 
         ) 
 
       return is_valid
     },
     next() {
-      return '/eligability/review'
+      return '/eligibility/review'
     }
   },
   mounted() {
@@ -69,7 +69,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

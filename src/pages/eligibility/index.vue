@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <p v-for="sentance in $t('body')" class="text-body-1">
@@ -27,7 +27,7 @@ import { mapMutations, mapGetters } from 'vuex'
 export default {
   computed: {
     next() {
-      return '/eligability/citizenship'
+      return '/eligibility/citizenship'
     }
   }
 }

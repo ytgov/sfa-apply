@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -14,7 +14,7 @@
         {{ $t('how_much_would_like_to_apply_for') }}
       </Question>
 
-      <Currency v-model="eligability.yukon_excellence_award.apply" :value="eligability.yukon_excellence_award.apply" :max="balance"/>
+      <Currency v-model="eligibility.yukon_excellence_award.apply" :value="eligibility.yukon_excellence_award.apply" :max="balance"/>
     </section>
 
     <Buttons :valid="valid" :next="next" back="true" />
@@ -37,12 +37,12 @@ export default {
     Currency
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
@@ -51,7 +51,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligability/scholarship'
+      return '/eligibility/scholarship'
     },
     balance() {
       return 1023;
@@ -60,13 +60,13 @@ export default {
   mounted() {
     this.$emit('input', this.valid)
 
-    if (!this.eligability.yukon_excellence_award.apply) {
-      this.eligability.yukon_excellence_award.apply = ''
+    if (!this.eligibility.yukon_excellence_award.apply) {
+      this.eligibility.yukon_excellence_award.apply = ''
     }
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

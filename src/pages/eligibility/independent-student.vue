@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,30 +8,30 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.independentstudent.out_of_school" 
-        :value="eligability.independentstudent.out_of_school" 
+        v-model="eligibility.independentstudent.out_of_school" 
+        :value="eligibility.independentstudent.out_of_school" 
       />
     </section>
 
-    <section v-if="eligability.independentstudent.out_of_school=='Yes'">
+    <section v-if="eligibility.independentstudent.out_of_school=='Yes'">
       <Question>
         {{ $t('in_labour_force') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.independentstudent.in_labour_force" 
-        :value="eligability.independentstudent.in_labour_force" 
+        v-model="eligibility.independentstudent.in_labour_force" 
+        :value="eligibility.independentstudent.in_labour_force" 
       />
     </section>
     
-    <section v-if="eligability.independentstudent.out_of_school=='No' || eligability.independentstudent.out_of_school ">
+    <section v-if="eligibility.independentstudent.out_of_school=='No' || eligibility.independentstudent.out_of_school ">
       <Question>
         {{ $t('supporting_parent') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.independentstudent.supporting_parent" 
-        :value="eligability.independentstudent.supporting_parent" 
+        v-model="eligibility.independentstudent.supporting_parent" 
+        :value="eligibility.independentstudent.supporting_parent" 
       />
     </section>
 
@@ -52,24 +52,24 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.independentstudent.out_of_school &&
-          this.eligability.independentstudent.supporting_parent 
+          this.eligibility.independentstudent.out_of_school &&
+          this.eligibility.independentstudent.supporting_parent 
         ) 
 
       return is_valid
     },
     next() {
-      return '/eligability/dependant-student-juristiction'
+      return '/eligibility/dependant-student-juristiction'
     }
   },
   mounted() {
@@ -77,7 +77,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

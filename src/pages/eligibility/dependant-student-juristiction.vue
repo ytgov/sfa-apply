@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,8 +8,8 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.dependant_student_juristiction.has_family_maintained_home" 
-        :value="eligability.dependant_student_juristiction.has_family_maintained_home" 
+        v-model="eligibility.dependant_student_juristiction.has_family_maintained_home" 
+        :value="eligibility.dependant_student_juristiction.has_family_maintained_home" 
       />
     </section>
 
@@ -30,23 +30,23 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.dependant_student_juristiction.has_family_maintained_home
+          this.eligibility.dependant_student_juristiction.has_family_maintained_home
         ) 
 
       return is_valid
     },
     next() {
-      return '/eligability/single-parent-student-jurisdiction'
+      return '/eligibility/single-parent-student-jurisdiction'
     }
   },
   mounted() {
@@ -54,7 +54,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

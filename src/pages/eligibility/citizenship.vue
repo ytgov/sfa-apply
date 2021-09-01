@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,41 +8,41 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.citizenship.is_canadian_citizen" 
-        :value="eligability.citizenship.is_canadian_citizen" 
+        v-model="eligibility.citizenship.is_canadian_citizen" 
+        :value="eligibility.citizenship.is_canadian_citizen" 
       />
     </section>
 
-    <section v-if="eligability.citizenship.is_canadian_citizen=='No'">
+    <section v-if="eligibility.citizenship.is_canadian_citizen=='No'">
       <Question>
         {{ $t('are_you_a_perminent_resident') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.citizenship.are_you_a_perminent_resident" 
-        :value="eligability.citizenship.are_you_a_perminent_resident" 
+        v-model="eligibility.citizenship.are_you_a_perminent_resident" 
+        :value="eligibility.citizenship.are_you_a_perminent_resident" 
       />
     </section>
 
-    <section v-if="eligability.citizenship.is_canadian_citizen=='No' && eligability.citizenship.are_you_a_perminent_resident">
+    <section v-if="eligibility.citizenship.is_canadian_citizen=='No' && eligibility.citizenship.are_you_a_perminent_resident">
       <Question>
         {{ $t('are_you_a_protected_person') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.citizenship.are_you_a_protected_person" 
-        :value="eligability.citizenship.are_you_a_protected_person" 
+        v-model="eligibility.citizenship.are_you_a_protected_person" 
+        :value="eligibility.citizenship.are_you_a_protected_person" 
       />
     </section>
 
-    <section v-if="eligability.citizenship.is_canadian_citizen=='No' && eligability.citizenship.are_you_a_perminent_resident && eligability.citizenship.are_you_a_protected_person=='No'">
+    <section v-if="eligibility.citizenship.is_canadian_citizen=='No' && eligibility.citizenship.are_you_a_perminent_resident && eligibility.citizenship.are_you_a_protected_person=='No'">
       <Question>
         {{ $t('are_you_registered_as_indigenous') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.citizenship.are_you_registered_as_indigenous" 
-        :value="eligability.citizenship.are_you_registered_as_indigenous" 
+        v-model="eligibility.citizenship.are_you_registered_as_indigenous" 
+        :value="eligibility.citizenship.are_you_registered_as_indigenous" 
       />
     </section>
 
@@ -63,31 +63,31 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid =  
-        this.eligability.citizenship.is_canadian_citizen == 'Yes' 
+        this.eligibility.citizenship.is_canadian_citizen == 'Yes' 
         || (
-          this.eligability.citizenship.is_canadian_citizen == 'No' 
-          && this.eligability.citizenship.are_you_a_perminent_resident
+          this.eligibility.citizenship.is_canadian_citizen == 'No' 
+          && this.eligibility.citizenship.are_you_a_perminent_resident
         ) || (
-          this.eligability.citizenship.is_canadian_citizen == 'No' 
-          && this.eligability.citizenship.are_you_a_perminent_resident
-          && this.eligability.citizenship.are_you_a_protected_person == 'No'
-          && this.eligability.citizenship.are_you_registered_as_indigenous
+          this.eligibility.citizenship.is_canadian_citizen == 'No' 
+          && this.eligibility.citizenship.are_you_a_perminent_resident
+          && this.eligibility.citizenship.are_you_a_protected_person == 'No'
+          && this.eligibility.citizenship.are_you_registered_as_indigenous
         )
 
       return is_valid
     },
     next() {
-      return '/eligability/yukon-excellence-award'
+      return '/eligibility/yukon-excellence-award'
     }
   },
   mounted() {
@@ -95,7 +95,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

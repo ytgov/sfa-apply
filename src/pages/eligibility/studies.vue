@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,8 +8,8 @@
       </Question>
 
       <RadioList :options="['Full-time', 'Part-time']" 
-        v-model="eligability.studies.time" 
-        :value="eligability.studies.time" 
+        v-model="eligibility.studies.time" 
+        :value="eligibility.studies.time" 
       />
     </section>
 
@@ -30,21 +30,21 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
         //alert(values)
-        //return this.$store.commit('eligability/SET', values)
+        //return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
-      var is_valid = this.eligability.studies.time 
+      var is_valid = this.eligibility.studies.time 
       return is_valid
     },
     next() {
-      return '/eligability/residence'
+      return '/eligibility/residence'
     }
   },
   mounted() {
@@ -52,7 +52,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

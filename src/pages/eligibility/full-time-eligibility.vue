@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,51 +8,51 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.fulltimeeligability.program_at_least_2_years" 
-        :value="eligability.fulltimeeligability.program_at_least_2_years" 
+        v-model="eligibility.fulltimeeligibility.program_at_least_2_years" 
+        :value="eligibility.fulltimeeligibility.program_at_least_2_years" 
       />
     </section>
 
 
-    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes'">
+    <section v-if="eligibility.fulltimeeligibility.program_at_least_2_years=='Yes'">
       <Question>
         {{ $t('family_size') }}
       </Question>
 
       <NumberField 
-        v-model="eligability.fulltimeeligability.family_size" 
-        :value="eligability.fulltimeeligability.family_size" 
+        v-model="eligibility.fulltimeeligibility.family_size" 
+        :value="eligibility.fulltimeeligibility.family_size" 
       />
     </section>
 
-    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size">
+    <section v-if="eligibility.fulltimeeligibility.program_at_least_2_years=='Yes' && eligibility.fulltimeeligibility.family_size">
       <Question>
         {{ $t('previous_year_gross_family_income') }}
       </Question>
 
-      <Currency v-model="eligability.fulltimeeligability.previous_year_gross_family_income" :value="eligability.fulltimeeligability.previous_year_gross_family_income" />
+      <Currency v-model="eligibility.fulltimeeligibility.previous_year_gross_family_income" :value="eligibility.fulltimeeligibility.previous_year_gross_family_income" />
     </section>
 
-    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size>2 && eligability.fulltimeeligability.previous_year_gross_family_income">
+    <section v-if="eligibility.fulltimeeligibility.program_at_least_2_years=='Yes' && eligibility.fulltimeeligibility.family_size>2 && eligibility.fulltimeeligibility.previous_year_gross_family_income">
       <Question>
         {{ $t('dependants_under_twelve') }}
       </Question>
 
        <NumberField 
-        v-model="eligability.fulltimeeligability.dependants_under_twelve" 
-        :value="eligability.fulltimeeligability.dependants_under_twelve" 
+        v-model="eligibility.fulltimeeligibility.dependants_under_twelve" 
+        :value="eligibility.fulltimeeligibility.dependants_under_twelve" 
       />
     </section>
 
 
-    <section v-if="eligability.fulltimeeligability.program_at_least_2_years=='Yes' && eligability.fulltimeeligability.family_size>2 && eligability.fulltimeeligability.previous_year_gross_family_income && eligability.fulltimeeligability.dependants_under_twelve">
+    <section v-if="eligibility.fulltimeeligibility.program_at_least_2_years=='Yes' && eligibility.fulltimeeligibility.family_size>2 && eligibility.fulltimeeligibility.previous_year_gross_family_income && eligibility.fulltimeeligibility.dependants_under_twelve">
       <Question>
         {{ $t('dependants_with_disability') }}
       </Question>
 
-      <TextField 
-        v-model="eligability.fulltimeeligability.dependants_with_disability" 
-        :value="eligability.fulltimeeligability.dependants_with_disability" 
+      <NumberField 
+        v-model="eligibility.fulltimeeligibility.dependants_with_disability" 
+        :value="eligibility.fulltimeeligibility.dependants_with_disability" 
       />
     </section>
   
@@ -81,30 +81,35 @@ export default {
     Currency
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-        this.eligability.fulltimeeligability.program_at_least_2_years=='No'
+        this.eligibility.fulltimeeligibility.program_at_least_2_years=='No'
         || (
-          this.eligability.fulltimeeligability.program_at_least_2_years=='Yes'
-          && this.eligability.fulltimeeligability.family_size 
-          && this.eligability.fulltimeeligability.previous_year_gross_family_income 
-          && this.eligability.fulltimeeligability.dependants_under_twelve
-          && this.eligability.fulltimeeligability.dependants_with_disability
+          this.eligibility.fulltimeeligibility.program_at_least_2_years=='Yes'
+          && this.eligibility.fulltimeeligibility.family_size 
+          && this.eligibility.fulltimeeligibility.previous_year_gross_family_income 
         ) 
       )
 
+      if (this.eligibility.fulltimeeligibility.family_size>2) {
+        if (this.eligibility.fulltimeeligibility.dependants_with_disability && this.eligibility.fulltimeeligibility.dependants_under_twelve) {
+          is_valid = true
+        } else {
+          is_valid = false
+        }
+      }
       return is_valid
     },
     next() {
-      return '/eligability/disabilities'
+      return '/eligibility/disabilities'
     }
   },
   mounted() {
@@ -112,7 +117,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

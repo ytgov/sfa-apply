@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,55 +8,55 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scholorship.is_high_school_student" 
-        :value="eligability.scholorship.is_high_school_student" 
+        v-model="eligibility.scholarship.is_high_school_student" 
+        :value="eligibility.scholarship.is_high_school_student" 
         @click="update()"
       />
     </section>
 
-    <section v-if="eligability.scholorship.is_high_school_student">
+    <section v-if="eligibility.scholarship.is_high_school_student">
       <Question>
         {{ $t('are_you_a_high_school_graduate') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scholorship.is_high_school_graduate" 
-        :value="eligability.scholorship.is_high_school_graduate" 
+        v-model="eligibility.scholarship.is_high_school_graduate" 
+        :value="eligibility.scholarship.is_high_school_graduate" 
         @click="update()"
       />
     </section>
-    <section v-if="eligability.scholorship.is_high_school_student && eligability.scholorship.is_high_school_graduate">
+    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate">
       <Question>
         {{ $t('are_you_pursuing_aviation') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scholorship.is_pursuing_aviation" 
-        :value="eligability.scholorship.is_pursuing_aviation" 
+        v-model="eligibility.scholarship.is_pursuing_aviation" 
+        :value="eligibility.scholarship.is_pursuing_aviation" 
         @click="update()"
       />
     </section>
 
-    <section v-if="eligability.scholorship.is_high_school_student && eligability.scholorship.is_high_school_graduate && eligability.scholorship.is_pursuing_aviation">
+    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate && eligibility.scholarship.is_pursuing_aviation">
       <Question>
         {{ $t('are_you_entering_visual_arts') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scholorship.are_you_entering_visual_arts" 
-        :value="eligability.scholorship.are_you_entering_visual_arts" 
+        v-model="eligibility.scholarship.are_you_entering_visual_arts" 
+        :value="eligibility.scholarship.are_you_entering_visual_arts" 
         @click="update()"
       />
     </section>
 
-    <section v-if="eligability.scholorship.is_high_school_student && eligability.scholorship.is_high_school_graduate && eligability.scholorship.is_pursuing_aviation && eligability.scholorship.are_you_entering_visual_arts">
+    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate && eligibility.scholarship.is_pursuing_aviation && eligibility.scholarship.are_you_entering_visual_arts">
       <Question>
         {{ $t('enrolled_vocational') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.scholorship.enrolled_vocational" 
-        :value="eligability.scholorship.enrolled_vocational" 
+        v-model="eligibility.scholarship.enrolled_vocational" 
+        :value="eligibility.scholarship.enrolled_vocational" 
         @click="update()"
       />
     </section>
@@ -80,27 +80,27 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.scholorship.is_high_school_student
-          && this.eligability.scholorship.is_high_school_graduate
-          && this.eligability.scholorship.is_pursuing_aviation
-          && this.eligability.scholorship.are_you_entering_visual_arts
-          && this.eligability.scholorship.enrolled_vocational
+          this.eligibility.scholarship.is_high_school_student
+          && this.eligibility.scholarship.is_high_school_graduate
+          && this.eligibility.scholarship.is_pursuing_aviation
+          && this.eligibility.scholarship.are_you_entering_visual_arts
+          && this.eligibility.scholarship.enrolled_vocational
         )
       
       return is_valid;
     },
     next() {
-      return '/eligability/studies'
+      return '/eligibility/studies'
     }
   },
   mounted() {
@@ -108,13 +108,13 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   },
   methods: {
     update() {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
     }
   }
 }

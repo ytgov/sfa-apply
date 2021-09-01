@@ -2,14 +2,14 @@ export const strict = false
 
 export const state = () => ({
 	status: false,
-  eligability: {
+  eligibility: {
     citizenship: {
       is_canadian_citizen: false,
       are_you_a_perminent_resident: false,
       are_you_a_protected_person: false,
       are_you_registered_as_indian: false
     },
-    scholorship: {
+    scholarship: {
       is_high_school_student: false,
       is_high_school_graduate: false,
       is_pursuing_aviation: false,
@@ -54,14 +54,14 @@ export const state = () => ({
     singleparentjuristiction: {
     	most_recently_in_yukon: false
     },
-    parttimeeligability: {
+    parttimeeligibility: {
     	family_size: false,
       previous_year_gross_family_income: 0,
       enrolled : false,
       lived_in_yukon: false,
       dependants_under_twelve: false
     },
-    fulltimeeligability: {
+    fulltimeeligibility: {
     	program_at_least_2_years: false,
     	family_size: false,
       previous_year_gross_family_income: 0,
@@ -80,7 +80,7 @@ export const state = () => ({
 
 export const getters = {
   GET(state) {
-    return state.eligability
+    return state.eligibility
   },
   status(state) {
     return state.status
@@ -88,11 +88,11 @@ export const getters = {
 }
 
 export const mutations = {
-  SET(state, eligability) {
-    state.eligability = eligability
+  SET(state, eligibility) {
+    state.eligibility = eligibility
   },
   CLEAR(state) {
-    state.eligability = Object.assign({}, defaultData)
+    state.eligibility = Object.assign({}, defaultData)
   }
 }
 

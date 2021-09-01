@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,19 +8,19 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.designated_institution.are_you_enrolled_in_post_secondary" 
-        :value="eligability.designated_institution.are_you_enrolled_in_post_secondary" 
+        v-model="eligibility.designated_institution.are_you_enrolled_in_post_secondary" 
+        :value="eligibility.designated_institution.are_you_enrolled_in_post_secondary" 
       />
     </section>
 
-    <section v-if="eligability.designated_institution.are_you_enrolled_in_post_secondary=='Yes'">
+    <section v-if="eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'">
       <Question>
         {{ $t('post_secondary_enrolled_in') }}
       </Question>
 
       <Select :options="institutions"
-        v-model="eligability.designated_institution.post_secondary_enrolled_in" 
-        :value="eligability.designated_institution.post_secondary_enrolled_in" 
+        v-model="eligibility.designated_institution.post_secondary_enrolled_in" 
+        :value="eligibility.designated_institution.post_secondary_enrolled_in" 
         />
     </section>
 
@@ -50,26 +50,26 @@ export default {
     }
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.designated_institution.are_you_enrolled_in_post_secondary == 'No' 
+          this.eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'No' 
         ) || (
-          this.eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' 
-          && this.eligability.designated_institution.post_secondary_enrolled_in
+          this.eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' 
+          && this.eligibility.designated_institution.post_secondary_enrolled_in
         )
 
       return is_valid
     },
     next() {
-      return '/eligability/marital'
+      return '/eligibility/marital'
     }
   },
   mounted() {
@@ -77,7 +77,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

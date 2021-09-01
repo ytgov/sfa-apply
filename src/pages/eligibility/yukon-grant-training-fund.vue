@@ -1,5 +1,5 @@
 <template>
-  <article data-layout="eligability">
+  <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <section>
@@ -8,19 +8,19 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.marital.are_you_in_a_relationship" 
-        :value="eligability.marital.are_you_in_a_relationship" 
+        v-model="eligibility.marital.are_you_in_a_relationship" 
+        :value="eligibility.marital.are_you_in_a_relationship" 
       />
     </section>
 
-    <section v-if="eligability.marital.are_you_in_a_relationship=='No'">
+    <section v-if="eligibility.marital.are_you_in_a_relationship=='No'">
       <Question>
         {{ $t('have_you_ever_been_in_a_relationship') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligability.marital.have_you_ever_been_in_a_relationship" 
-        :value="eligability.marital.have_you_ever_been_in_a_relationship" 
+        v-model="eligibility.marital.have_you_ever_been_in_a_relationship" 
+        :value="eligibility.marital.have_you_ever_been_in_a_relationship" 
       />
     </section>
 
@@ -41,26 +41,26 @@ export default {
     RadioList
   },
   computed: {
-    eligability: {
+    eligibility: {
       get() {
-        return this.$store.getters['eligability/GET']
+        return this.$store.getters['eligibility/GET']
       },
       set(values) {
-        return this.$store.commit('eligability/SET', values)
+        return this.$store.commit('eligibility/SET', values)
       }
     },
     valid() {
       var is_valid = (
-          this.eligability.marital.are_you_in_a_relationship == 'Yes' 
+          this.eligibility.marital.are_you_in_a_relationship == 'Yes' 
         ) || (
-          this.eligability.marital.are_you_in_a_relationship == 'No' 
-          && this.eligability.marital.have_you_ever_been_in_a_relationship
+          this.eligibility.marital.are_you_in_a_relationship == 'No' 
+          && this.eligibility.marital.have_you_ever_been_in_a_relationship
         )
 
       return is_valid
     },
     next() {
-      return '/eligability/parent'
+      return '/eligibility/parent'
     }
   },
   mounted() {
@@ -68,7 +68,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('eligability/SET', this.eligability)
+      this.$store.commit('eligibility/SET', this.eligibility)
       this.$emit('input', this.valid)
     }
   }

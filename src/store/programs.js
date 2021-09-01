@@ -1,202 +1,202 @@
 export const strict = false
 
 var program_validations = {
-  yukon_excellence_award: (eligability) => {
+  yukon_excellence_award: (eligibility) => {
     return (
-        eligability.citizenship.is_canadian_citizen=='Yes' ||
-        eligability.citizenship.are_you_a_perminent_resident=='Yes' 
+        eligibility.citizenship.is_canadian_citizen=='Yes' ||
+        eligibility.citizenship.are_you_a_perminent_resident=='Yes' 
       ) 
       && (
-        eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-        && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+        eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+        && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
       )
   },
-  yukon_grant: (eligability) => {
+  yukon_grant: (eligibility) => {
     return (
-        eligability.citizenship.is_canadian_citizen=='Yes' ||
-        eligability.citizenship.are_you_a_perminent_resident=='Yes' 
+        eligibility.citizenship.is_canadian_citizen=='Yes' ||
+        eligibility.citizenship.are_you_a_perminent_resident=='Yes' 
       ) && (
-        eligability.studies.time != 'Part-time'
+        eligibility.studies.time != 'Part-time'
       ) && (
-        !['Upgrade', 'Certificate', 'Degree'].includes(eligability.program.what_type_of_program)
-        && eligability.program.at_least_three_weeks == 'Yes'
+        !['Upgrade', 'Certificate', 'Degree'].includes(eligibility.program.what_type_of_program)
+        && eligibility.program.at_least_three_weeks == 'Yes'
       ) && (
-        eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+        eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       ) && (
-        eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-        && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+        eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+        && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
       )
   },
-  student_training_allowance: (eligability) => {
+  student_training_allowance: (eligibility) => {
     return (
-      eligability.citizenship.is_canadian_citizen=='Yes' ||
-      eligability.citizenship.are_you_a_perminent_resident=='Yes' 
+      eligibility.citizenship.is_canadian_citizen=='Yes' ||
+      eligibility.citizenship.are_you_a_perminent_resident=='Yes' 
     ) && (
-      eligability.studies.time != 'Part-time'
+      eligibility.studies.time != 'Part-time'
     ) && (
-      eligability.residence.have_you_been_out_of_territory_12_months != 'Yes'
+      eligibility.residence.have_you_been_out_of_territory_12_months != 'Yes'
     ) && (
-      eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' &&
-      ['Yukon College', 'Alcan Air'].includes(eligability.program.post_secondary_enrolled_in)
+      eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' &&
+      ['Yukon College', 'Alcan Air'].includes(eligibility.program.post_secondary_enrolled_in)
     ) && (
-      eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
     )
   },
-  army_yukon_scholorship: (eligability) => {
+  army_yukon_scholarship: (eligibility) => {
     return (
-      eligability.scholorship.is_high_school_student != 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.scholarship.is_high_school_student != 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  nicolas_john_hararch_scoloarship: (eligability) => {
+  nicolas_john_hararch_scoloarship: (eligibility) => {
     return ( 
-        eligability.scholorship.is_high_school_graduate == 'Yes'
-        && eligability.scholorship.is_pursuing_aviation == 'Yes'    
+        eligibility.scholarship.is_high_school_graduate == 'Yes'
+        && eligibility.scholarship.is_pursuing_aviation == 'Yes'    
       ) && (
-        eligability.residence.have_you_been_out_of_territory_12_months != 'Yes'
-      ) && !invalid_citizenship(eligability)
+        eligibility.residence.have_you_been_out_of_territory_12_months != 'Yes'
+      ) && !invalid_citizenship(eligibility)
   },
-  yukon_art_society_scolorship: (eligability) => {
+  yukon_art_society_scolorship: (eligibility) => {
     return (
-        eligability.scholorship.is_high_school_graduate == 'Yes'
-        && eligability.scholorship.are_you_entering_visual_arts == 'Yes' 
-        && !invalid_citizenship(eligability)
+        eligibility.scholarship.is_high_school_graduate == 'Yes'
+        && eligibility.scholarship.are_you_entering_visual_arts == 'Yes' 
+        && !invalid_citizenship(eligibility)
       ) 
   },
-  huskies_cb_radio_club_scolarship: (eligability) => {
+  huskies_cb_radio_club_scolarship: (eligibility) => {
     return (
-        eligability.scholorship.is_high_school_graduate == 'Yes' 
-        && eligability.scholorship.enrolled_vocational == 'Yes' 
-        && !invalid_citizenship(eligability)
+        eligibility.scholarship.is_high_school_graduate == 'Yes' 
+        && eligibility.scholarship.enrolled_vocational == 'Yes' 
+        && !invalid_citizenship(eligibility)
       ) 
       
   },
-  canada_student_loan_parttime_eligability: (eligability) => {
+  canada_student_loan_parttime_eligibility: (eligibility) => {
     return (
-      eligability.studies.time == 'Part-time'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Part-time'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     ) 
   },
-  canada_student_grant_parttime_eligability: (eligability) => {
+  canada_student_grant_parttime_eligibility: (eligibility) => {
     return (
-      eligability.studies.time == 'Part-time'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Part-time'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_loan_parttime_students_with_dependants: (eligability) => {
+  canada_student_loan_parttime_students_with_dependants: (eligibility) => {
     return (
-      eligability.studies.time == 'Part-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Part-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_grant_parttime_students_with_disabilities: (eligability) => {
+  canada_student_grant_parttime_students_with_disabilities: (eligibility) => {
     return (
-      eligability.studies.time == 'Part-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligability.disabilities.perminent_disability == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Part-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && eligibility.disabilities.perminent_disability == 'Yes'
+      && !invalid_citizenship(eligibility)
       
     )
   },
-  canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities: (eligability) => {
+  canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities: (eligibility) => {
     return (
-      eligability.studies.time == 'Part-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligability.disabilities.perminent_disability == 'Yes'
-      && eligability.disabilities.service_equipment == 'Yes'
-      && !invalid_citizenship(eligability) 
+      eligibility.studies.time == 'Part-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && eligibility.disabilities.perminent_disability == 'Yes'
+      && eligibility.disabilities.service_equipment == 'Yes'
+      && !invalid_citizenship(eligibility) 
     )
   },
-  canada_student_loan_fulltime_eligability: (eligability) => {
+  canada_student_loan_fulltime_eligibility: (eligibility) => {
     return (
-      eligability.studies.time == 'Full-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Full-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_grant_fulltime_eligability: (eligability) => {
+  canada_student_grant_fulltime_eligibility: (eligibility) => {
     return (
-      eligability.studies.time == 'Full-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Full-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_loan_fulltime_students_with_dependants: (eligability) => {
+  canada_student_loan_fulltime_students_with_dependants: (eligibility) => {
     return (
-      eligability.studies.time == 'Full-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Full-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_grant_fulltime_students_with_disabilities: (eligability) => {
+  canada_student_grant_fulltime_students_with_disabilities: (eligibility) => {
     return (
-      eligability.studies.time == 'Full-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligability.disabilities.perminent_disability == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Full-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && eligibility.disabilities.perminent_disability == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities: (eligability) => {
+  canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities: (eligibility) => {
     return (
-      eligability.studies.time == 'Full-time'
-      && eligability.program.at_least_three_weeks == 'Yes'
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligability.disabilities.perminent_disability == 'Yes'
-      && eligability.disabilities.service_equipment == 'Yes'
-      && !invalid_citizenship(eligability) 
+      eligibility.studies.time == 'Full-time'
+      && eligibility.program.at_least_three_weeks == 'Yes'
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && eligibility.disabilities.perminent_disability == 'Yes'
+      && eligibility.disabilities.service_equipment == 'Yes'
+      && !invalid_citizenship(eligibility) 
     )
   },
-  canada_student_loans_and_grants_skills_boost_top_up: (eligability) => {
+  canada_student_loans_and_grants_skills_boost_top_up: (eligibility) => {
     return (
-      eligability.studies.time == 'Full-time'
-      && !['Masters', 'Doctorate', 'None of These'].includes(eligability.program.what_type_of_program)
-      && eligability.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
-      && eligability.dependant_student_juristiction.has_family_maintained_home == 'Yes'
-      && eligability.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && !invalid_citizenship(eligability)
+      eligibility.studies.time == 'Full-time'
+      && !['Masters', 'Doctorate', 'None of These'].includes(eligibility.program.what_type_of_program)
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
+      && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
+      && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      && !invalid_citizenship(eligibility)
     )
   }
 }
 
 
 
-var invalid_citizenship = (eligability) => {
+var invalid_citizenship = (eligibility) => {
   return (
-    eligability.citizenship.is_canadian_citizen=='No' &&
-    eligability.citizenship.are_you_a_perminent_resident=='No' &&
-    eligability.citizenship.are_you_a_protected_person=='No' &&
-    eligability.citizenship.are_you_registered_as_indigenous=='No'
+    eligibility.citizenship.is_canadian_citizen=='No' &&
+    eligibility.citizenship.are_you_a_perminent_resident=='No' &&
+    eligibility.citizenship.are_you_a_protected_person=='No' &&
+    eligibility.citizenship.are_you_registered_as_indigenous=='No'
   ) 
 }
 
@@ -237,7 +237,7 @@ export const state = () => ({
         en: 'Army Yukon Scolorship',
         fr: 'Army Yukon Scolorship'
       },
-      qualified: "army_yukon_scholorship"
+      qualified: "army_yukon_scholarship"
     },
     {
       group: 'Scholarships',
@@ -273,7 +273,7 @@ export const state = () => ({
         en: 'Canada Student Loan - Part-time Eligability',
         fr: 'Canada Student Loan - Part-time Eligability'
       },
-      qualified: 'canada_student_loan_parttime_eligability'
+      qualified: 'canada_student_loan_parttime_eligibility'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -282,7 +282,7 @@ export const state = () => ({
         en: 'Canada Student Grant - Part-time Eligability',
         fr: 'Canada Student Grant - Part-time Eligability'
       },
-      qualified: 'canada_student_grant_parttime_eligability'
+      qualified: 'canada_student_grant_parttime_eligibility'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -318,7 +318,7 @@ export const state = () => ({
         en: 'Canada Student Loan - Full-time Eligability',
         fr: 'Canada Student Loan - Full-time Eligability'
       },
-      qualified: 'canada_student_loan_fulltime_eligability'
+      qualified: 'canada_student_loan_fulltime_eligibility'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -327,7 +327,7 @@ export const state = () => ({
         en: 'Canada Student Grant - Full-time Eligability',
         fr: 'Canada Student Grant - Full-time Eligability'
       },
-      qualified: 'canada_student_grant_fulltime_eligability'
+      qualified: 'canada_student_grant_fulltime_eligibility'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -372,23 +372,23 @@ export const getters = {
   list(state) {
     return state.list
   },
-  validation: (state) => (slug, eligability) => {
-    return program_validations[slug](eligability)
+  validation: (state) => (slug, eligibility) => {
+    return program_validations[slug](eligibility)
   },
-  eligable: (state, getters, rootGetters) => (eligability) => {
+  eligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligability) == true
+        return getters['validation'](o.qualified, eligibility) == true
       } catch(error) {
         console.error(error)
         return false
       }
     });
   },
-  ineligable: (state, getters, rootGetters) => (eligability) => {
+  ineligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligability) == false
+        return getters['validation'](o.qualified, eligibility) == false
       } catch(error) {
         console.error(error)
         return false
