@@ -5,13 +5,16 @@
     <p>
       Based on the information you provided:
     </p>
+
+
     
     <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
 
-    <div class="programs" v-if="eligible.length">
-      <div v-for="program, index in eligible"  :key="index" :class="program.active?'active':''">
+    <div class="programs" v-if="eligible[title].length" v-for="programs, title in eligible">
+      <h4>{{title}}</h4>
+      <div v-for="program, index in programs"  :key="index" :class="program.active?'active':''">
         <div>
-          <Checkbox v-model="eligible[index].active" @click="toggleApplicationProgram(program)" />
+          <Checkbox v-model="programs[index].active" @click="toggleApplicationProgram(program)" />
         </div>
         <div>
           <strong>{{program.name[locale]}}</strong><br />
@@ -30,11 +33,13 @@
 
     <p>&nbsp;</p>
 
+
     <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
-    <div class="programs" v-if="ineligible.length" >
-      <div v-for="program, index in ineligible"  :key="index" :class="program.active?'active':''">
+    <div class="programs" v-if="ineligible[title].length" v-for="program, title in ineligible">
+      <h4>{{title}}</h4>
+      <div v-for="program, index in programs"  :key="index" :class="program.active?'active':''">
         <div>
-          <Checkbox  v-model="ineligible[index].active" @click="toggleApplicationProgram(program)"/>
+          <Checkbox  v-model="programs[index].active" @click="toggleApplicationProgram(program)"/>
         </div>
         <div>
           <strong>{{program.name[locale]}}</strong><br />
@@ -95,10 +100,10 @@ export default {
       eligible.forEach((program)=>{
         this.toggleApplicationProgram(program)
       })
-      return eligible
+      return _.groupBy(eligible, (o) => { return o.group })
     },
     ineligible() {
-      return this.$store.getters['programs/ineligible'](this.eligibility)
+      return _.groupBy(this.$store.getters['programs/ineligible'](this.eligibility), (o) => { return o.group })
     },
     eligibility: {
       get() {
@@ -156,6 +161,9 @@ export default {
 <style lang="scss" scoped>
 div.programs {
   margin-top: 2rem;
+  > h4 {
+    margin-bottom: 0.75rem;
+  }
   > div {
     display: flex;
     align-items: center;
