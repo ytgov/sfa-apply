@@ -97,8 +97,8 @@ export default {
     },
     eligible() {
       var eligible = this.$store.getters['programs/eligible'](this.eligibility);
-      eligible.forEach((program)=>{
-        this.toggleApplicationProgram(program)
+      eligible.forEach((program, index)=>{
+        eligible[index].active = true
       })
       return _.groupBy(eligible, (o) => { return o.group })
     },
