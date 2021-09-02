@@ -69,7 +69,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/marital'
+      return '/eligibility/yukon-grant-training-fund'
     }
   },
   mounted() {

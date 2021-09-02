@@ -4,23 +4,34 @@
 
     <section>
       <Question>
-        {{ $t('are_you_in_a_relationship') }}
+        {{ $t('has_completed_two_years') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.marital.are_you_in_a_relationship" 
-        :value="eligibility.marital.are_you_in_a_relationship" 
+        v-model="eligibility.yukon_grant_training_fund.has_completed_two_years" 
+        :value="eligibility.yukon_grant_training_fund.has_completed_two_years" 
       />
     </section>
 
-    <section v-if="eligibility.marital.are_you_in_a_relationship=='No'">
+    <section v-if="eligibility.yukon_grant_training_fund.has_completed_two_years=='No'">
       <Question>
-        {{ $t('have_you_ever_been_in_a_relationship') }}
+        {{ $t('has_been_resident_continuously') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.marital.have_you_ever_been_in_a_relationship" 
-        :value="eligibility.marital.have_you_ever_been_in_a_relationship" 
+        v-model="eligibility.yukon_grant_training_fund.has_been_resident_continuously" 
+        :value="eligibility.yukon_grant_training_fund.has_been_resident_continuously" 
+      />
+    </section>
+
+    <section v-if="eligibility.yukon_grant_training_fund.has_been_resident_continuously=='No'">
+      <Question>
+        {{ $t('has_been_resident_continuously_from_14_to_18') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="eligibility.yukon_grant_training_fund.has_been_resident_continuously_from_14_to_18" 
+        :value="eligibility.yukon_grant_training_fund.has_been_resident_continuously_from_14_to_18" 
       />
     </section>
 
@@ -60,7 +71,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/parent'
+      return '/eligibility/marital'
     }
   },
   mounted() {
@@ -79,14 +90,16 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Marital Status",
-    "are_you_in_a_relationship": "Are you legally married or have you been in a common law relationship for at least one year?",
-    "have_you_ever_been_in_a_relationship": "Have you ever been married or in a common law relationship?"
+    "title": "Yukon Grant and Training Fund Eligibility",
+    "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
+    "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
+    "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
   },
   "fr": {
-    "title": "Marital Status",
-  "are_you_in_a_relationship": "Are you legally married or have you been in a common law relationship for at least one year?",
-    "have_you_ever_been_in_a_relationship": "Have you ever been married or in a common law relationship?"
+    "title": "Yukon Grant and Training Fund Eligibility",
+    "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
+    "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
+    "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
   }
 }
 </i18n>

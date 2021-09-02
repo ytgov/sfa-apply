@@ -6,8 +6,6 @@
       Based on the information you provided:
     </p>
 
-
-    
     <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
 
     <div class="programs" v-if="eligible[title].length" v-for="programs, title in eligible">
@@ -32,7 +30,6 @@
     </div>
 
     <p>&nbsp;</p>
-
 
     <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
     <div class="programs" v-if="ineligible[title].length" v-for="programs, title in ineligible">
