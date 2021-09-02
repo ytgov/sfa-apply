@@ -35,7 +35,7 @@
 
 
     <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
-    <div class="programs" v-if="ineligible[title].length" v-for="program, title in ineligible">
+    <div class="programs" v-if="ineligible[title].length" v-for="programs, title in ineligible">
       <h4>{{title}}</h4>
       <div v-for="program, index in programs"  :key="index" :class="program.active?'active':''">
         <div>
