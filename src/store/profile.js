@@ -4,9 +4,13 @@ export const state = () => ({
   profile: {
     firstName: '',
     lastName: '',
+    tombstone: {
+      has_existing_alias: false
+    },
     email: {
       use_existing: false,
-      value: false
+      value: false,
+      new: false
     },
     address: {
       perminent: false,
@@ -15,38 +19,8 @@ export const state = () => ({
     phone: '',
     dob: '',
     sin: '',
-    citizenship: {
-      is_canadian_citizen: false,
-      are_you_a_perminent_resident: false,
-      are_you_a_protected_person: false,
-      are_you_registered_as_indian: false
-    },
-    scolorship: {
-      is_high_school_student: false,
-      is_high_school_graduate: false,
-      is_pursuing_aviation: false
-    },
-    studies: {
-      time: false
-    },
-    residence: {
-      have_you_been_out_of_territory_4_months: false,
-      have_you_been_out_of_territory_12_months: false,
-      will_you_be_resident_before_classes_start: false,
-      do_you_file_with_cra_as_yukon_citizen: false
-    },
-    designated_institution: {
-      are_you_enrolled_in_post_secondary: false,
-      post_secondary_enrolled_in: false
-    },
     atipp: {
       read_terms: false
-    },
-    tombstone: {
-      has_existing_alias: false
-    },
-    yukon_excellence_award: {
-      apply: false
     }
   }
 })

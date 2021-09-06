@@ -62,7 +62,7 @@ p.buttons {
 
 
 
-[data-layout="eligibility"] {
+[data-layout="eligibility"], [data-layout="application"] {
   max-width: 600px;
   margin: 4rem 0;
 
@@ -71,3 +71,4 @@ p.buttons {
     margin: 2rem !important;
   }
 }
+

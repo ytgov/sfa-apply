@@ -1,41 +1,41 @@
 <template>
-  <article>
-    <h2>{{ $t('title') }}</h2>
+  <article data-layout="application" v-if="profile">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
-
-    <section v-if="profile.email.value && !profile.email.use_existing">
+    <section>
       <div class="email">
-        {{profile.email.value||'No email address on file.'}}
+        {{profile.email.value||'No email address on file.'}} 
       </div>
     </section>
 
-    <section v-if="profile.email.value && !profile.email.use_existing">
+    <section v-if="(profile.email.value) && valid_email">
       <Question>
         {{ $t('would_you_like_to_use_existing_address') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="profile.email.use_existing" 
-        :value="profile.email.use_existing" 
+        v-model="use_existing" 
+        :value="use_existing" 
       />
     </section>
 
-    <section v-else>
+    <section v-if="(use_existing=='No' || !profile.email.value) && new_email == ''">
       <Question>
         {{ $t('enter_your_email_address') }}
       </Question>
-
-      <input type="text" v-model="profile.email.value" placeholder="Email Address" class="input" />
+      <EmailField 
+        v-model="new_email" 
+        :value="new_email" 
+      />
     </section>
+
     <section v-if="profile.email.value && valid">
-      <Checkbox v-model="profile.email.is_primary">
-         {{ $t('is_primary_email_address') }}
-      </Checkbox>
+      <CheckboxQuestion v-model="profile.email.is_primary" :value="profile.email.is_primary"> 
+        {{ $t('is_primary_email_address') }}
+      </CheckboxQuestion>
     </section>
 
-
-    <Buttons :valid="valid" :next="next" />
-
+    <Buttons :valid="valid" :next="next" :back="true" />
   </article>
 </template>
 
@@ -44,7 +44,9 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
-import Checkbox from '~/components/forms/Checkbox.vue';
+import CheckboxQuestion from '~/components/forms/CheckboxQuestion.vue';
+import TextField from '~/components/forms/TextField.vue';
+import EmailField from '~/components/forms/EmailField.vue';
 
 
 export default {
@@ -52,7 +54,9 @@ export default {
     Buttons,
     Question,
     RadioList,
-    Checkbox
+    CheckboxQuestion,
+    TextField,
+    EmailField
   },
   computed: {
     profile: {
@@ -63,28 +67,47 @@ export default {
         return this.$store.commit('profile/SET', values)
       }
     },
+    new() {
+      return this.new_email
+    },
     valid() {
       var is_valid = this.validateEmail(this.profile.email.value)
       return is_valid
     },
+    valid_email() {
+      const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return regex.test(this.profile.email.value);
+    },
     next() {
+      this.$store.commit('profile/SET', this.profile)
       return '/application/personal-information/address/perminent'
     }
   },
+  data() {
+    return {
+      new_email: '',
+      use_existing: 'Yes'
+    }
+  },
   mounted() {
+    /*
     this.$emit('input', this.valid)
-
     if (!this.profile.email.value) {
       this.profile.email.use_existing = true
       this.profile.email.value = ''
     } else {
       this.profile.email.use_existing = false
     }
+    */
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
-      this.$emit('input', this.valid)
+      //this.$store.commit('profile/SET', this.profile)
+      //this.$emit('input', this.valid)
+    },
+    new(to, from) {
+      this.profile.email.value = this.new_email
+      //this.$store.commit('profile/SET', this.profile)
     }
   },
   methods: {

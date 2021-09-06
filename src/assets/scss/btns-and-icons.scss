@@ -75,3 +75,20 @@ div.buttons {
   }
 }
 
+
+span.tab {
+	background: #eee;
+	padding: 0.25rem 1rem;
+	text-transform: uppercase;
+
+	&.verified {
+		background: #98FB98;
+	}
+	&.pending {
+		background: #FFFFE0;
+	}
+	&.uploading {
+		background: #D8BFD8;
+	}
+}
+

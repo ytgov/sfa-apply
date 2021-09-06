@@ -1,13 +1,13 @@
 <template>
-	<article>
-    <h2>{{ $t('title') }}</h2>
+	<article data-layout="documents">
+    <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
     <p>
       {{ $t('excerpt') }}
     </p>
 
-		<div class="documents">
+		<section class="documents">
 			<div v-for="doc in documents[locale].supporting">
-				<div>{{doc.status}}</div>
+				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
 				<div><strong>{{doc.name}}</strong></div>
 				<div v-if="['Verified', 'Vérifié'].includes(doc.status)">
 					<a>{{ $t("buttons.delete") }}</a>
@@ -19,49 +19,86 @@
 					<a>{{ $t("buttons.upload") }}</a>
 				</div>
 			</div>
-		</div>
+		</section>
 
     <v-banner icon="mdi-alert-circle" class="problem mt-4">
       {{ $t('error') }}
     </v-banner>
 
 
-    <Buttons :valid="valid" :next="next" />
-
+    <Buttons :valid="valid" :next="next" :back="true" />
 	</article>
 </template>
 
 <style lang="scss" scoped>
-div.documents{
-	> div {
-		display: flex;
-		margin-top: 1rem;
-		margin-bottom: 1rem;
 
-		border-top: solid 1px #eee;
-		&:last-of-type {
-			border-bottom: solid 1px #eee;
-		}
 
+
+[data-layout="documents"] {
+  max-width: 1024px;
+  margin: 4rem 0;
+  > section.documents{
 		> div {
-			width: 100%;
-			padding: 2rem;
-			&:nth-of-type(1) {
-				min-width: 10%;
+			display: flex;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
 
-			}
-			&:nth-of-type(2) {
-				width: auto;
-				white-space: nowrap;
-				text-align: left;
-			}
+			border-top: solid 1px #eee;
 			&:last-of-type {
-				text-align: right;
-				min-width: 10%;
+				border-bottom: solid 1px #eee;
+			}
+
+			> div {
+				width: 100%;
+				padding: 2rem 0;
+				&:nth-of-type(1) {
+					min-width: 20%;
+				}
+				&:nth-of-type(2) {
+					width: auto;
+					white-space: nowrap;
+					text-align: left;
+					padding: 2rem;
+				}
+				&:last-of-type {
+					text-align: right;
+					min-width: 20%;
+				}
 			}
 		}
 	}
+
+  @media only screen and (max-width: 1024px) {
+    max-width: 100%;
+    margin: 2rem !important;
+    > section.documents {
+    	> div {
+    		display: grid;
+    		grid-template-columns: 6fr 6fr;
+    		padding: 1rem 0;
+    		> div {
+    			min-width: 100%;
+    			padding: 0.25rem 0 !important;
+
+    			&:nth-of-type(1) {
+						grid-row: 2;
+						grid-column: 2;
+						text-align: right;
+					}
+					&:nth-of-type(2) {
+						grid-row: 1;
+					}
+					&:last-of-type {
+						grid-row: 2;
+						grid-column: 1;
+						text-align: left;
+					}
+    		}
+    	}
+    }
+  }
 }
+
 </style>
 
 <i18n>

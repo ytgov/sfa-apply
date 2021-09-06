@@ -25,7 +25,7 @@
       <ATIPP  />
     </TermsWrapper>
 
-    <Buttons :valid="valid" :next="next" />
+    <Buttons :valid="valid" :next="next" :back="true" />
 	</v-container>
 </template>
 
@@ -66,7 +66,7 @@ export default {
           name: 'description',
           content: 'Home page description'
         }
-      ],
+      ]
     }
   },
   computed: {
