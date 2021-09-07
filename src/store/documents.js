@@ -40,6 +40,9 @@ export const state = () => ({
 export const getters = {
   list(state) {
     return state.list
+  },
+  by_resource: (state) => (resource) => {
+    return state.list[resource]
   }
 }
 

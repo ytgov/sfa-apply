@@ -6,7 +6,7 @@
     </p>
 
 		<section class="documents">
-			<div v-for="doc in documents[locale].supporting">
+			<div v-for="doc, resource in documents[locale].supporting">
 				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
 				<div><strong>{{doc.name}}</strong></div>
 				<div v-if="['Verified', 'Vérifié'].includes(doc.status)">
@@ -16,7 +16,7 @@
 					<a>{{ $t("buttons.cancel") }}</a>
 				</div>
 				<div v-else>
-					<a>{{ $t("buttons.upload") }}</a>
+					<nuxt-link :to="`/application/documents/upload/${resource}`">{{ $t("buttons.upload") }}</nuxt-link>
 				</div>
 			</div>
 		</section>
@@ -101,30 +101,6 @@
 
 </style>
 
-<i18n>
-{
-  "en": {
-    "title": "Supporting Documents",
-    "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
-    "error": "You cannot sumbit your application until all your documents are uploaded.",
-    "buttons": {
-    	"delete": "Delete",
-    	"cancel": "Cancel",
-    	"upload": "Upload"
-    }
-  },
-  "fr": {
-    "title": "Documents justificatifs",
-    "excerpt": "Veuillez télécharger les pièces justificatives suivantes... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
-    "error": "Vous ne pouvez pas soumettre votre demande tant que tous vos documents ne sont pas téléchargés.",
-    "buttons": {
-    	"delete": "Supprimer",
-    	"cancel": "Annuler",
-    	"upload": "Télécharger"
-    }
-  }
-}
-</i18n>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
@@ -199,3 +175,29 @@ export default {
 	}
 }
 </script>
+
+
+<i18n>
+{
+  "en": {
+    "title": "Supporting Documents",
+    "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "error": "You cannot sumbit your application until all your documents are uploaded.",
+    "buttons": {
+    	"delete": "Delete",
+    	"cancel": "Cancel",
+    	"upload": "Upload"
+    }
+  },
+  "fr": {
+    "title": "Documents justificatifs",
+    "excerpt": "Veuillez télécharger les pièces justificatives suivantes... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "error": "Vous ne pouvez pas soumettre votre demande tant que tous vos documents ne sont pas téléchargés.",
+    "buttons": {
+    	"delete": "Supprimer",
+    	"cancel": "Annuler",
+    	"upload": "Télécharger"
+    }
+  }
+}
+</i18n>
