@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     blur() {
+      this.$emit('input', this.output)
       this.$emit('blur')
     },
     focus() {

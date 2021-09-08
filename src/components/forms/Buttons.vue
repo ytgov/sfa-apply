@@ -2,7 +2,7 @@
   <div class="buttons mt-14">
     <div class="text-left">
       <v-btn class="back" color="hollow" @click="$router.go(-1)" v-if="back">
-        Back
+        <span v-if="atipp">Cancel Application</span><span v-else>Back</span>
       </v-btn>
     </div>
     <div class="text-center">
@@ -15,7 +15,7 @@
     </div>
     <div class="text-right">
       <v-btn :to="next" class="continue" color="primary" v-if="valid && next">
-        Continue
+        <span v-if="atipp">Agree & Continue</span><span v-else>Continue</span>
       </v-btn>
     </div>
   </div>
@@ -23,6 +23,6 @@
 
 <script>
 export default {
-  props: ['valid', 'next', 'back', 'save', 'cancel']
+  props: ['valid', 'next', 'back', 'save', 'cancel', "atipp"]
 }  
 </script>

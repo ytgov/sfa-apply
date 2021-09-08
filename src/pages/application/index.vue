@@ -20,12 +20,11 @@
 			<strong>Must read the terms to continue.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero in sapien condimentum volutpat et vel purus. Morbi sed maximus ante, a ultricies leo. Curabitur maximus libero ac massa accumsan egestas. Duis sed aliquet urna. Nam consectetur ex tortor, nec sollicitudin ipsum ullamcorper ac.
 		</p>
 
-
 		<TermsWrapper v-model="profile.atipp.read_terms" :value="profile.atipp.read_terms">
       <ATIPP  />
     </TermsWrapper>
 
-    <Buttons :valid="valid" :next="next" :back="true" />
+    <Buttons :valid="valid" :next="next" :back="true" :atipp="true" />
 	</v-container>
 </template>
 
@@ -59,14 +58,7 @@ export default {
   },
   head (){
     return {
-      title: 'Yukon Student Financial Portal - Application',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Home page description'
-        }
-      ]
+      title: 'Yukon Student Financial Portal - Application'
     }
   },
   computed: {
@@ -79,7 +71,7 @@ export default {
       }
     },
     valid() {
-      var is_valid = this.profile.atipp.read_terms
+      var is_valid = !!this.profile.atipp.read_terms
 
       return is_valid
     },
@@ -87,66 +79,9 @@ export default {
       return '/application/personal-information/tombstone'
     }
   },
-	data() {
-		return {
-			sections: [
-			/*
-				{
-					name: 'Introduction',
-					route: '/application'
-				},
-				{
-					name: 'Studies',
-					route: '/application/studies'
-				},
-				{
-					name: 'Citizenship',
-					route: '/application/citizenship'
-				},
-				{
-					name: 'Scholarship',
-					route: '/application/scholarship'
-				},
-				{
-					name: 'Residence',
-					route: '/application/residence'
-				},
-				{
-					name: 'Designated Insitution',
-					route: '/application/designated-institution'
-				},
-				{
-					name: 'Yukon Exellence Award',
-					route: '/application/yukon-excellence-award'
-				},
-				{
-					name: 'ATIPP',
-					route: '/application/atipp'
-				},
-				{
-					name: 'Tombstone',
-					route: '/application/personal-information/tombstone'
-				},
-				{
-					name: 'Email',
-					route: '/application/personal-information/email'
-				},
-				{
-					name: 'Perminent Address',
-					route: '/application/personal-information/address/perminent'
-				},
-				{
-					name: 'Address At School',
-					route: '/application/personal-information/address/while-at-school'
-				},
-				{
-					name: 'Documents',
-					route: '/application/documents'
-				}	
-				*/
-			]
-		}
-	}
+  mounted() {
+  	this.profile.atipp.read_terms = false
+  }
 }
 </script>
 
@@ -164,17 +99,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
-.v-stepper__header, .v-sheet.v-stepper:not(.v-sheet--outlined), 
-.v-sheet.v-card:not(.v-sheet--outlined)  {
-  box-shadow: none !important;
-}
-
-div.v-card {
-  padding: 0 !important;
-}
-
-
 article {
 	display: flex;
 	> nav {
