@@ -24,7 +24,7 @@
       <SinNumber 
         v-model="profile.sin" 
         :value="profile.sin" 
-        style="width: 50%;"
+        style="width: 75%;"
       />
 
     </section>

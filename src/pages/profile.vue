@@ -83,6 +83,7 @@
                   @input="dobmenu = false"
                   :error-messages="errors"
                   :success="valid"
+                  :inputTime="false"
                 ></v-date-picker>
               </v-menu>
               <span class="error">{{errors[0]}}</span>
@@ -207,9 +208,14 @@ export default {
       dobmenu: false
     };
   },
+  created() {
+    this.profile.BIRTH_DATE = this.profile.BIRTH_DATE.split("T")[0]
+  },
   mounted() {
-    
-    this.profile.BIRTH_DATE = this.$options.filters.formatDate(this.profile.BIRTH_DATE)
+    this.$nextTick(()=>{
+      this.profile.BIRTH_DATE = this.profile.BIRTH_DATE.split("T")[0]
+    })
+     //this.$options.filters.formatDate(this.profile.BIRTH_DATE)
     console.log(this.$validator)
   },
   methods: {

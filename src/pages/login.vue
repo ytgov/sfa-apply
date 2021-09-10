@@ -26,7 +26,11 @@ export default {
     }
   },
   mounted() {
-    this.$auth.loginWith('auth0')
+    if (!this.$auth.loggedIn) {
+      this.$auth.loginWith('auth0')
+    } else {
+      this.$router.push('/')
+    }
   }
 }
 </script>

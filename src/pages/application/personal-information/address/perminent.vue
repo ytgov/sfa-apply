@@ -5,21 +5,11 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
 
-    <div class="balance" v-if="profile.address.perminent">
-      <div>Address:</div> 
-      <div>
-        {{profile.address.perminent}}  
-
-        <div style="margin-top: 1rem;">
-          <a @click="update()" class="update">Update</a>
-        </div>
-      </div> 
-    </div>
-
-    <section v-if="updating || !profile.address.perminent">
-      <h4>Enter New Address</h4>
+    <section>
+      <h4>Address:</h4>
       <AddressSelector v-model="profile.address.perminent" :value="profile.address.perminent" />
     </section>
+
     <Buttons :valid="valid" :next="next" :back="true" />
   </article>
 </template>
@@ -57,11 +47,6 @@ export default {
       return  '/application/personal-information/address/while-at-school'
     }
   },
-  data() {
-    return {
-      updating: false
-    }
-  },
   mounted() {
     this.$emit('input', this.valid)
   },
@@ -69,11 +54,6 @@ export default {
     valid(to, from) {
       this.$store.commit('profile/SET', this.profile)
       this.$emit('input', this.valid)
-    }
-  },
-  methods: {
-    update() {
-      this.updating = true;
     }
   }
 }
