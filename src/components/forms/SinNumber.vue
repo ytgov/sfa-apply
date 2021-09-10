@@ -20,7 +20,8 @@
 <script>
 
 function tab(evt) {
-  $(':focus').next('input').focus()
+  $(':focus').next('input').focus(() => { $(this).select(); })
+
 }
 
 export default {
@@ -50,13 +51,11 @@ export default {
   },
   methods: {
     handleTab(e) {
-      // Grab input's value
       let value = e.target.value;
-
       if (value.length==3) {
-        console.log(typeof e.target.nextElementSibling)
         if (e.target.nextElementSibling) {
-          e.target.nextElementSibling.focus()
+          e.target.nextElementSibling.select()
+
         }
       }
     },
