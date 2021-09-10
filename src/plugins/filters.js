@@ -50,6 +50,13 @@ Vue.filter('parse_count', function(string, count) {
   return (string||"").replace('{{count}}', count)
 })
 
+Vue.filter('reverse_address', function(address) {
+  var values = address.split(", ");
+  values.splice(values.length-2, 1);
+  return values.join(', ')
+})
+
+
 
 
 Vue.filter('provider', function(link) {

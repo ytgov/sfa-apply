@@ -25,7 +25,7 @@
       <ATIPP  />
     </TermsWrapper>
 
-    <Buttons :valid="valid" :next="next" :back="true" />
+    <Buttons :valid="valid" :next="next" :back="true" :atipp="true" />
 	</v-container>
 </template>
 

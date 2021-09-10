@@ -14,8 +14,11 @@
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
+    "express": "^4.17.1",
     "firebase-admin": "^9.8.0",
     "firebase-functions": "^3.14.1",
+    "http-proxy-middleware": "^2.0.1",
+    "morgan": "^1.10.0",
     "openid-client": "^4.7.4",
     "request": "^2.88.2"
   },

@@ -1,6 +1,16 @@
 <template>
   <section>  
-    <section>
+
+
+    <section v-if="formatted_address || modify" class="address">
+      <div>
+        {{formatted_address}}
+        <div style="margin-top: 1rem;" v-if="!modify">
+          <a @click="update()" class="update">Update</a>
+        </div>
+      </div>
+    </section>
+    <section v-if="!formatted_address || modify">
        <section>
         <ValidationProvider name="address_zip_postal_code" rules="required" tag="span" v-slot="{ errors, valid }">
            <TextField
@@ -34,6 +44,9 @@
           <strong style="font-weight: bolder;">{{city}}, {{region}}</strong>
         </div>
       </section>
+      <section>
+        <a class="save" @click="save()">Save</a>
+      </section>
     </section>
   </section>
 </template>
@@ -61,12 +74,14 @@ export default {
   },
 	data() {
 		return {
+      modify: false,
 			address: {
 				first: '',
         second: '',
         zip_postal_code: ''
 			},
-      full_location: false
+      full_location: false,
+      formatted_address: false
 		}
 	},
   computed: {
@@ -84,10 +99,27 @@ export default {
       this.$emit('input', this.full_location.formatted_address)
     }
   },
+  mounted() {
+    var self = this;
+
+    this.$nextTick(()=>{
+      if (this.value) {
+        this.formatted_address = this.value
+      }
+    })
+  },
   methods: {
+    update() {
+      this.modify = true
+    },
+    save() {
+      this.modify = false
+    },
     geocode() {
       var self = this;
-      var query = { address: `${this.address.first}, ${this.address.zip_postal_code}` }
+      var query = { 
+        address: `${this.address.first}, ${this.address.zip_postal_code}` 
+      }
 
       console.log("Searching Address", query)
 
@@ -100,12 +132,44 @@ export default {
             var full_location = result[0];
             var latlng = result[0].geometry.location;
             self.full_location = full_location;
+            self.formatted_address = full_location.formatted_address;
+
+            console.log(full_location)
           }
         });
       } catch(error) {
-        console.log("Can't use geocode")
+        console.error("Can't use geocode", error)
       }
     }
   }
 }
+
 </script>
+
+
+<style lang="scss" scoped>
+.address {
+  display: flex;
+  width: 100%;
+  background: #efefef;
+
+  border: solid 1px #ccc;
+  margin: 1rem 0;
+  margin-bottom: 3rem;
+
+  > div {
+    padding: 1rem;
+     font-size: 1.1em;
+  
+  }
+}
+
+.update, .save {
+  text-transform: uppercase;
+  color: #fff;
+  background:#244C5A;
+  text-decoration: none;
+  padding: 0.25rem  1rem;
+  font-size: 1rem;
+}
+</style>

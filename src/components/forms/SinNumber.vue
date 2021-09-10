@@ -27,12 +27,13 @@ export default {
   },
   mounted() {
     if (this.value) {
-      this.sin = this.value.split("-")
+      let value = String(this.value)
+      this.sin = [value.slice(0,3), value.slice(3,6), value.slice(6,9)]
     }
   },
   watch: {
     sin(to, from) {
-      this.$emit('input', this.sin.join("-"))
+      this.$emit('input', this.sin.join(""))
     }
   },
   methods: {

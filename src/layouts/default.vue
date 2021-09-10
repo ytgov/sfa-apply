@@ -45,6 +45,11 @@ export default {
     Alerts,
     Heading
   },
+  mounted() {
+    if (this.error && this.error.statusCode === 404) {
+      this.$router.push('/404')
+    }
+  },
   methods: {
     setLocale(locale) {
       this.$store.commit('languages/locale')

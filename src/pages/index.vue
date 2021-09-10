@@ -51,7 +51,6 @@
 		  </p>
 	  </v-card>
 
-
 	  <v-card v-if="eligibility">
     	<h3 class="text-h5">{{ $t("past.header") }}</h3>
 	    <div class="applications" v-if="past_applications.length">
@@ -112,6 +111,8 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+
+
 export default {
 	head() {
 		return {
@@ -119,6 +120,9 @@ export default {
 	  }
 	},
 	computed: {
+		...mapGetters({
+			student: 'student/list'
+		}),
 		applications() {
 			return this.$store.getters['applications/current']
 		},

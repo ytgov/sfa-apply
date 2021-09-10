@@ -28,6 +28,7 @@ export const actions = {
   nuxtClientInit ({ commit, dispatch }, {app, req, redirect, route}) {
     console.log("RUNNING GLOBAL CLIENT INIT.");
     commit('user/SET_STATE')
+    dispatch('student/init')
     /*
     return getUserStatus({ commit, dispatch }).then(async () => {
       //await dispatch('user/init')

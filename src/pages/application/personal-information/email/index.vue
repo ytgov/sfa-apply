@@ -8,7 +8,7 @@
       </div>
     </section>
 
-    <section v-if="(profile.email.value) && valid_email">
+    <section v-if="(profile.email.value) && valid_email && new_email == ''">
       <Question>
         {{ $t('would_you_like_to_use_existing_address') }}
       </Question>
