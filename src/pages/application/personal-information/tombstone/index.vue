@@ -86,7 +86,7 @@ export default {
       return is_valid;
     },
     valid_sin() {
-      return this.profile.sin.length == 11
+      return this.profile.sin.length == 9
     },
     next() {
       return '/application/personal-information/email'

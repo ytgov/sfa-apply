@@ -54,7 +54,7 @@
     </div>
 
     <p>
-      Some text about still choosing to aply for the ineligibile funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Some text about still choosing to apply for the ineligible funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
    
    
@@ -133,7 +133,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Eligable Programs",
+    "title": "Eligible Programs",
     "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",
@@ -142,7 +142,7 @@ export default {
     }
   },
   "fr": {
-     "title": "Eligable Programs",
+     "title": "Eligible Programs",
     "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",

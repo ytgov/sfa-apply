@@ -35,6 +35,7 @@ export default {
     { src: `~/plugins/vee-validate`, ssr: true},
     { src: '~/plugins/filters.js', ssr: true },
     { src: '~/plugins/vuetify.js', ssr: false }
+   //{ src: '~/services/axios.js', ssr: false }
   ],
   modules: [
     // ['@nuxtjs/google-tag-manager', { id: '' }],
@@ -53,7 +54,14 @@ export default {
       alias: 'yukon_financial_student_portal_cookies' 
     }],
     ['@nuxtjs/axios', {
-      endpoint: environment.config.api.endpoint
+      baseURL: environment.config.api.base_url,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+        //'X-API-Key': '86823ecf-e64f-42d2-8ea7-a0984299328c'
+        //'Authorization': ''
+      }
     }],
     ['@nuxtjs/device'],
     ['nuxt-i18n', {

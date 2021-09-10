@@ -1,7 +1,7 @@
 export default function({ store, redirect, route, $auth }) {
   if (process.client) {
 
-
+    
     if ($auth.loggedIn) {
       /*
       if (!store.getters['eligability/status'] && !route.path.includes('/eligability')) {

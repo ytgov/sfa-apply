@@ -2,13 +2,13 @@
   <article data-layout="application" v-if="profile">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
-    <section>
+    <section v-if="profile.email.value">
       <div class="email">
         {{profile.email.value||'No email address on file.'}} 
       </div>
     </section>
 
-    <section v-if="(profile.email.value) && valid_email">
+    <section v-if="(profile.email.value) && valid_email && new_email == ''">
       <Question>
         {{ $t('would_you_like_to_use_existing_address') }}
       </Question>
