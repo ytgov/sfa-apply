@@ -62,10 +62,10 @@ export default {
     },
     valid() {
       var is_valid = (
-          this.eligibility.marital.are_you_in_a_relationship == 'Yes' 
+          this.eligibility.yukon_grant_training_fund.has_completed_two_years == 'Yes' 
         ) || (
-          this.eligibility.marital.are_you_in_a_relationship == 'No' 
-          && this.eligibility.marital.have_you_ever_been_in_a_relationship
+          this.eligibility.yukon_grant_training_fund.has_completed_two_years == 'No' 
+          && this.eligibility.yukon_grant_training_fund.has_been_resident_continuously
         )
 
       return is_valid

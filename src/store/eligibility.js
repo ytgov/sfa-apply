@@ -74,6 +74,11 @@ export const state = () => ({
     },
     yukon_excellence_award: {
       apply: 0
+    },
+    yukon_grant_training_fund: {
+      has_completed_two_years: false,
+      has_been_resident_continuously: false,
+      has_been_resident_continuously_from_14_to_18: false
     }
   }
 })
