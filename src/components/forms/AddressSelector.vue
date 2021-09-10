@@ -46,6 +46,7 @@
       </section>
       <section>
         <a class="save" @click="save()">Save</a>
+        <p>&nbsp;</p>
       </section>
     </section>
   </section>
