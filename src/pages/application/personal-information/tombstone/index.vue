@@ -21,15 +21,20 @@
       <Question>
         {{ $t('what_is_your_sin_number') }}
       </Question>
-      <SinNumber 
-        v-model="profile.sin" 
-        :value="profile.sin" 
-        style="width: 75%;"
-      />
+      <ValidationProvider name="SIN" rules="sin"  tag="span" v-slot="{ errors, valid }" >
+        <SinNumber 
+          name="SIN"
+          v-model="profile.sin" 
+          :value="profile.sin" 
+          :errors="errors" 
+          :valid="valid" 
+          style="width: 50%;"
+        />
+      </ValidationProvider>
 
     </section>
 
-    <section v-if="(!profile.tombstone.alias || profile.tombstone.use_existing_alias == 'No') && valid_sin">
+    <section v-if="(!profile.tombstone.alias || profile.tombstone.use_existing_alias == 'No') && profile.sin">
       <Question>
         {{ $t('what_is_your_birthday') }}
       </Question>
@@ -38,7 +43,6 @@
         <DateSelector 
           v-model="profile.dob" 
           :value="profile.dob" 
-          
         />
       </div>
     </section>
@@ -51,6 +55,7 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
@@ -59,6 +64,7 @@ import DateSelector from '~/components/forms/DateSelector.vue';
 
 export default {
   components: {
+    ValidationProvider,
     Buttons,
     Question,
     RadioList,
@@ -89,7 +95,8 @@ export default {
       return this.profile.sin.length == 9
     },
     next() {
-      return '/application/personal-information/email'
+      return '/application/personal-information/address/perminent'
+      //return '/application/personal-information/email'
     }
   },
   watch: {

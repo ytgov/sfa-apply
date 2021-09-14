@@ -92,7 +92,7 @@
           </fieldset>
         </fieldset> 
 
-        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4 error" v-if="invalid">
+        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4 error" v-if="invalid" style="padding-right: 1rem;">
           <h3>{{ $t('problem.title') }}</h3>
           <br />
           <ul>

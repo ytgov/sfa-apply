@@ -29,6 +29,11 @@ export default {
       return 'sin';
     }
   },
+  computed: {
+    output() {
+      return this.sin.join("")
+    }
+  },
   data() {
     return {
       message: false,
@@ -43,9 +48,8 @@ export default {
   },
   watch: {
     sin(to, from) {
-      var sin = this.sin.join("")
-      if (sin.length==9) {
-        this.$emit('input', sin)
+      if (this.output.length==9) {
+        this.$emit('input', this.output)
       }
     }
   },
@@ -55,6 +59,8 @@ export default {
       if (value.length==3) {
         if (e.target.nextElementSibling) {
           e.target.nextElementSibling.select()
+        } else {
+          this.$emit('input', this.output)
         }
       }
     }

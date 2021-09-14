@@ -2,7 +2,7 @@
   <section>  
     <section v-if="formatted_address || modify" class="address">
       <div>
-        {{formatted_address}}
+        {{(this.address.second) ? this.address.second+'-' : ''}}<span v-html="formatted_address.replace(', ', '<br />')"></span>
         <div style="margin-top: 1rem;" v-if="!modify">
           <a @click="update()" class="update">Update</a>
         </div>
@@ -34,7 +34,7 @@
       <section>
         <TextField
           v-model="address.second"
-          label="Second Line"
+          label="Second Line / Unit"
           :valid="true"
         />
       </section>

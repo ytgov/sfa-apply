@@ -1,8 +1,9 @@
 <template>
   <div class="buttons mt-14">
     <div class="text-left">
-      <v-btn class="back" color="hollow" @click="$router.go(-1)" v-if="back">
-        <span v-if="atipp">Cancel Application</span><span v-else>Back</span>
+      <v-btn class="back" color="hollow" @click="$router.go(-1)" v-if="back && valid">
+        <span v-if="atipp">Disagree</span>
+        <span v-else>Back</span>
       </v-btn>
     </div>
     <div class="text-center">
