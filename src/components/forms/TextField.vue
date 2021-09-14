@@ -11,6 +11,7 @@
           @focus="focus" 
           @click="click" 
           @change="change"
+          :class="{ 'error': (!valid) }"
         /> 
       </div>
     </div>
@@ -19,8 +20,6 @@
 
 
 <script>
-
-
 export default {
   name: 'TextField',
   props: ['name', 'label', 'value', "placeholder", "errors", "valid"],

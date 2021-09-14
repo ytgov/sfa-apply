@@ -34,8 +34,8 @@ export default {
     { src: '~/plugins/font-awesome' },
     { src: `~/plugins/vee-validate`, ssr: true},
     { src: '~/plugins/filters.js', ssr: true },
-    { src: '~/plugins/vuetify.js', ssr: false }
-   //{ src: '~/services/axios.js', ssr: false }
+    { src: '~/plugins/vuetify.js', ssr: false },
+    { src: '~/plugins/api.js', ssr: true }
   ],
   modules: [
     // ['@nuxtjs/google-tag-manager', { id: '' }],
@@ -53,16 +53,7 @@ export default {
     ['cookie-universal-nuxt', { 
       alias: 'yukon_financial_student_portal_cookies' 
     }],
-    ['@nuxtjs/axios', {
-      baseURL: environment.config.api.base_url,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-        //'X-API-Key': '86823ecf-e64f-42d2-8ea7-a0984299328c'
-        //'Authorization': ''
-      }
-    }],
+    ['@nuxtjs/axios'],
     ['@nuxtjs/device'],
     ['nuxt-i18n', {
       defaultLocale: 'en',
@@ -92,9 +83,15 @@ export default {
       ignoredPaths: ['/public-page']
     }],
     ['@nuxtjs/auth-next', {
+      token: {
+        property: 'token',
+        global: true,
+        // required: true,
+        // type: 'Bearer'
+      },
       redirect: {
         login: '/login',
-        logout: '/login',
+        logout: '/logout',
         callback: '/oidc/callback',
         home: '/'
       },

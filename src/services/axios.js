@@ -28,12 +28,12 @@ export default function ({ $axios, redirect }) {
 //import { cacheAdapterEnhancer } from "axios-extensions"
 //import LRU from "lru-cache"
 //const ONE_HOUR = 1000 * 60 * 60
-
+/*
 export default function({ $axios }, inject) {
   var api = $axios.create({
     headers: {
       common: {
-        Accept: 'text/plain, */*'
+        Accept: 'text/plain, *'
       }
     }
   })
@@ -43,18 +43,18 @@ export default function({ $axios }, inject) {
   
   api.onError(error => {
     console.error("API ERROR", error)
-    /*
+    
     const code = parseInt(error.response && error.response.status)
     if (code === 400) {
       redirect('/400')
     }
-    */
+    
   })
 
   inject('api', api)
 
 
-  /*
+  
   const defaultCache = process.server
     ? ssrContext.$axCache
     : new LRU({ maxAge: ONE_HOUR })
@@ -73,8 +73,7 @@ export default function({ $axios }, inject) {
       config.headers.common['x-access-token'] = token;
     }
   });
-*/
-  /*
+
   $axios.onResponseError((error) => {
     const request = error.config;
     if (store.getters['users/token'] && error.response && error.response.status === 401 && !request.retry) {
@@ -88,5 +87,6 @@ export default function({ $axios }, inject) {
       });
     }
   });
-  */
+  
 }
+*/

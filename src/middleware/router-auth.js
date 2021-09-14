@@ -1,8 +1,11 @@
-export default function({ store, redirect, route, $auth }) {
+export default function(context) {
+  //console.log("Context", context)
+  var { store, redirect, route, $auth } = context
   if (process.client) {
 
     
     if ($auth.loggedIn) {
+      //commit('token', $auth.strategy.token.get())
       /*
       if (!store.getters['eligability/status'] && !route.path.includes('/eligability')) {
         redirect('/eligability')
@@ -14,7 +17,7 @@ export default function({ store, redirect, route, $auth }) {
        })
        */
     } else {
-      if (!['/login', '/logout', '/password', '/oidc/callback'].includes(route.path)) {
+      if (!['/login', '/login/', '/logout', '/password', '/oidc/callback', '/oidc/callback/'].includes(route.path)) {
         redirect('/login')
       }
     }

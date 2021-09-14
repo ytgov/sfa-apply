@@ -1,13 +1,17 @@
 export const strict = false
 
 export const state = () => ({
-  menu_open: false
+  menu_open: false,
+  token: false
 })
 
 
 export const getters = {
   menu_open(state) {
     return state.menu_open
+  },
+  token(state) {
+    return state.token
   }
 }
 
@@ -17,6 +21,9 @@ export const mutations = {
   },
   TOGGLE_MENU_OFF(state) {
     state.menu_open = false
+  },
+  SET_TOKEN(state, token) {
+    state.token = token
   }
 }
 
@@ -28,7 +35,7 @@ export const actions = {
   nuxtClientInit ({ commit, dispatch }, {app, req, redirect, route}) {
     console.log("RUNNING GLOBAL CLIENT INIT.");
     commit('user/SET_STATE')
-    dispatch('student/init')
+    
     /*
     return getUserStatus({ commit, dispatch }).then(async () => {
       //await dispatch('user/init')

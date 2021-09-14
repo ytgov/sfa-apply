@@ -52,47 +52,33 @@
               />
             </ValidationProvider>
 
-            <ValidationProvider name="SIN" rules="required|max:9|min:9"  tag="span" v-slot="{ errors, valid }" >
-              <SinNumber v-model="profile.SIN" :value="profile.SIN" />
+            <ValidationProvider name="SIN" rules="sin"  tag="span" v-slot="{ errors, valid }" >
+              <SinNumber 
+                name="SIN"
+                v-model="profile.SIN" 
+                :value="profile.SIN" 
+                :errors="errors" 
+                :valid="valid" 
+              />
             </ValidationProvider>
          
-            <ValidationProvider name="dob" rules="required" tag="span" v-slot="{ errors, valid }"  >
-              <v-menu
-                v-model="dobmenu"
-                :close-on-content-click="false"
-                :nudge-right="40"
-                transition="scale-transition"
-                offset-y
-                min-width="auto"
-
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <TextField
-                    v-model="profile.BIRTH_DATE"
-                    label="Date of Birth"
-                    placeholder="YYYY-MM-DD"
-                   
-                    readonly
-                    v-bind="attrs"
-                    v-on="on"
-                    dense
-                  />
-                </template>
-                <v-date-picker
-                  v-model="profile.BIRTH_DATE"
-                  @input="dobmenu = false"
-                  :error-messages="errors"
-                  :success="valid"
-                  :inputTime="false"
-                ></v-date-picker>
-              </v-menu>
-              <span class="error">{{errors[0]}}</span>
+            <ValidationProvider name="BIRTH_DATE" rules="date" tag="span" v-slot="{ errors, valid }"  >
+              <DateSelector 
+                name="BIRTH_DATE"
+                label="Birth Date"
+                v-model="profile.BIRTH_DATE" 
+                :value="profile.BIRTH_DATE" 
+                :errors="errors" 
+                :valid="valid" 
+              />
             </ValidationProvider>
           </fieldset>
           <fieldset>
             <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
               {{ $t('buttons.save') }}
             </v-btn>
+
+
           </fieldset>
         </fieldset>
         <fieldset class="group">
@@ -104,23 +90,17 @@
             <legend class="text-h5">{{ $t('legends.address_at_school') }}</legend>
             <AddressSelector v-model="profile.HOME_ADDRESS2" :value="profile.HOME_ADDRESS2" />
           </fieldset>
-        </fieldset>
+        </fieldset> 
 
-       
-    
-     
+        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="invalid">
+          <h3>{{ $t('problem.title') }}</h3>
+          <ul>
+            <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
+          </ul>
+        </v-banner>
       </v-form>
-
-      <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="!valid">
-        <h3>{{ $t('problem.title') }}</h3>
-        <ul>
-          <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
-        </ul>
-      </v-banner>
     </ValidationObserver>
-
-
-
+    <BlackoutNotice ref="blackout" />
   </v-container>
 </template>
 
@@ -170,7 +150,9 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import AddressSelector from "~/components/forms/AddressSelector.vue";
 import SinNumber from "~/components/forms/SinNumber.vue";
 import TextField from "~/components/forms/TextField.vue";
+import DateSelector from '~/components/forms/DateSelector.vue';
 
+import BlackoutNotice from "~/components/BlackoutNotice.vue";
 
 export default {
   head (){
@@ -188,9 +170,11 @@ export default {
   components: {
     ValidationProvider,
     ValidationObserver,
+    BlackoutNotice,
     TextField,
+    DateSelector,
     AddressSelector,
-    SinNumber
+    SinNumber,
   },
   computed: {
     profile: {
@@ -202,28 +186,29 @@ export default {
       }
     }
   },
+  /*
+  async fetch({ store, app }) {
+    //await console.log(app.$api)
+    await store.dispatch('student/init', { app })
+  },
+  */
   data() {
     return {
-      valid: false,
-      dobmenu: false
+      valid: false
     };
   },
-  created() {
-    this.profile.BIRTH_DATE = this.profile.BIRTH_DATE.split("T")[0]
-  },
-  mounted() {
-    this.$nextTick(()=>{
-      this.profile.BIRTH_DATE = this.profile.BIRTH_DATE.split("T")[0]
-    })
-     //this.$options.filters.formatDate(this.profile.BIRTH_DATE)
-    console.log(this.$validator)
-  },
   methods: {
-    submit() {
-      alert('Valid Form')
-      //this.$refs.observer.validate();
-      //this.$store.dispatch('profile/SAVE')
-    },
+    async submit() {
+      const isValid = await this.$refs.observer.validate();
+      if (isValid) {
+        
+        this.$refs.blackout.open({
+          text: 'Saved',
+          timeout: true
+        })
+        await this.$store.commit('student/SET', this.profile)
+      } 
+    }
   }
 };
 </script>
@@ -284,6 +269,16 @@ div.container {
 
 .v-input input {
   max-height: 30px !important;
+}
+
+
+input,
+textarea,
+select {
+  &.error {
+    border: solid 1px #cc0000;
+    background-color: #FFcccc !important;
+  }
 }
 </style>
 

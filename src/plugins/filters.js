@@ -168,8 +168,9 @@ Vue.filter('formatFromNow', value => {
   return (value) ? moment(String(value)).fromNowOrNow() : 'Unknown'
 })
 
-Vue.filter('formatTimestamp', function (value) {
-  if (value) {
-    return moment(value).format('MM/DD/YYYY hh:mmA')
-  }
+Vue.filter('formatTimestamp', function (timestamp) {
+
+  //console.log(timestamp, moment(timestamp.seconds*1000), moment(timestamp.seconds*1000).toISOString())
+  if (timestamp) 
+    return moment(timestamp).toISOString()
 })

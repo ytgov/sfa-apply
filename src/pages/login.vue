@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     
-  
+    {{$auth.loggedIn}}
   </v-container>
 </template>
 

@@ -42,7 +42,7 @@ export const mutations = {
 
 export const actions = {
   async fetch({ commit }) {
-    await axios.get('').then(response => {
+    await api.get('/Students/1').then(response => {
       commit("SET", response.data);
     }).catch(() => {
       commit("CLEAR");
