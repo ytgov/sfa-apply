@@ -1,7 +1,5 @@
 <template>
   <section>  
-
-
     <section v-if="formatted_address || modify" class="address">
       <div>
         {{formatted_address}}
@@ -12,23 +10,23 @@
     </section>
     <section v-if="!formatted_address || modify">
        <section>
-        <ValidationProvider name="address_zip_postal_code" rules="required" tag="span" v-slot="{ errors, valid }">
+        <ValidationProvider name="address_zip_postal_code" rules="notrequired" tag="span" v-slot="{ errors, valid }">
            <TextField
             v-model="address.zip_postal_code"
             label="Enter the zip or postal code"
-            :error-messages="errors"
-            :success="valid"
+            :errors="errors"
+            :valid="valid"
             @blur="geocode()"
           />
         </ValidationProvider>
       </section>
       <section>
-        <ValidationProvider name="address_first" rules="required" tag="span" v-slot="{ errors, valid }">
+        <ValidationProvider name="address_first" rules="notrequired" tag="span" v-slot="{ errors, valid }">
           <TextField
             v-model="address.first"
             label="Enter Street Address"
-            :error-messages="errors"
-            :success="valid"
+            :errors="errors"
+            :valid="valid"
             @blur="geocode()"
           />
         </ValidationProvider>
@@ -37,6 +35,7 @@
         <TextField
           v-model="address.second"
           label="Second Line"
+          :valid="true"
         />
       </section>
       <section v-if="address.zip_postal_code">

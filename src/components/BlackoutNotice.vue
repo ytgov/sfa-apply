@@ -14,8 +14,7 @@ export default {
   data() {
     return {
       text: false,
-      is_open: false,
-      timeout: false
+      is_open: false
     }
   },
   methods: {
@@ -24,8 +23,8 @@ export default {
     },
     open(values) {
       var self = this
-      
       this.is_open = true
+
       if (values.text) {
         this.text = values.text
       }
@@ -33,8 +32,7 @@ export default {
       if (values.timeout) {
         setTimeout(()=>{
           self.close()
-        }, (self.timeout) ? 3000 : 0) 
-        this.timeout = values.timeout
+        }, (values.timeout) ? 2000 : 0) 
       }
     }
   }

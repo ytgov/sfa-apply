@@ -33,10 +33,11 @@ extend("phone", {
     return `The ${field} must be a valid phone number.`;
   },
   validate(value, args) {
+    var parts = value.split('x')
     // Custom regex for a phone number 
-    const PhoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    const PhoneRegex = /(\+\d{1,2}[\s.-])?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}/im;
     // Check for either of these to return true
-    return PhoneRegex.test(value) && [10, 11].includes(value.match(/\d/g).length);
+    return PhoneRegex.test(parts[0].trim()) && [10, 11, 13].includes(parts[0].trim().match(/\d/g).length);
   }
 });
 
@@ -50,14 +51,12 @@ extend("sin", {
     var valid = false; 
     var digits = sin.toString().split("")
 
-    if (sin.length == 0) {
-      this.message = `Please enter a 9 digit Social Insurance Number.`
-    } else if (sin.length > 9) {
-      this.message= `Invalid Numbes: has more than maximum 9 digits.`
+    if (sin.length > 9) {
+      this.message= `Invalid SIN Number: has more than maximum 9 digits.`
     } else if (sin.length > 0 && sin.length < 9) {
-      this.message = `Invalid Number: has less than the required 9 digits.`
+      this.message = `Invalid SIN Number: has less than the required 9 digits.`
     } else if (!sin.match(/^\d+$/)) {
-      this.message = `Invalid Number: contains invalid non-numeric characters`
+      this.message = `Invalid SIN Number: contains invalid non-numeric characters`
     } else if (sin == "000000000") {
       this.message = `000000000 may be used only when SIN is unknown - please revalidate when SIN is available.`
     } else {
@@ -93,9 +92,8 @@ extend("sin", {
       }
       if (checkdigitX == checkdigit) {
         valid = true;
-        this.message = `Valid Number: is a valid SIN format.`
       } else {
-        this.message = `Invalid Number: does not pass validation.`
+        this.message = `Invalid SIN Number: does not pass validation.`
       }
     }
     return valid

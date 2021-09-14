@@ -12,9 +12,9 @@
           <fieldset>
             <legend class="text-h5">{{ $t('legends.personal_details') }}</legend>
 
-            <ValidationProvider name="FIRST_NAME" rules="required|max:10" tag="span" v-slot="{ errors, valid }">
+            <ValidationProvider name="First Name" rules="required|max:10" tag="span" v-slot="{ errors, valid }">
               <TextField
-                name="FIRST_NAME"
+                name="First Name"
                 v-model="profile.FIRST_NAME"
                 label="First name (required)"
                 :errors="errors"
@@ -22,9 +22,9 @@
               />
             </ValidationProvider>
 
-            <ValidationProvider name="LAST_NAME" rules="required|max:10" tag="span"  v-slot="{ errors, valid }">
+            <ValidationProvider name="Last Name" rules="required|max:10" tag="span"  v-slot="{ errors, valid }">
               <TextField
-                name="LAST_NAME"
+                name="Last Name"
                 v-model="profile.LAST_NAME"
                 label="Last name (required)"
                 :error="errors"
@@ -32,9 +32,9 @@
               />
             </ValidationProvider>
      
-            <ValidationProvider name="HOME_EMAIL" rules="required|email"  tag="span"  v-slot="{ errors, valid }">
+            <ValidationProvider name="Home Email" rules="required|email"  tag="span"  v-slot="{ errors, valid }">
               <TextField
-                name="HOME_EMAIL"
+                name="Home Email"
                 v-model="profile.HOME_EMAIL"
                 label="Email (required)"
                 :error="errors"
@@ -42,9 +42,9 @@
               />
             </ValidationProvider>
 
-            <ValidationProvider name="HOME_PHONE" rules="required|phone" tag="span" v-slot="{ errors, valid }">
+            <ValidationProvider name="Home Phone" rules="required|phone" tag="span" v-slot="{ errors, valid }">
               <TextField
-                name="HOME_PHONE"
+                name="Home Phone"
                 v-model="profile.HOME_PHONE"
                 label="Phone Number"
                 :error="errors"
@@ -62,9 +62,9 @@
               />
             </ValidationProvider>
          
-            <ValidationProvider name="BIRTH_DATE" rules="date" tag="span" v-slot="{ errors, valid }"  >
+            <ValidationProvider name="Birth Date" rules="date" tag="span" v-slot="{ errors, valid }"  >
               <DateSelector 
-                name="BIRTH_DATE"
+                name="Birth Date"
                 label="Birth Date"
                 v-model="profile.BIRTH_DATE" 
                 :value="profile.BIRTH_DATE" 
@@ -92,8 +92,9 @@
           </fieldset>
         </fieldset> 
 
-        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4" v-if="invalid">
+        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4 error" v-if="invalid">
           <h3>{{ $t('problem.title') }}</h3>
+          <br />
           <ul>
             <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
           </ul>
@@ -202,7 +203,7 @@ export default {
       const isValid = await this.$refs.observer.validate();
       if (isValid) {
         
-        this.$refs.blackout.open({
+        await this.$refs.blackout.open({
           text: 'Saved',
           timeout: true
         })
