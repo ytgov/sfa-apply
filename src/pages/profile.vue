@@ -16,7 +16,7 @@
               <TextField
                 name="First Name"
                 v-model="profile.FIRST_NAME"
-                label="First name (required)"
+                label="First name"
                 :errors="errors"
                 :valid="valid"
               />
@@ -26,7 +26,7 @@
               <TextField
                 name="Last Name"
                 v-model="profile.LAST_NAME"
-                label="Last name (required)"
+                label="Last name"
                 :error="errors"
                 :valid="valid"
               />
@@ -36,7 +36,7 @@
               <TextField
                 name="Home Email"
                 v-model="profile.HOME_EMAIL"
-                label="Email (required)"
+                label="Email"
                 :error="errors"
                 :valid="valid"
               />
@@ -78,8 +78,6 @@
             <v-btn color="primary" class="mr-5" type="submit" :disabled="!valid">
               {{ $t('buttons.save') }}
             </v-btn>
-
-
           </fieldset>
         </fieldset>
         <fieldset class="group">
