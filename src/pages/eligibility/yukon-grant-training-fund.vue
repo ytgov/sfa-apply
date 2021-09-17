@@ -13,7 +13,18 @@
       />
     </section>
 
-    <section v-if="eligibility.yukon_grant_training_fund.has_completed_two_years=='No'">
+    <section v-if="eligibility.yukon_grant_training_fund.has_completed_two_years">
+      <Question>
+        {{ $t('is_over_20') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="eligibility.yukon_grant_training_fund.is_over_20" 
+        :value="eligibility.yukon_grant_training_fund.is_over_20" 
+      />
+    </section>
+
+    <section v-if="eligibility.yukon_grant_training_fund.has_completed_two_years && eligibility.yukon_grant_training_fund.is_over_20 == 'Yes'">
       <Question>
         {{ $t('has_been_resident_continuously') }}
       </Question>
@@ -24,7 +35,7 @@
       />
     </section>
 
-    <section v-if="eligibility.yukon_grant_training_fund.has_been_resident_continuously=='No'">
+    <section v-if="eligibility.yukon_grant_training_fund.is_over_20 == 'No'">
       <Question>
         {{ $t('has_been_resident_continuously_from_14_to_18') }}
       </Question>
@@ -92,12 +103,14 @@ export default {
   "en": {
     "title": "Yukon Grant and Training Fund Eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
+    "is_over_20": "Are you over the age of 21?",
     "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
     "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
   },
   "fr": {
     "title": "Yukon Grant and Training Fund Eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
+    "is_over_20": "Are you over the age of 21?",
     "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
     "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
   }

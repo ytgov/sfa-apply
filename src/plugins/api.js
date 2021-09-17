@@ -11,7 +11,7 @@ export default async (context, inject) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'authorization': context.store.getters['token'] //$auth.strategy.token.get()
+      'Authorization': context.store.getters['token'] //$auth.strategy.token.get()
     }
   })
   

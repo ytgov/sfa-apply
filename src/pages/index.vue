@@ -5,9 +5,6 @@
     	{{ $t('welcome') }}
     </p>
 
-     <div>{{$auth.user}}</div>
-     <div>{{$auth.strategy.token.get()}}</div>
-
     <v-card v-if="!eligibility" style="width: 600px;">
 			<p>
 				Short welcome message for first time users... These trees are so much fun. 
@@ -24,8 +21,6 @@
     		</v-btn>
     	</p>
     </v-card>
-
-
 
     <v-card v-if="eligibility">
 	    <h3 class="text-h5">{{ $t("current.header") }}</h3>
@@ -145,6 +140,8 @@ export default {
 		} else if (!this.$store.getters['eligibility/status'] && !this.$route.path.includes('/eligibility')) {
 			//this.eligibility = false
     } 
+
+    console.log("STRATEGY", this.$auth.strategy)
     this.$store.commit('SET_TOKEN', this.$auth.strategy.token.get())
 	}
 }

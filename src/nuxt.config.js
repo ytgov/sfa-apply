@@ -99,7 +99,8 @@ export default {
         auth0: {
           domain: environment.config.oauth.domain,
           clientId: environment.config.oauth.clientID,
-          redirectUri: environment.config.oauth.redirectUri
+          redirectUri: environment.config.oauth.redirectUri,
+          audience: `https://api.gov.yk.ca/sfa`
         }
       }
     }]

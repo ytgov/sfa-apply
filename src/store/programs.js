@@ -25,6 +25,20 @@ var program_validations = {
       ) && (
         eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
         && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
+      ) && (
+        eligibility.yukon_grant_training_fund.has_completed_two_years == 'Yes' || (
+          eligibility.yukon_grant_training_fund.has_completed_two_years == 'No' && 
+          (
+            (
+              eligibility.yukon_grant_training_fund.is_over_20 == 'Yes' &&
+              eligibility.yukon_grant_training_fund.has_been_resident_continuously != 'No'
+            ) ||
+            (
+              eligibility.yukon_grant_training_fund.is_over_20 == 'No' &&
+              eligibility.yukon_grant_training_fund.has_been_resident_continuously_from_14_to_18 != 'No'
+            )
+          )
+        )
       )
   },
   student_training_allowance: (eligibility) => {
