@@ -4,7 +4,7 @@
       <div>
         {{(this.address.second) ? this.address.second+'-' : ''}}<span v-html="formatted_address.replace(', ', '<br />')"></span>
         <div style="margin-top: 1rem;" v-if="!modify">
-          <a @click="update()" class="update">Update</a>
+          <a @click="update()" class="update">Edit</a>
         </div>
       </div>
     </section>
@@ -44,7 +44,7 @@
         </div>
       </section>
       <section>
-        <a class="save" @click="save()">Save</a>
+        <a class="save" @click="save()">Update</a>
         <p>&nbsp;</p>
       </section>
     </section>

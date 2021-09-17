@@ -74,10 +74,9 @@ export const actions = {
     });
   },
   */
-  async logout({ commit }, { auth }) {
+  async logout({ commit }) {
     return new Promise((resolve, reject) => {
-      console.log("Auth", auth)
-      var user = auth.user
+      var user = firebase.auth().user
       if (user) {
         /*
         profiles.doc(user.uid).set({ 

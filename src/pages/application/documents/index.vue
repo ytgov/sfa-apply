@@ -6,9 +6,9 @@
     </p>
 
 		<section class="documents">
-			<div v-for="doc, resource in documents[locale].supporting">
+			<div v-for="doc, resource in documents">
 				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
-				<div><strong>{{doc.name}}</strong></div>
+				<div><strong>{{doc.name[locale]}}</strong></div>
 				<div v-if="['Verified', 'Vérifié'].includes(doc.status)">
 					<a>{{ $t("buttons.delete") }}</a>
 				</div>
@@ -123,55 +123,6 @@ export default {
     next() {
       return '/application/submit'
     }
-	},
-	data() {
-		return {
-			documents: {
-				en: {
-					supporting: [
-						{
-							name: 'High School Transcript',
-							status: 'Verified'
-						},
-						{
-							name: 'Letter of Acceptance',
-							status: 'Uploading'
-						},
-						{
-							name: 'Spouse Income Tax (2018)',
-							status: 'Pending'
-						},
-						{
-							name: 'Student Income Tax (2018)',
-							status: 'Pending'
-						}
-
-					]
-				},
-				fr: {
-					supporting: [
-						{
-							name: 'Relevé de notes du secondaire',
-							status: 'Vérifié'
-						},
-						{
-							name: 'Lettre d\'acceptation',
-							status: 'Téléchargement'
-						},
-						{
-							name: 'Impôt sur le revenu du conjoint (2018)',
-							status: 'En attente'
-						},
-						{
-							name: 'Impôt sur le revenu des étudiants (2018)',
-							status: 'En attente'
-						}
-
-					]
-				}
-			}
-			
-		}
 	}
 }
 </script>

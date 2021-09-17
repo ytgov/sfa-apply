@@ -11,26 +11,11 @@ export default async (context, inject) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Authorization': context.store.getters['token'] //$auth.strategy.token.get()
+      'Authorization': store.getters['token']
     }
   })
-  
-  //console.log('INJECT API', api)
   inject('api', api)
 }
-
-
-
-// $auth.strategy.token.get()
-/*
-var API = axios.create({
-  baseURL: "http://localhost:3000", //process.env.APIbaseUrl,
-  //baseURL: "https://q4ihh659je.execute-api.us-east-1.amazonaws.com/dev",
-  headers: {
-    // Authorization: 'Bearer {token}'
-  }
-})
-*/
 
 
 

@@ -15,9 +15,7 @@
         <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
           <v-form @submit.prevent="submit" v-model="valid">
             <fieldset class="group">
-             
-              <legend class="text-h5">{{ $t('legends.personal_details') }}</legend>
-
+          
               <ValidationProvider name="First Name" rules="required|max:10" tag="span" v-slot="{ errors, valid }">
                 <TextField
                   name="Subject"
@@ -92,3 +90,15 @@ export default {
   }
 }
 </script>
+
+
+<i18n>
+{
+  "en": {
+    "title": "Compose"
+  },
+  "fr": {
+    "title": "Compose"
+  }
+}
+</i18n>

@@ -135,14 +135,17 @@ export default {
 		}
 	},
 	mounted() {
+		// UPDATE TOKEN TO STORE
+		//console.log("STRATEGY", this.$auth.strategy)
+    this.$store.commit('SET_TOKEN', this.$auth.strategy.token.get())
+
+
 		if (!this.$auth.loggedIn) {
 			this.$router.push('/login')
 		} else if (!this.$store.getters['eligibility/status'] && !this.$route.path.includes('/eligibility')) {
 			//this.eligibility = false
     } 
-
-    console.log("STRATEGY", this.$auth.strategy)
-    this.$store.commit('SET_TOKEN', this.$auth.strategy.token.get())
+  
 	}
 }
 </script>

@@ -52,9 +52,10 @@
               />
             </ValidationProvider>
 
-            <ValidationProvider name="SIN" rules="sin"  tag="span" v-slot="{ errors, valid }" >
+            <ValidationProvider name="Social Insurance Number" rules="sin"  tag="span" v-slot="{ errors, valid }" >
               <SinNumber 
-                name="SIN"
+                name="sin"
+                label="Social Insurance Number"
                 v-model="profile.SIN" 
                 :value="profile.SIN" 
                 :errors="errors" 
@@ -62,10 +63,10 @@
               />
             </ValidationProvider>
          
-            <ValidationProvider name="Birth Date" rules="date" tag="span" v-slot="{ errors, valid }"  >
+            <ValidationProvider name="Date of Birth" rules="date" tag="span" v-slot="{ errors, valid }"  >
               <DateSelector 
-                name="Birth Date"
-                label="Birth Date"
+                name="BIRTH_DATE"
+                label="Date of Birth"
                 v-model="profile.BIRTH_DATE" 
                 :value="profile.BIRTH_DATE" 
                 :errors="errors" 
@@ -88,6 +89,9 @@
           </fieldset>
           <fieldset>
             <legend class="text-h5">{{ $t('legends.address_at_school') }}</legend>
+            <p class="note">
+              If you do not have an address while at school yet just leave this form blank.
+            </p>
             <AddressSelector v-model="profile.HOME_ADDRESS2" :value="profile.HOME_ADDRESS2" />
           </fieldset>
         </fieldset> 
@@ -111,8 +115,8 @@
     "title": "Profile",
     "legends": {
       "personal_details": "Personal Details",
-      "address": "Address",
-      "address_at_school": "Address at School"
+      "address": "Permanent Address",
+      "address_at_school": "Address while at School"
     },
     "buttons": {
       "save": "Save"
@@ -129,7 +133,8 @@
     "title": "Profil",
     "legends": {
       "personal_details": "Détails personnels",
-      "address": "Adresse"
+      "address": "Permanent Adresse",
+      "address_at_school": "Address while at School"
     },
     "buttons": {
       "save": "Sauver"
@@ -187,12 +192,10 @@ export default {
       }
     }
   },
-  /*
   async fetch({ store, app }) {
     //await console.log(app.$api)
     await store.dispatch('student/init', { app })
   },
-  */
   data() {
     return {
       valid: false
@@ -216,6 +219,11 @@ export default {
 
 <style lang="scss" scoped>
 div.container {
+
+  .note {
+    margin-top: 1rem;
+    font-style: italic;
+  }
  
 
   form {

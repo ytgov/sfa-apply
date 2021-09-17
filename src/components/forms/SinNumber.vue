@@ -1,11 +1,13 @@
 <template>
   <div class="control">
     <div class="slot">
-      <label>Sin Number</label>
+      <label>{{label}}</label>
       <div class="sin-holder">
         <input type="text" v-model="sin[0]" placeholder="xxx" pattern="\d{1,3}" maxlength="3" @keyup="handleTab" /> 
+        <span>-</span>
         <input type="text" v-model="sin[1]" placeholder="xxx" pattern="\d{1,3}" maxlength="3" @keyup="handleTab" /> 
-        <input type="text" v-model="sin[2]" placeholder="xxx" pattern="\d{1,3}" maxlength="3" @keyup="handleTab" />
+        <span>-</span>
+        <input type="text" v-model="sin[2]" placeholder="xxx" pattern="\d{1,3}" maxlength="3" @keyup="handleTabSave" />
       </div>
     </div>
     <div v-if="errors.length && !valid">
@@ -18,7 +20,7 @@
 
 <script>
 export default {
-  props: ['value', 'errors', 'valid'],
+  props: ['value', 'label', 'errors', 'valid'],
   $_veeValidate: {
     // value getter
     value () {
@@ -57,12 +59,15 @@ export default {
     handleTab(e) {
       let value = e.target.value;
       if (value.length==3) {
-        if (e.target.nextElementSibling) {
-          e.target.nextElementSibling.select()
+        if (e.target.nextElementSibling.nextElementSibling) {
+          e.target.nextElementSibling.nextElementSibling.select()
         } else {
           this.$emit('input', this.output)
         }
       }
+    },
+    handleTabSave() {
+      this.$emit('input', this.output)
     }
   }
 }
@@ -74,7 +79,7 @@ div.control {
   margin: 1.25rem 0;
   div.sin-holder {
     display: grid;
-    grid-template-columns: 6fr 6fr 6fr;
+    grid-template-columns: 6fr 0.5fr 6fr 0.5fr 6fr;
     grid-gap: 1rem;
     input[type=text] {
       width: 100%;
@@ -82,6 +87,13 @@ div.control {
       border-radius: 3px;
       border: 1px solid #D4C7CF !important;
       padding: 0.5rem !important;
+    }
+    span {
+      display: flex;
+      height: 100%;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
     }
   }
   .error, .valid {
