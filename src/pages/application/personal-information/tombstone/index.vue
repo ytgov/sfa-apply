@@ -28,7 +28,7 @@
           :value="profile.sin" 
           :errors="errors" 
           :valid="valid" 
-          style="width: 50%;"
+          style="width: 70%;"
         />
       </ValidationProvider>
 
@@ -39,7 +39,7 @@
         {{ $t('what_is_your_birthday') }}
       </Question>
 
-      <div style="width: 50%;">
+      <div style="width: 70%;">
         <DateSelector 
           v-model="profile.dob" 
           :value="profile.dob" 
