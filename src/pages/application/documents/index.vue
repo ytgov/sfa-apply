@@ -70,7 +70,7 @@
 
   @media only screen and (max-width: 1024px) {
     max-width: 100%;
-    margin: 2rem !important;
+    margin: 2rem;
     > section.documents {
     	> div {
     		display: grid;
@@ -97,6 +97,10 @@
     	}
     }
   }
+  @media only screen and (max-width: 1024px) {
+    margin: 1rem;
+  }
+
 }
 
 </style>

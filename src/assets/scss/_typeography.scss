@@ -38,6 +38,20 @@ a {
   }
 }
 
-.v-application .error {
-  background-color: #FFcccc !important;
+.v-application {
+  .error {
+    background-color: #FFcccc !important;
+  }
 }
+
+@media only screen and (max-width: 768px) {
+  .v-application {
+    h2 {
+      &.text-h3 {
+        font-size: 1.8rem !important;
+        line-height: 1.3;
+      }
+    }
+  }
+}
+

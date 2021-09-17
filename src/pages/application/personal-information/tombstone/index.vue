@@ -28,7 +28,7 @@
           :value="profile.sin" 
           :errors="errors" 
           :valid="valid" 
-          style="width: 70%;"
+          class="limit"
         />
       </ValidationProvider>
 
@@ -39,7 +39,7 @@
         {{ $t('what_is_your_birthday') }}
       </Question>
 
-      <div style="width: 70%;">
+      <div class="limit">
         <DateSelector 
           v-model="profile.dob" 
           :value="profile.dob" 
@@ -125,3 +125,12 @@ export default {
   }
 }
 </i18n>
+
+<style lang="scss" scoped>
+.limit {
+  width: 70%;
+  @media only screen and (max-width: 640px) {
+    width: 100%;
+  }
+}
+</style>
