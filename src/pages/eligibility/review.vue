@@ -188,10 +188,13 @@ div.programs {
     }
 
     @media only screen and (max-width: 768px) {
-      display: block;
+  
       > div {
-        padding: 0.25rem 0; 
+        padding: 1rem; 
         text-align: left;
+        &:first-of-type {
+          width: 10%;
+        }
         &:last-of-type {
           text-align: left;
         }

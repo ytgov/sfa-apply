@@ -84,6 +84,7 @@ header {
   > section.limit-width {
     display: flex;
     align-items: center;
+
     padding: 0.5rem 0;
     > section {
       width: 100%;
@@ -93,6 +94,8 @@ header {
         text-align: right;
         display: flex;
         align-items: center;
+        
+
         > div {
           width: 100%;
 
@@ -160,20 +163,26 @@ header {
   header {
     > section.limit-width {
       > section {
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem 1rem;
         &:last-of-type {
           width: 100%;
           min-width: auto;
+          justify-content: end;
+          
           > div {
             &:nth-of-type(1) {
+              width: auto;
               display: none;
             }
             &:nth-of-type(2) {
-     
+              width: 75px;
               padding: 0 20px;
             }
             &:nth-of-type(3) {
+              width: 75px;
+
               > a {
+                display: block;
                 > div {
                   &:nth-of-type(2) {
                     display: none;

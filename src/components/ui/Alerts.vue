@@ -62,6 +62,14 @@ section[data-section=alerts] {
         padding-left: 50px;
         padding-right: 50px;
       }
+
+      ul {
+        > li {
+          > a {
+            white-space: nowrap;
+          }
+        }
+      }
     }
   }
 }
@@ -74,7 +82,7 @@ section[data-section=alerts] {
       padding: 1rem;
       > div {
        &:nth-of-type(1) {
-          padding-left: 1rem;
+          padding-left: 0rem;
           padding-right: 20px;
         }
       }

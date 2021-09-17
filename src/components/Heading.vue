@@ -57,4 +57,11 @@ section.heading {
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+ section.heading {
+    display: none;
+    padding: 1rem;
+  }
+}
 </style>

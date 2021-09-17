@@ -14,7 +14,7 @@ main.v-main {
   > div {
     max-width: 1024px;
     width: 100%;
-    margin: 50px auto; 
+    margin: 2rem auto; 
   }
 }
 
@@ -25,11 +25,13 @@ div.v-card {
 }
 
 .container {
-
-  padding: 1rem 2rem  !important;
+  padding: 1rem 2rem;
   @media only screen and (min-width: 1024px) {
+    padding: 2rem 0;
+  }
 
-    padding: 2rem 0 !important;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem 0;
   }
 }
 
@@ -65,11 +67,15 @@ p.buttons {
 [data-layout="eligibility"], [data-layout="application"] {
   width: 100%;
   max-width: 600px;
-  margin: 4rem 0;
+  padding: 4rem 0;
 
   @media only screen and (max-width: 1024px) {
     max-width: 100%;
-    margin: 2rem !important;
+    padding: 2rem !important;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 1rem !important;
   }
 }
 

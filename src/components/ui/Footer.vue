@@ -158,7 +158,7 @@ footer {
     > section {
       > section.limit-width {
         display: block;
-        padding: 3rem 2rem;
+        padding: 2rem 1rem;
       }
       &[data-section=menu] {
          > section.limit-width {
