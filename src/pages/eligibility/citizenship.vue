@@ -15,16 +15,16 @@
 
     <section v-if="eligibility.citizenship.is_canadian_citizen=='No'">
       <Question>
-        {{ $t('are_you_a_perminent_resident') }}
+        {{ $t('are_you_a_permanent_resident') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.citizenship.are_you_a_perminent_resident" 
-        :value="eligibility.citizenship.are_you_a_perminent_resident" 
+        v-model="eligibility.citizenship.are_you_a_permanent_resident" 
+        :value="eligibility.citizenship.are_you_a_permanent_resident" 
       />
     </section>
 
-    <section v-if="eligibility.citizenship.is_canadian_citizen=='No' && eligibility.citizenship.are_you_a_perminent_resident">
+    <section v-if="eligibility.citizenship.is_canadian_citizen=='No' && eligibility.citizenship.are_you_a_permanent_resident">
       <Question>
         {{ $t('are_you_a_protected_person') }}
       </Question>
@@ -35,7 +35,7 @@
       />
     </section>
 
-    <section v-if="eligibility.citizenship.is_canadian_citizen=='No' && eligibility.citizenship.are_you_a_perminent_resident && eligibility.citizenship.are_you_a_protected_person=='No'">
+    <section v-if="eligibility.citizenship.is_canadian_citizen=='No' && eligibility.citizenship.are_you_a_permanent_resident && eligibility.citizenship.are_you_a_protected_person=='No'">
       <Question>
         {{ $t('are_you_registered_as_indigenous') }}
       </Question>
@@ -76,10 +76,10 @@ export default {
         this.eligibility.citizenship.is_canadian_citizen == 'Yes' 
         || (
           this.eligibility.citizenship.is_canadian_citizen == 'No' 
-          && this.eligibility.citizenship.are_you_a_perminent_resident
+          && this.eligibility.citizenship.are_you_a_permanent_resident
         ) || (
           this.eligibility.citizenship.is_canadian_citizen == 'No' 
-          && this.eligibility.citizenship.are_you_a_perminent_resident
+          && this.eligibility.citizenship.are_you_a_permanent_resident
           && this.eligibility.citizenship.are_you_a_protected_person == 'No'
           && this.eligibility.citizenship.are_you_registered_as_indigenous
         )
@@ -108,14 +108,14 @@ export default {
   "en": {
     "title": "Citizenship",
     "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
-    "are_you_a_perminent_resident": "Are you a permanent resident?",
+    "are_you_a_permanent_resident": "Are you a permanent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
     "are_you_registered_as_indigenous": "Are you registered as indigenous?"
   },
   "fr": {
     "title": "Citizenship",
     "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
-    "are_you_a_perminent_resident": "Are you a permanent resident?",
+    "are_you_a_permanent_resident": "Are you a permanent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
     "are_you_registered_as_indigenous": "Are you registered as indigenous?"
   }

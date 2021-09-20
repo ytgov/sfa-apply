@@ -47,10 +47,10 @@ extend("sin", {
   getMessage(field, args) {
     return this.message;
   },
-  validate(sin, args) {
+  validate(input, args) {
     var valid = false; 
-    var digits = sin.toString().split("")
-
+    var sin = input.toString()
+    var digits = sin.split("")
     if (sin.length > 9) {
       this.message= `Invalid SIN Number: has more than maximum 9 digits.`
     } else if (sin.length > 0 && sin.length < 9) {
@@ -59,6 +59,9 @@ extend("sin", {
       this.message = `Invalid SIN Number: contains invalid non-numeric characters`
     } else if (sin == "000000000") {
       this.message = `000000000 may be used only when SIN is unknown - please revalidate when SIN is available.`
+    } else if (sin == "121212121") {
+      this.message = `121212121 is a test sin and is valid.`
+      valid = true;
     } else {
       var checkdigit = sin.substr(8, 1);
       var double2 = parseInt(sin.substr(1, 1)) * 2;

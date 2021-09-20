@@ -80,7 +80,7 @@ export default {
     },
     next() {
       this.$store.commit('profile/SET', this.profile)
-      return '/application/personal-information/address/perminent'
+      return '/application/personal-information/address/permanent'
     }
   },
   data() {

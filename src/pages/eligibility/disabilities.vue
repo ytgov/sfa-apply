@@ -4,16 +4,16 @@
 
     <section>
       <Question>
-        {{ $t('perminent_disability') }}
+        {{ $t('permanent_disability') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.disabilities.perminent_disability" 
-        :value="eligibility.disabilities.perminent_disability" 
+        v-model="eligibility.disabilities.permanent_disability" 
+        :value="eligibility.disabilities.permanent_disability" 
       />
     </section>
 
-    <section v-if="eligibility.disabilities.perminent_disability=='Yes'">
+    <section v-if="eligibility.disabilities.permanent_disability=='Yes'">
       <Question>
         {{ $t('service_equipment') }}
       </Question>
@@ -81,12 +81,12 @@ export default {
 {
   "en": {
     "title": "Disabilities",
-    "perminent_disability": "Are you a student with a permanent disability?",
+    "permanent_disability": "Are you a student with a permanent disability?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   },
   "fr": {
     "title": "Disabilities",
-    "perminent_disability": "Are you a student with a permanent disability?",
+    "permanent_disability": "Are you a student with a permanent disability?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   }
 }

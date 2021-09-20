@@ -5,7 +5,7 @@ export const state = () => ({
   eligibility: {
     citizenship: {
       is_canadian_citizen: false,
-      are_you_a_perminent_resident: false,
+      are_you_a_permanent_resident: false,
       are_you_a_protected_person: false,
       are_you_registered_as_indian: false
     },
@@ -69,7 +69,7 @@ export const state = () => ({
       dependants_with_disability: false
     },
     disabilities:{
-    	perminent_disability: false,
+    	permanent_disability: false,
     	service_equipment: false
     },
     yukon_excellence_award: {

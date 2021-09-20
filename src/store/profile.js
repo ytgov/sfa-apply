@@ -13,7 +13,7 @@ export const state = () => ({
       new: false
     },
     address: {
-      perminent: false,
+      permanent: false,
       at_school: false
     },
     phone: '',

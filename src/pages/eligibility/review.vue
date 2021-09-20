@@ -188,7 +188,7 @@ div.programs {
     }
 
     @media only screen and (max-width: 768px) {
-  
+    
       > div {
         padding: 1rem; 
         text-align: left;

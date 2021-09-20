@@ -4,7 +4,7 @@ var program_validations = {
   yukon_excellence_award: (eligibility) => {
     return (
         eligibility.citizenship.is_canadian_citizen=='Yes' ||
-        eligibility.citizenship.are_you_a_perminent_resident=='Yes' 
+        eligibility.citizenship.are_you_a_permanent_resident=='Yes' 
       ) 
       && (
         eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -14,7 +14,7 @@ var program_validations = {
   yukon_grant: (eligibility) => {
     return (
         eligibility.citizenship.is_canadian_citizen=='Yes' ||
-        eligibility.citizenship.are_you_a_perminent_resident=='Yes' 
+        eligibility.citizenship.are_you_a_permanent_resident=='Yes' 
       ) && (
         eligibility.studies.time != 'Part-time'
       ) && (
@@ -44,7 +44,7 @@ var program_validations = {
   student_training_allowance: (eligibility) => {
     return (
       eligibility.citizenship.is_canadian_citizen=='Yes' ||
-      eligibility.citizenship.are_you_a_perminent_resident=='Yes' 
+      eligibility.citizenship.are_you_a_permanent_resident=='Yes' 
     ) && (
       eligibility.studies.time != 'Part-time'
     ) && (
@@ -121,7 +121,7 @@ var program_validations = {
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
       && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligibility.disabilities.perminent_disability == 'Yes'
+      && eligibility.disabilities.permanent_disability == 'Yes'
       && !invalid_citizenship(eligibility)
       
     )
@@ -133,7 +133,7 @@ var program_validations = {
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
       && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligibility.disabilities.perminent_disability == 'Yes'
+      && eligibility.disabilities.permanent_disability == 'Yes'
       && eligibility.disabilities.service_equipment == 'Yes'
       && !invalid_citizenship(eligibility) 
     )
@@ -186,7 +186,7 @@ var program_validations = {
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
       && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
-      && eligibility.disabilities.perminent_disability == 'Yes'
+      && eligibility.disabilities.permanent_disability == 'Yes'
       && eligibility.disabilities.service_equipment == 'Yes'
       && !invalid_citizenship(eligibility) 
     )
@@ -208,7 +208,7 @@ var program_validations = {
 var invalid_citizenship = (eligibility) => {
   return (
     eligibility.citizenship.is_canadian_citizen=='No' &&
-    eligibility.citizenship.are_you_a_perminent_resident=='No' &&
+    eligibility.citizenship.are_you_a_permanent_resident=='No' &&
     eligibility.citizenship.are_you_a_protected_person=='No' &&
     eligibility.citizenship.are_you_registered_as_indigenous=='No'
   ) 

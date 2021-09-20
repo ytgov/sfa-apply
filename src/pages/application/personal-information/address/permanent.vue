@@ -7,7 +7,7 @@
 
     <section>
       <h4>Address:</h4>
-      <AddressSelector v-model="profile.address.perminent" :value="profile.address.perminent" />
+      <AddressSelector v-model="profile.address.permanent" :value="profile.address.permanent" />
     </section>
 
     <Buttons :valid="valid" :next="next" :back="true" />
@@ -39,7 +39,7 @@ export default {
       }
     },
     valid() {
-      var is_valid = this.profile.address.perminent!=''
+      var is_valid = this.profile.address.permanent!=''
 
       return is_valid
     },
@@ -63,10 +63,10 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Perminent Address"
+    "title": "Permanent Address"
   },
   "fr": {
-    "title": "Perminent Address"
+    "title": "Permanent Address"
   }
 }
 </i18n>
