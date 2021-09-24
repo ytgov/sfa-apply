@@ -7,8 +7,31 @@
     </p>
 
     <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
+    
+    <div class="programs">
+      <div :class="fulltime_active?'active':''" v-if="fulltime_eligable.length">
+        <div class="top">
+          <Checkbox v-model="fulltime_active" @click="toggleApplicationProgram(program)" />
+        </div>
+        <div>
+          <strong>Canada Student Financial Assistance - Full Time</strong>
+           <MoreDetails :programs="fulltime_eligable" />
+        </div>
+      </div>
+       
+      <div :class="parttime_active?'active':''" v-if="parttime_eligable.length">
+        <div class="top">
+          <Checkbox v-model="parttime_active" @click="toggleApplicationProgram(program)" />
+        </div>
+        <div>
+          <strong>Canada Student Financial Assistance - Part Time</strong>
+          <MoreDetails :programs="parttime_eligable" />
+        </div>
+      </div>
+    </div>
+     
 
-    <div class="programs" v-if="eligible[title].length" v-for="programs, title in eligible">
+    <div class="programs"  v-for="programs, title in eligible" v-if="eligible[title].length">
       <h4>{{title}}</h4>
       <div v-for="program, index in programs"  :key="index" :class="program.active?'active':''">
         <div>
@@ -20,9 +43,6 @@
             {{program.group}}
           </small>
         </div>
-        <div>
-          
-        </div>
       </div>
     </div>
     <div v-else>
@@ -32,6 +52,32 @@
     <p>&nbsp;</p>
 
     <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
+
+
+    <div class="programs">
+      <div :class="fulltime_active?'active':''" v-if="fulltime_ineligable.length">
+        <div class="top">
+          <Checkbox v-model="fulltime_active" @click="toggleApplicationProgram(program)" />
+        </div>
+        <div>
+          <strong>Canada Student Financial Assistance - Full Time</strong>
+
+          <MoreDetails :programs="fulltime_ineligable" />
+        </div>
+      </div>
+       
+      <div :class="parttime_active?'active':''" v-if="parttime_ineligable">
+        <div class="top">
+          <Checkbox v-model="parttime_active" @click="toggleApplicationProgram(program)" />
+        </div>
+        <div>
+          <strong>Canada Student Financial Assistance - Part Time</strong>
+          <MoreDetails :programs="parttime_ineligable" />
+        </div>
+      </div>
+    </div>
+     
+
     <div class="programs" v-if="ineligible[title].length" v-for="programs, title in ineligible">
       <h4>{{title}}</h4>
       <div v-for="program, index in programs"  :key="index" :class="program.active?'active':''">
@@ -43,9 +89,6 @@
           <small>
             {{program.group}}
           </small>
-        </div>
-        <div>
-          
         </div>
       </div>
     </div>
@@ -80,10 +123,12 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 import Checkbox from '~/components/forms/Checkbox.vue';
+import MoreDetails from '~/components/MoreDetails.vue';
 
 export default {
   components: {
-    Checkbox
+    Checkbox,
+    MoreDetails
   },
   computed: {
     ...mapGetters({
@@ -91,6 +136,34 @@ export default {
     }),
     locale() {
       return this.$i18n.locale
+    },
+    fulltime_eligable() {
+      var eligible = this.$store.getters['programs/fulltime_eligable'](this.eligibility);
+      eligible.forEach((program, index)=>{
+        eligible[index].active = true
+      })
+      return eligible
+    },
+    parttime_eligable() {
+      var eligible = this.$store.getters['programs/parttime_eligable'](this.eligibility);
+      eligible.forEach((program, index)=>{
+        eligible[index].active = true
+      })
+      return eligible
+    },
+    fulltime_ineligable() {
+      var eligible = this.$store.getters['programs/fulltime_ineligable'](this.eligibility);
+      eligible.forEach((program, index)=>{
+        eligible[index].active = true
+      })
+      return eligible
+    },
+    parttime_ineligable() {
+      var eligible = this.$store.getters['programs/parttime_ineligable'](this.eligibility);
+      eligible.forEach((program, index)=>{
+        eligible[index].active = true
+      })
+      return eligible
     },
     eligible() {
       var eligible = this.$store.getters['programs/eligible'](this.eligibility);
@@ -109,6 +182,11 @@ export default {
       set(values) {
         return this.$store.commit('eligibility/SET', values)
       }
+    }
+  },
+  data() {
+    return {
+      fulltime_active: true
     }
   },
   mounted() {
@@ -183,27 +261,25 @@ div.programs {
       padding: 0.5rem 2rem;
       &:first-of-type {
         width: 10%;
-      }
-      &:last-of-type {
-        width: auto;
-        text-align: right;
+        &.top {
+          align-self: start;
+          margin-top: 0.5rem;
+        }
       }
     }
 
     @media only screen and (max-width: 768px) {
-    
       > div {
         padding: 1rem; 
         text-align: left;
         &:first-of-type {
           width: 10%;
         }
-        &:last-of-type {
-          text-align: left;
-        }
       }
     }
   }
 }
+
+
 
 </style>

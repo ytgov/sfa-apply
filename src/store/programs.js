@@ -287,7 +287,8 @@ export const state = () => ({
         en: 'Canada Student Loan - Part-time Eligability',
         fr: 'Canada Student Loan - Part-time Eligability'
       },
-      qualified: 'canada_student_loan_parttime_eligibility'
+      qualified: 'canada_student_loan_parttime_eligibility',
+      studies: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -296,7 +297,8 @@ export const state = () => ({
         en: 'Canada Student Grant - Part-time Eligability',
         fr: 'Canada Student Grant - Part-time Eligability'
       },
-      qualified: 'canada_student_grant_parttime_eligibility'
+      qualified: 'canada_student_grant_parttime_eligibility',
+      studies: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -305,7 +307,8 @@ export const state = () => ({
         en: 'Canada Student Loan - Part-time Students with Dependants',
         fr: 'Canada Student Loan - Part-time Students with Dependants'
       },
-      qualified: 'canada_student_loan_parttime_students_with_dependants'
+      qualified: 'canada_student_loan_parttime_students_with_dependants',
+      studies: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -314,7 +317,8 @@ export const state = () => ({
         en: 'Canada Student Grant - Part-time Students with Disabilities',
         fr: 'Canada Student Grant - Part-time Students with Disabilities'
       },
-      qualified: 'canada_student_grant_parttime_students_with_disabilities'
+      qualified: 'canada_student_grant_parttime_students_with_disabilities',
+      studies: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -323,7 +327,8 @@ export const state = () => ({
         en: 'Canada Student Grant - Part-time Services and Equipment for Students with Disabilities',
         fr: 'Canada Student Grant - Part-time Services and Equipment for Students with Disabilities'
       },
-      qualified: 'canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities'
+      qualified: 'canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities',
+      studies: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -332,7 +337,8 @@ export const state = () => ({
         en: 'Canada Student Loan - Full-time Eligability',
         fr: 'Canada Student Loan - Full-time Eligability'
       },
-      qualified: 'canada_student_loan_fulltime_eligibility'
+      qualified: 'canada_student_loan_fulltime_eligibility',
+      studies: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -341,7 +347,8 @@ export const state = () => ({
         en: 'Canada Student Grant - Full-time Eligability',
         fr: 'Canada Student Grant - Full-time Eligability'
       },
-      qualified: 'canada_student_grant_fulltime_eligibility'
+      qualified: 'canada_student_grant_fulltime_eligibility',
+      studies: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -350,7 +357,8 @@ export const state = () => ({
         en: 'Canada Student Loan - Full-time Students with Dependants',
         fr: 'Canada Student Loan - Full-time Students with Dependants'
       },
-      qualified: 'canada_student_loan_fulltime_students_with_dependants'
+      qualified: 'canada_student_loan_fulltime_students_with_dependants',
+      studies: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -359,7 +367,8 @@ export const state = () => ({
         en: 'Canada Student Grant - Full-time Students with Disabilities',
         fr: 'Canada Student Grant - Full-time Students with Disabilities'
       },
-      qualified: 'canada_student_grant_fulltime_students_with_disabilities'
+      qualified: 'canada_student_grant_fulltime_students_with_disabilities',
+      studies: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -368,7 +377,8 @@ export const state = () => ({
         en: 'Canada Student Grant - Full-time Services and Equipment for Students with Disabilities',
         fr: 'Canada Student Grant - Full-time Services and Equipment for Students with Disabilities'
       },
-      qualified: 'canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities'
+      qualified: 'canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities',
+      studies: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -389,10 +399,11 @@ export const getters = {
   validation: (state) => (slug, eligibility) => {
     return program_validations[slug](eligibility)
   },
+ 
   eligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == true
+        return getters['validation'](o.qualified, eligibility) == true && typeof o.studies == 'undefined'
       } catch(error) {
         console.error(error)
         return false
@@ -402,7 +413,50 @@ export const getters = {
   ineligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == false
+        return getters['validation'](o.qualified, eligibility) == false && typeof o.studies == 'undefined'
+      } catch(error) {
+        console.error(error)
+        return false
+      }
+    });
+  },
+  fulltime_eligable: (state, getters, rootGetters) => (eligibility) => {
+    return _.filter(state.list, (o) =>  {
+      try { 
+        console.log("Full Time", getters['validation'](o.qualified, eligibility), o.studies === 'full-time')
+        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'full-time'
+      } catch(error) {
+        console.error(error)
+        return false
+      }
+    });
+  },
+  fulltime_ineligable: (state, getters, rootGetters) => (eligibility) => {
+    return _.filter(state.list, (o) =>  {
+      try { 
+        console.log("Full Time", getters['validation'](o.qualified, eligibility), o.studies === 'full-time')
+        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'full-time'
+      } catch(error) {
+        console.error(error)
+        return false
+      }
+    });
+  },
+  parttime_eligable: (state, getters, rootGetters) => (eligibility) => {
+    return _.filter(state.list, (o) =>  {
+      try { 
+        console.log("Part Time", getters['validation'](o.qualified, eligibility), o.studies === 'part-time')
+        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'part-time'
+      } catch(error) {
+        console.error(error)
+        return false
+      }
+    });
+  },
+  parttime_ineligable: (state, getters, rootGetters) => (eligibility) => {
+    return _.filter(state.list, (o) =>  {
+      try { 
+        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'part-time'
       } catch(error) {
         console.error(error)
         return false
