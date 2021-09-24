@@ -423,7 +423,6 @@ export const getters = {
   fulltime_eligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        console.log("Full Time", getters['validation'](o.qualified, eligibility), o.studies === 'full-time')
         return getters['validation'](o.qualified, eligibility) == true && o.studies === 'full-time'
       } catch(error) {
         console.error(error)
@@ -434,7 +433,6 @@ export const getters = {
   fulltime_ineligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        console.log("Full Time", getters['validation'](o.qualified, eligibility), o.studies === 'full-time')
         return getters['validation'](o.qualified, eligibility) == false && o.studies === 'full-time'
       } catch(error) {
         console.error(error)
@@ -445,7 +443,6 @@ export const getters = {
   parttime_eligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        console.log("Part Time", getters['validation'](o.qualified, eligibility), o.studies === 'part-time')
         return getters['validation'](o.qualified, eligibility) == true && o.studies === 'part-time'
       } catch(error) {
         console.error(error)

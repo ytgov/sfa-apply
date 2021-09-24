@@ -6,12 +6,16 @@
       Based on the information you provided:
     </p>
 
+    {{eligibility.studies.time}}
+
+    {{isFullTime}}
+
     <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
     
     <div class="programs">
-      <div :class="fulltime_active?'active':''" v-if="fulltime_eligable.length">
+      <div :class="fulltime_active?'active':''" v-if="fulltime_eligable.length && isFullTime">
         <div class="top">
-          <Checkbox v-model="fulltime_active" @click="toggleApplicationProgram(program)" />
+          <Checkbox v-model="fulltime_active" @click="toggleFullTime()" />
         </div>
         <div>
           <strong>Canada Student Financial Assistance - Full Time</strong>
@@ -19,9 +23,9 @@
         </div>
       </div>
        
-      <div :class="parttime_active?'active':''" v-if="parttime_eligable.length">
+      <div :class="parttime_active?'active':''" v-if="parttime_eligable.length && isPartTime">
         <div class="top">
-          <Checkbox v-model="parttime_active" @click="toggleApplicationProgram(program)" />
+          <Checkbox v-model="parttime_active" @click="togglePartTime()" />
         </div>
         <div>
           <strong>Canada Student Financial Assistance - Part Time</strong>
@@ -53,11 +57,10 @@
 
     <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
 
-
     <div class="programs">
-      <div :class="fulltime_active?'active':''" v-if="fulltime_ineligable.length">
+      <div :class="fulltime_active?'active':''" v-if="fulltime_ineligable.length && isFullTime">
         <div class="top">
-          <Checkbox v-model="fulltime_active" @click="toggleApplicationProgram(program)" />
+          <Checkbox v-model="fulltime_active" @click="toggleFullTime()" />
         </div>
         <div>
           <strong>Canada Student Financial Assistance - Full Time</strong>
@@ -66,9 +69,9 @@
         </div>
       </div>
        
-      <div :class="parttime_active?'active':''" v-if="parttime_ineligable">
+      <div :class="parttime_active?'active':''" v-if="parttime_ineligable && isPartTime">
         <div class="top">
-          <Checkbox v-model="parttime_active" @click="toggleApplicationProgram(program)" />
+          <Checkbox v-model="parttime_active" @click="togglePartTime()" />
         </div>
         <div>
           <strong>Canada Student Financial Assistance - Part Time</strong>
@@ -103,7 +106,7 @@
    
     <div class="buttons mt-14">
       <div>
-        <v-btn to="/application" class="continue" color="primary">
+        <v-btn to="/application" color="primary" x-large>
           Start Application
         </v-btn>
       </div>
@@ -136,6 +139,12 @@ export default {
     }),
     locale() {
       return this.$i18n.locale
+    },
+    isFullTime() {
+      return !!(this.eligibility.studies.time && this.eligibility.studies.time=='Full-time')
+    },
+    isPartTime() {
+      return !!(this.eligibility.studies.time && this.eligibility.studies.time=='Part-time')
     },
     fulltime_eligable() {
       var eligible = this.$store.getters['programs/fulltime_eligable'](this.eligibility);
@@ -186,7 +195,8 @@ export default {
   },
   data() {
     return {
-      fulltime_active: true
+      fulltime_active: (this.fulltime_ineligable.length) ? false : true,
+      parttime_active: (this.parttime_ineligable.length) ? false : true
     }
   },
   mounted() {
@@ -202,6 +212,12 @@ export default {
   methods: {
     toggleApplicationProgram(program) {
       this.$store.commit('applications/TOGGLE_APPLICATION_PROGRAM', program)
+    },
+    togglePartTime() {
+      this.parttime_active = !this.parttime_active
+    },
+    toggleFullTime() {
+      this.parttime_active = !this.parttime_active
     }
   }
 }
