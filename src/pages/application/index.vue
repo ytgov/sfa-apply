@@ -24,7 +24,22 @@
       <ATIPP  />
     </TermsWrapper>
 
-    <Buttons :valid="valid" :next="next" :back="true" :atipp="true" />
+    <BlackoutNotice ref="blackout" />
+   
+    <div class="buttons mt-14" v-if="valid">
+	    <div class="text-left">
+	      <v-btn class="back" color="hollow" @click="cancel()"  x-large>
+	        <span>Disagree</span>
+	      </v-btn>
+	    </div>
+	    <div class="text-center">
+	    </div>
+	    <div class="text-right">
+	      <v-btn :to="next" class="continue" color="primary" v-if="next" x-large>
+	        <span>Agree & Continue</span>
+	      </v-btn>
+	    </div>
+	  </div>
 	</v-container>
 </template>
 
@@ -48,13 +63,15 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import TermsWrapper from '~/components/terms/wrapper.vue';
 import ATIPP from '~/components/terms/atipp.vue';
+import BlackoutNotice from '~/components/BlackoutNotice.vue';
 
 
 export default {
   components: {
     Buttons,
     TermsWrapper,
-    ATIPP
+    ATIPP,
+    BlackoutNotice
   },
   head (){
     return {
@@ -72,15 +89,37 @@ export default {
     },
     valid() {
       var is_valid = !!this.profile.atipp.read_terms
-
       return is_valid
     },
     next() {
-      return '/application/personal-information/tombstone'
+    	return '/application/personal-information/tombstone'
     }
   },
   mounted() {
   	this.profile.atipp.read_terms = false
+  },
+  methods: {
+  	cancel() {
+  		var self = this;
+  		this.$refs.blackout.open({
+    		text: 'Disagree?',
+    		message: 'Disagreeing with the ATIPP Collection Statement will cancel your application.',
+    		options: [
+    			{
+    				text: 'No, Agree and continue',
+    				callback: () => {
+    					return '/application/personal-information/tombstone'
+    				}
+    			},
+    			{
+    				text: 'Yes, Disagree and cancel',
+    				callback: () => {
+    					self.$router.go(-1)
+    				}
+    			}
+    		]
+    	})
+  	}
   }
 }
 </script>

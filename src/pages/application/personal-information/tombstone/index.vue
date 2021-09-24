@@ -95,7 +95,7 @@ export default {
       return this.profile.sin.length == 9
     },
     next() {
-      return '/application/personal-information/address/perminant'
+      return '/application/personal-information/address/permanent'
       //return '/application/personal-information/email'
     }
   },

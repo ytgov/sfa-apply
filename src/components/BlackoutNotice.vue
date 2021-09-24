@@ -1,9 +1,12 @@
 <template>
   <article v-if="is_open">
     <section>
-      <span class="title" v-if="text">{{text}}</span>
+      <div class="title" v-if="text">{{text}}</div>
+      <div class="message" v-if="message">{{message}}</div>
       <section class="buttons">
-        <slot></slot>
+        <v-btn @click="option.callback(); close()" v-for="option, index in options" :key="index">
+          {{option.text}}
+        </v-btn>
       </section>
     </section>
   </article>
@@ -13,8 +16,12 @@
 export default {
   data() {
     return {
+      is_open: false,
+      timeout: false,
       text: false,
-      is_open: false
+      message: false,
+      error_message: false,
+      options: false
     }
   },
   methods: {
@@ -23,17 +30,38 @@ export default {
     },
     open(values) {
       var self = this
+      
       this.is_open = true
-
       if (values.text) {
         this.text = values.text
+      }
+      if (values.message) {
+        this.message = values.message
       }
 
       if (values.timeout) {
         setTimeout(()=>{
           self.close()
-        }, (values.timeout) ? 2000 : 0) 
+        }, (self.timeout) ? 2000 : 0) 
+        this.timeout = values.timeout
       }
+
+      if (values.options) {
+        this.options = values.options
+      }
+    },
+    error(values) {
+      this.open({
+        ...values,
+        options: [
+          {
+            text: 'close',
+            callback: () => {
+              this.close()
+            }
+          }
+        ]
+      })
     }
   }
 }
@@ -53,14 +81,36 @@ article {
   align-items: center;
   justify-content: center;
 
-  background: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.9);
 
   > section {
-    > span.title {
-      font-size: 8em;
+    color: #fff;
+    > div.title {
+      font-size: 2em !important;
+      font-weight: 500;
+      max-width: 550px;
+    }
+
+    > div.message {
+      font-size: 1.5em !important;
       font-weight: 100;
-      color: #000;
-      text-transform: uppercase;
+      max-width: 550px;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+ 
+    > section.buttons {
+      margin-top: 1rem;
+      > a, > button {
+
+        &:hover {
+          cursor: pointer;
+          background: #fff;
+          color: #000;
+        }
+        margin-right: 1rem;
+      }
     }
   }
 

@@ -54,8 +54,13 @@ export default {
       margin-left: 0;
 
       font-size: 20px;
-       border: solid 1px #000;
-       padding: 0.75rem;
+      border: solid 1px #000;
+      padding: 0.75rem;
+
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+
 
       > span {
         display: inline-block;

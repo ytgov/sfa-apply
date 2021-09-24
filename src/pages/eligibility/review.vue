@@ -169,6 +169,9 @@ div.programs {
 
     border: solid 2px #000;
     margin-bottom: 1rem;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
 
     &.active {
       background: #eee;

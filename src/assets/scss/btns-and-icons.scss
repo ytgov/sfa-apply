@@ -6,6 +6,10 @@
 	.v-btn {
 		background: #00818F !important;
 
+		&.secondary {
+			background: #244C5A !important;
+		}
+
 		border-radius: 5px !important;
 		text-align: center !important;
 		padding: 1rem 2rem !important;
@@ -20,6 +24,9 @@
 			text-decoration: none !important;
 		}
 
+		&.v-btn--is-elevated {
+			box-shadow: none;
+		}
 		&:hover  {
 			background: #244C5A;
 			cursor: pointer;

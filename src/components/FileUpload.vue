@@ -20,6 +20,8 @@
             cloud_upload
           </v-icon>
         </v-btn>
+
+        <a @click="$router.go(-1)" class="cancel">Cancel</a>
       </v-flex>
     </v-layout>
   </v-container>
@@ -78,5 +80,9 @@ export default {
 .upload-button {
     border-radius: 50px;
     color: white;
+}
+
+.cancel {
+  margin-lefT:  2rem;
 }
 </style>

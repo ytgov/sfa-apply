@@ -76,3 +76,29 @@ export default {
   }
 }
 </i18n>
+
+
+
+<style lang="scss" scoped>
+
+
+
+[data-layout="documents"] {
+  max-width: 1024px;
+  margin: 4rem 0;
+
+  @media only screen and (max-width: 1024px) {
+    max-width: 100%;
+    margin: 2rem;
+  }
+  @media only screen and (max-width: 1024px) {
+    margin: 1rem;
+    > div.xs9 {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
+
+}
+
+</style>

@@ -270,6 +270,11 @@ div.container {
         }
       }
     }
+
+    div.v-banner {
+      grid-column: 1/3; 
+    }
+        
   }
 }
 

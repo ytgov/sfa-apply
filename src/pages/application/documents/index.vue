@@ -7,8 +7,9 @@
 
 		<section class="documents">
 			<div v-for="doc, resource in documents">
-				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
 				<div><strong>{{doc.name[locale]}}</strong></div>
+				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
+				
 				<div v-if="['Verified', 'Vérifié'].includes(doc.status)">
 					<a>{{ $t("buttons.delete") }}</a>
 				</div>
@@ -16,7 +17,7 @@
 					<a>{{ $t("buttons.cancel") }}</a>
 				</div>
 				<div v-else>
-					<nuxt-link :to="`/application/documents/upload/${resource}`">{{ $t("buttons.upload") }}</nuxt-link>
+					<v-btn color="secondary" :to="`/application/documents/upload/${resource}`">{{ $t("buttons.upload") }}</v-btn>
 				</div>
 			</div>
 		</section>
@@ -81,17 +82,20 @@
     			padding: 0.25rem 0 !important;
 
     			&:nth-of-type(1) {
-						grid-row: 2;
-						grid-column: 2;
-						text-align: right;
+						grid-row: 1;
+						grid-column: 1;
+						
 					}
 					&:nth-of-type(2) {
-						grid-row: 1;
-					}
-					&:last-of-type {
 						grid-row: 2;
 						grid-column: 1;
 						text-align: left;
+					}
+					&:last-of-type {
+						grid-row: 2;
+						grid-column: 2;
+						
+						text-align: right;
 					}
     		}
     	}

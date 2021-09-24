@@ -8,7 +8,7 @@
 
     <div class="buttons mt-14">
       <div>
-        <v-btn class="continue" color="primary" :to="next">
+        <v-btn class="continue" color="primary" :to="next" x-large>
           Check Eligability
         </v-btn>
       </div>

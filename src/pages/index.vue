@@ -35,7 +35,7 @@
 						{{application.status}}
 					</div>
 					<div>
-						<nuxt-link to="/application">Continue</nuxt-link>
+						<v-btn to="/application" color="secondary">Continue</v-btn>
 					</div>
 				</div>
 	    </div>
@@ -62,7 +62,7 @@
 						{{application.status}}
 					</div>
 					<div>
-						<nuxt-link to="/application/details/01234">Details</nuxt-link>
+						<v-btn color="secondary" to="/application/details/01234">Details</v-btn>
 					</div>
 				</div>
 	    </div>
