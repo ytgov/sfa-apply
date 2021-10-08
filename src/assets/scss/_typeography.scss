@@ -40,6 +40,15 @@ a {
   .error {
     background-color: #FFcccc !important;
   }
+
+  .primary {
+    background-color: #00818f !important;
+    border-color: #00818F !important;
+  }
+  .secondary {
+    background-color: #244c5a !important;
+    border-color: #244c5a !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {

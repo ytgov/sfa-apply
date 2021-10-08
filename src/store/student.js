@@ -102,7 +102,7 @@ export const mutations = {
 
 export const actions = {
   async init({ commit }, { app }) {
-    await app.$api.get('/Students/1').then(response => {
+    await app.$api.get('/profile').then(response => {
       if (response.data.length) {
         console.log("Response", response)
         commit('SET', response.data) 

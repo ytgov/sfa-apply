@@ -6,10 +6,6 @@
       Based on the information you provided:
     </p>
 
-    {{eligibility.studies.time}}
-
-    {{isFullTime}}
-
     <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
     
     <div class="programs">
@@ -58,9 +54,9 @@
     <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
 
     <div class="programs">
-      <div :class="fulltime_active?'active':''" v-if="fulltime_ineligable.length && isFullTime">
+      <div :class="ineligible_fulltime_active?'active':''" v-if="fulltime_ineligable.length && isFullTime">
         <div class="top">
-          <Checkbox v-model="fulltime_active" @click="toggleFullTime()" />
+          <Checkbox v-model="ineligible_fulltime_active" @click="toggleIneligableFullTime()" />
         </div>
         <div>
           <strong>Canada Student Financial Assistance - Full Time</strong>
@@ -68,10 +64,11 @@
           <MoreDetails :programs="fulltime_ineligable" />
         </div>
       </div>
+
        
-      <div :class="parttime_active?'active':''" v-if="parttime_ineligable && isPartTime">
+      <div :class="ineligible_parttime_active?'active':''" v-if="parttime_ineligable && isPartTime">
         <div class="top">
-          <Checkbox v-model="parttime_active" @click="togglePartTime()" />
+          <Checkbox v-model="ineligible_parttime_active" @click="toggleIneligablePartTime()" />
         </div>
         <div>
           <strong>Canada Student Financial Assistance - Part Time</strong>
@@ -103,7 +100,6 @@
       Some text about still choosing to apply for the ineligible funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
    
-   
     <div class="buttons mt-14">
       <div>
         <v-btn to="/application" color="primary" x-large>
@@ -116,8 +112,6 @@
         </nuxt-link>
       </div>
     </div>
-
-
   </article>
 </template>
 
@@ -195,8 +189,10 @@ export default {
   },
   data() {
     return {
-      fulltime_active: (this.fulltime_ineligable.length) ? false : true,
-      parttime_active: (this.parttime_ineligable.length) ? false : true
+      fulltime_active: ((this.fulltime_ineligable||[]).length) ? false : true,
+      parttime_active: ((this.parttime_ineligable||[]).length) ? false : true,
+      ineligible_fulltime_active: false,
+      ineligible_parttime_active: false,
     }
   },
   mounted() {
@@ -218,6 +214,12 @@ export default {
     },
     toggleFullTime() {
       this.parttime_active = !this.parttime_active
+    },
+    toggleIneligiblePartTime() {
+      this.ineligible_parttime_active = !this.ineligible_parttime_active
+    },
+    toggleIneligibleFullTime() {
+      this.ineligible_fulltime_active = !this.ineligible_fulltime_active
     }
   }
 }

@@ -191,7 +191,6 @@ export default {
     }
   },
   async fetch({ store, app }) {
-    //await console.log(app.$api)
     await store.dispatch('student/init', { app })
   },
   data() {
@@ -252,7 +251,7 @@ div.container {
 
 
   @media only screen and (max-width: 768px) {
-    padding: 0;
+    padding: 1rem;
     form {
       padding: 1rem;
       grid-template-rows: auto auto auto;

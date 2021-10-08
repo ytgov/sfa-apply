@@ -51,9 +51,9 @@ export default {
     },
     valid() {
       var is_valid = (
-          this.eligibility.disabilities.perminent_disability == 'No'
+          this.eligibility.disabilities.permanent_disability == 'No'
           || (
-            this.eligibility.disabilities.perminent_disability == 'Yes'
+            this.eligibility.disabilities.permanent_disability == 'Yes'
             && this.eligibility.disabilities.service_equipment
           ) 
         ) 

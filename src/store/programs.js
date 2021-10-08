@@ -318,7 +318,8 @@ export const state = () => ({
         fr: 'Canada Student Grant - Part-time Students with Disabilities'
       },
       qualified: 'canada_student_grant_parttime_students_with_disabilities',
-      studies: 'part-time'
+      studies: 'part-time',
+      disabilities: true
     },
     {
       group: 'Canada Student Loan Programs',
@@ -328,7 +329,8 @@ export const state = () => ({
         fr: 'Canada Student Grant - Part-time Services and Equipment for Students with Disabilities'
       },
       qualified: 'canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities',
-      studies: 'part-time'
+      studies: 'part-time',
+      disabilities: true
     },
     {
       group: 'Canada Student Loan Programs',
@@ -368,7 +370,8 @@ export const state = () => ({
         fr: 'Canada Student Grant - Full-time Students with Disabilities'
       },
       qualified: 'canada_student_grant_fulltime_students_with_disabilities',
-      studies: 'full-time'
+      studies: 'full-time',
+      disabilities: true
     },
     {
       group: 'Canada Student Loan Programs',
@@ -378,7 +381,8 @@ export const state = () => ({
         fr: 'Canada Student Grant - Full-time Services and Equipment for Students with Disabilities'
       },
       qualified: 'canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities',
-      studies: 'full-time'
+      studies: 'full-time',
+      disabilities: true
     },
     {
       group: 'Canada Student Loan Programs',
@@ -399,11 +403,11 @@ export const getters = {
   validation: (state) => (slug, eligibility) => {
     return program_validations[slug](eligibility)
   },
- 
   eligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == true && typeof o.studies == 'undefined'
+        let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
+        return getters['validation'](o.qualified, eligibility) == true && typeof o.studies == 'undefined' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -413,7 +417,12 @@ export const getters = {
   ineligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == false && typeof o.studies == 'undefined'
+        
+        let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
+        
+        console.log("Disability", disability_check, typeof o.disabilities, o.disabilities, eligibility.disabilities.permanent_disability)
+
+        return getters['validation'](o.qualified, eligibility) == false && typeof o.studies == 'undefined' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -423,7 +432,9 @@ export const getters = {
   fulltime_eligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'full-time'
+        let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
+        
+        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'full-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -433,7 +444,9 @@ export const getters = {
   fulltime_ineligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'full-time'
+        let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
+        
+        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'full-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -443,7 +456,9 @@ export const getters = {
   parttime_eligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'part-time'
+        let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
+        
+        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'part-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -453,7 +468,9 @@ export const getters = {
   parttime_ineligable: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'part-time'
+        let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
+        
+        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'part-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
