@@ -90,10 +90,10 @@
 				<br />
 
 				<h4>Perminent Address:</h4>
-        <AddressSelector v-model="profile.address.permanent" :value="profile.address.permanent" style="width:  70%" />
+        <AddressSelector v-model="profile.HOME_ADDRESS1" :value="profile.HOME_ADDRESS1" style="width:  70%" />
 
         <h4>Address While at School:</h4>
-        <AddressSelector v-model="profile.address.at_school" :value="profile.address.at_school" style="width:  70%"/>
+        <AddressSelector v-model="profile.HOME_ADDRESS2" :value="profile.HOME_ADDRESS2" style="width:  70%"/>
 
 				<p class="buttons" v-if="false">
 		  		<v-btn to="/application/personal-information/address/perminent?revise=true" color="primary"  class="mr-5" x-large>
@@ -175,17 +175,17 @@ export default {
     }),
     profile: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['student/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        this.$store.commit('student/SET')(values)
       }
     },
     perminent_addresses_updated() {
-    	return this.profile.address.permanent
+    	return this.profile.HOME_ADDRESS1
     },
     at_school_address_updated() {
-    	return this.profile.address.at_school
+    	return this.profile.HOME_ADDRESS2
     }
   },
   mounted() {
@@ -208,10 +208,10 @@ export default {
   },
   watch: {
   	perminent_addresses_updated(to, from) {
-  		this.$store.commit('profile/SET', this.profile)
+  		this.$store.commit('student/SET', this.profile)
   	},
   	at_school_address_updated(to, from) {
-  		this.$store.commit('profile/SET', this.profile)
+  		this.$store.commit('student/SET', this.profile)
   	}
   }
 }

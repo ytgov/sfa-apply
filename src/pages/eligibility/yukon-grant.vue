@@ -8,41 +8,41 @@
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant_training_fund.has_completed_two_years" 
-        :value="eligibility.yukon_grant_training_fund.has_completed_two_years" 
+        v-model="eligibility.yukon_grant.has_completed_two_years" 
+        :value="eligibility.yukon_grant.has_completed_two_years" 
       />
     </section>
 
-    <section v-if="eligibility.yukon_grant_training_fund.has_completed_two_years">
+    <section v-if="eligibility.yukon_grant.has_completed_two_years">
       <Question>
         {{ $t('is_over_20') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant_training_fund.is_over_20" 
-        :value="eligibility.yukon_grant_training_fund.is_over_20" 
+        v-model="eligibility.yukon_grant.is_over_20" 
+        :value="eligibility.yukon_grant.is_over_20" 
       />
     </section>
 
-    <section v-if="eligibility.yukon_grant_training_fund.has_completed_two_years && eligibility.yukon_grant_training_fund.is_over_20 == 'Yes'">
+    <section v-if="eligibility.yukon_grant.has_completed_two_years && eligibility.yukon_grant.is_over_20 == 'Yes'">
       <Question>
         {{ $t('has_been_resident_continuously') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant_training_fund.has_been_resident_continuously" 
-        :value="eligibility.yukon_grant_training_fund.has_been_resident_continuously" 
+        v-model="eligibility.yukon_grant.has_been_resident_continuously" 
+        :value="eligibility.yukon_grant.has_been_resident_continuously" 
       />
     </section>
 
-    <section v-if="eligibility.yukon_grant_training_fund.is_over_20 == 'No'">
+    <section v-if="eligibility.yukon_grant.is_over_20 == 'No'">
       <Question>
         {{ $t('has_been_resident_continuously_from_14_to_18') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant_training_fund.has_been_resident_continuously_from_14_to_18" 
-        :value="eligibility.yukon_grant_training_fund.has_been_resident_continuously_from_14_to_18" 
+        v-model="eligibility.yukon_grant.has_been_resident_continuously_from_14_to_18" 
+        :value="eligibility.yukon_grant.has_been_resident_continuously_from_14_to_18" 
       />
     </section>
 
@@ -73,10 +73,10 @@ export default {
     },
     valid() {
       var is_valid = (
-          this.eligibility.yukon_grant_training_fund.has_completed_two_years == 'Yes' 
+          this.eligibility.yukon_grant.has_completed_two_years == 'Yes' 
         ) || (
-          this.eligibility.yukon_grant_training_fund.has_completed_two_years == 'No' 
-          && this.eligibility.yukon_grant_training_fund.has_been_resident_continuously
+          this.eligibility.yukon_grant.has_completed_two_years == 'No' 
+          && this.eligibility.yukon_grant.has_been_resident_continuously
         )
 
       return is_valid
@@ -101,14 +101,14 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Yukon Grant and Training Fund Eligibility",
+    "title": "Yukon Grant Eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
     "is_over_20": "Are you over the age of 21?",
     "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
     "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
   },
   "fr": {
-    "title": "Yukon Grant and Training Fund Eligibility",
+    "title": "Yukon Grant Eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
     "is_over_20": "Are you over the age of 21?",
     "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",

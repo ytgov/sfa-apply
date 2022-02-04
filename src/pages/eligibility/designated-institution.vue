@@ -138,10 +138,12 @@ export default {
       return is_valid
     },
     next() {
+
       if (this.$route.query.revise == 'true') {
+        this.$store.commit('eligibility/SET', this.eligibility)
         return '/application/submit'
       }
-      return '/eligibility/yukon-grant-training-fund'
+      return '/eligibility/yukon-grant'
     }
   },
   mounted() {
