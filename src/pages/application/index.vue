@@ -63,7 +63,7 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import TermsWrapper from '~/components/terms/wrapper.vue';
 import ATIPP from '~/components/terms/atipp.vue';
-import BlackoutNotice from '~/components/BlackoutNotice.vue';
+import BlackoutNotice from '~/components/utils/BlackoutNotice.vue';
 
 
 export default {

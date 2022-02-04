@@ -25,6 +25,18 @@
     </section>
 
 
+    <section>
+      <Question>
+        {{ $t('details.campus') }}
+      </Question>
+
+       <TextField 
+        v-model="eligibility.designated_institution.details.campus" 
+        :value="eligibility.designated_institution.details.campus" 
+      />
+    </section>
+
+
     <Buttons :valid="valid" :next="next" back="true" />
 
   </article>
@@ -36,13 +48,15 @@ import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 import Select from '~/components/forms/Select.vue';
+import TextField from '~/components/forms/TextField.vue';
 
 export default {
   components: {
     Buttons,
     Question,
     RadioList,
-    Select
+    Select,
+    TextField
   },
   data() {
     return {
@@ -69,6 +83,9 @@ export default {
       return is_valid
     },
     next() {
+      if (this.$route.query.revise == 'true') {
+        return '/application/submit'
+      }
       return '/eligibility/yukon-grant-training-fund'
     }
   },
@@ -90,12 +107,18 @@ export default {
   "en": {
     "title": "Designated Institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
-    "post_secondary_enrolled_in": "Which institution are you enrolled in?"
+    "post_secondary_enrolled_in": "Which institution are you enrolled in?",
+    "details": {
+      "campus": "Name of Campus (if applicable)"
+    }
   },
   "fr": {
     "title": "Designated Institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
-    "post_secondary_enrolled_in": "Which institution are you enrolled in?"
+    "post_secondary_enrolled_in": "Which institution are you enrolled in?",
+    "details": {
+      "campus": "Name of Campus (if applicable)"
+    }
   }
 }
 </i18n>

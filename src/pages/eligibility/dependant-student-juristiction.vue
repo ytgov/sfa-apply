@@ -46,7 +46,11 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/single-parent-student-jurisdiction'
+      if (this.eligibility.studies.time == 'Part-time') {
+        return '/eligibility/part-time-eligibility'
+      } else {
+        return '/eligibility/full-time-eligibility'
+      } 
     }
   },
   mounted() {

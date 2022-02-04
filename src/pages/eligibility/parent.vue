@@ -60,6 +60,9 @@ export default {
       return is_valid
     },
     next() {
+      if (this.eligibility.parent.responsible_for_child == 'Yes') {
+        return '/eligibility/single-parent-juristiction'
+      }
       return '/eligibility/independent-student'
     }
   },

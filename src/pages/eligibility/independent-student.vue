@@ -69,6 +69,13 @@ export default {
       return is_valid
     },
     next() {
+      if (this.eligibility.independentstudent.out_of_school == 'Yes') {
+        if (this.eligibility.studies.time == 'Part-time') {
+          return '/eligibility/part-time-eligibility'
+        } else {
+          return '/eligibility/full-time-eligibility'
+        } 
+      }
       return '/eligibility/dependant-student-juristiction'
     }
   },

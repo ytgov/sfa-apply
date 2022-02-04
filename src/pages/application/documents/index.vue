@@ -6,7 +6,7 @@
     </p>
 
 		<section class="documents">
-			<div v-for="doc, resource in documents">
+			<div v-for="doc in documents">
 				<div><strong>{{doc.name[locale]}}</strong></div>
 				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
 				
@@ -17,10 +17,13 @@
 					<a>{{ $t("buttons.cancel") }}</a>
 				</div>
 				<div v-else>
-					<v-btn color="secondary" :to="`/application/documents/upload/${resource}`">{{ $t("buttons.upload") }}</v-btn>
+					<v-btn color="secondary" :to="`/application/documents/upload/${doc.resource}`">
+						{{ $t("buttons.upload") }}
+					</v-btn>
 				</div>
 			</div>
 		</section>
+
 
     <v-banner icon="mdi-alert-circle" class="problem mt-4">
       {{ $t('error') }}
@@ -131,7 +134,15 @@ export default {
     next() {
       return '/application/submit'
     }
-	}
+	},
+	data() {
+		return {
+			uploads: []
+		}
+	},
+  async fetch({ store, app }) {
+    this.uploads = await store.dispatch('documents/get', { app })
+  }
 }
 </script>
 

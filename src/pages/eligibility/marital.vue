@@ -60,6 +60,14 @@ export default {
       return is_valid
     },
     next() {
+      if (this.eligibility.marital.are_you_in_a_relationship == 'Yes' || this.eligibility.marital.have_you_ever_been_in_a_relationship == 'Yes') {
+
+        if (this.eligibility.studies.time == 'Part-time') {
+          return '/eligibility/part-time-eligibility'
+        } else {
+          return '/eligibility/full-time-eligibility'
+        } 
+      }
       return '/eligibility/parent'
     }
   },

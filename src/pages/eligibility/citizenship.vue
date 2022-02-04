@@ -87,6 +87,9 @@ export default {
       return is_valid
     },
     next() {
+      if (this.eligibility.citizenship.are_you_registered_as_indigenous == 'Yes') {
+        return '/eligibility/studies'
+      }
       return '/eligibility/yukon-excellence-award'
     }
   },

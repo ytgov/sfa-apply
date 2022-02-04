@@ -417,11 +417,7 @@ export const getters = {
   ineligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
-        
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
-        
-        console.log("Disability", disability_check, typeof o.disabilities, o.disabilities, eligibility.disabilities.permanent_disability)
-
         return getters['validation'](o.qualified, eligibility) == false && typeof o.studies == 'undefined' && disability_check
       } catch(error) {
         console.error(error)

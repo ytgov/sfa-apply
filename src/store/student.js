@@ -100,6 +100,9 @@ export const mutations = {
   }
 }
 
+
+// https://api.gov.yk.ca/sfa/api/v1/data/profile
+
 export const actions = {
   async init({ commit }, { app }) {
     await app.$api.get('/profile').then(response => {
@@ -111,6 +114,29 @@ export const actions = {
       console.error(error)
       commit('CLEAR') 
     });
+  },
+  get({ commit, dispatch }, { app }) {
+    return new Promise((resolve, reject) => {
+      app.$api.get('/profile').then(response => {
+        resolve(response)
+      }).catch((error) => {
+        console.error(error)
+        reject(error)
+      });
+    })
+  },
+  save({ commit, dispatch }, { id, values}) {
+    return new Promise((resolve, reject) => {
+      var method = (id) ? 'put' : 'post';
+      var endpoint = (id) ? `/profile/${id}` : '/profile'
+
+      app.$api[method](endpoint, { values }).then(response => {
+        resolve(response)
+      }).catch((error) => {
+        console.error(error)
+        reject(error)
+      });
+    })
   }
 }
 

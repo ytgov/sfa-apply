@@ -156,7 +156,7 @@ import SinNumber from "~/components/forms/SinNumber.vue";
 import TextField from "~/components/forms/TextField.vue";
 import DateSelector from '~/components/forms/DateSelector.vue';
 
-import BlackoutNotice from "~/components/BlackoutNotice.vue";
+import BlackoutNotice from "~/components/utils/BlackoutNotice.vue";
 
 export default {
   head (){

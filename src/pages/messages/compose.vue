@@ -57,7 +57,7 @@ import { mapMutations, mapGetters } from 'vuex'
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import TextField from "~/components/forms/TextField.vue";
 import TextArea from "~/components/forms/TextArea.vue";
-import BlackoutNotice from "~/components/BlackoutNotice.vue";
+import BlackoutNotice from "~/components/utils/BlackoutNotice.vue";
 
 
 export default {

@@ -29,7 +29,16 @@ export const state = () => ({
     },
     designated_institution: {
       are_you_enrolled_in_post_secondary: false,
-      post_secondary_enrolled_in: false
+      post_secondary_enrolled_in: false,
+      details: {
+        campus: '',
+        student_id: '',
+        program_name: '',
+        duration_of_program: '',
+        year_entering: '',
+        start_date_of_classes: '',
+        year_finishing: ''
+      }
     },
     program: {
     	at_least_three_weeks: false,
