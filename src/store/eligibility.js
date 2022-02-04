@@ -37,7 +37,7 @@ export const state = () => ({
         duration_of_program: '',
         year_entering: '',
         start_date_of_classes: '',
-        year_finishing: ''
+        end_date_of_classes: ''
       }
     },
     program: {

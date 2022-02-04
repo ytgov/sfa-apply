@@ -36,6 +36,61 @@
       />
     </section>
 
+    <section>
+      <Question>
+        {{ $t('details.program_name') }}
+      </Question>
+
+       <TextField 
+        v-model="eligibility.designated_institution.details.program_name" 
+        :value="eligibility.designated_institution.details.program_name" 
+      />
+    </section>
+
+    <section>
+      <Question>
+        {{ $t('details.duration_of_program') }}
+      </Question>
+
+       <TextField 
+        v-model="eligibility.designated_institution.details.duration_of_program" 
+        :value="eligibility.designated_institution.details.duration_of_program" 
+      />
+    </section>
+
+    <section>
+      <Question>
+        {{ $t('details.year_entering') }}
+      </Question>
+
+       <TextField 
+        v-model="eligibility.designated_institution.details.year_entering" 
+        :value="eligibility.designated_institution.details.year_entering" 
+      />
+    </section>
+
+    <section>
+      <Question>
+        {{ $t('details.start_date_of_classes') }}
+      </Question>
+
+       <TextField 
+        v-model="eligibility.designated_institution.details.start_date_of_classes" 
+        :value="eligibility.designated_institution.details.start_date_of_classes" 
+      />
+    </section>
+
+    <section>
+      <Question>
+        {{ $t('details.end_date_of_classes') }}
+      </Question>
+
+       <TextField 
+        v-model="eligibility.designated_institution.details.end_date_of_classes" 
+        :value="eligibility.designated_institution.details.end_date_of_classes" 
+      />
+    </section>
+
 
     <Buttons :valid="valid" :next="next" back="true" />
 
@@ -109,7 +164,12 @@ export default {
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
     "post_secondary_enrolled_in": "Which institution are you enrolled in?",
     "details": {
-      "campus": "Name of Campus (if applicable)"
+      "campus": "Name of Campus (if applicable)",
+      "program_name": "Name of Program",
+      "duration_of_program": "Program Duration",
+      "year_entering": "Year of program you are entering",
+      "start_date_of_classes": "Start date of your classes",
+      "end_date_of_classes": "End date of your classes (including exams)"
     }
   },
   "fr": {
@@ -117,7 +177,12 @@ export default {
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
     "post_secondary_enrolled_in": "Which institution are you enrolled in?",
     "details": {
-      "campus": "Name of Campus (if applicable)"
+      "campus": "Name of Campus (if applicable)",
+      "program_name": "Name of Program",
+      "duration_of_program": "Program Duration",
+      "year_entering": "Year of program you are entering",
+      "start_date_of_classes": "Start date of your classes",
+      "end_date_of_classes": "End date of your classes (including exams)"
     }
   }
 }

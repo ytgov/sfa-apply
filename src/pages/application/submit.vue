@@ -87,10 +87,15 @@
 				<h3>Residency Information</h3>
 			</section>
 			<section class="content">
+				<br />
 
+				<h4>Perminent Address:</h4>
+        <AddressSelector v-model="profile.address.permanent" :value="profile.address.permanent" style="width:  70%" />
 
+        <h4>Address While at School:</h4>
+        <AddressSelector v-model="profile.address.at_school" :value="profile.address.at_school" style="width:  70%"/>
 
-				<p class="buttons">
+				<p class="buttons" v-if="false">
 		  		<v-btn to="/application/personal-information/address/perminent?revise=true" color="primary"  class="mr-5" x-large>
 		  			{{ $t("buttons.edit") }}
 		  		</v-btn>
@@ -98,7 +103,7 @@
 			</section>
 		</v-card>
 
-
+		 <Buttons :valid="valid" :next="next" back="true" />
 
 
 	</v-container>
@@ -155,12 +160,33 @@ table {
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+import AddressSelector from "~/components/forms/AddressSelector.vue";
+import Buttons from '~/components/forms/Buttons.vue';
+
 export default {
+	components: {
+		AddressSelector,
+		Buttons
+	},
   computed: {
     ...mapGetters({
     	eligibility: 'eligibility/GET'
       //ap: 'applications/programs'
-    })
+    }),
+    profile: {
+      get() {
+        return this.$store.getters['profile/GET']
+      },
+      set(values) {
+        return this.$store.commit('profile/SET', values)
+      }
+    },
+    perminent_addresses_updated() {
+    	return this.profile.address.permanent
+    },
+    at_school_address_updated() {
+    	return this.profile.address.at_school
+    }
   },
   mounted() {
   	/*
@@ -170,6 +196,23 @@ export default {
 	  	}
   	})
   	*/
+  },
+  methods: {
+  	valid() {
+      var is_valid = true
+      return is_valid
+    },
+    next() {
+      return '/application/documents'
+    }
+  },
+  watch: {
+  	perminent_addresses_updated(to, from) {
+  		this.$store.commit('profile/SET', this.profile)
+  	},
+  	at_school_address_updated(to, from) {
+  		this.$store.commit('profile/SET', this.profile)
+  	}
   }
 }
 </script>
