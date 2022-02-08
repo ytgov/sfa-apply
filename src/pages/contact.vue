@@ -13,7 +13,7 @@
           <strong>Toll Free (In Yukon):</strong> 1-800-661-0408<br />
           <strong>Fax:</strong> 867-667-8555<br />
           <br />
-          <strong>Email:</strong> <a href="mailto:sfa@gov.yk.ca">sfa@gov.yk.ca</a>
+          <strong>Email:</strong> <a href="mailto:sfa@yukon.ca">sfa@yukon.ca</a>
         </p>
       </v-col>
       <v-col cols="12" sm="12" md="4">
@@ -30,7 +30,7 @@
       <v-col cols="12" sm="12" md="4">
         <h3 class="text-h5">{{ $t('headers.office') }}</h3>
         <p>
-          1000 Lewes Ave. Boulevard (E-1)<br />
+          1000 Lewes Ave. Boulevard (E-13)<br />
           Y1A 2C6<br /> 
           Whitehorse<br />
           <br />

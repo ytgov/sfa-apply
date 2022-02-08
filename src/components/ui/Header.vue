@@ -11,8 +11,8 @@
           <nuxt-link :to="switchLocalePath('en')" v-if="locale=='fr'">English</nuxt-link>
           <nuxt-link :to="switchLocalePath('fr')" v-else>Français</nuxt-link>
         </div>
-        <div>
-          <nuxt-link to="/messages">
+        <div v-if="false">
+          <nuxt-link to="/messages" >
             <i class="fas fa-2x fa-envelope" />
             <span>
               {{messages}}
