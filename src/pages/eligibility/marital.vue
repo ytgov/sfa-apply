@@ -62,7 +62,7 @@ export default {
     next() {
       if (this.eligibility.marital.are_you_in_a_relationship == 'Yes' || this.eligibility.marital.have_you_ever_been_in_a_relationship == 'Yes') {
 
-        if (this.eligibility.studies.time == 'Part-time') {
+        if (this.eligibility.enrollment.time == 'Part-time') {
           return '/eligibility/part-time-eligibility'
         } else {
           return '/eligibility/full-time-eligibility'

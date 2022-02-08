@@ -97,7 +97,7 @@
     </div>
 
     <p>
-      Some text about still choosing to apply for the ineligible funding sources... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      If you would like to be assessed for one of the programs that indicate ‘you are not eligible to apply for’, please check the box next to the funding type and we will assess your application.
     </p>
 
     {{ap}}
@@ -138,10 +138,10 @@ export default {
       return this.$i18n.locale
     },
     isFullTime() {
-      return !!(this.eligibility.studies.time && this.eligibility.studies.time=='Full-time')
+      return !!(this.eligibility.enrollment.time && this.eligibility.enrollment.time=='Full-time')
     },
     isPartTime() {
-      return !!(this.eligibility.studies.time && this.eligibility.studies.time=='Part-time')
+      return !!(this.eligibility.enrollment.time && this.eligibility.enrollment.time=='Part-time')
     },
     fulltime_eligable() {
       var eligible = this.$store.getters['programs/fulltime_eligable'](this.eligibility);

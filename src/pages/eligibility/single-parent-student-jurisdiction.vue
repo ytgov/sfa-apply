@@ -47,7 +47,7 @@ export default {
       return is_valid
     },
     next() {
-      return (this.eligibility.studies.are_you_full_or_part_time=='Part-time') ? 
+      return (this.eligibility.enrollment.are_you_full_or_part_time=='Part-time') ? 
         '/eligibility/part-time-eligibility' :  '/eligibility/full-time-eligibility'
     }
   },

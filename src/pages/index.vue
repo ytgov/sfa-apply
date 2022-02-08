@@ -77,7 +77,7 @@
 {
   "en": {
   	"hello": "Hello",
-  	"welcome": "A welcome back message... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+  	"welcome": "Yukon students are encouraged to apply for available funding programs online. By using this online tool, students have the option to submit an application or review funding that has been awarded in the past. If you are planning to complete and submit an application, make sure to have all required documents to finish your application.",
     "current": {
     	"header": "Current Applications",
     	"none": "There are no active applications.",
@@ -92,7 +92,7 @@
   },
   "fr": {
   	"hello": "Bonjour",
-  	"welcome": "Un message de bienvenue... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+  	"welcome": "Yukon students are encouraged to apply for available funding programs online. By using this online tool, students have the option to submit an application or review funding that has been awarded in the past. If you are planning to complete and submit an application, make sure to have all required documents to finish your application.",
     "current": {
     	"header": "Applications actuelles",
     	"none": "Il n'y a pas d'applications actives.",

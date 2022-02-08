@@ -56,7 +56,7 @@ export default {
 {
   "en": {
     "title": "Uploading Document",
-    "excerpt": "Please upload the follofing supporting documents... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "excerpt": "Please upload the following supporting documents... If a document is uploaded incorrectly, you will receive a notification to resubmit your documents.",
     "error": "You cannot sumbit your application until all your documents are uploaded.",
     "buttons": {
       "delete": "Delete",
@@ -66,7 +66,7 @@ export default {
   },
   "fr": {
     "title": "Documents justificatifs",
-    "excerpt": "Veuillez télécharger les pièces justificatives suivantes... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat a lorem ut ornare.",
+    "excerpt": "Veuillez télécharger les pièces justificatives suivantes... Si un document est téléchargé de manière incorrecte, vous recevrez une notification pour soumettre à nouveau vos documents.",
     "error": "Vous ne pouvez pas soumettre votre demande tant que tous vos documents ne sont pas téléchargés.",
     "buttons": {
       "delete": "Supprimer",

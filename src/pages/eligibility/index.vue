@@ -37,17 +37,15 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Before you start",
+    "title": "Eligibility Checker – Before you start",
     "body": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus nunc nec dictum ultrices. Aliquam ut neque et velit fringilla lobortis ut a sem. Vestibulum tortor nisi, mollis ac pharetra a, auctor eu ante.",
-      "Suspendisse urna lectus, porta id varius et, egestas sit amet lacus. Vestibulum ultrices semper vestibulum."
+      "Thank you for registering. Before you begin your application, make sure to check your eligibility for more funding programs. To check, select the button below to see available funding opportunities, as you may be eligible for more than one funding program. "
     ]
   },
   "fr": {
-    "title": "Before you start",
+    "title": "Eligibility Checker – Before you start",
     "body": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras finibus nunc nec dictum ultrices. Aliquam ut neque et velit fringilla lobortis ut a sem. Vestibulum tortor nisi, mollis ac pharetra a, auctor eu ante.",
-      "Suspendisse urna lectus, porta id varius et, egestas sit amet lacus. Vestibulum ultrices semper vestibulum."
+      "Thank you for registering. Before you begin your application, make sure to check your eligibility for more funding programs. To check, select the button below to see available funding opportunities, as you may be eligible for more than one funding program."
     ]
   }
 }

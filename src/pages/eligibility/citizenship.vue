@@ -2,6 +2,10 @@
   <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
+    <p v-for="text in $t('body')">
+      {{ text }}
+    </p>
+
     <section>
       <Question>
         {{ $t('are_you_a_canadian_citizen') }}
@@ -88,7 +92,7 @@ export default {
     },
     next() {
       if (this.eligibility.citizenship.are_you_registered_as_indigenous == 'Yes') {
-        return '/eligibility/studies'
+        return '/eligibility/enrollment'
       }
       return '/eligibility/yukon-excellence-award'
     }
@@ -110,6 +114,10 @@ export default {
 {
   "en": {
     "title": "Citizenship",
+    "body": [
+      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident.",
+      "Add whatever screen comes up if you choose ‘no’. If no, stop checker as student is not eligible for any of our programs"
+    ],
     "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
     "are_you_a_permanent_resident": "Are you a permanent resident?",
     "are_you_a_protected_person": "Are you a protected person?",
@@ -117,6 +125,10 @@ export default {
   },
   "fr": {
     "title": "Citizenship",
+    "body": [
+      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident.",
+      "Add whatever screen comes up if you choose ‘no’. If no, stop checker as student is not eligible for any of our programs"
+    ],
     "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
     "are_you_a_permanent_resident": "Are you a permanent resident?",
     "are_you_a_protected_person": "Are you a protected person?",

@@ -16,10 +16,10 @@ export const state = () => ({
       are_you_entering_visual_arts: false,
       enrolled_vocational: false
     },
-    studies: {
+    enrollment: {
       time: false
     },
-    residence: {
+    residency: {
       have_you_been_out_of_territory_4_months: false,
       have_you_been_out_of_territory_12_months: false,
       will_you_be_resident_before_classes_start: false,
@@ -86,6 +86,7 @@ export const state = () => ({
     },
     yukon_grant: {
       has_completed_two_years: false,
+      out_of_school_4_years: false,
       is_over_20: false,
       has_been_resident_continuously: false,
       has_been_resident_continuously_from_14_to_18: false

@@ -46,7 +46,7 @@ export default {
       return is_valid
     },
     next() {
-      if (this.eligibility.studies.time == 'Part-time') {
+      if (this.eligibility.enrollment.time == 'Part-time') {
         return '/eligibility/part-time-eligibility'
       } else {
         return '/eligibility/full-time-eligibility'
@@ -70,11 +70,11 @@ export default {
 {
   "en": {
     "title": "Dependant Student Juristiction",
-    "has_family_maintained_home": "Has your family maintained a house in the Yukon for at least 12 months?"
+    "has_family_maintained_home": "Has your family been living in the Yukon for the 12 months prior to you starting post-secondary classes?"
   },
   "fr": {
     "title": "Independent Student",
-    "has_family_maintained_home": "Has your family maintained a house in the Yukon for at least 12 months?"
+    "has_family_maintained_home": "Has your family been living in the Yukon for the 12 months prior to you starting post-secondary classes?"
   }
 }
 </i18n>

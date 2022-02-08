@@ -18,7 +18,15 @@
         {{ $t('what_type_of_program') }}
       </Question>
 
-      <RadioList :options="['Upgrade', 'Certificate', 'Degree', 'Masters', 'Doctorate', 'None of These']" 
+      <RadioList :options="[
+        'Upgrade', 
+        'Certificate', 
+        'Diploma', 
+        'Under Graduate', 
+        'Masters', 
+        'Doctorate', 
+        'None of These'
+        ]" 
         v-model="eligibility.program.what_type_of_program" 
         :value="eligibility.program.what_type_of_program" 
       />
@@ -80,12 +88,12 @@ export default {
 {
   "en": {
     "title": "Program",
-    "at_least_three_weeks": "Does your program last for at least three weeks?",
+    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks? If no, does your program last for at least 3 weeks? ",
     "what_type_of_program": "What type of program?"
   },
   "fr": {
     "title": "Program",
-    "at_least_three_weeks": "Does your program last for at least three weeks?",
+    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks? If no, does your program last for at least 3 weeks? ",
     "what_type_of_program": "What type of program?"
   }
 }

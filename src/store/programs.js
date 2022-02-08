@@ -16,7 +16,7 @@ var program_validations = {
         eligibility.citizenship.is_canadian_citizen=='Yes' ||
         eligibility.citizenship.are_you_a_permanent_resident=='Yes' 
       ) && (
-        eligibility.studies.time != 'Part-time'
+        eligibility.enrollment.time != 'Part-time'
       ) && (
         !['Upgrade', 'Certificate', 'Degree'].includes(eligibility.program.what_type_of_program)
         && eligibility.program.at_least_three_weeks == 'Yes'
@@ -30,11 +30,11 @@ var program_validations = {
           eligibility.yukon_grant.has_completed_two_years == 'No' && 
           (
             (
-              eligibility.yukon_grant.is_over_20 == 'Yes' &&
+              eligibility.yukon_grant.out_of_school_4_years == 'Yes' &&
               eligibility.yukon_grant.has_been_resident_continuously != 'No'
             ) ||
             (
-              eligibility.yukon_grant.is_over_20 == 'No' &&
+              eligibility.yukon_grant.out_of_school_4_years == 'No' &&
               eligibility.yukon_grant.has_been_resident_continuously_from_14_to_18 != 'No'
             )
           )
@@ -46,9 +46,9 @@ var program_validations = {
       eligibility.citizenship.is_canadian_citizen=='Yes' ||
       eligibility.citizenship.are_you_a_permanent_resident=='Yes' 
     ) && (
-      eligibility.studies.time != 'Part-time'
+      eligibility.enrollment.time != 'Part-time'
     ) && (
-      eligibility.residence.have_you_been_out_of_territory_12_months != 'Yes'
+      eligibility.residency.have_you_been_out_of_territory_12_months != 'Yes'
     ) && (
       eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes' &&
       ['Yukon College', 'Alcan Air'].includes(eligibility.program.post_secondary_enrolled_in)
@@ -68,7 +68,7 @@ var program_validations = {
         eligibility.scholarship.is_high_school_graduate == 'Yes'
         && eligibility.scholarship.is_pursuing_aviation == 'Yes'    
       ) && (
-        eligibility.residence.have_you_been_out_of_territory_12_months != 'Yes'
+        eligibility.residency.have_you_been_out_of_territory_12_months != 'Yes'
       ) && !invalid_citizenship(eligibility)
   },
   yukon_art_society_scolorship: (eligibility) => {
@@ -88,7 +88,7 @@ var program_validations = {
   },
   canada_student_loan_parttime_eligibility: (eligibility) => {
     return (
-      eligibility.studies.time == 'Part-time'
+      eligibility.enrollment.time == 'Part-time'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
       && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
@@ -97,7 +97,7 @@ var program_validations = {
   },
   canada_student_grant_parttime_eligibility: (eligibility) => {
     return (
-      eligibility.studies.time == 'Part-time'
+      eligibility.enrollment.time == 'Part-time'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
       && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
@@ -106,7 +106,7 @@ var program_validations = {
   },
   canada_student_loan_parttime_students_with_dependants: (eligibility) => {
     return (
-      eligibility.studies.time == 'Part-time'
+      eligibility.enrollment.time == 'Part-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -116,7 +116,7 @@ var program_validations = {
   },
   canada_student_grant_parttime_students_with_disabilities: (eligibility) => {
     return (
-      eligibility.studies.time == 'Part-time'
+      eligibility.enrollment.time == 'Part-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -128,7 +128,7 @@ var program_validations = {
   },
   canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities: (eligibility) => {
     return (
-      eligibility.studies.time == 'Part-time'
+      eligibility.enrollment.time == 'Part-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -140,7 +140,7 @@ var program_validations = {
   },
   canada_student_loan_fulltime_eligibility: (eligibility) => {
     return (
-      eligibility.studies.time == 'Full-time'
+      eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -150,7 +150,7 @@ var program_validations = {
   },
   canada_student_grant_fulltime_eligibility: (eligibility) => {
     return (
-      eligibility.studies.time == 'Full-time'
+      eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -160,7 +160,7 @@ var program_validations = {
   },
   canada_student_loan_fulltime_students_with_dependants: (eligibility) => {
     return (
-      eligibility.studies.time == 'Full-time'
+      eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -170,7 +170,7 @@ var program_validations = {
   },
   canada_student_grant_fulltime_students_with_disabilities: (eligibility) => {
     return (
-      eligibility.studies.time == 'Full-time'
+      eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -181,7 +181,7 @@ var program_validations = {
   },
   canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities: (eligibility) => {
     return (
-      eligibility.studies.time == 'Full-time'
+      eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -193,7 +193,7 @@ var program_validations = {
   },
   canada_student_loans_and_grants_skills_boost_top_up: (eligibility) => {
     return (
-      eligibility.studies.time == 'Full-time'
+      eligibility.enrollment.time == 'Full-time'
       && !['Masters', 'Doctorate', 'None of These'].includes(eligibility.program.what_type_of_program)
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
       && eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
@@ -288,7 +288,7 @@ export const state = () => ({
         fr: 'Canada Student Loan - Part-time Eligability'
       },
       qualified: 'canada_student_loan_parttime_eligibility',
-      studies: 'part-time'
+      enrollment: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -298,7 +298,7 @@ export const state = () => ({
         fr: 'Canada Student Grant - Part-time Eligability'
       },
       qualified: 'canada_student_grant_parttime_eligibility',
-      studies: 'part-time'
+      enrollment: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -308,7 +308,7 @@ export const state = () => ({
         fr: 'Canada Student Loan - Part-time Students with Dependants'
       },
       qualified: 'canada_student_loan_parttime_students_with_dependants',
-      studies: 'part-time'
+      enrollment: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -318,7 +318,7 @@ export const state = () => ({
         fr: 'Canada Student Grant - Part-time Students with Disabilities'
       },
       qualified: 'canada_student_grant_parttime_students_with_disabilities',
-      studies: 'part-time',
+      enrollment: 'part-time',
       disabilities: true
     },
     {
@@ -329,7 +329,7 @@ export const state = () => ({
         fr: 'Canada Student Grant - Part-time Services and Equipment for Students with Disabilities'
       },
       qualified: 'canada_student_grant_parttime_services_and_equipment_for_students_with_disabilities',
-      studies: 'part-time',
+      enrollment: 'part-time',
       disabilities: true
     },
     {
@@ -340,7 +340,7 @@ export const state = () => ({
         fr: 'Canada Student Loan - Full-time Eligability'
       },
       qualified: 'canada_student_loan_fulltime_eligibility',
-      studies: 'full-time'
+      enrollment: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -350,7 +350,7 @@ export const state = () => ({
         fr: 'Canada Student Grant - Full-time Eligability'
       },
       qualified: 'canada_student_grant_fulltime_eligibility',
-      studies: 'full-time'
+      enrollment: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -360,7 +360,7 @@ export const state = () => ({
         fr: 'Canada Student Loan - Full-time Students with Dependants'
       },
       qualified: 'canada_student_loan_fulltime_students_with_dependants',
-      studies: 'full-time'
+      enrollment: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
@@ -370,7 +370,7 @@ export const state = () => ({
         fr: 'Canada Student Grant - Full-time Students with Disabilities'
       },
       qualified: 'canada_student_grant_fulltime_students_with_disabilities',
-      studies: 'full-time',
+      enrollment: 'full-time',
       disabilities: true
     },
     {
@@ -381,7 +381,7 @@ export const state = () => ({
         fr: 'Canada Student Grant - Full-time Services and Equipment for Students with Disabilities'
       },
       qualified: 'canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities',
-      studies: 'full-time',
+      enrollment: 'full-time',
       disabilities: true
     },
     {
@@ -407,7 +407,7 @@ export const getters = {
     return _.filter(state.list, (o) =>  {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
-        return getters['validation'](o.qualified, eligibility) == true && typeof o.studies == 'undefined' && disability_check
+        return getters['validation'](o.qualified, eligibility) == true && typeof o.enrollment == 'undefined' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -418,7 +418,7 @@ export const getters = {
     return _.filter(state.list, (o) =>  {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
-        return getters['validation'](o.qualified, eligibility) == false && typeof o.studies == 'undefined' && disability_check
+        return getters['validation'](o.qualified, eligibility) == false && typeof o.enrollment == 'undefined' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -430,7 +430,7 @@ export const getters = {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
         
-        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'full-time' && disability_check
+        return getters['validation'](o.qualified, eligibility) == true && o.enrollment === 'full-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -442,7 +442,7 @@ export const getters = {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
         
-        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'full-time' && disability_check
+        return getters['validation'](o.qualified, eligibility) == false && o.enrollment === 'full-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -454,7 +454,7 @@ export const getters = {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
         
-        return getters['validation'](o.qualified, eligibility) == true && o.studies === 'part-time' && disability_check
+        return getters['validation'](o.qualified, eligibility) == true && o.enrollment === 'part-time' && disability_check
       } catch(error) {
         console.error(error)
         return false
@@ -466,7 +466,7 @@ export const getters = {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
         
-        return getters['validation'](o.qualified, eligibility) == false && o.studies === 'part-time' && disability_check
+        return getters['validation'](o.qualified, eligibility) == false && o.enrollment === 'part-time' && disability_check
       } catch(error) {
         console.error(error)
         return false

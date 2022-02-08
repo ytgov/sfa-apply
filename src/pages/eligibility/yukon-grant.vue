@@ -15,36 +15,16 @@
 
     <section v-if="eligibility.yukon_grant.has_completed_two_years">
       <Question>
-        {{ $t('is_over_20') }}
+        {{ $t('out_of_school_4_years') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant.is_over_20" 
-        :value="eligibility.yukon_grant.is_over_20" 
+        v-model="eligibility.yukon_grant.out_of_school_4_years" 
+        :value="eligibility.yukon_grant.out_of_school_4_years" 
       />
     </section>
 
-    <section v-if="eligibility.yukon_grant.has_completed_two_years && eligibility.yukon_grant.is_over_20 == 'Yes'">
-      <Question>
-        {{ $t('has_been_resident_continuously') }}
-      </Question>
 
-      <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant.has_been_resident_continuously" 
-        :value="eligibility.yukon_grant.has_been_resident_continuously" 
-      />
-    </section>
-
-    <section v-if="eligibility.yukon_grant.is_over_20 == 'No'">
-      <Question>
-        {{ $t('has_been_resident_continuously_from_14_to_18') }}
-      </Question>
-
-      <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.yukon_grant.has_been_resident_continuously_from_14_to_18" 
-        :value="eligibility.yukon_grant.has_been_resident_continuously_from_14_to_18" 
-      />
-    </section>
 
     <Buttons :valid="valid" :next="next" back="true" />
   </article>
@@ -76,7 +56,7 @@ export default {
           this.eligibility.yukon_grant.has_completed_two_years == 'Yes' 
         ) || (
           this.eligibility.yukon_grant.has_completed_two_years == 'No' 
-          && this.eligibility.yukon_grant.has_been_resident_continuously
+          && this.eligibility.yukon_grant.out_of_school_4_years
         )
 
       return is_valid
@@ -103,16 +83,12 @@ export default {
   "en": {
     "title": "Yukon Grant Eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
-    "is_over_20": "Are you over the age of 21?",
-    "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
-    "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
+    "out_of_school_4_years": "Have you been out of high school for 4 years or more?"
   },
   "fr": {
     "title": "Yukon Grant Eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
-    "is_over_20": "Are you over the age of 21?",
-    "has_been_resident_continuously": "Have you been a resident of Yukon continuously since the age of 14?",
-    "has_been_resident_continuously_from_14_to_18": "Have you been a resident of the Yukon continuously from the age of 14 to the age of 18?"
+    "out_of_school_4_years": "Have you been out of high school for 4 years or more?"
   }
 }
 </i18n>

@@ -70,7 +70,7 @@ export default {
     },
     next() {
       if (this.eligibility.independentstudent.out_of_school == 'Yes') {
-        if (this.eligibility.studies.time == 'Part-time') {
+        if (this.eligibility.enrollment.time == 'Part-time') {
           return '/eligibility/part-time-eligibility'
         } else {
           return '/eligibility/full-time-eligibility'
@@ -96,15 +96,15 @@ export default {
 {
   "en": {
     "title": "Independent Student",
-    "out_of_school": "Have you been out of school for 4 or more years?",
-    "in_labour_force": "Have you been in the labour force for at least two 12 month periods?",
-    "supporting_parent": "Do you have no supporting parent/guardian or other supporting relative due to death or dissapearance?"
+    "out_of_school": "Have you been out of school for 4 years or more?",
+    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies? ",
+    "supporting_parent": "Do you not have support of a parent/guardian due to death or disappearance? Does death or disappearance need to be said."
   },
   "fr": {
     "title": "Independent Student",
-    "out_of_school": "Have you been out of school for 4 or more years?",
-    "in_labour_force": "Have you been in the labour force for at least two 12 month periods?",
-    "supporting_parent": "Do you have no supporting parent/guardian or other supporting relative due to death or dissapearance?"
+    "out_of_school": "Have you been out of school for 4 years or more? ",
+    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies?",
+    "supporting_parent": "Do you not have support of a parent/guardian due to death or disappearance? Does death or disappearance need to be said."
   }
 }
 </i18n>

@@ -40,11 +40,11 @@ export default {
       }
     },
     valid() {
-      var is_valid = this.eligibility.studies.time 
+      var is_valid = this.eligibility.enrollment.time 
       return is_valid
     },
     next() {
-      return '/eligibility/residence'
+      return '/eligibility/residency'
     }
   },
   mounted() {
@@ -63,12 +63,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Studies",
-    "are_you_full_or_part_time": "Will you be studing full-time or part-time?"
+    "title": "Enrollment",
+    "are_you_full_or_part_time": "Will you be enrolled in full-time or part-time studies?"
   },
   "fr": {
-    "title": "Studies",
-    "are_you_full_or_part_time": "Will you be studing full-time or part-time?"
+    "title": "Enrollment",
+    "are_you_full_or_part_time": "Will you be enrolled in full-time or part-time studies?"
   }
 }
 </i18n>

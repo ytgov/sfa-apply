@@ -81,12 +81,12 @@ export default {
 {
   "en": {
     "title": "Disabilities",
-    "permanent_disability": "Are you a student with a permanent disability?",
+    "permanent_disability": "Are you a student who has a long-term disability (i.e. over 6 months)?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   },
   "fr": {
     "title": "Disabilities",
-    "permanent_disability": "Are you a student with a permanent disability?",
+    "permanent_disability": "Are you a student who has a long-term disability (i.e. over 6 months)?",
     "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
   }
 }

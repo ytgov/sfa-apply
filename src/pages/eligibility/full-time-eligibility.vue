@@ -129,17 +129,17 @@ export default {
 {
   "en": {
     "title": "Full-time Student Loan Eligability",
-    "program_at_least_2_years": "Is your program at least 2 years (60 weeks) in duration?",
-    "family_size": "What is your family size?",
-    "previous_year_gross_family_income": "What is your gross family income for the previous year?",
+    "program_at_least_2_years": "Is your program 2 years (60 weeks) or longer in duration? ",
+    "family_size": "How big is your family? ",
+    "previous_year_gross_family_income": "What is your gross family income from the last year? ",
     "dependants_under_twelve": "How many dependants do you have under the age of 12?",
     "dependants_with_disability": "How many dependants older than 12 with a disability?"
   },
   "fr": {
     "title": "Full-time Student Loan Eligability",
-    "program_at_least_2_years": "Is your program at least 2 years (60 weeks) in duration?",
-    "family_size": "What is your family size?",
-    "previous_year_gross_family_income": "What is your gross family income for the previous year?",
+    "program_at_least_2_years": "Is your program 2 years (60 weeks) or longer in duration? ",
+    "family_size": "How big is your family? ",
+    "previous_year_gross_family_income": "What is your gross family income from the last year? ",
     "dependants_under_twelve": "How many dependants do you have under the age of 12?",
     "dependants_with_disability": "How many dependants older than 12 with a disability?"
   }

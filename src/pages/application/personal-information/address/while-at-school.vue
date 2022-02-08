@@ -2,7 +2,7 @@
   <article data-layout="application">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      {{ $t('excerpt') }}
     </p>
 
     <section>
@@ -62,10 +62,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Address While at School"
+    "title": "Address While at School",
+    "excerpt": "If you would like your mail to be sent to an alternative address while you are at school, complete this section. "
   },
   "fr": {
-    "title": "Address While at School"
+    "title": "Address While at School",
+    "excerpt": "If you would like your mail to be sent to an alternative address while you are at school, complete this section. "
   }
 }
 </i18n>

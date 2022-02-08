@@ -100,7 +100,7 @@ export default {
       return is_valid;
     },
     next() {
-      return '/eligibility/studies'
+      return '/eligibility/enrollment'
     }
   },
   mounted() {

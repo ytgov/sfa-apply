@@ -18,6 +18,10 @@
         {{ $t('post_secondary_enrolled_in') }}
       </Question>
 
+      <p>
+        If your school is not listed, contact our office by email at sfa@yukon.ca and provide the name of your school and your school’s email address.
+      </p>
+
       <Select :options="institutions"
         v-model="eligibility.designated_institution.post_secondary_enrolled_in" 
         :value="eligibility.designated_institution.post_secondary_enrolled_in" 
@@ -25,7 +29,7 @@
     </section>
 
 
-    <section>
+    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
       <Question>
         {{ $t('details.campus') }}
       </Question>
@@ -36,7 +40,7 @@
       />
     </section>
 
-    <section>
+    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
       <Question>
         {{ $t('details.program_name') }}
       </Question>
@@ -47,7 +51,7 @@
       />
     </section>
 
-    <section>
+    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
       <Question>
         {{ $t('details.duration_of_program') }}
       </Question>
@@ -58,7 +62,7 @@
       />
     </section>
 
-    <section>
+    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
       <Question>
         {{ $t('details.year_entering') }}
       </Question>
@@ -69,7 +73,7 @@
       />
     </section>
 
-    <section>
+    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
       <Question>
         {{ $t('details.start_date_of_classes') }}
       </Question>
@@ -80,7 +84,7 @@
       />
     </section>
 
-    <section>
+    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
       <Question>
         {{ $t('details.end_date_of_classes') }}
       </Question>
@@ -164,7 +168,7 @@ export default {
   "en": {
     "title": "Designated Institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
-    "post_secondary_enrolled_in": "Which institution are you enrolled in?",
+    "post_secondary_enrolled_in": "Select the school you plan to attend.",
     "details": {
       "campus": "Name of Campus (if applicable)",
       "program_name": "Name of Program",
@@ -177,7 +181,7 @@ export default {
   "fr": {
     "title": "Designated Institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
-    "post_secondary_enrolled_in": "Which institution are you enrolled in?",
+    "post_secondary_enrolled_in": "Select the school you plan to attend.",
     "details": {
       "campus": "Name of Campus (if applicable)",
       "program_name": "Name of Program",
