@@ -7,8 +7,15 @@
 
     <section>
       <h4>Address:</h4>
-      <AddressSelector v-model="profile.address.at_school" :value="profile.address.at_school" />
+      <AddressSelector v-model="student.HOME_ADDRESS2" :value="student.HOME_ADDRESS2" />
     </section>
+
+    <div>
+      <label>
+        <input type="checkbox" @click="same()" :checked="student.HOME_ADDRESS1==student.HOME_ADDRESS2"> Same as perminent address 
+      </label>
+    </div>
+
     <Buttons :valid="valid" :next="next" :back="true" />
   </article>
 </template>
@@ -29,21 +36,21 @@ export default {
     AddressSelector
   },
   computed: {
-    profile: {
+    student: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['student/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        return this.$store.commit('student/SET', values)
       }
     },
     valid() {
-      var is_valid = this.profile.address.at_school!=''
+      var is_valid = this.student.HOME_ADDRESS2!=''
 
       return is_valid
     },
     next() {
-      return '/application/documents'
+      return '/application/program-details'
     }
   },
   mounted() {
@@ -51,8 +58,14 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('student/SET', this.student)
       this.$emit('input', this.valid)
+    }
+  },
+  methods: {
+    same() {
+      this.student.HOME_ADDRESS2 = this.student.HOME_ADDRESS1
+      this.$store.commit('student/SET', this.student)
     }
   }
 }

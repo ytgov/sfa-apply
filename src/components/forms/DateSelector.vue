@@ -1,47 +1,35 @@
 <template>
-  <div class="control">
-    <div class="slot">
-      <label>{{label}}</label>
-      <div class="birth-date">
-        <span class="year">
-          <input type="number" v-model="year" maxlength="4" />
-          <small>Year</small>
-        </span>
-        <span class="month">
-          <select v-model="month">
-            <option :value="(index+1)" v-for="month, index in months">{{month.name}}</option>
-          </select> 
-          <small>Month</small>
-        </span>
-        <span class="day">
-          <input type="number" v-model="day" maxlength="2" />
-          <small>Day</small>
-        </span>
-      </div>
-    </div>
-  </div>
+  <span>
+    <span class="year">
+      <input type="number" v-model="year" maxlength="4" />
+      <small>Year</small>
+    </span>
+    <span class="month">
+      <select v-model="month">
+        <option :value="(index+1)" v-for="month, index in months">{{month.name}}</option>
+      </select> 
+      <small>Month</small>
+    </span>
+    <span class="day">
+      <input type="number" v-model="day" maxlength="2" />
+      <small>Day</small>
+    </span>
+  </span>
 </template>
 
 
 <script>
 export default {
-  props: ["label", "value"],
-  $_veeValidate: {
-    // value getter
-    value () {
-      return this.output
-    },
-    // name getter
-    name () {
-      return 'date';
-    }
-  },
+  props: ["value"],
   computed: {
     is_leapyear() {
       return (this.year % 100 === 0) ? (this.year % 400 === 0) : (this.year % 4 === 0);
     },
     output() {
-      return moment(`${this.month} ${this.day} ${this.year}`).format("YYYY-MM-DD")
+      return new Date(`${this.month} ${this.day} ${this.year}`)
+    },
+    timestamp() {
+      return this.$options.filters.formatTimestamp(this.value)
     }
   },
   data() {
@@ -104,16 +92,16 @@ export default {
   mounted() {
     this.$nextTick(()=>{  
       if (this.value) {
-        var timestamp = this.$options.filters.formatTimestamp(this.value)
-
-        console.log('BIRTHDAY', this.value, timestamp)
         
-        //if (isNaN(timestamp) == false) {
-        if (timestamp) {
-          this.year = new Date(timestamp).getFullYear()
-          this.month = new Date(timestamp).getMonth()+1
-          this.day = new Date(timestamp).getDate()
-        } 
+        if (this.timestamp) {
+          this.year = new Date(this.timestamp).getFullYear()
+          this.month = new Date(this.timestamp).getMonth()+1
+          this.day = new Date(this.timestamp).getDate()
+        } else {
+          this.year = new Date(this.value).getFullYear()
+          this.month = new Date(this.value).getMonth()+1
+          this.day = new Date(this.value).getDate()
+        }
       }
       this.$emit('input', this.output)
     })
@@ -133,14 +121,15 @@ export default {
 
 
 <style lang="scss" scoped>
-
-
-div.control {
-  margin: 1.25rem 0;
-  div.birth-date {
-    display: grid;
-    grid-template-columns: 6fr 6fr 6fr;
-    grid-gap: 1rem;
+span {
+  margin: 0.25rem 0;
+  max-width: 400px;
+  width: 100%;
+  display: grid;
+  grid-template-coulmns: 2fr 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: auto auto;
+  grid-gap: 0.25rem 1rem;
+  > span {
     input[type=text],
     input[type=number],
      select {
@@ -150,7 +139,17 @@ div.control {
       border: 1px solid #D4C7CF !important;
       padding: 0.5rem !important;
     }
+    &.year {
+      grid-column: 1;
+    }
+    &.month {
+      grid-column: 2/6;
+    }
+    &.day {
+      grid-column: 6;
+    }
   }
+
   .error, .valid {
     margin-top: 1rem;
     padding: 1rem;
@@ -159,5 +158,5 @@ div.control {
     background: #00cc00;
   }
 }
-
 </style>
+

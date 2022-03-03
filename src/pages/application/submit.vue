@@ -5,15 +5,16 @@
 			{{ $t('excerpt') }}
 		</p>
 
-
-
 		<v-card>
 			<section class="header">
 				<h3>Funding Sources</h3>
 			</section>
 			<section class="content">
+				<br />
 				<ul>
-					<li></li>
+					<li v-for="program in programs">
+						{{program.name[locale]}} 
+					</li>
 				</ul>
 
 				<p class="buttons">
@@ -54,7 +55,7 @@
 						</tr>
 						<tr>
 							<td>Year of program you are entering</td>
-							<td>{{eligibility.designated_institution.details.year_entering||'None'}}</td>
+							<td>{{eligibility.designated_institution.details.year_entering}}</td>
 						</tr>
 						<tr>
 							<td>Is this a corespondence or distance learning program?</td>
@@ -62,18 +63,18 @@
 						</tr>
 						<tr>
 							<td>Start date of your classes</td>
-							<td>{{eligibility.designated_institution.details.start_date_of_classes||'None'}}</td>
+							<td>{{eligibility.designated_institution.details.start_date_of_classes|formatNiceDate}}</td>
 						</tr>
 						<tr>
 							<td>End date of your classes (including exams)</td>
-							<td>{{eligibility.designated_institution.details.year_entering||'None'}}</td>
+							<td>{{eligibility.designated_institution.details.end_date_of_classes|formatNiceDate}}</td>
 						</tr>
 					</tbody>
 				</table>
 
 
 				<p class="buttons">
-		  		<v-btn to="/eligibility/designated-institution?revise=true" color="primary"  class="mr-5" x-large>
+		  		<v-btn to="/application/program-details?revise=true" color="primary"  class="mr-5" x-large>
 		  			{{ $t("buttons.edit") }}
 		  		</v-btn>
 			  </p>
@@ -96,10 +97,38 @@
         <AddressSelector v-model="profile.HOME_ADDRESS2" :value="profile.HOME_ADDRESS2" style="width:  70%"/>
 
 				<p class="buttons" v-if="false">
-		  		<v-btn to="/application/personal-information/address/perminent?revise=true" color="primary"  class="mr-5" x-large>
+		  		<v-btn :to="`/application/personal-information/address/perminent?revise=true`" color="primary"  class="mr-5" x-large>
 		  			{{ $t("buttons.edit") }}
 		  		</v-btn>
 			  </p>
+			</section>
+		</v-card>
+
+		<v-card>
+			<section class="header">
+				<small>Section 3</small>
+				<h3>Documents</h3>
+			</section>
+			<section class="content">
+				<br />
+
+		    <section class="documents">
+					<div v-for="doc in documents" v-if="doc.DESCRIPTION!=null">
+						<div style="width: 5%;">
+	            <i class="far fa-2x fa-check-square" v-if="doc.status=='VERIFIED'"></i>
+	            <i class="fas fa-2x fa-cloud-upload-alt" v-else-if="doc.status=='UPLOADING'"></i>
+	            <i class="far fa-2x fa-clock" v-else></i>
+	          </div>
+						<div>
+							<strong>{{doc.DESCRIPTION}}</strong><br />
+							<small>{{doc.status||'PENDING'}}</small>
+						</div>
+						<div>
+
+						</div>
+					</div>
+				</section>
+
 			</section>
 		</v-card>
 
@@ -141,7 +170,7 @@ table {
 {
   "en": {
   	"title": "Review Application",
-  	"excerpt": "Please review your application to ensure that it is correct. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero in sapien condimentum volutpat et vel purus. ",
+  	"excerpt": "Please review your application to ensure it is correct. If changes are required, click the “edit” button. Once corrected, continue to next section.",
   	"buttons": {
   		"edit": "Edit",
   		"continue": "Continue"
@@ -149,7 +178,7 @@ table {
   },
   "fr": {
   	"title": "Review Application",
-  	"excerpt": "Please review your application to ensure that it is correct. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero in sapien condimentum volutpat et vel purus. ",
+  	"excerpt": "Please review your application to ensure it is correct. If changes are required, click the “edit” button. Once corrected, continue to next section.",
   	"buttons": {
   		"edit": "Edit",
   		"continue": "Continue"
@@ -170,9 +199,14 @@ export default {
 	},
   computed: {
     ...mapGetters({
-    	eligibility: 'eligibility/GET'
+    	eligibility: 'eligibility/GET',
+    	programs: 'applications/programs',
+    	documents: 'documents/list'
       //ap: 'applications/programs'
     }),
+    locale() {
+      return this.$i18n.locale
+    },
     profile: {
       get() {
         return this.$store.getters['student/GET']
@@ -203,7 +237,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/documents'
+      return '/application/thanks'
     }
   },
   watch: {
@@ -216,3 +250,74 @@ export default {
   }
 }
 </script>
+
+
+<style lang="scss" scoped>
+
+
+
+section.documents{
+	> div {
+		display: flex;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+
+		border-top: solid 1px #eee;
+		&:last-of-type {
+			border-bottom: solid 1px #eee;
+		}
+
+		> div {
+			width: 100%;
+			padding: 2rem 0;
+			&:nth-of-type(1) {
+				min-width: 20%;
+			}
+			&:nth-of-type(2) {
+				width: auto;
+				white-space: nowrap;
+				text-align: left;
+				padding: 2rem;
+			}
+			&:last-of-type {
+				text-align: right;
+				min-width: 20%;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+
+  section.documents {
+  	> div {
+  		display: grid;
+  		grid-template-columns: 6fr 6fr;
+  		padding: 1rem 0;
+  		> div {
+  			min-width: 100%;
+  			padding: 0.25rem 0 !important;
+
+  			&:nth-of-type(1) {
+					grid-row: 1;
+					grid-column: 1;
+					
+				}
+				&:nth-of-type(2) {
+					grid-row: 2;
+					grid-column: 1;
+					text-align: left;
+				}
+				&:last-of-type {
+					grid-row: 2;
+					grid-column: 2;
+					
+					text-align: right;
+				}
+  		}
+  	}
+  }
+}
+
+
+</style>

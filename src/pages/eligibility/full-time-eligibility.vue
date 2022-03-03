@@ -128,7 +128,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Full-time Student Loan Eligability",
+    "title": "Full-time Student Loan Eligibility",
     "program_at_least_2_years": "Is your program 2 years (60 weeks) or longer in duration? ",
     "family_size": "How big is your family? ",
     "previous_year_gross_family_income": "What is your gross family income from the last year? ",
@@ -136,7 +136,7 @@ export default {
     "dependants_with_disability": "How many dependants older than 12 with a disability?"
   },
   "fr": {
-    "title": "Full-time Student Loan Eligability",
+    "title": "Full-time Student Loan Eligibility",
     "program_at_least_2_years": "Is your program 2 years (60 weeks) or longer in duration? ",
     "family_size": "How big is your family? ",
     "previous_year_gross_family_income": "What is your gross family income from the last year? ",

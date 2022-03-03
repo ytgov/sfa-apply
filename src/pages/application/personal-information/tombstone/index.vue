@@ -24,8 +24,8 @@
       <ValidationProvider name="SIN" rules="sin"  tag="span" v-slot="{ errors, valid }" >
         <SinNumber 
           name="SIN"
-          v-model="profile.sin" 
-          :value="profile.sin" 
+          v-model="student.SIN" 
+          :value="student.SIN" 
           :errors="errors" 
           :valid="valid" 
           class="limit"
@@ -34,15 +34,15 @@
 
     </section>
 
-    <section v-if="(!profile.tombstone.alias || profile.tombstone.use_existing_alias == 'No') && profile.sin">
+    <section v-if="(!profile.tombstone.alias || profile.tombstone.use_existing_alias == 'No') && student.SIN">
       <Question>
         {{ $t('what_is_your_birthday') }}
       </Question>
 
       <div class="limit">
         <DateSelector 
-          v-model="profile.dob" 
-          :value="profile.dob" 
+          v-model="student.DOB" 
+          :value="student.DOB" 
         />
       </div>
     </section>
@@ -72,6 +72,14 @@ export default {
     DateSelector
   },
   computed: {
+    student: {
+      get() {
+        return this.$store.getters['student/GET']
+      },
+      set(values) {
+        return this.$store.commit('student/SET', values)
+      }
+    },
     profile: {
       get() {
         return this.$store.getters['profile/GET']
@@ -85,22 +93,22 @@ export default {
         this.profile.tombstone.alias && this.profile.tombstone.use_existing_alias == 'Yes'
         || (
           !this.profile.tombstone.alias
-          && (this.valid_sin && this.profile.sin)
-          && this.profile.dob
+          && (this.valid_sin && this.student.SIN)
+          && this.student.DOB
         )
       )
       return is_valid;
     },
     valid_sin() {
-      return this.profile.sin.length == 9
+      return this.student.SIN.length == 9
     },
     next() {
       return '/application/personal-information/address/permanent'
-      //return '/application/personal-information/email'
     }
   },
   watch: {
     valid(to, from) {
+      this.$store.commit('student/SET', this.student)
       this.$store.commit('profile/SET', this.profile)
       this.$emit('input', this.valid)
     }
@@ -112,13 +120,13 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Tombstone",
+    "title": "Personal Information",
     "use_existing_alias": "Do you want to use your existing?",
     "what_is_your_sin_number": "What is your sin number?",
     "what_is_your_birthday": "What is your birthday?"
   },
   "fr": {
-    "title": "Tombstone",
+    "title": "Personal Information",
     "use_existing_alias": "Do you want to use your existing?",
     "what_is_your_sin_number": "What is your sin number?",
     "what_is_your_birthday": "What is your birthday?"

@@ -8,8 +8,8 @@
       </Question>
 
       <RadioList :options="['Full-time', 'Part-time']" 
-        v-model="eligibility.studies.time" 
-        :value="eligibility.studies.time" 
+        v-model="eligibility.enrollment.time" 
+        :value="eligibility.enrollment.time" 
       />
     </section>
 

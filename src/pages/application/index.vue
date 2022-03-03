@@ -17,7 +17,7 @@
 
 		<h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 		<p>
-			<strong>Must read the terms to continue.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero in sapien condimentum volutpat et vel purus. Morbi sed maximus ante, a ultricies leo. Curabitur maximus libero ac massa accumsan egestas. Duis sed aliquet urna. Nam consectetur ex tortor, nec sollicitudin ipsum ullamcorper ac.
+			<strong>Must read the terms to continue.</strong> Collection of your personal information is required to set up your account on the Student Financial Assistance System (SFAS) and to submit and process your application(s).  We will use your personal information to determine your eligibility for funding programs in accordance with the Occupational Training Act, Student Financial Assistance Act (Yukon), the Canada Student Financial Assistance Act and respective regulations, policies and guidelines. Your information may also be used and disclosed for the administration of the SFAS.  The collection, use and disclosure of your personal information is done under the authority of Yukon’s Access to Information and Protection of Privacy (ATIPP) Act and is managed in accordance with the ATIPP Act. If you have any questions about the collection of this information, contact the Student Financial Assistance office at 867-667-5929.
 		</p>
 
 		<TermsWrapper v-model="profile.atipp.read_terms" :value="profile.atipp.read_terms">

@@ -80,14 +80,14 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Disabilities",
-    "permanent_disability": "Are you a student who has a long-term disability (i.e. over 6 months)?",
-    "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
+    "title": "Disability Information",
+    "permanent_disability": "Do you have a permanent disability?",
+    "service_equipment": "Do you have a persistent or prolonged disability that is expected to last 12 months or more?"
   },
   "fr": {
-    "title": "Disabilities",
-    "permanent_disability": "Are you a student who has a long-term disability (i.e. over 6 months)?",
-    "service_equipment": "Are you in need of exceptional educational-related services or equipment?"
+    "title": "Disability Information",
+    "permanent_disability": "Do you have a permanent disability?",
+    "service_equipment": "Do you have a persistent or prolonged disability that is expected to last 12 months or more?"
   }
 }
 </i18n>

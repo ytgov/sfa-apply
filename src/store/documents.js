@@ -50,16 +50,25 @@ export const getters = {
   }
 }
 
+
+
 export const mutations = {
   POPULATE(state, documents) {
     state.list = documents
+  },
+  CLEAR(state) {
+    state.list = []
   }
 }
 
 export const actions = {
-  get({ commit, dispatch }, { app }) {
+  async init({ commit }) {
+    let { data } = await this.$axios.get('/SfaDocumentLinks', { student_id: 2 })
+    commit('POPULATE', data) 
+  },
+  create({ commit, dispatch }, { values }) {
     return new Promise((resolve, reject) => {
-      app.$api.get('/SfaDocumentLinks').then(response => {
+      this.$axios.post('/SfaDocumentLinks', { values }).then(response => {
         resolve(response)
       }).catch((error) => {
         console.error(error)
@@ -67,19 +76,9 @@ export const actions = {
       });
     })
   },
-  create({ commit, dispatch }, { app, values }) {
+  update({ commit, dispatch }, { id, values }) {
     return new Promise((resolve, reject) => {
-      app.$api.post('/SfaDocumentLinks', { values }).then(response => {
-        resolve(response)
-      }).catch((error) => {
-        console.error(error)
-        reject(error)
-      });
-    })
-  },
-  update({ commit, dispatch }, { app, id, values }) {
-    return new Promise((resolve, reject) => {
-      app.$api.put(`/SfaDocumentLinks/${id}`, { values }).then(response => {
+      this.$axios.put(`/SfaDocumentLinks/${id}`, { values }).then(response => {
         resolve(response)
       }).catch((error) => {
         console.error(error)
@@ -89,7 +88,7 @@ export const actions = {
   },
   delete({ commit, dispatch }, { app, id }) {
     return new Promise((resolve, reject) => {
-      app.$api.delete(`/SfaDocumentLinks/${id}`).then(response => {
+      this.$axios.delete(`/SfaDocumentLinks/${id}`).then(response => {
         resolve(response)
       }).catch((error) => {
         console.error(error)

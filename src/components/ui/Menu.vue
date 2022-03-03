@@ -40,7 +40,8 @@
 
         <v-list-item-content>
           <v-list-item-title>
-            <nuxt-link :to="item.to" @click.native="off()">{{ item.title }}</nuxt-link>
+            <a @click="item.click()" v-if="item.click">{{ item.title }}</a>
+            <nuxt-link :to="item.to" @click.native="off()" v-else>{{ item.title }}</nuxt-link>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -71,7 +72,7 @@ export default {
             { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
             { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
             { title: 'Contact', icon: 'mdi-account', to: '/contact' },
-            { title: 'Logout', icon: 'mdi-account', to: '/logout' }
+            { title: 'Logout', icon: 'mdi-account', click: () => { this.$auth.logout(); this.off() } }
           ]
         },
         fr: {
@@ -81,7 +82,7 @@ export default {
             { title: 'Dcouments', icon: 'mdi-account', to: '/fr/application/documents' },
             { title: 'FAQ', icon: 'mdi-account', to: '/fr/faq' },
             { title: 'Contact', icon: 'mdi-account', to: '/fr/contact' },
-            { title: 'Logout', icon: 'mdi-account', to: '/logout' }
+            { title: 'Logout', icon: 'mdi-account', click: () => { this.$auth.logout(); this.off() } }
           ]
         }
       }

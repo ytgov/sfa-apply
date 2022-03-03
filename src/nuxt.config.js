@@ -35,7 +35,7 @@ export default {
     { src: `~/plugins/vee-validate`, ssr: true},
     { src: '~/plugins/filters.js', ssr: true },
     { src: '~/plugins/vuetify.js', ssr: false },
-    { src: '~/plugins/api.js', ssr: true }
+    { src: '~/plugins/axios.js' }
   ],
   modules: [
     // ['@nuxtjs/google-tag-manager', { id: '' }],
@@ -53,7 +53,9 @@ export default {
     ['cookie-universal-nuxt', { 
       alias: 'yukon_financial_student_portal_cookies' 
     }],
-    ['@nuxtjs/axios'],
+    ['@nuxtjs/axios', {
+      baseUrl: environment.config.api.base_url
+    }],
     ['@nuxtjs/device'],
     ['nuxt-i18n', {
       defaultLocale: 'en',
@@ -110,6 +112,7 @@ export default {
       customVariables: ['~/assets/scss/_variables.scss']
     }]
   ],
+
   build: {
     transpile: ['vee-validate', 'vee-validate/dist/rules'],
     plugins: [
@@ -126,6 +129,7 @@ export default {
       }
     }
   },
+
   env: {
     config: environment.config,
     endpoints: environment.endpoints,

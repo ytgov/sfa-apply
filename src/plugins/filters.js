@@ -160,6 +160,12 @@ Vue.filter('formatDate', function(value) {
 
 Vue.filter('formatNiceDate', function (value) {
   if (value) {
+    return moment(String(value)).format('MMMM Do, Y')
+  }
+})
+
+Vue.filter('formatNiceDateTime', function (value) {
+  if (value) {
     return moment(String(value)).format('MMMM Do, Y @ hh:mm')
   }
 })

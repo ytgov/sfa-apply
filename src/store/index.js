@@ -1,17 +1,13 @@
 export const strict = false
 
 export const state = () => ({
-  menu_open: false,
-  token: false
+  menu_open: false
 })
 
 
 export const getters = {
   menu_open(state) {
     return state.menu_open
-  },
-  token(state) {
-    return state.token
   }
 }
 
@@ -21,27 +17,23 @@ export const mutations = {
   },
   TOGGLE_MENU_OFF(state) {
     state.menu_open = false
-  },
-  SET_TOKEN(state, token) {
-    state.token = token
   }
 }
 
 
 export const actions = {
-  nuxtServerInit ({ commit, dispatch }, {app, req, redirect}) {
-    //console.log("RUNNING GLOBAL SERVER INIT.")
+  async nuxtServerInit ({ commit, dispatch }, {app, req, redirect}) {
+    console.log("RUNNING GLOBAL SERVER INIT.")
+
+    console.log("Auth", this.$auth.loggedIn)
+    console.log(this.$auth.strategy.token.get())
+
+    if (this.$auth.loggedIn) {
+      await dispatch('student/init')
+      await dispatch('documents/init')
+    }
   },
   nuxtClientInit ({ commit, dispatch }, {app, req, redirect, route}) {
     console.log("RUNNING GLOBAL CLIENT INIT.");
-    commit('user/SET_STATE')
-    
-    /*
-    return getUserStatus({ commit, dispatch }).then(async () => {
-      //await dispatch('user/init')
-    }).catch(() => {
-      redirect('/login')
-    })
-    */ 
   }
 }

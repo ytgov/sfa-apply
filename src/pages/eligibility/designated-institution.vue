@@ -29,73 +29,6 @@
     </section>
 
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
-      <Question>
-        {{ $t('details.campus') }}
-      </Question>
-
-       <TextField 
-        v-model="eligibility.designated_institution.details.campus" 
-        :value="eligibility.designated_institution.details.campus" 
-      />
-    </section>
-
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
-      <Question>
-        {{ $t('details.program_name') }}
-      </Question>
-
-       <TextField 
-        v-model="eligibility.designated_institution.details.program_name" 
-        :value="eligibility.designated_institution.details.program_name" 
-      />
-    </section>
-
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
-      <Question>
-        {{ $t('details.duration_of_program') }}
-      </Question>
-
-       <TextField 
-        v-model="eligibility.designated_institution.details.duration_of_program" 
-        :value="eligibility.designated_institution.details.duration_of_program" 
-      />
-    </section>
-
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
-      <Question>
-        {{ $t('details.year_entering') }}
-      </Question>
-
-       <TextField 
-        v-model="eligibility.designated_institution.details.year_entering" 
-        :value="eligibility.designated_institution.details.year_entering" 
-      />
-    </section>
-
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
-      <Question>
-        {{ $t('details.start_date_of_classes') }}
-      </Question>
-
-       <TextField 
-        v-model="eligibility.designated_institution.details.start_date_of_classes" 
-        :value="eligibility.designated_institution.details.start_date_of_classes" 
-      />
-    </section>
-
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
-      <Question>
-        {{ $t('details.end_date_of_classes') }}
-      </Question>
-
-       <TextField 
-        v-model="eligibility.designated_institution.details.end_date_of_classes" 
-        :value="eligibility.designated_institution.details.end_date_of_classes" 
-      />
-    </section>
-
-
     <Buttons :valid="valid" :next="next" back="true" />
 
   </article>
@@ -106,16 +39,12 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
-import Select from '~/components/forms/Select.vue';
-import TextField from '~/components/forms/TextField.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList,
-    Select,
-    TextField
+    RadioList
   },
   data() {
     return {
@@ -129,7 +58,7 @@ export default {
       },
       set(values) {
         return this.$store.commit('eligibility/SET', values)
-      }
+      },
     },
     valid() {
       var is_valid = (
@@ -142,11 +71,6 @@ export default {
       return is_valid
     },
     next() {
-
-      if (this.$route.query.revise == 'true') {
-        this.$store.commit('eligibility/SET', this.eligibility)
-        return '/application/submit'
-      }
       return '/eligibility/yukon-grant'
     }
   },
@@ -168,28 +92,12 @@ export default {
   "en": {
     "title": "Designated Institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
-    "post_secondary_enrolled_in": "Select the school you plan to attend.",
-    "details": {
-      "campus": "Name of Campus (if applicable)",
-      "program_name": "Name of Program",
-      "duration_of_program": "Program Duration",
-      "year_entering": "Year of program you are entering",
-      "start_date_of_classes": "Start date of your classes",
-      "end_date_of_classes": "End date of your classes (including exams)"
-    }
+    "post_secondary_enrolled_in": "Select the school you plan to attend."
   },
   "fr": {
     "title": "Designated Institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
-    "post_secondary_enrolled_in": "Select the school you plan to attend.",
-    "details": {
-      "campus": "Name of Campus (if applicable)",
-      "program_name": "Name of Program",
-      "duration_of_program": "Program Duration",
-      "year_entering": "Year of program you are entering",
-      "start_date_of_classes": "Start date of your classes",
-      "end_date_of_classes": "End date of your classes (including exams)"
-    }
+    "post_secondary_enrolled_in": "Select the school you plan to attend."
   }
 }
 </i18n>

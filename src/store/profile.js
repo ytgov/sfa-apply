@@ -32,20 +32,11 @@ export const getters = {
 }
 
 export const mutations = {
-  SET(state, profile) {
-    state.profile = profile
-  },
-  CLEAR(state) {
-    state.profile = Object.assign({}, defaultData)
+  SET(state, values) {
+    state.profile = Object.assign(state.profile, values)
   }
 }
 
 export const actions = {
-  async fetch({ commit }) {
-    await api.get('/Students/1').then(response => {
-      commit("SET", response.data);
-    }).catch(() => {
-      commit("CLEAR");
-    });
-  },
+
 }

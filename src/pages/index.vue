@@ -76,7 +76,7 @@
 <i18n>
 {
   "en": {
-  	"hello": "Hello",
+  	"hello": "Hello, ",
   	"welcome": "Yukon students are encouraged to apply for available funding programs online. By using this online tool, students have the option to submit an application or review funding that has been awarded in the past. If you are planning to complete and submit an application, make sure to have all required documents to finish your application.",
     "current": {
     	"header": "Current Applications",
@@ -91,7 +91,7 @@
     }
   },
   "fr": {
-  	"hello": "Bonjour",
+  	"hello": "Bonjour, ",
   	"welcome": "Yukon students are encouraged to apply for available funding programs online. By using this online tool, students have the option to submit an application or review funding that has been awarded in the past. If you are planning to complete and submit an application, make sure to have all required documents to finish your application.",
     "current": {
     	"header": "Applications actuelles",
@@ -135,17 +135,12 @@ export default {
 		}
 	},
 	mounted() {
-		// UPDATE TOKEN TO STORE
-		//console.log("STRATEGY", this.$auth.strategy)
-    this.$store.commit('SET_TOKEN', this.$auth.strategy.token.get())
-
-
 		if (!this.$auth.loggedIn) {
 			this.$router.push('/login')
 		} else if (!this.$store.getters['eligibility/status'] && !this.$route.path.includes('/eligibility')) {
 			//this.eligibility = false
     } 
-  
+  	
 	}
 }
 </script>

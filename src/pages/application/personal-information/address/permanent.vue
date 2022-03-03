@@ -7,7 +7,7 @@
 
     <section>
       <h4>Address:</h4>
-      <AddressSelector v-model="profile.address.permanent" :value="profile.address.permanent" />
+      <AddressSelector v-model="student.HOME_ADDRESS1" :value="student.HOME_ADDRESS1" />
     </section>
 
     <Buttons :valid="valid" :next="next" :back="true" />
@@ -30,16 +30,16 @@ export default {
     AddressSelector
   },
   computed: {
-    profile: {
+    student: {
       get() {
-        return this.$store.getters['profile/GET']
+        return this.$store.getters['student/GET']
       },
       set(values) {
-        return this.$store.commit('profile/SET', values)
+        return this.$store.commit('student/SET', values)
       }
     },
     valid() {
-      var is_valid = this.profile.address.permanent!=''
+      var is_valid = this.student.HOME_ADDRESS1!=''
 
       return is_valid
     },
@@ -52,7 +52,7 @@ export default {
   },
   watch: {
     valid(to, from) {
-      this.$store.commit('profile/SET', this.profile)
+      this.$store.commit('student/SET', this.student)
       this.$emit('input', this.valid)
     }
   }

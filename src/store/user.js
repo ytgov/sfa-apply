@@ -1,6 +1,3 @@
-import { firebase } from '@/services/firebase.js'
-
-
 export const strict = false
 
 const config = process.env.config
@@ -46,45 +43,8 @@ export const getters = {
 
 
 export const actions = {
-  token({ dispatch, commit, state, rootGetters }, { code }) {
-    var OauthUserToken = firebase.functions().httpsCallable('auth-token');
-    return new Promise((resolve, reject) => {
-      OauthUserToken({ code, state: state.state }).then((response) => {
-        commit('SET_TOKEN', response.data.token)
-        resolve(response.data)
-      }).catch((error) => {
-        console.log("User Token Error", error)
-        reject(error)
-      })
-    })
-  },
-  /*
-  async login({ commit }) {
-    await axios.get(endpoints.LOGIN_URL).then(response => {
-      commit("SET_USER", response.data);
-    }).catch(() => {
-      commit("CLEAR");
-    });
-  },
-  async validate({ commit }) {
-    await axios.get(endpoints.AUTH_CHECK_URL).then(response => {
-      commit("SET_USER", response.data);
-    }).catch(() => {
-      commit("CLEAR");
-    });
-  },
-  */
   async logout({ commit }) {
     return new Promise((resolve, reject) => {
-      var user = firebase.auth().user
-      if (user) {
-        /*
-        profiles.doc(user.uid).set({ 
-          last_online: firebase.firestore.FieldValue.serverTimestamp(),
-          online: false
-        }, { merge: true })
-        */
-      } 
       resolve()
     })
     /*

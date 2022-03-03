@@ -4,13 +4,13 @@ export const state = () => ({
   list: [
     {
       name: 'Army Yukon Scolorship',
-      eligable: (profile) => {
+      eligible: (profile) => {
         return profile.scolorship.is_high_school_student == 'Yes'
       }
     },
     {
       name: 'Nicolas John Hararch Scoloarship',
-      eligable: (profile) => {
+      eligible: (profile) => {
         return (
           profile.scolorship.is_high_school_student == 'Yes' && 
           profile.scolorship.is_high_school_graduate == 'Yes'
@@ -19,14 +19,14 @@ export const state = () => ({
     },
     {
       name: 'Yukon Art Society Scolorship',
-      eligable: (profile) => {
+      eligible: (profile) => {
         return profile.scolorship.is_high_school_student == 'Yes' && 
           profile.scolorship.is_high_school_graduate == 'Yes' 
       }
     },
     {
       name: 'Huskies CB Radio Club Scolarship',
-      eligable: (profile) => {
+      eligible: (profile) => {
         return profile.scolorship.is_high_school_student == 'Yes' && 
           profile.scolorship.is_high_school_graduate == 'Yes' 
       }

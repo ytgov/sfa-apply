@@ -425,7 +425,7 @@ export const getters = {
       }
     });
   },
-  fulltime_eligable: (state, getters, rootGetters) => (eligibility) => {
+  fulltime_eligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
@@ -437,7 +437,7 @@ export const getters = {
       }
     });
   },
-  fulltime_ineligable: (state, getters, rootGetters) => (eligibility) => {
+  fulltime_ineligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
@@ -449,7 +449,7 @@ export const getters = {
       }
     });
   },
-  parttime_eligable: (state, getters, rootGetters) => (eligibility) => {
+  parttime_eligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))
@@ -461,7 +461,7 @@ export const getters = {
       }
     });
   },
-  parttime_ineligable: (state, getters, rootGetters) => (eligibility) => {
+  parttime_ineligible: (state, getters, rootGetters) => (eligibility) => {
     return _.filter(state.list, (o) =>  {
       try { 
         let disability_check = (typeof o.disabilities == 'undefined' || (!!o.disabilities && eligibility.disabilities.permanent_disability == 'Yes'))

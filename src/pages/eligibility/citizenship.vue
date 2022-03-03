@@ -115,8 +115,7 @@ export default {
   "en": {
     "title": "Citizenship",
     "body": [
-      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident.",
-      "Add whatever screen comes up if you choose ‘no’. If no, stop checker as student is not eligible for any of our programs"
+      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident."
     ],
     "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
     "are_you_a_permanent_resident": "Are you a permanent resident?",
@@ -126,8 +125,7 @@ export default {
   "fr": {
     "title": "Citizenship",
     "body": [
-      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident.",
-      "Add whatever screen comes up if you choose ‘no’. If no, stop checker as student is not eligible for any of our programs"
+      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident."
     ],
     "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
     "are_you_a_permanent_resident": "Are you a permanent resident?",

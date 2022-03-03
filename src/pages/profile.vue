@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid v-if="profile">
+  <v-container fluid v-if="student">
     <h2 class="text-h4 mb-7">{{ $t('title') }}</h2>
 
     <p>
@@ -15,17 +15,28 @@
             <ValidationProvider name="First Name" rules="required|max:10" tag="span" v-slot="{ errors, valid }">
               <TextField
                 name="First Name"
-                v-model="profile.FIRST_NAME"
+                v-model="student.FIRST_NAME"
                 label="First name"
                 :errors="errors"
                 :valid="valid"
               />
             </ValidationProvider>
 
+            <ValidationProvider name="Middle Name" rules="notrequired" tag="span" v-slot="{ errors, valid }">
+              <TextField
+                name="Middle Name"
+                v-model="student.MIDDLE_NAME"
+                label="Middle name"
+                :errors="errors"
+                :valid="valid"
+              />
+            </ValidationProvider>
+
+
             <ValidationProvider name="Last Name" rules="required|max:10" tag="span"  v-slot="{ errors, valid }">
               <TextField
                 name="Last Name"
-                v-model="profile.LAST_NAME"
+                v-model="student.LAST_NAME"
                 label="Last name"
                 :error="errors"
                 :valid="valid"
@@ -35,7 +46,7 @@
             <ValidationProvider name="Home Email" rules="required|email"  tag="span"  v-slot="{ errors, valid }">
               <TextField
                 name="Home Email"
-                v-model="profile.HOME_EMAIL"
+                v-model="student.HOME_EMAIL"
                 label="Email"
                 :error="errors"
                 :valid="valid"
@@ -45,7 +56,7 @@
             <ValidationProvider name="Home Phone" rules="required|phone" tag="span" v-slot="{ errors, valid }">
               <TextField
                 name="Home Phone"
-                v-model="profile.HOME_PHONE"
+                v-model="student.HOME_PHONE"
                 label="Phone Number"
                 :error="errors"
                 :valid="valid"
@@ -56,8 +67,8 @@
               <SinNumber 
                 name="sin"
                 label="Social Insurance Number"
-                v-model="profile.SIN" 
-                :value="profile.SIN" 
+                v-model="student.SIN" 
+                :value="student.SIN" 
                 :errors="errors" 
                 :valid="valid" 
               />
@@ -67,8 +78,8 @@
               <DateSelector 
                 name="BIRTH_DATE"
                 label="Date of Birth"
-                v-model="profile.BIRTH_DATE" 
-                :value="profile.BIRTH_DATE" 
+                v-model="student.BIRTH_DATE" 
+                :value="student.BIRTH_DATE" 
                 :errors="errors" 
                 :valid="valid" 
               />
@@ -83,14 +94,14 @@
         <fieldset class="group">
           <fieldset>
             <legend class="text-h5">{{ $t('legends.address') }}</legend>
-            <AddressSelector v-model="profile.HOME_ADDRESS1" :value="profile.HOME_ADDRESS1" />
+            <AddressSelector v-model="student.HOME_ADDRESS1" :value="student.HOME_ADDRESS1||{}" />
           </fieldset>
           <fieldset>
             <legend class="text-h5">{{ $t('legends.address_at_school') }}</legend>
             <p class="note">
               If you do not have an address while at school yet just leave this form blank.
             </p>
-            <AddressSelector v-model="profile.HOME_ADDRESS2" :value="profile.HOME_ADDRESS2" />
+            <AddressSelector v-model="student.HOME_ADDRESS2" :value="student.HOME_ADDRESS2||{}" />
           </fieldset>
         </fieldset> 
 
@@ -181,7 +192,7 @@ export default {
     SinNumber,
   },
   computed: {
-    profile: {
+    student: {
       get() {
         return this.$store.getters['student/GET']
       },
@@ -189,9 +200,6 @@ export default {
         this.$store.commit('student/SET')(values)
       }
     }
-  },
-  async fetch({ store, app }) {
-    await store.dispatch('student/init', { app })
   },
   data() {
     return {
@@ -201,13 +209,13 @@ export default {
   methods: {
     async submit() {
       const isValid = await this.$refs.observer.validate();
+      
       if (isValid) {
-        
-        await this.$refs.blackout.open({
+        this.$refs.blackout.open({
           text: 'Saved',
           timeout: true
         })
-        await this.$store.commit('student/SET', this.profile)
+        await this.$store.dispatch('student/save')
       } 
     }
   }

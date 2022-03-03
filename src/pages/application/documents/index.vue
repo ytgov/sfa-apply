@@ -5,7 +5,31 @@
       {{ $t('excerpt') }}
     </p>
 
-		<section class="documents">
+
+    <section class="documents">
+			<div v-for="doc in documents" v-if="doc.DESCRIPTION!=null">
+				<div>
+					<strong>{{doc.DESCRIPTION}}</strong><br />
+					<a :href="doc.DOCUMENT_LOCATION" target="_blank">{{doc.DOCUMENT_LOCATION}}</a>
+				</div>
+				<div></div>
+				
+				<div v-if="['Verified', 'Vérifié'].includes(doc.status)">
+					<a>{{ $t("buttons.delete") }}</a>
+				</div>
+				<div v-else-if="['Uploading', 'Téléchargement'].includes(doc.status)">
+					<a>{{ $t("buttons.cancel") }}</a>
+				</div>
+				<div v-else>
+					<v-btn color="secondary" :to="`/application/documents/upload/${doc.resource}`">
+						{{ $t("buttons.upload") }}
+					</v-btn>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="documents" v-if="false">
 			<div v-for="doc in documents">
 				<div><strong>{{doc.name[locale]}}</strong></div>
 				<div><span :class="`tab ${doc.status.toLowerCase()}`">{{doc.status}}</span></div>
@@ -23,6 +47,7 @@
 				</div>
 			</div>
 		</section>
+
 
 
     <v-banner icon="mdi-alert-circle" class="problem mt-4">
@@ -134,15 +159,7 @@ export default {
     next() {
       return '/application/submit'
     }
-	},
-	data() {
-		return {
-			uploads: []
-		}
-	},
-  async fetch({ store, app }) {
-    this.uploads = await store.dispatch('documents/get', { app })
-  }
+	}
 }
 </script>
 

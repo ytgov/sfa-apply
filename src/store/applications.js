@@ -54,20 +54,30 @@ export const getters = {
 
 export const mutations = {
   SET(state, application) {
-    state.application = application
+    state.application = Object.assign(state.application, application)
   },
   CLEAR(state) {
     state.application = Object.assign({}, defaultData)
   },
   TOGGLE_APPLICATION_PROGRAM(state, program) {
-    var index = state.programs.indexOf(program)
+
+
+    var index = _.findIndex(state.programs, (o) => { 
+      return o == program
+    })
+
+    console.log('FOUND INDEX', index);
     if (index !== -1) {
       state.programs = state.programs.filter((o) => {
-        return o != program
+        return o == program
       })
     } else {
       state.programs.push(program) 
     }
+
+  },
+  TOGGLE_APPLICATION_PROGRAMS(state, programs) {
+    state.programs = programs
   }
 }
 
