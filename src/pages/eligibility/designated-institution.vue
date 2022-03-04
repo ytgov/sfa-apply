@@ -91,12 +91,12 @@ export default {
 {
   "en": {
     "title": "Designated Institution",
-    "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
+    "are_you_enrolled_in_post_secondary": "Are you enrolled in a post-secondary institution?",
     "post_secondary_enrolled_in": "Select the school you plan to attend."
   },
   "fr": {
     "title": "Designated Institution",
-    "are_you_enrolled_in_post_secondary": "Are you enrolled in post-secondary institution?",
+    "are_you_enrolled_in_post_secondary": "Are you enrolled in a post-secondary institution?",
     "post_secondary_enrolled_in": "Select the school you plan to attend."
   }
 }

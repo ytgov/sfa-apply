@@ -63,7 +63,7 @@ var program_validations = {
       && !invalid_citizenship(eligibility)
     )
   },
-  nicolas_john_hararch_scoloarship: (eligibility) => {
+  nicolas_john_hararch_scolarship: (eligibility) => {
     return ( 
         eligibility.scholarship.is_high_school_graduate == 'Yes'
         && eligibility.scholarship.is_pursuing_aviation == 'Yes'    
@@ -71,7 +71,7 @@ var program_validations = {
         eligibility.residency.have_you_been_out_of_territory_12_months != 'Yes'
       ) && !invalid_citizenship(eligibility)
   },
-  yukon_art_society_scolorship: (eligibility) => {
+  yukon_art_society_scolarship: (eligibility) => {
     return (
         eligibility.scholarship.is_high_school_graduate == 'Yes'
         && eligibility.scholarship.are_you_entering_visual_arts == 'Yes' 
@@ -248,8 +248,8 @@ export const state = () => ({
       group: 'Scholarships',
       type: 'scholarship',
       name: {
-        en: 'Army Yukon Scolorship',
-        fr: 'Army Yukon Scolorship'
+        en: 'Canadian Army Yukon Scolarships',
+        fr: 'Canadian Army Yukon Scolarships'
       },
       qualified: "army_yukon_scholarship"
     },
@@ -257,19 +257,19 @@ export const state = () => ({
       group: 'Scholarships',
       type: 'scholarship',
       name: {
-        en: 'Nicolas John Hararch Scoloarship',
-        fr: 'Nicolas John Hararch Scoloarship'
+        en: 'Nicolas John Hararch Scolarship',
+        fr: 'Nicolas John Hararch Scolarship'
       },
-      qualified: "nicolas_john_hararch_scoloarship"
+      qualified: "nicolas_john_hararch_scolarship"
     },
     {
       group: 'Scholarships',
       type: 'scholarship',
       name: {
-        en: 'Yukon Art Society Scolorship',
-        fr: 'Yukon Art Society Scolorship'
+        en: 'Yukon Art Society Scolarship',
+        fr: 'Yukon Art Society Scolarship'
       },
-      qualified: "yukon_art_society_scolorship"
+      qualified: "yukon_art_society_scolarship"
     },
     {
       group: 'Scholarships',

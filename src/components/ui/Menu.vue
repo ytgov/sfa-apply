@@ -69,7 +69,7 @@ export default {
           items: [
             { title: 'Applications', icon: 'mdi-home-city', to: '/' },
             { title: 'Profile', icon: 'mdi-account-group-outline', to: '/profile' },
-            { title: 'Dcouments', icon: 'mdi-account', to: '/application/documents' },
+            { title: 'Documents', icon: 'mdi-account', to: '/application/documents' },
             { title: 'FAQ', icon: 'mdi-account', to: '/faq' },
             { title: 'Contact', icon: 'mdi-account', to: '/contact' },
             { title: 'Logout', icon: 'mdi-account', click: () => { this.$auth.logout(); this.off() } }

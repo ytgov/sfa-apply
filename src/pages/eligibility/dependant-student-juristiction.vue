@@ -69,11 +69,11 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Dependant Student Juristiction",
+    "title": "Dependant Student",
     "has_family_maintained_home": "Has your family been living in the Yukon for the 12 months prior to you starting post-secondary classes?"
   },
   "fr": {
-    "title": "Independent Student",
+    "title": "Dependant Student",
     "has_family_maintained_home": "Has your family been living in the Yukon for the 12 months prior to you starting post-secondary classes?"
   }
 }

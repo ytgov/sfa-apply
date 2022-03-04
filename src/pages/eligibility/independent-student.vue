@@ -23,17 +23,6 @@
         :value="eligibility.independentstudent.in_labour_force" 
       />
     </section>
-    
-    <section v-if="eligibility.independentstudent.out_of_school=='No' || eligibility.independentstudent.out_of_school ">
-      <Question>
-        {{ $t('supporting_parent') }}
-      </Question>
-
-      <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.independentstudent.supporting_parent" 
-        :value="eligibility.independentstudent.supporting_parent" 
-      />
-    </section>
 
     <Buttons :valid="valid" :next="next" back="true" />
   </article>
@@ -62,10 +51,8 @@ export default {
     },
     valid() {
       var is_valid = (
-          this.eligibility.independentstudent.out_of_school &&
-          this.eligibility.independentstudent.supporting_parent 
-        ) 
-
+        this.eligibility.independentstudent.out_of_school
+      ) 
       return is_valid
     },
     next() {
@@ -97,14 +84,12 @@ export default {
   "en": {
     "title": "Independent Student",
     "out_of_school": "Have you been out of school for 4 years or more?",
-    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies? ",
-    "supporting_parent": "Do you not have support of a parent/guardian due to death or disappearance? Does death or disappearance need to be said."
+    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies? "
   },
   "fr": {
     "title": "Independent Student",
     "out_of_school": "Have you been out of school for 4 years or more? ",
-    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies?",
-    "supporting_parent": "Do you not have support of a parent/guardian due to death or disappearance? Does death or disappearance need to be said."
+    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies?"
   }
 }
 </i18n>

@@ -88,12 +88,12 @@ export default {
 {
   "en": {
     "title": "Program",
-    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks? If no, does your program last for at least 3 weeks? ",
+    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks?",
     "what_type_of_program": "What type of program?"
   },
   "fr": {
     "title": "Program",
-    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks? If no, does your program last for at least 3 weeks? ",
+    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks?",
     "what_type_of_program": "What type of program?"
   }
 }

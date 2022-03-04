@@ -16,19 +16,19 @@ export const state = () => ({
     {
       date: '2020/21',
       name: 'Yukon College',
-      status: 'Sumbitted',
+      status: 'Submitted',
       past: false
     },
      {
       date: '2020/21',
       name: 'Other College',
-      status: 'Sumbitted',
+      status: 'Submitted',
       past: false
     },
     {
       date: '2019/20',
       name: 'Yukon College',
-      status: 'Sumbitted',
+      status: 'Submitted',
       past: true
     }
   ]
