@@ -67,11 +67,11 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Single Parent Student",
+    "title": "Single parent student",
     "most_recently_in_yukon": "Have you lived most recently in the yukon for 12 months not counting the time spent in full-time studies?"
   },
   "fr": {
-    "title": "Single Parent Student",
+    "title": "Single parent student",
     "most_recently_in_yukon": "Have you lived most recently in the yukon for 12 months not counting the time spent in full-time studies?"
   }
 }

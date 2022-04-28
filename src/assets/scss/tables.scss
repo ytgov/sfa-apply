@@ -1,0 +1,175 @@
+@import '_mixins';
+
+
+table {
+  &.standard {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    tr {
+      > th, td {
+        padding: 0.5rem;
+        font-size: 14px;
+
+        text-align: left;
+
+        &.nowrap {
+          white-space: nowrap;
+        }
+        &.right {
+          text-align: right;
+        }
+         &.center {
+          text-align: center;
+        }
+      }
+    }
+    > thead {
+      > tr {
+        > th {
+          background: rgba(0,0,0,0.05);
+          color: rgba(0,0,0,0.7);
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td {
+          border-bottom: solid 1px rgba(0,0,0,0.05);
+          > nav {
+            white-space: nowrap;
+            > a {
+              margin: 5px;
+              &:link, &:visited, &:active {
+                color: #333;
+                margin: 4px;
+              }
+            }
+          }
+
+          INPUT[type=text] {
+            width: 100%;
+          }
+
+          &.icons {
+            > a {
+              margin-left: 5px;
+              margin-right: 5px;
+              > svg {
+                  width: 25px;
+                  height: 25px;
+              }
+            }
+          }
+        }
+        &:last-of-type {
+          > td {
+            border-bottom: none;
+          }
+        }
+
+        &:first-of-type {
+          > td {
+            
+          }
+        }
+        &:last-of-type {
+          > td {
+            padding-bottom: 0;
+          }
+        }
+      }
+    
+    }
+  }
+}
+
+
+table.basic-list {
+  td {
+    color: #aaa;
+    &.name {
+      font-size: 2rem;
+      color: #ccc;
+    }
+    nav {
+      a:link, a:visited, a:active {
+        color: #fff !important;
+      }
+    }
+
+    &:last-of-type {
+      text-align: right;
+    }
+  }
+  > tr {
+    &:first-of-type {
+      > td {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+table.setup-table {
+  > tbody {
+    tr { 
+      > td {
+        padding: 1rem;
+        color: #fff;
+        &:first-of-type {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+
+
+@media only screen and (max-width: 640px),
+(min-device-width: 640px) and (max-device-width: 640px)  {
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr { 
+    border-top: 1px solid rgba(255,255,255,0.5); 
+    padding: 15px 0px;
+    > td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: none !important;
+      position: relative;
+      padding: 0 !important;
+
+      text-align: left !important;
+
+      &.mobile-key {
+        font-size: 125% !important;
+        font-weight: bold !important;
+        color: #fff !important;
+      }
+    }
+  }
+
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+}

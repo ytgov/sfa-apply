@@ -12,7 +12,7 @@
 
     <div>
       <label>
-        <input type="checkbox" @click="same()" :checked="student.HOME_ADDRESS1==student.HOME_ADDRESS2"> Same as perminent address 
+        <input type="checkbox" @click="same()" :checked="student.HOME_ADDRESS1==student.HOME_ADDRESS2"> Same as permanent address 
       </label>
     </div>
 
@@ -75,11 +75,11 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Address While at School",
+    "title": "Address while at school",
     "excerpt": "If you would like your mail to be sent to an alternative address while you are at school, complete this section. "
   },
   "fr": {
-    "title": "Address While at School",
+    "title": "Address while at school",
     "excerpt": "If you would like your mail to be sent to an alternative address while you are at school, complete this section. "
   }
 }

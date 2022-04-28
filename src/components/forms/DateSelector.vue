@@ -1,26 +1,31 @@
 <template>
-  <span>
-    <span class="year">
-      <input type="number" v-model="year" maxlength="4" />
-      <small>Year</small>
-    </span>
-    <span class="month">
-      <select v-model="month">
-        <option :value="(index+1)" v-for="month, index in months">{{month.name}}</option>
-      </select> 
-      <small>Month</small>
-    </span>
-    <span class="day">
-      <input type="number" v-model="day" maxlength="2" />
-      <small>Day</small>
-    </span>
-  </span>
+  <div class="control">
+    <div class="slot">
+      <label>{{label}}</label>
+      <span class="selector">
+        <span class="year">
+          <input type="number" v-model="year" maxlength="4" />
+          <small>Year</small>
+        </span>
+        <span class="month">
+          <select v-model="month">
+            <option :value="(index+1)" v-for="month, index in months">{{month.name}}</option>
+          </select> 
+          <small>Month</small>
+        </span>
+        <span class="day">
+          <input type="number" v-model="day" maxlength="2" />
+          <small>Day</small>
+        </span>
+      </span>
+    </div>
+  </div>
 </template>
 
 
 <script>
 export default {
-  props: ["value"],
+  props: ["value", "label"],
   computed: {
     is_leapyear() {
       return (this.year % 100 === 0) ? (this.year % 400 === 0) : (this.year % 4 === 0);
@@ -121,7 +126,7 @@ export default {
 
 
 <style lang="scss" scoped>
-span {
+span.selector {
   margin: 0.25rem 0;
   max-width: 400px;
   width: 100%;

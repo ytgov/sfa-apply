@@ -14,7 +14,7 @@
           <Checkbox v-model="fulltime_active" @click="toggleFullTime()" />
         </div>
         <div>
-          <strong>Canada Student Financial Assistance - Full Time</strong>
+          <strong>Canada Student Financial Assistance Programs - Full Time</strong>
            <MoreDetails :programs="fulltime_eligible" />
         </div>
       </div>
@@ -24,7 +24,7 @@
           <Checkbox v-model="parttime_active" @click="togglePartTime()" />
         </div>
         <div>
-          <strong>Canada Student Financial Assistance - Part Time</strong>
+          <strong>Canada Student Financial Assistance Programs  - Part Time</strong>
           <MoreDetails :programs="parttime_eligible" />
         </div>
       </div>
@@ -258,7 +258,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Eligible Programs",
+    "title": "Eligible programs",
     "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",
@@ -267,7 +267,7 @@ export default {
     }
   },
   "fr": {
-     "title": "Eligible Programs",
+     "title": "Eligible programs",
     "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",

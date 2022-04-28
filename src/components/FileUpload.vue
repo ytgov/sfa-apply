@@ -1,35 +1,32 @@
 <template>
-  <v-container grid-list-md text-xs-center fill-height>
-    <v-layout row wrap align-left>
-      <v-flex xs9>
-        <p>
-          Accepted Types ({{types.join(', ')}})
-        </p>
-        
-        <div v-if="file">
-          {{file}}
-        </div>
 
-        <v-btn
-          class="upload-button"
-          color="primary"
-          @click="upload()">
-          Select file from Computer
-          <v-icon right color="white">
-            cloud_upload
-          </v-icon>
-        </v-btn>
+  <v-flex xs9>
+    <p>
+      Accepted Types ({{types.join(', ')}})
+    </p>
+    
+    <div v-if="file">
+      {{file}}
+    </div>
 
-     
-        <span v-if="error" class="error">Must upload a file.</span>
+    <v-btn
+      class="upload-button"
+      color="primary"
+      @click="upload()">
+      Select file from Computer
+      <v-icon right color="white">
+        cloud_upload
+      </v-icon>
+    </v-btn>
+ 
+    <span v-if="error" class="error">Must upload a file.</span>
 
 
-        <a @click="$router.go(-1)" class="cancel">Cancel</a>
-      </v-flex>
-    </v-layout>
+    <a @click="$router.go(-1)" class="cancel">Cancel</a>
 
-    <ProgressScreen :progress="progress" />
-  </v-container>
+        <ProgressScreen :progress="progress" />
+  </v-flex>
+
 </template>
 
 <script>
@@ -68,7 +65,8 @@ export default {
     return {
       types: ['pdf', 'doc', 'docx'],
       progress: false,
-      file: false
+      file: false,
+      error: false
     }
   },
   mounted() {
@@ -104,6 +102,10 @@ export default {
 </script>
 
 <style scoped>
+
+.flex {
+  margin-top:  2rem;
+}
 .hide-input {
     display: none;
 }

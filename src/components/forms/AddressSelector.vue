@@ -13,7 +13,7 @@
         <ValidationProvider name="address_zip_postal_code" rules="notrequired" tag="span" v-slot="{ errors, valid }">
            <TextField
             v-model="address.zip_postal_code"
-            label="Enter the zip or postal code"
+            label="Postal code or zip code"
             :errors="errors"
             :valid="valid"
             @blur="geocode()"
@@ -24,7 +24,7 @@
         <ValidationProvider name="address_first" rules="notrequired" tag="span" v-slot="{ errors, valid }">
           <TextField
             v-model="address.first"
-            label="Enter Street Address"
+            label="Street Address"
             :errors="errors"
             :valid="valid"
             @blur="geocode()"

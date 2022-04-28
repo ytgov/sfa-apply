@@ -79,14 +79,14 @@
   	"hello": "Hello, ",
   	"welcome": "Yukon students are encouraged to apply for available funding programs online. By using this online tool, students have the option to submit an application or review funding that has been awarded in the past. If you are planning to complete and submit an application, make sure to have all required documents to finish your application.",
     "current": {
-    	"header": "Current Applications",
+    	"header": "Current applications",
     	"none": "There are no active applications.",
     	"buttons": {
-    		"apply": "Apply for Financial Assistance"
+    		"apply": "Apply for financial assistance"
     	}
     },
     "past": {
-    	"header": "Past Applications",
+    	"header": "Past applications",
     	"none": "There are no past applications."
     }
   },

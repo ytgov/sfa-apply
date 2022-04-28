@@ -81,12 +81,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Yukon Grant Eligibility",
+    "title": "Yukon grant eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
     "out_of_school_4_years": "Have you been out of high school for 4 years or more?"
   },
   "fr": {
-    "title": "Yukon Grant Eligibility",
+    "title": "Yukon grant eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
     "out_of_school_4_years": "Have you been out of high school for 4 years or more?"
   }

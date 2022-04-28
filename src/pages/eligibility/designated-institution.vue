@@ -19,7 +19,7 @@
       </Question>
 
       <p>
-        If your school is not listed, contact our office by email at sfa@yukon.ca and provide the name of your school and your school’s email address.
+        If your school is not listed, contact our office by email at <a href="mailto:sfa@yukon.ca">sfa@yukon.ca</a> and provide the name of your school and your school’s email address.
       </p>
 
       <Select :options="institutions"
@@ -39,12 +39,15 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import Select from '~/components/forms/Select.vue';
+
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    Select
   },
   data() {
     return {
@@ -71,6 +74,9 @@ export default {
       return is_valid
     },
     next() {
+      if (this.eligibility.designated_institution.are_you_enrolled_in_post_secondary=='No') {
+        return '/eligibility/review'
+      }
       return '/eligibility/yukon-grant'
     }
   },
@@ -90,12 +96,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Designated Institution",
+    "title": "Designated institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in a post-secondary institution?",
     "post_secondary_enrolled_in": "Select the school you plan to attend."
   },
   "fr": {
-    "title": "Designated Institution",
+    "title": "Designated institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in a post-secondary institution?",
     "post_secondary_enrolled_in": "Select the school you plan to attend."
   }

@@ -154,6 +154,12 @@ Vue.filter('year', function(value) {
 
 Vue.filter('formatDate', function(value) {
   if (value) {
+    return moment(String(value)).format('MM/DD/YYYY')
+  }
+})
+
+Vue.filter('formatDateTime', function(value) {
+  if (value) {
     return moment(String(value)).format('MM/DD/YYYY hh:mmA')
   }
 })

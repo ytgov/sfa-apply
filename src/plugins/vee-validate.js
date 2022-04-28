@@ -51,7 +51,10 @@ extend("sin", {
     var valid = false; 
     var sin = input.toString()
     var digits = sin.split("")
-    if (sin.length > 9) {
+
+    if (sin.length < 9) {
+      valid = true
+    } else if (sin.length > 9) {
       this.message= `Invalid SIN Number: has more than maximum 9 digits.`
     } else if (sin.length > 0 && sin.length < 9) {
       this.message = `Invalid SIN Number: has less than the required 9 digits.`

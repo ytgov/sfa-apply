@@ -82,12 +82,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Independent Student",
+    "title": "Independent student",
     "out_of_school": "Have you been out of school for 4 years or more?",
     "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies? "
   },
   "fr": {
-    "title": "Independent Student",
+    "title": "Independent student",
     "out_of_school": "Have you been out of school for 4 years or more? ",
     "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies?"
   }

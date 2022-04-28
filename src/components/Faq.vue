@@ -9,8 +9,8 @@
         <div class="question" @click="toggle(index)">
           {{faq.question}}
         </div>
-        <div class="answer">
-          {{faq.answer}}
+        <div class="answer" v-html="faq.answer">
+
         </div>
       </div>
     </section>

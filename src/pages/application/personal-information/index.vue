@@ -100,7 +100,7 @@ export default {
       return is_valid;
     },
     valid_sin() {
-      return this.student.SIN.length == 9
+      return (this.student.SIN && this.student.SIN.length == 9) || false
     },
     next() {
       return '/application/personal-information/address/permanent'
@@ -120,13 +120,13 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Personal Information",
+    "title": "Personal information",
     "use_existing_alias": "Do you want to use your existing?",
     "what_is_your_sin_number": "What is your sin number?",
     "what_is_your_birthday": "What is your birthday?"
   },
   "fr": {
-    "title": "Personal Information",
+    "title": "Personal information",
     "use_existing_alias": "Do you want to use your existing?",
     "what_is_your_sin_number": "What is your sin number?",
     "what_is_your_birthday": "What is your birthday?"

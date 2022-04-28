@@ -80,12 +80,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Disability Information",
+    "title": "Disability information",
     "permanent_disability": "Do you have a permanent disability?",
     "service_equipment": "Do you have a persistent or prolonged disability that is expected to last 12 months or more?"
   },
   "fr": {
-    "title": "Disability Information",
+    "title": "Disability information",
     "permanent_disability": "Do you have a permanent disability?",
     "service_equipment": "Do you have a persistent or prolonged disability that is expected to last 12 months or more?"
   }

@@ -114,7 +114,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Part-time Student Loan Eligability",
+    "title": "Part-time student loan eligability",
     "family_size": "What is your family size?",
     "previous_year_gross_family_income": "What is your gross family income for the previous year?",
     "enrolled": "Have you been enrolled in a degree, diploma, or technical program of at least 12 weeks of study within a 15 week period?",
@@ -122,7 +122,7 @@ export default {
     "dependants_under_twelve": "How many dependants do you have under the age of 12?"
   },
   "fr": {
-    "title": "Part-time Student Loan Eligability",
+    "title": "Part-time student loan eligability",
     "family_size": "What is your family size?",
     "previous_year_gross_family_income": "What is your gross family income for the previous year?",
     "enrolled": "Have you been enrolled in a degree, diploma, or technical program of at least 12 weeks of study within a 15 week period?",

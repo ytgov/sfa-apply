@@ -63,11 +63,11 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Permanent Address",
+    "title": "Permanent address",
     "excerpt": "Please provide the address where you normally receive your mail.  This address will be used to send out T4A slips for tax purposes."
   },
   "fr": {
-    "title": "Permanent Address",
+    "title": "Permanent address",
     "excerpt": "Please provide the address where you normally receive your mail.  This address will be used to send out T4A slips for tax purposes."
   }
 }

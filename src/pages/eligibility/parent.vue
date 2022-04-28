@@ -82,12 +82,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": " Single Parent Student",
+    "title": " Single parent student",
     "responsible_for_child": "Do you currently have physical custody and are responsible for supporting a child?",
     "ever_been_a_single_parent": "Have you ever been a single parent and your children are currently not in your care?"
   },
   "fr": {
-    "title": " Single Parent Student",
+    "title": " Single parent student",
     "responsible_for_child": "Do you currently have physical custody and are responsible for supporting a child?",
     "ever_been_a_single_parent": "Have you ever been a single parent and your children are currently not in your care?"
   }

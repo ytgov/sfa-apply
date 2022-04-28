@@ -77,11 +77,11 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Yukon Excellence Award",
+    "title": "Yukon excellence award",
     "how_much_would_like_to_apply_for": "How much funding would you like to apply for?"
   },
   "fr": {
-    "title": "Yukon Excellence Award",
+    "title": "Yukon excellence award",
     "how_much_would_like_to_apply_for": "How much funding would you like to apply for?"
   }
 }

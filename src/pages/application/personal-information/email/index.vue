@@ -123,13 +123,13 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Email Address",
+    "title": "Email address",
     "would_you_like_to_use_existing_address": "Would you like to use your existing email address?",
     "enter_your_email_address": "Enter your email address:",
     "is_primary_email_address": "This is my primary email address?"
   },
   "fr": {
-    "title": "Email Address",
+    "title": "Email address",
     "would_you_like_to_use_existing_address": "Would you like to use your existing email address?",
     "enter_your_email_address": "Enter your email address:",
     "is_primary_email_address": "This is my primary email address?"

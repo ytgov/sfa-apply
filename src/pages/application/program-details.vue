@@ -2,7 +2,7 @@
   <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
+    <section>
       <Question>
         {{ $t('details.campus') }}
       </Question>
@@ -13,7 +13,7 @@
       />
     </section>
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
+    <section>
       <Question>
         {{ $t('details.program_name') }}
       </Question>
@@ -24,7 +24,7 @@
       />
     </section>
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
+    <section>
       <Question>
         {{ $t('details.duration_of_program') }}
       </Question>
@@ -35,7 +35,7 @@
       />
     </section>
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
+    <section>
       <Question>
         {{ $t('details.year_entering') }}
       </Question>
@@ -47,7 +47,7 @@
       />
     </section>
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
+    <section>
       <Question>
         {{ $t('details.start_date_of_classes') }}
       </Question>
@@ -58,7 +58,7 @@
         />
     </section>
 
-    <section v-if="eligibility.designated_institution.post_secondary_enrolled_in">
+    <section>
       <Question>
         {{ $t('details.end_date_of_classes') }}
       </Question>
@@ -110,7 +110,7 @@ export default {
       return is_valid
     },
     years() {
-      return [new Date().getFullYear(), new Date().getFullYear()+1,new Date().getFullYear()+2,new Date().getFullYear()+3]
+      return [new Date().getFullYear(), new Date().getFullYear()+1,new Date().getFullYear()+2,new Date().getFullYear()+2]
     },
     next() {
       this.$store.commit('eligibility/SET', this.eligibility)
@@ -119,6 +119,10 @@ export default {
   },
   mounted() {
     this.$emit('input', this.valid)
+
+    if (!this.eligibility.designated_institution.post_secondary_enrolled_in) {
+      this.$router.push(`/application/documents`)
+    }
   },
   watch: {
     valid(to, from) {
@@ -133,7 +137,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Designated Institution",
+    "title": "Program details",
     "details": {
       "campus": "Name of Campus (if applicable)",
       "program_name": "Name of Program",
@@ -144,7 +148,7 @@ export default {
     }
   },
   "fr": {
-    "title": "Designated Institution",
+    "title": "Program details",
     "details": {
       "campus": "Name of Campus (if applicable)",
       "program_name": "Name of Program",

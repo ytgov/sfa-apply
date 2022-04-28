@@ -58,7 +58,7 @@
 							<td>{{eligibility.designated_institution.details.year_entering}}</td>
 						</tr>
 						<tr>
-							<td>Is this a corespondence or distance learning program?</td>
+							<td>Is this a correspondence or distance learning program?</td>
 							<td></td>
 						</tr>
 						<tr>

@@ -92,7 +92,7 @@ export default {
       return is_valid
     },
     next() {
-    	return '/application/personal-information/tombstone'
+    	return '/application/onboarding'
     }
   },
   mounted() {
@@ -108,7 +108,7 @@ export default {
     			{
     				text: 'No, Agree and continue',
     				callback: () => {
-    					return '/application/personal-information/tombstone'
+    					return '/application/onboarding'
     				}
     			},
     			{

@@ -10,6 +10,8 @@ var program_validations = {
         eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
         && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
       )
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
+      && eligibility.program.what_type_of_program != 'Upgrade'
   },
   yukon_grant: (eligibility) => {
     return (
@@ -40,6 +42,7 @@ var program_validations = {
           )
         )
       )
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
   },
   student_training_allowance: (eligibility) => {
     return (
@@ -56,12 +59,15 @@ var program_validations = {
       eligibility.dependant_student_juristiction.has_family_maintained_home == 'Yes'
       && eligibility.singleparentjuristiction.most_recently_in_yukon == 'Yes'
     )
+    && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
+    && eligibility.program.what_type_of_program != 'Upgrade'
   },
   army_yukon_scholarship: (eligibility) => {
     return (
       eligibility.scholarship.is_high_school_student != 'Yes'
       && !invalid_citizenship(eligibility)
     )
+    && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
   },
   nicolas_john_hararch_scolarship: (eligibility) => {
     return ( 
@@ -70,6 +76,7 @@ var program_validations = {
       ) && (
         eligibility.residency.have_you_been_out_of_territory_12_months != 'Yes'
       ) && !invalid_citizenship(eligibility)
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
   },
   yukon_art_society_scolarship: (eligibility) => {
     return (
@@ -77,6 +84,7 @@ var program_validations = {
         && eligibility.scholarship.are_you_entering_visual_arts == 'Yes' 
         && !invalid_citizenship(eligibility)
       ) 
+    && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
   },
   huskies_cb_radio_club_scolarship: (eligibility) => {
     return (
@@ -84,6 +92,7 @@ var program_validations = {
         && eligibility.scholarship.enrolled_vocational == 'Yes' 
         && !invalid_citizenship(eligibility)
       ) 
+      && eligibility.designated_institution.are_you_enrolled_in_post_secondary=='Yes'
       
   },
   canada_student_loan_parttime_eligibility: (eligibility) => {
@@ -95,7 +104,7 @@ var program_validations = {
       && !invalid_citizenship(eligibility)
     ) 
   },
-  canada_student_grant_parttime_eligibility: (eligibility) => {
+  canada_student_grant_parttime: (eligibility) => {
     return (
       eligibility.enrollment.time == 'Part-time'
       && eligibility.designated_institution.are_you_enrolled_in_post_secondary == 'Yes'
@@ -138,7 +147,7 @@ var program_validations = {
       && !invalid_citizenship(eligibility) 
     )
   },
-  canada_student_loan_fulltime_eligibility: (eligibility) => {
+  canada_student_loan_fulltime: (eligibility) => {
     return (
       eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
@@ -148,7 +157,7 @@ var program_validations = {
       && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_grant_fulltime_eligibility: (eligibility) => {
+  canada_student_grant_fulltime: (eligibility) => {
     return (
       eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
@@ -158,7 +167,7 @@ var program_validations = {
       && !invalid_citizenship(eligibility)
     )
   },
-  canada_student_loan_fulltime_students_with_dependants: (eligibility) => {
+  canada_student_grant_fulltime_students_with_dependants: (eligibility) => {
     return (
       eligibility.enrollment.time == 'Full-time'
       && eligibility.program.at_least_three_weeks == 'Yes'
@@ -284,20 +293,20 @@ export const state = () => ({
       group: 'Canada Student Loan Programs',
       type: 'loan',
       name: {
-        en: 'Canada Student Loan - Part-time Eligability',
-        fr: 'Canada Student Loan - Part-time Eligability'
+        en: 'Canada Student Loan - Part-time',
+        fr: 'Canada Student Loan - Part-time'
       },
-      qualified: 'canada_student_loan_parttime_eligibility',
+      qualified: 'canada_student_loan_parttime',
       enrollment: 'part-time'
     },
     {
       group: 'Canada Student Loan Programs',
       type: 'grant',
       name: {
-        en: 'Canada Student Grant - Part-time Eligability',
-        fr: 'Canada Student Grant - Part-time Eligability'
+        en: 'Canada Student Grant - Part-time',
+        fr: 'Canada Student Grant - Part-time'
       },
-      qualified: 'canada_student_grant_parttime_eligibility',
+      qualified: 'canada_student_grant_parttime',
       enrollment: 'part-time'
     },
     {
@@ -336,30 +345,30 @@ export const state = () => ({
       group: 'Canada Student Loan Programs',
       type: 'loan',
       name: {
-        en: 'Canada Student Loan - Full-time Eligability',
-        fr: 'Canada Student Loan - Full-time Eligability'
+        en: 'Canada Student Loan - Full-time',
+        fr: 'Canada Student Loan - Full-time'
       },
-      qualified: 'canada_student_loan_fulltime_eligibility',
+      qualified: 'canada_student_loan_fulltime',
       enrollment: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
       type: 'grant',
       name: {
-        en: 'Canada Student Grant - Full-time Eligability',
-        fr: 'Canada Student Grant - Full-time Eligability'
+        en: 'Canada Student Grant - Full-time',
+        fr: 'Canada Student Grant - Full-time'
       },
-      qualified: 'canada_student_grant_fulltime_eligibility',
+      qualified: 'canada_student_grant_fulltime',
       enrollment: 'full-time'
     },
     {
       group: 'Canada Student Loan Programs',
       type: 'loan',
       name: {
-        en: 'Canada Student Loan - Full-time Students with Dependants',
-        fr: 'Canada Student Loan - Full-time Students with Dependants'
+        en: 'Canada Student Grant - Full-time Students with Dependants',
+        fr: 'Canada Student Grant - Full-time Students with Dependants'
       },
-      qualified: 'canada_student_loan_fulltime_students_with_dependants',
+      qualified: 'canada_student_grant_fulltime_students_with_dependants',
       enrollment: 'full-time'
     },
     {
@@ -383,7 +392,8 @@ export const state = () => ({
       qualified: 'canada_student_grant_fulltime_services_and_equipment_for_students_with_disabilities',
       enrollment: 'full-time',
       disabilities: true
-    },
+    }
+    /*
     {
       group: 'Canada Student Loan Programs',
       type: 'grant',
@@ -393,6 +403,7 @@ export const state = () => ({
       },
       qualified: 'canada_student_loans_and_grants_skills_boost_top_up'
     }
+    */
   ]
 })
 

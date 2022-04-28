@@ -28,10 +28,12 @@
 
 <script>
 import FileUpload from '@/components/FileUpload.vue'
+import Buttons from '~/components/forms/Buttons.vue';
 
 export default {
   components: {
-    FileUpload
+    FileUpload,
+    Buttons
   },
   computed: {
     resource() {
@@ -55,7 +57,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Uploading Document",
+    "title": "Uploading document",
     "excerpt": "Please upload the following supporting documents... If a document is uploaded incorrectly, you will receive a notification to resubmit your documents.",
     "error": "You cannot sumbit your application until all your documents are uploaded.",
     "buttons": {

@@ -87,12 +87,12 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Marital Status",
+    "title": "Marital status",
     "are_you_in_a_relationship": "Are you legally married or have you been in a common law relationship for at least one year?",
     "have_you_ever_been_in_a_relationship": "Have you ever been married or in a common law relationship?"
   },
   "fr": {
-    "title": "Marital Status",
+    "title": "Marital status",
   "are_you_in_a_relationship": "Are you legally married or have you been in a common law relationship for at least one year?",
     "have_you_ever_been_in_a_relationship": "Have you ever been married or in a common law relationship?"
   }

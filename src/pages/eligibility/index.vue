@@ -37,13 +37,13 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Eligibility Checker – Before you start",
+    "title": "Eligibility checker – Before you start",
     "body": [
       "Thank you for registering. Before you begin your application, make sure to check your eligibility for more funding programs. To check, select the button below to see available funding opportunities, as you may be eligible for more than one funding program. "
     ]
   },
   "fr": {
-    "title": "Eligibility Checker – Before you start",
+    "title": "Eligibility checker – Before you start",
     "body": [
       "Thank you for registering. Before you begin your application, make sure to check your eligibility for more funding programs. To check, select the button below to see available funding opportunities, as you may be eligible for more than one funding program."
     ]

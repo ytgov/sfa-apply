@@ -30,10 +30,8 @@
       <v-col cols="12" sm="12" md="4">
         <h3 class="text-h5">{{ $t('headers.office') }}</h3>
         <p>
-          1000 Lewes Ave. Boulevard (E-13)<br />
-          Y1A 2C6<br /> 
-          Whitehorse<br />
-          <br />
+          1000 Lewes Ave. Boulevard in Whitehorse, Yukon. Our hours are Monday to Friday from 8 a.m. to 4:30 p.m.<br />
+ 
           <a href="https://goo.gl/maps/TiN1QZtEbAXYuChh9" target="_blank">View Map</a>
         </p>
       </v-col>

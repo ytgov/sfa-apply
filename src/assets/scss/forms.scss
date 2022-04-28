@@ -9,12 +9,17 @@ form.v-form {
   border-radius: 6px;
   padding: 2rem;
 
-  > fieldset {
+  fieldset {
     border: none;
+  }
+
+  > fieldset {
+  
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     > legend {
       font-size: 2rem;
+
     }
     &.group {
       margin-top: 3rem;

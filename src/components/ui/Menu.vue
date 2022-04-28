@@ -33,7 +33,7 @@
     <v-divider></v-divider>
 
     <v-list dense>
-      <v-list-item v-for="item in nav[locale].items" :key="item.title">
+      <v-list-item v-for="item,index in nav[locale].items" :key="index">
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
