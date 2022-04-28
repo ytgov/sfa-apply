@@ -85,6 +85,53 @@ table {
 }
 
 
+
+table.form {
+  > tbody {
+    tr {
+      > td {
+        padding: 0.25rem;
+        INPUT[type=text], SELECT, TEXTAREA {
+          background: #FFFFFF;
+          border-radius: 3px;
+          border: 1px solid #D4C7CF !important;
+          padding: 0.5rem !important;
+          max-height: auto !important;
+          width: 100%;
+        }
+
+        &.checkboxes {
+          > div {
+            padding: 1rem 0;
+            display: grid;
+            grid-template-columns: 4fr 4fr 4fr;
+            grid-gap: 1rem;
+      
+            > label {
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+
+    position: relative;
+    > tr {
+      &:first-of-type {
+        > td {
+       
+          padding-top: 1rem;
+        }
+      }
+      &:last-of-type {
+        > td {
+          padding-bottom: 3rem;
+        }
+      }
+    }
+  }
+}
+
 table.basic-list {
   td {
     color: #aaa;

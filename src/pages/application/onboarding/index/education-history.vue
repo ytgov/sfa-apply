@@ -89,39 +89,7 @@
   </v-container>
 </template>
 
-<style lang="scss" scoped>
 
-
-table.form {
-  > tbody {
-    tr {
-      > td {
-        padding: 0.25rem;
-        INPUT[type=text], SELECT {
-          background: #fff;
-          padding: 0.25rem;
-          width: 100%;
-        }
-      }
-    }
-
-    position: relative;
-    > tr {
-      &:first-of-type {
-        > td {
-          border-top: solid 1px #000;
-          padding-top: 2rem;
-        }
-      }
-      &:last-of-type {
-        > td {
-          padding-bottom: 2rem;
-        }
-      }
-    }
-  }
-}
-</style>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'

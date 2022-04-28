@@ -82,52 +82,7 @@
   </v-container>
 </template>
 
-<style lang="scss" scoped>
 
-
-table.form {
-  > tbody {
-    tr {
-      > td {
-        padding: 0.25rem;
-        INPUT[type=text], SELECT, TEXTAREA {
-          background: #fff;
-          padding: 0.25rem;
-          width: 100%;
-        }
-
-        &.checkboxes {
-          > div {
-            padding: 1rem 0;
-            display: grid;
-            grid-template-columns: 4fr 4fr 4fr;
-            grid-gap: 1rem;
-      
-            > label {
-              white-space: nowrap;
-            }
-          }
-        }
-      }
-    }
-
-    position: relative;
-    > tr {
-      &:first-of-type {
-        > td {
-          border-top: solid 1px #000;
-          padding-top: 2rem;
-        }
-      }
-      &:last-of-type {
-        > td {
-          padding-bottom: 2rem;
-        }
-      }
-    }
-  }
-}
-</style>
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
