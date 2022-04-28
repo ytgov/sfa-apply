@@ -11,7 +11,7 @@
         <p>
           <strong>Phone:</strong> 867-667-5929<br />
           <strong>Toll Free (In Yukon):</strong> 1-800-661-0408<br />
-          <strong>Fax:</strong> 867-667-8555<br />
+          <strong>Fax:</strong> 867-393-6249<br />
           <br />
           <strong>Email:</strong> <a href="mailto:sfa@yukon.ca">sfa@yukon.ca</a>
         </p>
@@ -21,7 +21,7 @@
         <p>
           Student Financial Assistance<br />
           Department of Education<br />
-          Government of Yukon<br />
+          Student Financial Assistance (E-13)<br />
           Box 2703<br />
           Whitehorse, Yukon, Y1A 2C6
         </p>
@@ -32,7 +32,7 @@
         <p>
           1000 Lewes Ave. Boulevard in Whitehorse, Yukon. Our hours are Monday to Friday from 8 a.m. to 4:30 p.m.<br />
  
-          <a href="https://goo.gl/maps/TiN1QZtEbAXYuChh9" target="_blank">View Map</a>
+          <a href="https://goo.gl/maps/TiN1QZtEbAXYuChh9" target="_blank" v-if="false">View Map</a>
         </p>
       </v-col>
     </v-row>
