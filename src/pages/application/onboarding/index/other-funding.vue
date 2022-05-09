@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid v-if="student">
+  <section v-if="student">
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
@@ -43,7 +43,6 @@
                   </td>
                 </tr>
                 <tr>
-              
                   <td colspan="4">
                     <textarea  v-model="other_funding[key].comments" placeholder="Comments" />
                   </td>
@@ -72,7 +71,7 @@
     </ValidationObserver>
 
     <Buttons :valid="valid" :next="next" back="true" />
-  </v-container>
+  </section>
 </template>
 
 <script>

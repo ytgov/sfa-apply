@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <section>
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit">
         <fieldset class="group">
@@ -54,7 +54,7 @@
     </ValidationObserver>
 
     <Buttons :valid="valid" :next="next" back="true" />
-  </v-container>
+  </section>
 </template>
 
 <script>

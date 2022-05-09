@@ -112,6 +112,10 @@ div.control {
           }
         }
       }
+
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: 6fr 6fr;
+      }
         
     }
 

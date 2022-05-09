@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid v-if="student">
+  <section v-if="student">
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
@@ -50,14 +50,12 @@
                 </tr>
                 <tr>
                   <td>Left High School</td>
-                  <td><input type="text" v-model="education_history[key].city" placeholder="City" /></td>
+                  <td><input type="text" v-model="education_history[key].left_high_school" /></td>
                 </tr>
                 <tr>
                   <td>Last Grade Completed</td>
                   <td>
-                    <select v-model="education_history[key].country" placeholder="Country">
-                      <option>Canada</option>
-                    </select>
+                    <input type="text" v-model="education_history[key].last_grade_completed" />
                   </td>
                 </tr>
                 <tr>
@@ -86,7 +84,7 @@
     </ValidationObserver>
 
     <Buttons :valid="valid" :next="next" back="true" />
-  </v-container>
+  </section>
 </template>
 
 

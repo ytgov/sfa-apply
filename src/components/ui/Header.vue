@@ -167,19 +167,19 @@ header {
         &:last-of-type {
           width: 100%;
           min-width: auto;
-          justify-content: end;
-          
+          justify-self: end;
+
           > div {
             &:nth-of-type(1) {
               width: auto;
               display: none;
             }
             &:nth-of-type(2) {
-              width: 75px;
+              width: auto;
               padding: 0 20px;
             }
             &:nth-of-type(3) {
-              width: 75px;
+              width: auto;
 
               > a {
                 display: block;

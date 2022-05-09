@@ -57,6 +57,8 @@ div.control {
       margin-bottom: 2rem;
       margin-top: 1rem;
 
+       width: 100%;
+
       > select {
         background: #FFFFFF;
         border: 1px solid #D4C7CF !important;
@@ -68,6 +70,9 @@ div.control {
         font-size: 16px;
 
         padding-right: 5rem;
+
+        width: 100%;
+
 
       }      
     }

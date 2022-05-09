@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid v-if="student">
+  <section v-if="student">
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
@@ -18,13 +18,13 @@
               <tbody>
                 <tr v-for="item, key in income">
                   <td >
-                    <input type="text" v-model="income[key].type" />
+                    <input type="text" v-model="income[key].type" placeholder="Type" />
                   </td>
                   <td >
                     <input type="text" v-model="income[key].amount" placeholder="0.00" />
                   </td>
                   <td>
-                    <input type="text" v-model="income[key].comments"  />
+                    <input type="text" v-model="income[key].comments" placeholder="Comments" />
                   </td>
                   <td>
                     <a @click="remove(key)">
@@ -38,7 +38,6 @@
             <p class="buttons">
               <v-btn class="blue small" @click="add()">Add income</v-btn>
             </p> 
-
           </fieldset>
         </fieldset>
 
@@ -53,7 +52,7 @@
     </ValidationObserver>
 
     <Buttons :valid="valid" :next="next" back="true" />
-  </v-container>
+  </section>
 </template>
 
 <script>

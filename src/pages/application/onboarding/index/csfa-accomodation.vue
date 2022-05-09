@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid v-if="student">
+  <section v-if="student">
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
@@ -36,25 +36,25 @@
                     <input type="text"  placeholder="" />
                   </td>
                 </tr>
-                <tr v-if="['Living at Parents', 'Both'].includes(accomodations[key].values.living)">
+                <tr class="checkbox" v-if="['Living at Parents', 'Both'].includes(accomodations[key].values.living)">
                   <td colspan="3">Amount of Rent paid to parents</td>
                   <td>
                     <input type="text" v-model="accomodations[key].values.rent_to_parents" placeholder="0.00" />
                   </td>
                 </tr>
-                <tr v-if="['Living on Own', 'Both'].includes(accomodations[key].values.living)">
+                <tr class="checkbox" v-if="['Living on Own', 'Both'].includes(accomodations[key].values.living)">
                   <td colspan="3">I own my own home</td>
                   <td>
                     <input type="checkbox" v-model="accomodations[key].values.own_home" value="true" />
                   </td>
                 </tr>
-                <tr>
+                <tr class="checkbox">
                   <td colspan="3">Bus Service Available?</td>
                   <td>
                     <input type="checkbox" v-model="accomodations[key].values.bus_service" value="true" />
                   </td>
                 </tr>
-                <tr v-if="!accomodations[key].values.bus_service">
+                <tr class="checkbox" v-if="!accomodations[key].values.bus_service">
                   <td colspan="3">Distance form school/work (km)</td>
                   <td>
                     <input type="text" v-model="accomodations[key].values.rent_to_parents" placeholder="0" /> 
@@ -76,7 +76,7 @@
     </ValidationObserver>
 
     <Buttons :valid="valid" :next="next" back="true" />
-  </v-container>
+  </section>
 </template>
 
 

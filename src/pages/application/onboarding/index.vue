@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  scrollToTop: true,
   computed: {
     currentIndex() {
       return _.findIndex(this.menu, (o)=>{
@@ -123,6 +124,16 @@ div.container {
           border-left: solid 2px #1976d2;
           padding-left: 1rem;
         }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    > section {
+      grid-template-columns: 12fr;
+      grid-gap: 0;
+      > aside {
+        display: none;
       }
     }
   }

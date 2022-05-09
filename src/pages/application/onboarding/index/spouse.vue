@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <section>
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit">
         <fieldset class="group">
@@ -83,19 +83,19 @@
             <legend class="text-h5">{{ $t('legends.employment-information') }}</legend>
             <table class="form" cellpadding="0" cellspacing="0" width="100%">
               <tbody>
-                 <tr>
+                <tr class="checkbox">
                   <td colspan="3">Living with spouse</td>
                   <td>
                     <input type="checkbox" v-model="spouse.living_with" value="true" />
                   </td>
                 </tr>
-                <tr>
+                <tr class="checkbox">
                   <td colspan="3">Bus Service Available?</td>
                   <td>
                     <input type="checkbox" v-model="spouse.bus_service" value="true" />
                   </td>
                 </tr>
-                <tr v-if="!spouse.bus_service">
+                <tr class="checkbox" v-if="!spouse.bus_service">
                   <td colspan="3">Distance form school/work (km)</td>
                   <td>
                     <input type="text" v-model="spouse.distance_from_school" placeholder="0" /> 
@@ -118,7 +118,7 @@
     </ValidationObserver>
 
     <Buttons :valid="valid" :next="next" back="true" />
-  </v-container>
+  </section>
 </template>
 
 <script>

@@ -19,7 +19,6 @@ form.v-form {
     margin-bottom: 0.5rem;
     > legend {
       font-size: 2rem;
-
     }
     &.group {
       margin-top: 3rem;
@@ -67,8 +66,20 @@ form.v-form {
   }
 }
 
- .v-text-field .v-input__control .v-input__slot {
-    min-height: auto !important;
-    display: flex !important;
-    align-items: center !important;
+.v-text-field .v-input__control .v-input__slot {
+  min-height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+
+
+
+
+.v-application .text-h5 {
+  @media only screen and (max-width: 768px) {
+    &:not(.first) {
+      padding-top: 2rem !important;
+    }
   }
+}
