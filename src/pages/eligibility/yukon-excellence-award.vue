@@ -2,7 +2,7 @@
   <article data-layout="eligibility">
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
     <p>
-      You can earn Yukon Excellence Award in grades 10–12 when attending a Yukon high school.  This funding can be used towards tuition, compulsory fees and/or book costs to attend post-secondary education and training to a maximum of $3000. You can apply for the entire amount of the Yukon Excellence Awards earned or use a part each year. 
+      {{ $t('excerpt') }} 
     </p>
 
     <div class="balance">
@@ -78,10 +78,12 @@ export default {
 {
   "en": {
     "title": "Yukon excellence award",
+    "excerpt": "You can earn Yukon Excellence Award in grades 10–12 when attending a Yukon high school.  This funding can be used towards tuition, compulsory fees and/or book costs to attend post-secondary education and training to a maximum of $3000. You can apply for the entire amount of the Yukon Excellence Awards earned or use a part each year.",
     "how_much_would_like_to_apply_for": "How much funding would you like to apply for?"
   },
   "fr": {
     "title": "Yukon excellence award",
+    "excerpt": "You can earn Yukon Excellence Award in grades 10–12 when attending a Yukon high school.  This funding can be used towards tuition, compulsory fees and/or book costs to attend post-secondary education and training to a maximum of $3000. You can apply for the entire amount of the Yukon Excellence Awards earned or use a part each year.",
     "how_much_would_like_to_apply_for": "How much funding would you like to apply for?"
   }
 }
