@@ -7,7 +7,7 @@
             <legend class="text-h5">{{ $t('legends.csfa-accomodation') }}</legend>
 
             <p>
-              Enter your accomodations information:
+              {{ $t('excerpt') }}
             </p>
             <table class="form" cellpadding="0" cellspacing="0" width="100%">
   
@@ -15,6 +15,11 @@
                 <tr>
                   <td colspan="4">
                     <h3>{{accomodations[key].heading}}</h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    {{accomodations[key].note}}
                   </td>
                 </tr>
                 <tr>
@@ -64,14 +69,6 @@
             </table>
           </fieldset>
         </fieldset>
-
-        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4 error" v-if="invalid && errors.length" style="padding-right: 1rem;">
-          <h3>{{ $t('problem.title') }}</h3>
-          <br />
-          <ul>
-            <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
-          </ul>
-        </v-banner>
       </v-form>
     </ValidationObserver>
 
@@ -136,6 +133,7 @@ export default {
     this.accomodations = this.student.ACCOMODATIONS||[
       {
         heading: 'Pre-study Accomodation',
+        note: 'Your pre-study accommodations is the 4-month period just before your classes start in this academic year. ',
         values: {
           living: '',
           comments: ''
@@ -143,6 +141,7 @@ export default {
       },
       {
         heading: 'Study Accomodation',
+        note: 'Your study accommodations includes all months from your start to end date of classes for this application period.',
         values: {
           living: '',
           comments: ''
@@ -169,32 +168,20 @@ export default {
 {
   "en": {
     "legends": {
-      "csfa-accomodation": "CFSA Accomodation" 
+      "csfa-accomodation": "Accommodation" 
     },
+    "excerpt": "Please indicate where you were living during your pre-study and study periods:",
     "buttons": {
       "save": "Save statistical information"
-    },
-    "help": {
-      "title": "Need help?",
-      "details": "Help text can go in here to make the form more"
-    },
-    "problem": {
-      "title": "There is a problem"
-    }  
+    }
   },
   "fr": {
     "legends": {
-      "csfa-accomodation": "Information statistique" 
+      "csfa-accomodation": "Accommodation" 
     },
+    "excerpt": "Please indicate where you were living during your pre-study and study periods:",
     "buttons": {
       "save": "Enregistrer les informations statistiques"
-    },
-    "help": {
-      "title": "Need help?",
-      "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"
-    },
-    "problem": {
-      "title": "Il ya un problème"
     }
   }
 }

@@ -4,6 +4,17 @@
 
     <section>
       <Question>
+        {{ $t('at_least_twelve_weeks') }}
+      </Question>
+
+      <RadioList :options="['Yes', 'No']" 
+        v-model="eligibility.program.at_least_twelve_weeks" 
+        :value="eligibility.program.at_least_twelve_weeks" 
+      />
+    </section>
+
+    <section v-if="eligibility.program.at_least_twelve_weeks=='No'">
+      <Question>
         {{ $t('at_least_three_weeks') }}
       </Question>
 
@@ -13,20 +24,15 @@
       />
     </section>
 
+
+
+
     <section v-if="eligibility.program.at_least_three_weeks=='Yes'">
       <Question>
         {{ $t('what_type_of_program') }}
       </Question>
 
-      <RadioList :options="[
-        'Upgrade', 
-        'Certificate', 
-        'Diploma', 
-        'Under Graduate', 
-        'Masters', 
-        'Doctorate', 
-        'None of These'
-        ]" 
+      <RadioList :options="$t('options')" 
         v-model="eligibility.program.what_type_of_program" 
         :value="eligibility.program.what_type_of_program" 
       />
@@ -88,13 +94,34 @@ export default {
 {
   "en": {
     "title": "Program",
-    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks?",
-    "what_type_of_program": "What type of program?"
+    "at_least_twelve_weeks": "Is your program a minimum of 12 consecutive weeks?",
+    "at_least_three_weeks": "Is your program a minimum of 3 consecutive weeks?",
+    "what_type_of_program": "What type of program?",
+    "options": [
+      "Upgrade", 
+      "Certificate", 
+      "Diploma", 
+      "Under Graduate", 
+      "Masters", 
+      "Doctorate", 
+      "None of These"
+    ]
   },
   "fr": {
-    "title": "Program",
-    "at_least_three_weeks": "Is your program a minimum of 12 consecutive weeks?",
-    "what_type_of_program": "What type of program?"
+    "title": "Programme",
+    "at_least_twelve_weeks": "Votre programme dure-t-il au moins 12 semaines consécutives?",
+    "at_least_three_weeks": "Is your program a minimum of 3 consecutive weeks?",
+    "what_type_of_program": "De quel type de programme s’agit-il?",
+    "options": [
+      "Mise à niveau",
+      "Certificat",
+      "Diplôme",
+      "Premier cycle universitaire",
+      "Maîtrise",
+      "Doctorat",
+      "Aucune de ces réponses"
+
+    ]
   }
 }
 </i18n>

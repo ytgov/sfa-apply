@@ -15,20 +15,29 @@ export const state = () => ({
   list: [
     {
       date: '2020/21',
-      name: 'Yukon College',
-      status: 'Submitted',
+      name: {
+        en: 'Yukon College',
+        fr: 'Collège du Yukon'
+      },
+      status: 'SUBMITTED',
       past: false
     },
      {
       date: '2020/21',
-      name: 'Other College',
-      status: 'Submitted',
+      name: {
+        en: 'Other College',
+        fr: 'Other College'
+      },
+      status: 'SUBMITTED',
       past: false
     },
     {
       date: '2019/20',
-      name: 'Yukon College',
-      status: 'Submitted',
+      name: {
+        en: 'Yukon College',
+        fr: 'Collège du Yukon'
+      },
+      status: 'SUBMITTED',
       past: true
     }
   ]

@@ -22,7 +22,7 @@
     "heading": "Student Financial Assistance Portal"
   },
   "fr": {
-    "heading": "Portail d'aide financière aux étudiants"
+    "heading": "Portail d’aide financière aux étudiants"
   }
 }
 </i18n>

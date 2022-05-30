@@ -123,14 +123,14 @@ export default {
     "are_you_registered_as_indigenous": "Are you registered as indigenous?"
   },
   "fr": {
-    "title": "Citizenship",
+    "title": "Citoyenneté",
     "body": [
-      "To be eligible for potential funding programs, you must be a Canadian citizen or a permanent resident."
+      "Pour être admissible aux programmes d’aide financière, vous devez avoir la citoyenneté canadienne ou la résidence permanente."
     ],
-    "are_you_a_canadian_citizen": "Are you a Canadian citizen?",
-    "are_you_a_permanent_resident": "Are you a permanent resident?",
-    "are_you_a_protected_person": "Are you a protected person?",
-    "are_you_registered_as_indigenous": "Are you registered as indigenous?"
+    "are_you_a_canadian_citizen": "Avez-vous la citoyenneté canadienne?",
+    "are_you_a_permanent_resident": "Avez-vous la résidence permanente au Canada?",
+    "are_you_a_protected_person": "Êtes-vous une personne protégée?",
+    "are_you_registered_as_indigenous": "Êtes-vous inscrit comme Autochtone?"
   }
 }
 </i18n>

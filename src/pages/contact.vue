@@ -9,22 +9,29 @@
       <v-col cols="12" sm="12" md="4">
         <h3 class="text-h5">{{ $t('headers.general') }}</h3>
         <p>
-          <strong>Phone:</strong> 867-667-5929<br />
-          <strong>Toll Free (In Yukon):</strong> 1-800-661-0408<br />
-          <strong>Fax:</strong> 867-393-6249<br />
+          <strong>{{ $t('labels.phone') }}</strong> 867-667-5929<br />
+          <strong>{{ $t('labels.tollfree') }}</strong> 1-800-661-0408<br />
+          <strong>{{ $t('labels.fax') }}</strong> 867-393-6249<br />
           <br />
-          <strong>Email:</strong> <a href="mailto:sfa@yukon.ca">sfa@yukon.ca</a>
+          <strong>{{ $t('labels.email') }}</strong> 
+          <a href="mailto:sfa@yukon.ca">sfa@yukon.ca</a>
         </p>
       </v-col>
       <v-col cols="12" sm="12" md="4">
         <h3 class="text-h5">{{ $t('headers.mailing') }}</h3>
-        <p>
+        <p v-if="locale=='en'">
           Student Financial Assistance<br />
           Department of Education<br />
           Student Financial Assistance (E-13)<br />
           Box 2703<br />
           Whitehorse, Yukon, Y1A 2C6
         </p>
+        <p v-else>
+          Aide financière aux étudiants<br />
+          Ministère de l'Éducation<br />
+          Gouvernement du Yukon<br />
+          C.P. 2703<br />
+          Whitehorse (Yukon)  Y1A 2C6
         </p>
       </v-col>
       <v-col cols="12" sm="12" md="4">
@@ -47,15 +54,27 @@
       "general": "General Inquiries",
       "mailing": "Mailing Address",
       "office": "Office Address"
+    },
+    "labels": {
+      "phone": "Phone:",
+      "tollfree": "Toll Free (In Yukon):",
+      "fax": "Fax:",
+      "email": "Email:"
     }
   },
   "fr": {
-    "title": "Nous contacter",
+    "title": "Pour nous contacter",
     "headers": {
       "general": "Renseignements généraux",
       "mailing": "Adresse postale",
       "office": "Adresse de bureau"
-    }  
+    },
+    "labels": {
+      "phone": "Téléphone :",
+      "tollfree": "Sans frais (au Yukon) :",
+      "fax": "Télécopieur :",
+      "email": "Courriel :"
+    }
   }
 }
 </i18n>
@@ -66,6 +85,11 @@ export default {
   head() {
     return {
       title: 'Yukon Student Financial Portal - Contact'
+    }
+  },
+  computed: {
+    locale() {
+      return this.$i18n.locale
     }
   }
 }

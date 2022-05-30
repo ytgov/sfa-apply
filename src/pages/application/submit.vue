@@ -177,8 +177,8 @@ table {
   	}
   },
   "fr": {
-  	"title": "Review Application",
-  	"excerpt": "Please review your application to ensure it is correct. If changes are required, click the “edit” button. Once corrected, continue to next section.",
+  	"title": "Vérification de votre demande",
+  	"excerpt": "Veuillez passer en revue votre demande pour vous assurer de l’exactitude des renseignements fournis. Pour faire des changements, cliquez sur le bouton « Edit ». Une fois les corrections entrées, continuez vers la prochaine section.",
   	"buttons": {
   		"edit": "Edit",
   		"continue": "Continue"

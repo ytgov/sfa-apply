@@ -73,8 +73,8 @@ export default {
     "has_family_maintained_home": "Has your family been living in the Yukon for the 12 months prior to you starting post-secondary classes?"
   },
   "fr": {
-    "title": "Dependant student",
-    "has_family_maintained_home": "Has your family been living in the Yukon for the 12 months prior to you starting post-secondary classes?"
+    "title": "Étudiant à charge",
+    "has_family_maintained_home": "Votre famille a-t-elle habité au Yukon pendant 12 mois avant le début de vos études postsecondaires?"
   }
 }
 </i18n>

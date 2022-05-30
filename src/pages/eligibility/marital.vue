@@ -13,7 +13,7 @@
       />
     </section>
 
-    <section v-if="eligibility.marital.are_you_in_a_relationship=='No'">
+    <section v-if="eligibility.marital.are_you_in_a_relationship=='No' && eligibility.yukon_grant.out_of_school_4_years=='No'">
       <Question>
         {{ $t('have_you_ever_been_in_a_relationship') }}
       </Question>
@@ -51,10 +51,14 @@ export default {
     },
     valid() {
       var is_valid = (
-          this.eligibility.marital.are_you_in_a_relationship == 'Yes' 
+          this.eligibility.marital.are_you_in_a_relationship
         ) || (
-          this.eligibility.marital.are_you_in_a_relationship == 'No' 
-          && this.eligibility.marital.have_you_ever_been_in_a_relationship
+          (
+            this.eligibility.marital.are_you_in_a_relationship == 'No' 
+            && this.eligibility.marital.have_you_ever_been_in_a_relationship
+          ) || (
+            this.eligibility.yukon_grant.out_of_school_4_years=='Yes'
+          )
         )
 
       return is_valid
@@ -92,9 +96,9 @@ export default {
     "have_you_ever_been_in_a_relationship": "Have you ever been married or in a common law relationship?"
   },
   "fr": {
-    "title": "Marital status",
-  "are_you_in_a_relationship": "Are you legally married or have you been in a common law relationship for at least one year?",
-    "have_you_ever_been_in_a_relationship": "Have you ever been married or in a common law relationship?"
+    "title": "État civil",
+    "are_you_in_a_relationship": "Êtes-vous légalement marié ou en union de fait depuis au moins un an?",
+    "have_you_ever_been_in_a_relationship": "Avez-vous déjà été légalement marié ou en union de fait?"
   }
 }
 </i18n>

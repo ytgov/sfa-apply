@@ -82,14 +82,14 @@ export default {
 <i18n>
 {
   "en": {
-    "title": " Single parent student",
+    "title": "Single parent student",
     "responsible_for_child": "Do you currently have physical custody and are responsible for supporting a child?",
     "ever_been_a_single_parent": "Have you ever been a single parent and your children are currently not in your care?"
   },
   "fr": {
-    "title": " Single parent student",
-    "responsible_for_child": "Do you currently have physical custody and are responsible for supporting a child?",
-    "ever_been_a_single_parent": "Have you ever been a single parent and your children are currently not in your care?"
+    "title": "Étudiant chef de famille monoparentale",
+    "responsible_for_child": "Avez-vous actuellement la garde physique d’un enfant et la responsabilité de subvenir à ses besoins?",
+    "ever_been_a_single_parent": "Avez-vous déjà été chef de famille monoparentale et votre ou vos enfants ne sont plus actuellement à votre charge?"
   }
 }
 </i18n>

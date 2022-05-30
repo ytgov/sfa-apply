@@ -61,10 +61,12 @@ export default {
           name: 'Student Dependents',
           uri: '/application/onboarding/dependants'
         },
+        /*
         {
           name: 'CSFA Study Period',
           uri: '/application/onboarding/csfa'
         },
+        */        
         {
           name: 'CSFA Accomodation',
           uri: '/application/onboarding/csfa-accomodation'
@@ -75,13 +77,14 @@ export default {
           uri: '/application/onboarding/csfa-employment'
         },
         */
-        {
-          name: 'CSFA Expenses',
-          uri: '/application/onboarding/csfa-expenses'
-        },
+
         {
           name: 'CSFA Income',
           uri: '/application/onboarding/csfa-income'
+        },
+        {
+          name: 'CSFA Expenses',
+          uri: '/application/onboarding/csfa-expenses'
         },
         {
           name: 'Parents',

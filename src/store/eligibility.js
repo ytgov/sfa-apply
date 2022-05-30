@@ -20,6 +20,9 @@ export const state = () => ({
       time: false
     },
     residency: {
+      living_in_yukon_for_2_years: false,
+      did_you_move_during_2_years: false,
+
       have_you_been_out_of_territory_4_months: false,
       have_you_been_out_of_territory_12_months: false,
       will_you_be_resident_before_classes_start: false,
@@ -41,6 +44,7 @@ export const state = () => ({
       }
     },
     program: {
+      at_least_twelve_weeks: false,
     	at_least_three_weeks: false,
     	what_type_of_program: false
     },

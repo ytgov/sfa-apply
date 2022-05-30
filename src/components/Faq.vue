@@ -1,7 +1,7 @@
 <template>
   <section data-section="faq">
     <header>
-      <h2>FAQs</h2>
+      <h2>{{ $t('title') }}</h2>
       <nuxt-link to="/faq">More FAQ</nuxt-link>
     </header>
     <section>
@@ -18,6 +18,16 @@
 </template>
 
 
+<i18n>
+{
+  "en": {
+    "title": "FAQs"
+  },
+  "fr": {
+    "title": "Foire aux questions"
+  }
+}
+</i18n>
 <script> 
 export default {
   props: ['faqs'],

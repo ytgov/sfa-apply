@@ -7,7 +7,7 @@
             <legend class="text-h5">{{ $t('legends.dependants') }}</legend>
 
             <p>
-              Enter your parent dependants inforamtion:
+              Enter your parent dependants inforamtion. A dependent child is defined as a child (including an adopted child, step-child or foster child) who is 17 years or younger and is wholly dependent on you or your spouse for support, and over whom you or your spouse has, in law or in fact, custody and control; or, a child who is in full-time attendance at a post-secondary institution and meets the definition of a Dependent Student found at <a href="https://www.education.gov.yk.ca/continued/student_loans.html" target="_blank">https://www.education.gov.yk.ca/continued/student_loans.html</a>.  
             </p>
             <table class="form" cellpadding="0" cellspacing="0" width="100%">
       

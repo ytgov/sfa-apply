@@ -3,10 +3,10 @@
     <h2 class="text-h3 mb-7">{{ $t('title') }}</h2>
 
     <p>
-      Based on the information you provided:
+      {{ $t('excerpt') }}
     </p>
 
-    <h4 class="text-h5 mb-3">You <strong>are eligible</strong> to apply for the following sources of funding:</h4>
+    <h4 class="text-h5 mb-3" v-html="$t('paragraph.are_eligable')"></h4>
     
     <div class="programs">
       <div :class="fulltime_active?'active':''" v-if="fulltime_eligible.length && isFullTime">
@@ -51,7 +51,7 @@
 
     <p>&nbsp;</p>
 
-    <h4 class="text-h5 mb-3">You are not eligible to apply for:</h4>
+    <h4 class="text-h5 mb-3" v-html="$t('paragraph.not_eligable')"></h4>
 
     <div class="programs">
       <div :class="ineligible_fulltime_active?'active':''" v-if="fulltime_ineligible.length && isFullTime">
@@ -96,8 +96,8 @@
       <p>{{ $t("none") }}</p>
     </div>
 
-    <p>
-      If you would like to be assessed for one of the programs that indicate ‘you are not eligible to apply for’, please check the box next to the funding type and we will assess your application.
+    <p v-html="$t('notes')">
+      
     </p>
 
 
@@ -259,21 +259,33 @@ export default {
 {
   "en": {
     "title": "Eligible programs",
+    "excerpt": "Based on the information you provided:",
+    "paragraph": {
+      "are_eligable": "You <strong>are eligible</strong> to apply for the following sources of funding:",
+      "not_eligable": "You are not eligible to apply for:"
+    },
     "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",
       "scholarship": "Scholarship",
       "loan": "Loan"
-    }
+    },
+    "notes": "If you would like to be assessed for one of the programs that indicate ‘you are not eligible to apply for’, please check the box next to the funding type and we will assess your application."
   },
   "fr": {
-     "title": "Eligible programs",
+    "title": "Programmes admissibles",
+    "excerpt": "Compte tenu des renseignements que vous avez fournis :",
+    "paragraph": {
+      "are_eligable": "Vous êtes admissible aux sources d’aide financière suivantes&nbsp;:",
+      "not_eligable": "Vous ne pouvez pas présenter une demande pour&nbsp;:"
+    },
     "none": "There are currently no eligibile programs.",
     "types": {
       "grant": "Grant",
       "scholarship": "Scholarship",
       "loan": "Loan"
-    }
+    },
+    "notes": "Si vous voulez que l’on évalue votre demande pour l’un des programmes qui indiquent «&nbsp;Vous ne pouvez pas présenter une demande pour&nbsp;», veuillez cocher la case à côté du type d’aide financière et nous procéderons à l’évaluation."
   }
 }
 </i18n>

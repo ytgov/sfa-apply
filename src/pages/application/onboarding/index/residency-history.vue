@@ -6,7 +6,17 @@
           <fieldset>
             <legend class="text-h5">{{ $t('legends.consent') }}</legend>
 
-            <p>Student consent to release information to another person:</p>
+            <p>
+              Student consent to release information to another person:
+              Please provide a complete breakdown of where you were physically living for the 2 years immediately prior to starting classes. 
+            </p>
+            <p>
+              <ul>
+                <li>Separate the two years into periods of time when you were in high school or post-secondary including summer breaks as full-time, part-time or not in school at all. </li>
+                <li>Include all absence and returns to Yukon.</li>
+                <li>There should not be any gab in this two-year period.</li>
+              </ul>
+            </p>
 
             
             <table class="standard" cellpadding="0" cellspacing="0" width="100%">

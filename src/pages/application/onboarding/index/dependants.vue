@@ -7,7 +7,7 @@
             <legend class="text-h5">{{ $t('legends.dependants') }}</legend>
 
             <p>
-              Enter your dependants inforamtion:
+              {{ $t('excerpt') }}
             </p>
             <table class="form" cellpadding="0" cellspacing="0" width="100%">
       
@@ -38,9 +38,9 @@
                       <label><input type="checkbox" value="Resides with" v-model="dependants[key].other"/> Resides with</label>
                       <label><input type="checkbox" value="Shared Custody" v-model="dependants[key].other"/> Shared Custody</label>
                       <label><input type="checkbox" value="In post secondary" v-model="dependants[key].other"/> In post secondary</label>
-                      <label><input type="checkbox" value="STA eligable" v-model="dependants[key].other"/> STA eligable</label>
-                      <label><input type="checkbox" value="CSL eligable" v-model="dependants[key].other"/> CSL eligable</label>
-                       <label><input type="checkbox" value="CSG eligable" v-model="dependants[key].other"/> CSG eligable</label>
+                      <label v-if="false"><input type="checkbox" value="STA eligible" v-model="dependants[key].other"/> STA eligible</label>
+                      <label v-if="false"><input type="checkbox" value="CSL eligible" v-model="dependants[key].other"/> CSL eligible</label>
+                       <label v-if="false"><input type="checkbox" value="CSG eligible" v-model="dependants[key].other"/> CSG eligable</label>
                     </div>
                   </td>
                 </tr>
@@ -127,7 +127,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/csfa'
+      return '/application/onboarding/csfa-accomodation'
     }
   },
   data() {
@@ -177,12 +177,14 @@ export default {
 </script>
 
 
+
 <i18n>
 {
   "en": {
     "legends": {
-      "dependants": "Dependants" 
+      "dependants": "Student Dependant(s)" 
     },
+    "excerpt": "A dependant is someone who is 17 years or younger and is wholly dependent on you or your spouse for support, and for whom you or your spouse has, in law or in fact, custody and control.  If you do not have any dependants, please skip this section.",
     "help": {
       "title": "Need help?",
       "details": "Help text can go in here to make the form more"
@@ -193,8 +195,9 @@ export default {
   },
   "fr": {
     "legends": {
-      "dependants": "Dependants" 
+      "dependants": "Student Dependant(s)" 
     },
+    "excerpt": "A dependant is someone who is 17 years or younger and is wholly dependent on you or your spouse for support, and for whom you or your spouse has, in law or in fact, custody and control.  If you do not have any dependants, please skip this section.",
     "help": {
       "title": "Need help?",
       "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"

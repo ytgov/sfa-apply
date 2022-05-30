@@ -18,9 +18,7 @@
         {{ $t('post_secondary_enrolled_in') }}
       </Question>
 
-      <p>
-        If your school is not listed, contact our office by email at <a href="mailto:sfa@yukon.ca">sfa@yukon.ca</a> and provide the name of your school and your school’s email address.
-      </p>
+      <p v-html="$t('notes')"></p>
 
       <Select :options="institutions"
         v-model="eligibility.designated_institution.post_secondary_enrolled_in" 
@@ -98,12 +96,28 @@ export default {
   "en": {
     "title": "Designated institution",
     "are_you_enrolled_in_post_secondary": "Are you enrolled in a post-secondary institution?",
-    "post_secondary_enrolled_in": "Select the school you plan to attend."
+    "post_secondary_enrolled_in": "Select the school you plan to attend.",
+    "notes": "If your school is not listed, contact our office by email at <a href=\"mailto:sfa@yukon.ca\">sfa@yukon.ca</a> and provide the name of your school, schools website, and your school’s email address.",
+    "institutions": [
+      "Yukon College", 
+      "Alcan Air", 
+      "McMaster University", 
+      "University of British Columbia", 
+      "University of Windsor"
+    ]
   },
   "fr": {
-    "title": "Designated institution",
-    "are_you_enrolled_in_post_secondary": "Are you enrolled in a post-secondary institution?",
-    "post_secondary_enrolled_in": "Select the school you plan to attend."
+    "title": "Établissement agréé",
+    "are_you_enrolled_in_post_secondary": "Êtes-vous inscrit dans un établissement d’enseignement postsecondaire?",
+    "post_secondary_enrolled_in": "Sélectionnez l’école que vous comptez fréquenter.",
+    "notes": "Si votre école ne figure pas dans la liste, contactez notre bureau par courriel à <a href=\"mailto:sfa@yukon.ca\">sfa@yukon.ca</a> pour nous fournir le nom et l’adresse courriel de votre école.",
+    "institutions": [
+      "Collège du Yukon",
+      "Alcan Air",
+      "Université McMaster",
+      "Université de la Colombie-Britannique",
+      "Université de Windsor"
+    ]
   }
 }
 </i18n>

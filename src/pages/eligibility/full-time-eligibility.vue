@@ -128,7 +128,7 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Full-time canada student financial assistance eligibility",
+    "title": "Full-time Canada Student Financial assistance eligibility",
     "program_at_least_2_years": "Is your program 2 years (60 weeks) or longer in duration? ",
     "family_size": "How big is your family? ",
     "previous_year_gross_family_income": "What is your gross family income from the last year? ",
@@ -136,12 +136,12 @@ export default {
     "dependants_with_disability": "How many dependants older than 12 with a disability?"
   },
   "fr": {
-    "title": "Full-time canada student financial assistance eligibility",
-    "program_at_least_2_years": "Is your program 2 years (60 weeks) or longer in duration? ",
-    "family_size": "How big is your family? ",
-    "previous_year_gross_family_income": "What is your gross family income from the last year? ",
-    "dependants_under_twelve": "How many dependants do you have under the age of 12?",
-    "dependants_with_disability": "How many dependants older than 12 with a disability?"
+    "title": "Admissibilité à une aide financière aux étudiants du Canada à temps plein",
+    "program_at_least_2_years": "La durée de votre programme est-elle de deux ans (60 semaines) ou plus?",
+    "family_size": "Combien de personnes y a-t-il dans votre famille?",
+    "previous_year_gross_family_income": "Quel était votre revenu familial brut l’année dernière?",
+    "dependants_under_twelve": "Combien avez-vous de personnes à charge de moins de 12 ans?",
+    "dependants_with_disability": "Combien avez-vous de personnes à charge de plus de 12 ans et ayant une incapacité?"
   }
 }
 </i18n>

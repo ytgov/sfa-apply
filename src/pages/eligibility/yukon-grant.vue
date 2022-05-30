@@ -81,14 +81,14 @@ export default {
 <i18n>
 {
   "en": {
-    "title": "Yukon grant eligibility",
+    "title": "Yukon Grant eligibility",
     "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
     "out_of_school_4_years": "Have you been out of high school for 4 years or more?"
   },
   "fr": {
-    "title": "Yukon grant eligibility",
-    "has_completed_two_years": "Have you completed at least (2) two years of secondary school in the Yukon school system?",
-    "out_of_school_4_years": "Have you been out of high school for 4 years or more?"
+    "title": "Admissibilité à la Bourse du Yukon",
+    "has_completed_two_years": "Avez-vous fait au moins deux années d’études secondaires au Yukon?",
+    "out_of_school_4_years": "Avez-vous cessé de fréquenter l’école secondaire pendant quatre ans ou plus?"
   }
 }
 </i18n>

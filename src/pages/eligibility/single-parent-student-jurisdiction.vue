@@ -71,8 +71,8 @@ export default {
     "most_recently_in_yukon": "Have you lived most recently in the yukon for 12 months not counting the time spent in full-time studies?"
   },
   "fr": {
-    "title": "Single parent student",
-    "most_recently_in_yukon": "Have you lived most recently in the yukon for 12 months not counting the time spent in full-time studies?"
+    "title": "Étudiant chef de famille monoparentale",
+    "most_recently_in_yukon": "Avez-vous récemment vécu au Yukon pendant 12 mois, sans compter le temps passé aux études à temps plein?"
   }
 }
 </i18n>

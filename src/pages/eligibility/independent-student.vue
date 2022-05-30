@@ -87,9 +87,9 @@ export default {
     "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies? "
   },
   "fr": {
-    "title": "Independent student",
-    "out_of_school": "Have you been out of school for 4 years or more? ",
-    "in_labour_force": "Have you been in the workforce for at least two years, while not in full-time studies?"
+    "title": "Étudiant indépendant",
+    "out_of_school": "Avez-vous cessé de fréquenter l’école pendant quatre ans ou plus?",
+    "in_labour_force": "Avez-vous travaillé pendant au moins deux ans tout en n’étant pas aux études à temps plein?"
   }
 }
 </i18n>

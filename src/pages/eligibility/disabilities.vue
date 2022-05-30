@@ -85,9 +85,9 @@ export default {
     "service_equipment": "Do you have a persistent or prolonged disability that is expected to last 12 months or more?"
   },
   "fr": {
-    "title": "Disability information",
-    "permanent_disability": "Do you have a permanent disability?",
-    "service_equipment": "Do you have a persistent or prolonged disability that is expected to last 12 months or more?"
+    "title": "Information sur les incapacités",
+    "permanent_disability": "Avez-vous une incapacité permanente?",
+    "service_equipment": "Avez-vous une incapacité persistante ou chronique qui devrait durer 12 mois ou plus?"
   }
 }
 </i18n>

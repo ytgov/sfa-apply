@@ -31,11 +31,13 @@
 		    		{{application.date}}
 		    	</div>
 					<div>
-						<strong>{{application.name}}</strong><br />
-						{{application.status}}
+						<strong>{{application.name[locale]}}</strong><br />
+						{{status(application.status)}}
 					</div>
 					<div>
-						<v-btn to="/application" color="secondary">Continue</v-btn>
+						<v-btn to="/application" color="secondary">
+							{{ $t('buttons.continue') }}
+						</v-btn>
 					</div>
 				</div>
 	    </div>
@@ -58,11 +60,13 @@
 		    		{{application.date}}
 		    	</div>
 					<div>
-						<strong>{{application.name}}</strong><br />
-						{{application.status}}
+						<strong>{{application.name[locale]}}</strong><br />
+						{{status(application.status)}}
 					</div>
 					<div>
-						<v-btn color="secondary" to="/application/details/01234">Details</v-btn>
+						<v-btn color="secondary" to="/application/details/01234">
+							{{ $t('buttons.details') }}
+						</v-btn>
 					</div>
 				</div>
 	    </div>
@@ -88,11 +92,15 @@
     "past": {
     	"header": "Past applications",
     	"none": "There are no past applications."
+    },
+    "buttons": {
+    	"continue": "Continue",
+    	"details": "Details"
     }
   },
   "fr": {
   	"hello": "Bonjour, ",
-  	"welcome": "Yukon students are encouraged to apply for available funding programs online. By using this online tool, students have the option to submit an application or review funding that has been awarded in the past. If you are planning to complete and submit an application, make sure to have all required documents to finish your application.",
+  	"welcome": "Nous encourageons les étudiants à présenter leurs demandes d’aide financière en ligne. Avec cet outil en ligne, les étudiants peuvent soumettre une demande ou passer en revue l’aide financière qu’ils ont reçue par le passé. Si vous comptez remplir et soumettre une demande, assurez-vous d’avoir en main tous les documents requis.",
     "current": {
     	"header": "Applications actuelles",
     	"none": "Il n'y a pas d'applications actives.",
@@ -103,6 +111,10 @@
     "past": {
     	"header": "Candidatures antérieures",
     	"none": "Il n'y a pas d'applications antérieures."
+    },
+    "buttons": {
+    	"continue": "Continuer",
+    	"details": "Détails"
     }
   }
 }
@@ -111,6 +123,7 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 
+// Portail d’aide financière aux étudiants
 
 export default {
 	head() {
@@ -127,6 +140,21 @@ export default {
 		},
 		past_applications() {
 			return this.$store.getters['applications/past']
+		},
+		locale() {
+      return this.$i18n.locale
+    },
+		status() {
+			var locale = this.locale
+			return status => {
+				var output = ''
+				switch (status) {
+					case 'SUBMITTED':
+						output = (locale=='en') ? 'Submitted' : 'Soumis';
+						break;
+				}
+				return output;
+			}
 		}
 	},
 	data() {

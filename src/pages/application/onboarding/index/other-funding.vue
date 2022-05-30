@@ -6,7 +6,9 @@
           <fieldset>
             <legend class="text-h5">{{ $t('legends.consent') }}</legend>
 
-            <p>Student consent to release information to another person:</p>
+            <p>
+              {{ $t('excerpt') }}
+            </p>
 
             
             <table class="form" cellpadding="0" cellspacing="0" width="100%">
@@ -162,6 +164,7 @@ export default {
     "legends": {
       "consent": "Other funding" 
     },
+    "excerpt": "Please indicate if you will be receiving funding from another funding source (ie: scholarship, Employment Insurance, etc.)",
     "help": {
       "title": "Need help?",
       "details": "Help text can go in here to make the form more"
@@ -174,6 +177,7 @@ export default {
     "legends": {
       "consent": "Autres financements" 
     },
+    "excerpt": "Please indicate if you will be receiving funding from another funding source (ie: scholarship, Employment Insurance, etc.)",
     "help": {
       "title": "Need help?",
       "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"

@@ -37,7 +37,7 @@
       />
     </section>
 
-    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate && eligibility.scholarship.is_pursuing_aviation">
+    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate && eligibility.scholarship.is_pursuing_aviation == 'No'">
       <Question>
         {{ $t('are_you_entering_visual_arts') }}
       </Question>
@@ -49,7 +49,7 @@
       />
     </section>
 
-    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate && eligibility.scholarship.is_pursuing_aviation && eligibility.scholarship.are_you_entering_visual_arts">
+    <section v-if="eligibility.scholarship.is_high_school_student && eligibility.scholarship.is_high_school_graduate && eligibility.scholarship.is_pursuing_aviation == 'No' && eligibility.scholarship.are_you_entering_visual_arts == 'No' ">
       <Question>
         {{ $t('enrolled_vocational') }}
       </Question>
@@ -92,9 +92,17 @@ export default {
       var is_valid = (
           this.eligibility.scholarship.is_high_school_student
           && this.eligibility.scholarship.is_high_school_graduate
-          && this.eligibility.scholarship.is_pursuing_aviation
-          && this.eligibility.scholarship.are_you_entering_visual_arts
-          && this.eligibility.scholarship.enrolled_vocational
+          && (
+            (
+              this.eligibility.scholarship.is_pursuing_aviation == 'Yes'
+              || this.eligibility.scholarship.are_you_entering_visual_arts == 'Yes'
+              || this.eligibility.scholarship.enrolled_vocational == 'Yes'
+            ) || (
+             this.eligibility.scholarship.is_pursuing_aviation == 'No'
+             && this.eligibility.scholarship.are_you_entering_visual_arts == 'No'
+             && this.eligibility.scholarship.enrolled_vocational == 'No'
+            )
+          )
         )
       
       return is_valid;
@@ -132,12 +140,12 @@ export default {
     "enrolled_vocational": "Are you enrolled in the first or second year of a one or two year vocational/technical program?" 
   },
   "fr": {
-    "title": "Scholarship",
-    "are_you_a_high_school_student": "Are you a grade 12 student attending a Yukon High School and entering the first year of post secondary?",
-    "are_you_a_high_school_graduate": "Are you or will you be a high school graduate from a yukon high school?",
-    "are_you_pursuing_aviation": "Are you pursuing aviation oriented technical training?",
-    "are_you_entering_visual_arts": "Are you entering the first year of a visual arts program in the academic year immediately following graduation?",
-    "enrolled_vocational": "Are you enrolled in the first or second year of a one or two year vocational/technical program?" 
+    "title": "Bourse d’études",
+    "are_you_a_high_school_student": "Êtes-vous en 12e année dans une école secondaire du Yukon et entrez-vous en première année d’un programme d’études postsecondaires?",
+    "are_you_a_high_school_graduate": "Avez-vous obtenu ou êtes-vous en voie d’obtenir un diplôme d’études secondaires au Yukon?",
+    "are_you_pursuing_aviation": "Suivez-vous une formation technique dans le domaine de l’aviation?",
+    "are_you_entering_visual_arts": "Entrez-vous en première année d’un programme en arts visuels dans l’année scolaire suivant immédiatement l’obtention de votre diplôme d’études secondaires?",
+    "enrolled_vocational": "Êtes-vous inscrit à la première ou la deuxième année d’un programme de formation professionnelle/technique d’un ou de deux ans?" 
   }
 }
 </i18n>

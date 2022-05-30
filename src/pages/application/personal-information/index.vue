@@ -126,10 +126,10 @@ export default {
     "what_is_your_birthday": "What is your birthday?"
   },
   "fr": {
-    "title": "Personal information",
+    "title": "Renseignements personnels",
     "use_existing_alias": "Do you want to use your existing?",
-    "what_is_your_sin_number": "What is your sin number?",
-    "what_is_your_birthday": "What is your birthday?"
+    "what_is_your_sin_number": "Quel est votre numéro d’assurance sociale (NAS)?",
+    "what_is_your_birthday": "Quelle est votre date de naissance?"
   }
 }
 </i18n>

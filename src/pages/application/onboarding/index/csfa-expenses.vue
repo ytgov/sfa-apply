@@ -3,38 +3,13 @@
     <ValidationObserver ref="observer" v-slot="{ invalid, errors }" >
       <v-form @submit.prevent="submit" v-model="valid">
         <fieldset class="group">
+
           <fieldset>
             <legend class="text-h5">{{ $t('legends.expenses') }}</legend>
 
             <p>
-              Manditory: Student may not leave blank
+              {{$t('excerpt')}}
             </p>
-           
-
-            <ValidationProvider name="Estimated Tuition Fees" rules="required" tag="span" v-slot="{ errors, valid }">
-              <CurrencyField
-                name="Estimated Tuition Fees"
-                v-model="CSFA_EXPENSES.TUITION"
-                label="Estimated Tuition Fees"
-                :errors="errors"
-                :valid="valid"
-              />
-            </ValidationProvider>
-
-            <ValidationProvider name="Books and Supplies" rules="required" tag="span" v-slot="{ errors, valid }">
-              <CurrencyField
-                name="Books and Supplies"
-                v-model="CSFA_EXPENSES.BOOKS_AND_SUPPLIES"
-                label="Books and Supplies"
-                :errors="errors"
-                :valid="valid"
-              />
-            </ValidationProvider>
-
-          </fieldset>
-          <fieldset>
-            <legend class="text-h5">{{ $t('legends.expense-list') }}</legend>
-
             <table class="standard" cellpadding="0" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -47,13 +22,20 @@
               <tbody>
                 <tr v-for="item, key in CSFA_EXPENSES.expenses">
                   <td >
-                    <input type="text" v-model="CSFA_EXPENSES.expenses[key].type" />
+                    <select v-model="CSFA_EXPENSES.expenses[key].type">
+                      <option value="">--Select--</option>
+                      <option v-for="type in types">{{type.value}}</option>
+                    </select>
+                    <p v-if="note(CSFA_EXPENSES.expenses[key].type)">
+                      <small>{{note(CSFA_EXPENSES.expenses[key].type)}}</small>
+                    </p>
+                    <input type="text" v-model="CSFA_EXPENSES.expenses[key].type" v-if="false" />
                   </td>
                   <td >
                     <input type="text" v-model="CSFA_EXPENSES.expenses[key].amount" placeholder="0.00"/>
                   </td>
                   <td>
-                    <input type="text" v-model="CSFA_EXPENSES.expenses[key].comments" />
+                    <input type="text" v-model="CSFA_EXPENSES.expenses[key].comments" placeholder="Comments" />
                   </td>
                   <td>
                     <a @click="remove(key)">
@@ -69,14 +51,6 @@
             </p> 
           </fieldset>
         </fieldset>
-
-        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4 error" v-if="invalid && errors.length" style="padding-right: 1rem;">
-          <h3>{{ $t('problem.title') }}</h3>
-          <br />
-          <ul>
-            <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
-          </ul>
-        </v-banner>
       </v-form>
     </ValidationObserver>
 
@@ -129,16 +103,69 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/csfa-income'
+      return '/application/onboarding/parents'
+    },
+    note() {
+      return type => {
+        var item = _.find(this.types, (o) => {
+          return o.value == type
+        })
+
+        return (item) ? item.note : false
+      }
     }
   },
   data() {
     return {
       CSFA_EXPENSES: {
-        TUITION: 0,
-        BOOKS_AND_SUPPLIES: 0,
         expenses: []
-      }
+      },
+      types: [
+        {
+          value: 'Tuition and compulsory fees',
+          note: '(include even if someone else is paying on your behalf). Do not include residence fees'
+        },
+        {
+          value: 'Books and supplies',
+          note: '(e.g. books, pencils, pens, photocopy services, etc.) '
+        },
+        {
+          value: 'Computer costs',
+          note: '(hardware, softwear, and supplies) '
+        },
+         {
+          value: 'Child support payments',
+          note: '(you may be required to provide supporting documentation) x (per month) '
+        },
+        {
+          value: 'Alimony support payments',
+          note: '(you may be required to provide supporting documentation) x (per month) '
+        },
+        {
+          value: 'Daycare costs',
+          note: '(enter the full cost before any subsidy amount you are eligible for) x (per month)'
+        },
+        {
+          value: 'Care costs for dependant(s) ',
+          note: 'with disabilities or other dependent children aged below 12 years. Provide supporting documentation from a doctor confirming the need for care'
+        },
+        {
+          value: 'Part-time tuition fees, books and supplies',
+          note: ' (actual amount) '
+        },
+        {
+          value: 'Medical/dental/optical',
+          note: '(out of pocket costs greater then covered under any insurance plan). Specify your medical/dental/optical costs: x (per month) '
+        },
+        {
+          value: 'Canada Student Loan payments',
+          note: 'Spouse only. (full-time or part-time): x (per month) '
+        },
+        {
+          value: 'Other expenses',
+          note: ''
+        }
+      ]
     }
   },
   mounted() {  
@@ -172,35 +199,15 @@ export default {
 {
   "en": {
     "legends": {
-      "expenses": "CSFA Expenses",
-      "expense-list": "CSFA Expense List" 
+      "expenses": "Pre-Study and Study Period Expenses"
     },
-    "buttons": {
-      "save": "Save consent release"
-    },
-    "help": {
-      "title": "Need help?",
-      "details": "Help text can go in here to make the form more"
-    },
-    "problem": {
-      "title": "There is a problem"
-    }  
+    "excerpt": "For each category, enter the estimated or actual costs that you will incur during your pre-study and study periods. "
   },
   "fr": {
     "legends": {
-      "expenses": "Libération du consentement",
-       "expense-list": "CSFA Expense List" 
+      "expenses": "re-Study and Study Period Expenses"
     },
-    "buttons": {
-       "save": "Enregistrer la libération du consentement"
-    },
-    "help": {
-      "title": "Need help?",
-      "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"
-    },
-    "problem": {
-      "title": "Il ya un problème"
-    }
+    "excerpt": "For each category, enter the estimated or actual costs that you will incur during your pre-study and study periods. "
   }
 }
 </i18n>

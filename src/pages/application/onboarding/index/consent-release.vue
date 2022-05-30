@@ -6,7 +6,9 @@
           <fieldset>
             <legend class="text-h5">{{ $t('legends.consent') }}</legend>
 
-            <p>Student consent to release information to another person:</p>
+            <p>
+              {{ $t('excerpt') }}
+            </p>
 
             
             <table class="standard" cellpadding="0" cellspacing="0" width="100%">
@@ -15,7 +17,7 @@
                   <th width="50%">Consent person</th>
                   <th>Academic<br />year start</th>
                   <th>Academic<br />year end</th>
-                  <th class="center">SFAC</th>
+                  <th class="center">SFA</th>
                   <th class="center">CSL</th>
                    <th>&nbsp;</th>
                 </tr>
@@ -148,8 +150,9 @@ export default {
 {
   "en": {
     "legends": {
-      "consent": "Consent release" 
+      "consent": "Consent to release" 
     },
+    "excerpt": "Would you like a friend, parent, spouse or other person to communicate with our office on your behalf regarding your funding?  If yes, please complete this section.",
     "buttons": {
       "save": "Save consent release"
     },
@@ -165,6 +168,7 @@ export default {
     "legends": {
       "consent": "Libération du consentement" 
     },
+    "excerpt": "Would you like a friend, parent, spouse or other person to communicate with our office on your behalf regarding your funding?  If yes, please complete this section.",
     "buttons": {
        "save": "Enregistrer la libération du consentement"
     },

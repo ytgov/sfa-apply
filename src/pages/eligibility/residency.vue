@@ -4,36 +4,37 @@
 
     <section>
       <Question>
-        {{ $t('have_you_been_out_of_territory_4_months') }}
+
+        {{ $t('living_in_yukon_for_2_years') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.residency.have_you_been_out_of_territory_4_months" 
-        :value="eligibility.residency.have_you_been_out_of_territory_4_months" 
+        v-model="eligibility.residency.living_in_yukon_for_2_years" 
+        :value="eligibility.residency.living_in_yukon_for_2_years" 
       />
     </section>
-    <section v-if="eligibility.residency.have_you_been_out_of_territory_4_months=='Yes'">
+    <section v-if="eligibility.residency.living_in_yukon_for_2_years=='Yes'">
       <Question>
-        {{ $t('will_you_be_resident_before_classes_start') }}
+        {{ $t('did_you_move_during_2_years_more_4_months') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.residency.will_you_be_resident_before_classes_start" 
-        :value="eligibility.residency.will_you_be_resident_before_classes_start" 
+        v-model="eligibility.residency.did_you_move_during_2_years_more_4_months" 
+        :value="eligibility.residency.did_you_move_during_2_years_more_4_months" 
       />
     </section>
 
-    <section v-if="eligibility.residency.have_you_been_out_of_territory_4_months=='Yes' && eligibility.residency.will_you_be_resident_before_classes_start">
+    <section v-if="eligibility.residency.living_in_yukon_for_2_years=='No'">
       <Question>
-        {{ $t('have_you_been_out_of_territory_12_months') }}
+        {{ $t('did_you_move_during_2_years_more_12_months') }}
       </Question>
 
       <RadioList :options="['Yes', 'No']" 
-        v-model="eligibility.residency.have_you_been_out_of_territory_12_months" 
-        :value="eligibility.residency.have_you_been_out_of_territory_12_months" 
+        v-model="eligibility.residency.did_you_move_during_2_years_more_12_months" 
+        :value="eligibility.residency.did_you_move_during_2_years_more_12_months" 
       />
     </section>
-    <section v-if="eligibility.residency.have_you_been_out_of_territory_4_months=='Yes' && eligibility.residency.will_you_be_resident_before_classes_start && eligibility.residency.have_you_been_out_of_territory_12_months">
+    <section v-if="maybe_resident">
       <Question>
         {{ $t('do_you_file_with_cra_as_yukon_citizen') }}
       </Question>
@@ -44,7 +45,7 @@
       />
     </section>
 
-    <section v-if="eligibility.residency.have_you_been_out_of_territory_4_months=='Yes' && eligibility.residency.will_you_be_resident_before_classes_start && eligibility.residency.have_you_been_out_of_territory_12_months && eligibility.residency.do_you_file_with_cra_as_yukon_citizen">
+    <section v-if="maybe_resident && eligibility.residency.do_you_file_with_cra_as_yukon_citizen">
       <Question>
         {{ $t('valid_yukon_health_insurance') }}
       </Question>
@@ -55,7 +56,7 @@
       />
     </section>
 
-    <section v-if="eligibility.residency.have_you_been_out_of_territory_4_months=='Yes' && eligibility.residency.will_you_be_resident_before_classes_start && eligibility.residency.have_you_been_out_of_territory_12_months && eligibility.residency.do_you_file_with_cra_as_yukon_citizen && eligibility.residency.valid_yukon_health_insurance">
+    <section v-if="maybe_resident && eligibility.residency.do_you_file_with_cra_as_yukon_citizen && eligibility.residency.valid_yukon_health_insurance">
       <Question>
         {{ $t('drivers_lisence_another_juristiction') }}
       </Question>
@@ -94,18 +95,27 @@ export default {
       }
     },
     valid() {
-      var is_valid =  
-        this.eligibility.residency.have_you_been_out_of_territory_4_months == 'No' ||
+      var is_valid =  (
+        !this.maybe_resident || 
         (
-          this.eligibility.residency.have_you_been_out_of_territory_4_months == 'Yes' &&
-          this.eligibility.residency.will_you_be_resident_before_classes_start &&
-          this.eligibility.residency.have_you_been_out_of_territory_12_months &&
-          this.eligibility.residency.do_you_file_with_cra_as_yukon_citizen 
+          this.maybe_resident &&
+          (
+            this.eligibility.residency.do_you_file_with_cra_as_yukon_citizen &&
+            this.eligibility.residency.valid_yukon_health_insurance &&
+            this.eligibility.residency.drivers_lisence_another_juristiction
+          )
         )
+      )
       return is_valid
     },
     next() {
       return '/eligibility/program'
+    },
+    maybe_resident() {
+      return this.eligibility.residency.living_in_yukon_for_2_years && (
+        this.eligibility.residency.did_you_move_during_2_years_more_4_months == 'Yes' ||
+        this.eligibility.residency.did_you_move_during_2_years_more_12_months == 'Yes'
+      )
     }
   },
   mounted() {
@@ -125,21 +135,24 @@ export default {
 {
   "en": {
     "title": "Residency",
-    "have_you_been_out_of_territory_4_months": "Have you been living outside of the Yukon for more than 4 months while not in school full-time?",
-    "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
-    "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
+    "living_in_yukon_for_2_years": "Have you physically been living in Yukon for the two years immediately prior to starting your program?",
+    "did_you_move_during_2_years_more_4_months": "During this 2-year period, were you away from Yukon for more than 4 months and less than 12 months? ",
+    "did_you_move_during_2_years_more_12_months": "During this 2-year period, were you away from Yukon for more than 12 months?",
+
+
     "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?",
     "valid_yukon_health_insurance": "Do you have valid Yukon health care insurance",
     "drivers_lisence_another_juristiction": "Do you have a drivers lisence form another juristiction?"
   },
   "fr": {
-    "title": "Residency",
-    "have_you_been_out_of_territory_4_months": "Have you been living outside of the Yukon for more than 4 months while not in school full-time?",
-    "will_you_be_resident_before_classes_start": "Will you be a resident for at least 2 years before your classes will start?",
-    "have_you_been_out_of_territory_12_months": "Have you been out of the Yukon territory for over 12 months in the last two years?",
-    "do_you_file_with_cra_as_yukon_citizen": "Do you file with the CRA as a Yukon Citizen?",
-    "valid_yukon_health_insurance": "Do you have valid Yukon health care insurance",
-    "drivers_lisence_another_juristiction": "Do you have a drivers lisence form another juristiction?"
+    "title": "Lieu de résidence",
+    "living_in_yukon_for_2_years": "Avez-vous habité à l’extérieur du Yukon pendant plus de quatre mois tout en n’étant pas aux études à temps plein?",
+    "did_you_move_during_2_years_more_4_months": "Aurez-vous résidé au Yukon pendant au moins deux ans avant le début de vos cours?",
+    "did_you_move_during_2_years_more_12_months": "Avez-vous habité à l’extérieur du territoire du Yukon pendant plus de 12 mois au cours des deux dernières années?",
+
+    "do_you_file_with_cra_as_yukon_citizen": "Produisez-vous votre déclaration de revenus à titre de résident du Yukon auprès de l’ARC?",
+    "valid_yukon_health_insurance": "Avez-vous une carte d’assurance-santé du Yukon valide?",
+    "drivers_lisence_another_juristiction": "Êtes-vous titulaire d’un permis de conduire délivré ailleurs qu’au Yukon?"
   }
 }
 </i18n>

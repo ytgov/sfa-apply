@@ -5,17 +5,17 @@
       <span class="selector">
         <span class="year">
           <input type="number" v-model="year" maxlength="4" />
-          <small>Year</small>
+          <small>{{ $t('labels.year') }}</small>
         </span>
         <span class="month">
           <select v-model="month">
             <option :value="(index+1)" v-for="month, index in months">{{month.name}}</option>
           </select> 
-          <small>Month</small>
+          <small>{{ $t('labels.month') }}</small>
         </span>
         <span class="day">
           <input type="number" v-model="day" maxlength="2" />
-          <small>Day</small>
+          <small>{{ $t('labels.day') }}</small>
         </span>
       </span>
     </div>
@@ -123,6 +123,27 @@ export default {
   }
 }
 </script>
+
+
+<i18n>
+{
+  "en": {
+    "labels": {
+      "year": "Year",
+      "month": "Month",
+      "day": "Day"
+    }
+  },
+  "fr": {
+    "labels": {
+      "year": "Année",
+      "month": "Mois",
+      "day": "Jour"
+    }
+  }
+}
+</i18n>
+
 
 
 <style lang="scss" scoped>

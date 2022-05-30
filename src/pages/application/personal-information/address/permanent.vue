@@ -6,7 +6,7 @@
     </p>
 
     <section>
-      <h4>Address:</h4>
+      <h4>{{ $t('legend.address') }}</h4>
       <AddressSelector v-model="student.HOME_ADDRESS1" :value="student.HOME_ADDRESS1" />
     </section>
 
@@ -64,11 +64,17 @@ export default {
 {
   "en": {
     "title": "Permanent address",
-    "excerpt": "Please provide the address where you normally receive your mail.  This address will be used to send out T4A slips for tax purposes."
+    "excerpt": "Please provide the address where you normally receive your mail.  This address will be used to send out T4A slips for tax purposes.",
+    "legend": {
+      "address": "Address"
+    }
   },
   "fr": {
-    "title": "Permanent address",
-    "excerpt": "Please provide the address where you normally receive your mail.  This address will be used to send out T4A slips for tax purposes."
+    "title": "Adresse permanente",
+    "excerpt": "Veuillez fournir l’adresse où vous recevez normalement votre courrier postal. Cette adresse sera celle où l’on enverra vos feuillets T4A aux fins de l’impôt.",
+    "legend": {
+      "address": "Adresse"
+    }
   }
 }
 </i18n>

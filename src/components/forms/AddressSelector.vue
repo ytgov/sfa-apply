@@ -4,7 +4,9 @@
       <div>
         {{(this.address.second) ? this.address.second+'-' : ''}}<span v-html="formatted_address.replace(', ', '<br />')"></span>
         <div style="margin-top: 1rem;" v-if="!modify">
-          <v-btn color="secondary" @click="update()">Edit</v-btn>
+          <v-btn color="secondary" @click="update()">
+            {{$t('buttons.edit')}}
+          </v-btn>
         </div>
       </div>
     </section>
@@ -13,7 +15,7 @@
         <ValidationProvider name="address_zip_postal_code" rules="notrequired" tag="span" v-slot="{ errors, valid }">
            <TextField
             v-model="address.zip_postal_code"
-            label="Postal code or zip code"
+            :label="$t('labels.zip_postal_code')"
             :errors="errors"
             :valid="valid"
             @blur="geocode()"
@@ -24,7 +26,7 @@
         <ValidationProvider name="address_first" rules="notrequired" tag="span" v-slot="{ errors, valid }">
           <TextField
             v-model="address.first"
-            label="Street Address"
+            :label="$t('labels.address_first')"
             :errors="errors"
             :valid="valid"
             @blur="geocode()"
@@ -34,7 +36,7 @@
       <section>
         <TextField
           v-model="address.second"
-          label="Second Line / Unit"
+          :label="$t('labels.address_second')"
           :valid="true"
         />
       </section>
@@ -44,12 +46,39 @@
         </div>
       </section>
       <section>
-        <v-btn color="secondary" @click="save()">Edit</v-btn>
+        <v-btn color="secondary" @click="save()">
+          {{$t('buttons.edit')}}
+        </v-btn>
         <p>&nbsp;</p>
       </section>
     </section>
   </section>
 </template>
+
+<i18n>
+{
+  "en": {
+    "labels": {
+      "zip_postal_code": "Postal code or zip code",
+      "address_first": "Street Address",
+      "address_second": "Second Line / Unit"
+    },
+    "buttons": {
+      "edit": "Edit"
+    }
+  },
+  "fr": {
+    "labels": {
+      "zip_postal_code": "Code postal",
+      "address_first": "Adresse municipale (ligne 1)",
+      "address_second": "Ligne 2 / Unité ou appartement"
+    },
+    "buttons": {
+      "edit": "Éditer"
+    }
+  }
+}
+</i18n>
 
 
 <script>

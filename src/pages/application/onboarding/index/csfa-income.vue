@@ -5,6 +5,10 @@
         <fieldset class="group">
           <fieldset>
             <legend class="text-h5">{{ $t('legends.income') }}</legend>
+
+            <p>
+              {{ $t('excerpt') }}
+            </p>
             
             <table class="standard" cellpadding="0" cellspacing="0" width="100%">
               <thead>
@@ -40,14 +44,6 @@
             </p> 
           </fieldset>
         </fieldset>
-
-        <v-banner outlined icon="mdi-alert-circle" class="problem mt-4 error" v-if="invalid && errors.length" style="padding-right: 1rem;">
-          <h3>{{ $t('problem.title') }}</h3>
-          <br />
-          <ul>
-            <li v-for="error in errors" v-if="error[0]">{{ error[0] }}</li>
-          </ul>
-        </v-banner>
       </v-form>
     </ValidationObserver>
 
@@ -98,7 +94,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/parents'
+      return '/application/onboarding/csfa-expenses'
     }
   },
   data() {
@@ -140,33 +136,15 @@ export default {
 {
   "en": {
     "legends": {
-      "income": "CSFA Income" 
+      "income": "Study Period Income" 
     },
-    "buttons": {
-      "save": "Save consent release"
-    },
-    "help": {
-      "title": "Need help?",
-      "details": "Help text can go in here to make the form more"
-    },
-    "problem": {
-      "title": "There is a problem"
-    }  
+    "excerpt": "Please enter the total income that you received or expect to receive during your study period. (ie: Canada Employment Training Allowance, Childcare subsidy/bursary, Employment insurance Room and board provided by an employer, Scholarship/bursaries/fellowships/etc. (amount for this academic year only), Social assistance for education-related costs, Other government non-repayable grants/bursaries, etc.)"
   },
   "fr": {
     "legends": {
-      "income": "Libération du consentement" 
+      "income": "Study Period Income" 
     },
-    "buttons": {
-       "save": "Enregistrer la libération du consentement"
-    },
-    "help": {
-      "title": "Need help?",
-      "details": "Le texte d'aide peut aller ici pour rendre le formulaire plus"
-    },
-    "problem": {
-      "title": "Il ya un problème"
-    }
+    "excerpt": "Please enter the total income that you received or expect to receive during your study period. (ie: Canada Employment Training Allowance, Childcare subsidy/bursary, Employment insurance Room and board provided by an employer, Scholarship/bursaries/fellowships/etc. (amount for this academic year only), Social assistance for education-related costs, Other government non-repayable grants/bursaries, etc.)"
   }
 }
 </i18n>
