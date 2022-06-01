@@ -109,7 +109,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/spouse'
+      return this.localePath('/application/onboarding/spouse')
     }
   },
   data() {

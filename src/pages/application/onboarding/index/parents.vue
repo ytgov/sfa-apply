@@ -99,7 +99,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/parent-dependants'
+      return this.localePath('/application/onboarding/parent-dependants')
     }
   },
   data() {

@@ -16,7 +16,7 @@
 				Gentle CTA to get them started on an application... a tree cannot be straight if it has a crooked trunk.
     	</p>
     	<p class="buttons">
-    		<v-btn  to="/eligibility" color="primary"  class="mr-5" x-large>
+    		<v-btn :to="localePath('/eligibility')" color="primary"  class="mr-5" x-large>
     			{{ $t("current.buttons.apply") }}
     		</v-btn>
     	</p>
@@ -35,7 +35,7 @@
 						{{status(application.status)}}
 					</div>
 					<div>
-						<v-btn to="/application" color="secondary">
+						<v-btn :to="localePath('/application')" color="secondary">
 							{{ $t('buttons.continue') }}
 						</v-btn>
 					</div>
@@ -46,7 +46,7 @@
 	    </div>
 	
 	    <p class="buttons">
-	  		<v-btn to="/eligibility" color="primary"  class="mr-5" x-large>
+	  		<v-btn :to="localePath('/eligibility')" color="primary"  class="mr-5" x-large>
 	  			{{ $t("current.buttons.apply") }}
 	  		</v-btn>
 		  </p>
@@ -64,7 +64,7 @@
 						{{status(application.status)}}
 					</div>
 					<div>
-						<v-btn color="secondary" to="/application/details/01234">
+						<v-btn color="secondary" :to="localePath('/application/details/01234')">
 							{{ $t('buttons.details') }}
 						</v-btn>
 					</div>

@@ -103,7 +103,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/parents'
+      return this.localePath('/application/onboarding/parents')
     },
     note() {
       return type => {

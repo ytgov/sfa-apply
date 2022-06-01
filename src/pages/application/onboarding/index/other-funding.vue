@@ -119,7 +119,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/dependants'
+      return this.localePath('/application/onboarding/dependants')
     }
   },
   data() {

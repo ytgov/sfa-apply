@@ -82,7 +82,7 @@ export default {
     },
     next() {
       this.$store.commit('profile/SET', this.profile)
-      return '/application/personal-information/address/permanent'
+      return this.localePath('/application/personal-information/address/permanent')
     }
   },
   data() {

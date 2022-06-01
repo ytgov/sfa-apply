@@ -114,14 +114,14 @@ export default {
     },
     next() {
       this.$store.commit('eligibility/SET', this.eligibility)
-      return '/application/documents'
+      return this.localePath('/application/documents')
     }
   },
   mounted() {
     this.$emit('input', this.valid)
 
     if (!this.eligibility.designated_institution.post_secondary_enrolled_in) {
-      this.$router.push(`/application/documents`)
+      this.$router.push(this.localePath(`/application/documents`))
     }
   },
   watch: {

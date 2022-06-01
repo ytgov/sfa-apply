@@ -237,7 +237,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/thanks'
+      return this.localePath('/application/thanks')
     }
   },
   watch: {

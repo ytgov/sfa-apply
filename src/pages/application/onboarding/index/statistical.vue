@@ -135,7 +135,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/consent-release'
+      return this.localePath('/application/onboarding/consent-release')
     }
   },
   mounted() {

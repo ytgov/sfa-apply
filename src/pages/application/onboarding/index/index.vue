@@ -138,7 +138,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/addresses'
+      return this.localePath('/application/onboarding/addresses')
     }
   },
   mounted() {

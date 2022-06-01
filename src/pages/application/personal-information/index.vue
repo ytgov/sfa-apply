@@ -105,7 +105,7 @@ export default {
       return (this.student.SIN && this.student.SIN.length == 9) || false
     },
     next() {
-      return '/application/personal-information/address/permanent'
+      return this.localePath('/application/personal-information/address/permanent')
     }
   },
   watch: {

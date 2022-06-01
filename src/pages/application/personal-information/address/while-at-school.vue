@@ -50,7 +50,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/program-details'
+      return this.localePath('/application/program-details')
     }
   },
   mounted() {

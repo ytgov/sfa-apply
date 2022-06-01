@@ -91,7 +91,7 @@ export default {
       return is_valid
     },
     next() {
-    	return '/application/onboarding'
+    	return this.localePath('/application/onboarding')
     }
   },
   mounted() {
@@ -107,7 +107,7 @@ export default {
     			{
     				text: 'No, Agree and continue',
     				callback: () => {
-    					return '/application/onboarding'
+    					self.$router.go(this.localePath('/application/onboarding'))
     				}
     			},
     			{

@@ -31,35 +31,35 @@ export default {
       menu: [
         {
           name: 'Personal Details',
-          uri: '/application/onboarding'
+          uri: this.localePath('/application/onboarding')
         },
         {
           name: 'Addresses',
-          uri: '/application/onboarding/addresses'
+          uri: this.localePath('/application/onboarding/addresses')
         },
         {
           name: 'Statistical Information',
-          uri: '/application/onboarding/statistical'
+          uri: this.localePath('/application/onboarding/statistical')
         },
         {
           name: 'Consent Release',
-          uri: '/application/onboarding/consent-release'
+          uri: this.localePath('/application/onboarding/consent-release')
         },
         {
           name: 'Residency',
-          uri: '/application/onboarding/residency-history'
+          uri: this.localePath('/application/onboarding/residency-history')
         },
         {
           name: 'Education History',
-          uri: '/application/onboarding/education-history'
+          uri: this.localePath('/application/onboarding/education-history')
         },
         {
           name: 'Other Funding',
-          uri: '/application/onboarding/other-funding'
+          uri: this.localePath('/application/onboarding/other-funding')
         },
         {
           name: 'Student Dependents',
-          uri: '/application/onboarding/dependants'
+          uri: this.localePath('/application/onboarding/dependants')
         },
         /*
         {
@@ -69,7 +69,7 @@ export default {
         */        
         {
           name: 'CSFA Accomodation',
-          uri: '/application/onboarding/csfa-accomodation'
+          uri: this.localePath('/application/onboarding/csfa-accomodation')
         },
         /*
         {
@@ -80,23 +80,23 @@ export default {
 
         {
           name: 'CSFA Income',
-          uri: '/application/onboarding/csfa-income'
+          uri: this.localePath('/application/onboarding/csfa-income')
         },
         {
           name: 'CSFA Expenses',
-          uri: '/application/onboarding/csfa-expenses'
+          uri: this.localePath('/application/onboarding/csfa-expenses')
         },
         {
           name: 'Parents',
-          uri: '/application/onboarding/parents'
+          uri: this.localePath('/application/onboarding/parents')
         },
          {
           name: 'Parent Dependants',
-          uri: '/application/onboarding/parent-dependants'
+          uri: this.localePath('/application/onboarding/parent-dependants')
         },
         {
           name: 'Spouse',
-          uri: '/application/onboarding/spouse'
+          uri: this.localePath('/application/onboarding/spouse')
         }
       ]
     }

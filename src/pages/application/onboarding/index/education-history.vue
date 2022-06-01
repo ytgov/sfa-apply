@@ -132,7 +132,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/other-funding'
+      return this.localePath('/application/onboarding/other-funding')
     }
   },
   data() {

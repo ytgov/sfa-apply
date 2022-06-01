@@ -163,7 +163,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/documents'
+      return this.localePath('/application/documents')
     }
   },
   data() {

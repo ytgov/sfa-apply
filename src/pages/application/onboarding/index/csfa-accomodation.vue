@@ -120,7 +120,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/csfa-income'
+      return this.localePath('/application/onboarding/csfa-income')
     }
   },
   data() {

@@ -127,7 +127,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/csfa-accomodation'
+      return this.localePath('/application/onboarding/csfa-accomodation')
     }
   },
   data() {

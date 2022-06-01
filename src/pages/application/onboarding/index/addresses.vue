@@ -72,7 +72,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/statistical'
+      return this.localePath('/application/onboarding/statistical')
     }
   },
   mounted() {

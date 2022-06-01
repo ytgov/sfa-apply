@@ -128,7 +128,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/education-history'
+      return this.localePath('/application/onboarding/education-history')
     }
   },
   data() {

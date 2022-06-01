@@ -94,7 +94,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/csfa-expenses'
+      return this.localePath('/application/onboarding/csfa-expenses')
     }
   },
   data() {

@@ -110,7 +110,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/application/onboarding/residency-history'
+      return this.localePath('/application/onboarding/residency-history')
     }
   },
   data() {

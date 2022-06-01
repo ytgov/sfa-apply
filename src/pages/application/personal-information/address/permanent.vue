@@ -44,7 +44,7 @@ export default {
       return is_valid
     },
     next() {
-      return  '/application/personal-information/address/while-at-school'
+      return  this.localePath('/application/personal-information/address/while-at-school')
     }
   },
   mounted() {
