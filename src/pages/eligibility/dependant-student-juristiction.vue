@@ -7,7 +7,7 @@
         {{ $t('has_family_maintained_home') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.dependant_student_juristiction.has_family_maintained_home" 
         :value="eligibility.dependant_student_juristiction.has_family_maintained_home" 
       />
@@ -22,12 +22,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -47,9 +49,9 @@ export default {
     },
     next() {
       if (this.eligibility.enrollment.time == 'Part-time') {
-        return '/eligibility/part-time-eligibility'
+        return this.localePath('/eligibility/part-time-eligibility')
       } else {
-        return '/eligibility/full-time-eligibility'
+        return this.localePath('/eligibility/full-time-eligibility')
       } 
     }
   },

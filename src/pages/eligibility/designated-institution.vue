@@ -7,7 +7,7 @@
         {{ $t('are_you_enrolled_in_post_secondary') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.designated_institution.are_you_enrolled_in_post_secondary" 
         :value="eligibility.designated_institution.are_you_enrolled_in_post_secondary" 
       />
@@ -38,6 +38,7 @@ import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
 import Select from '~/components/forms/Select.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 
 export default {
@@ -45,6 +46,7 @@ export default {
     Buttons,
     Question,
     RadioList,
+    YesNoRadio,
     Select
   },
   data() {
@@ -73,9 +75,9 @@ export default {
     },
     next() {
       if (this.eligibility.designated_institution.are_you_enrolled_in_post_secondary=='No') {
-        return '/eligibility/review'
+        return this.localePath('/eligibility/review')
       }
-      return '/eligibility/yukon-grant'
+      return this.localePath('/eligibility/yukon-grant')
     }
   },
   mounted() {

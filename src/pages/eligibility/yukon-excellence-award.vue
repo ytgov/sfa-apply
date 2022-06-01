@@ -26,6 +26,7 @@ import { mapMutations, mapGetters } from 'vuex'
 import Question from '~/components/forms/Question.vue';
 import Buttons from '~/components/forms/Buttons.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 import Currency  from '~/components/forms/Currency.vue';
 
@@ -34,7 +35,8 @@ export default {
     Buttons,
     Question,
     RadioList,
-    Currency
+    Currency,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -51,7 +53,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/scholarship'
+      return this.localePath('/eligibility/scholarship')
     },
     balance() {
       return 1023;

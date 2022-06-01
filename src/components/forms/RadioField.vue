@@ -7,10 +7,7 @@
           <span></span> {{radio.text||radio}} 
         </span>
       </div>
-
-
     </div>
-
   </div>
 </template>
 

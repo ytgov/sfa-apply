@@ -7,7 +7,7 @@
         {{ $t('at_least_twelve_weeks') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.program.at_least_twelve_weeks" 
         :value="eligibility.program.at_least_twelve_weeks" 
       />
@@ -18,7 +18,7 @@
         {{ $t('at_least_three_weeks') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.program.at_least_three_weeks" 
         :value="eligibility.program.at_least_three_weeks" 
       />
@@ -47,12 +47,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -74,7 +76,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/designated-institution'
+      return this.localePath('/eligibility/designated-institution')
     }
   },
   mounted() {

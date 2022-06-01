@@ -7,7 +7,7 @@
         {{ $t('are_you_in_a_relationship') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.marital.are_you_in_a_relationship" 
         :value="eligibility.marital.are_you_in_a_relationship" 
       />
@@ -18,7 +18,7 @@
         {{ $t('have_you_ever_been_in_a_relationship') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.marital.have_you_ever_been_in_a_relationship" 
         :value="eligibility.marital.have_you_ever_been_in_a_relationship" 
       />
@@ -33,12 +33,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -67,12 +69,12 @@ export default {
       if (this.eligibility.marital.are_you_in_a_relationship == 'Yes' || this.eligibility.marital.have_you_ever_been_in_a_relationship == 'Yes') {
 
         if (this.eligibility.enrollment.time == 'Part-time') {
-          return '/eligibility/part-time-eligibility'
+          return this.localePath('/eligibility/part-time-eligibility')
         } else {
-          return '/eligibility/full-time-eligibility'
+          return this.localePath('/eligibility/full-time-eligibility')
         } 
       }
-      return '/eligibility/parent'
+      return this.localePath('/eligibility/parent')
     }
   },
   mounted() {

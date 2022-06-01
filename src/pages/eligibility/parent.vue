@@ -7,7 +7,7 @@
         {{ $t('responsible_for_child') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.parent.responsible_for_child" 
         :value="eligibility.parent.responsible_for_child" 
       />
@@ -18,7 +18,7 @@
         {{ $t('ever_been_a_single_parent') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.parent.ever_been_a_single_parent" 
         :value="eligibility.parent.ever_been_a_single_parent" 
       />
@@ -33,12 +33,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -61,9 +63,9 @@ export default {
     },
     next() {
       if (this.eligibility.parent.responsible_for_child == 'Yes') {
-        return '/eligibility/single-parent-juristiction'
+        return this.localePath('/eligibility/single-parent-juristiction')
       }
-      return '/eligibility/independent-student'
+      return this.localePath('/eligibility/independent-student')
     }
   },
   mounted() {

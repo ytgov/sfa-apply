@@ -1,6 +1,6 @@
 <template>
   <div class="moredetails">
-    <a @click="toggle()">More Details</a>
+    <a @click="toggle()">{{ $t("more") }}</a>
     <div v-if="open">
       <div v-for="program, index in programs"  :key="index">{{program.name[locale]}}</div>
     </div>
@@ -27,6 +27,18 @@ export default {
   }
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "more": "More Details"
+  },
+  "fr": {
+    "more": "En savoir plus"
+  }
+}
+</i18n>
+
 
 <style lang="scss" scoped>
 .moredetails {

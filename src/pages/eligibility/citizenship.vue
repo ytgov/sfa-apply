@@ -11,7 +11,7 @@
         {{ $t('are_you_a_canadian_citizen') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.citizenship.is_canadian_citizen" 
         :value="eligibility.citizenship.is_canadian_citizen" 
       />
@@ -22,7 +22,7 @@
         {{ $t('are_you_a_permanent_resident') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio 
         v-model="eligibility.citizenship.are_you_a_permanent_resident" 
         :value="eligibility.citizenship.are_you_a_permanent_resident" 
       />
@@ -33,7 +33,7 @@
         {{ $t('are_you_a_protected_person') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.citizenship.are_you_a_protected_person" 
         :value="eligibility.citizenship.are_you_a_protected_person" 
       />
@@ -44,7 +44,7 @@
         {{ $t('are_you_registered_as_indigenous') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio 
         v-model="eligibility.citizenship.are_you_registered_as_indigenous" 
         :value="eligibility.citizenship.are_you_registered_as_indigenous" 
       />
@@ -59,12 +59,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -92,9 +94,9 @@ export default {
     },
     next() {
       if (this.eligibility.citizenship.are_you_registered_as_indigenous == 'Yes') {
-        return '/eligibility/enrollment'
+        return this.localePath('/eligibility/enrollment')
       }
-      return '/eligibility/yukon-excellence-award'
+      return this.localePath('/eligibility/yukon-excellence-award')
     }
   },
   mounted() {

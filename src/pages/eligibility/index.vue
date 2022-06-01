@@ -27,7 +27,7 @@ import { mapMutations, mapGetters } from 'vuex'
 export default {
   computed: {
     next() {
-      return '/eligibility/citizenship'
+      return this.localePath('/eligibility/citizenship')
     }
   }
 }

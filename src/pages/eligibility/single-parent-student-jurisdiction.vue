@@ -7,7 +7,7 @@
         {{ $t('most_recently_in_yukon') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.singleparentjuristiction.most_recently_in_yukon" 
         :value="eligibility.singleparentjuristiction.most_recently_in_yukon" 
       />
@@ -23,12 +23,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -48,7 +50,7 @@ export default {
     },
     next() {
       return (this.eligibility.enrollment.are_you_full_or_part_time=='Part-time') ? 
-        '/eligibility/part-time-eligibility' :  '/eligibility/full-time-eligibility'
+        this.localePath('/eligibility/part-time-eligibility') :  this.localePath('/eligibility/full-time-eligibility')
     }
   },
   mounted() {

@@ -14,7 +14,7 @@
           <Checkbox v-model="fulltime_active" @click="toggleFullTime()" />
         </div>
         <div>
-          <strong>Canada Student Financial Assistance Programs - Full Time</strong>
+          <strong>{{ $t('cfsa_programs_fulltime') }}</strong>
            <MoreDetails :programs="fulltime_eligible" />
         </div>
       </div>
@@ -24,11 +24,13 @@
           <Checkbox v-model="parttime_active" @click="togglePartTime()" />
         </div>
         <div>
-          <strong>Canada Student Financial Assistance Programs  - Part Time</strong>
+          <strong>{{ $t('cfsa_programs_parttime') }}</strong>
           <MoreDetails :programs="parttime_eligible" />
         </div>
       </div>
     </div>
+
+
      
 
     <div class="programs"  v-for="programs, title in eligible" v-if="eligible[title].length">
@@ -40,7 +42,7 @@
         <div>
           <strong>{{program.name[locale]}}</strong><br />
           <small>
-            {{program.group}}
+            {{program.group[locale]}}
           </small>
         </div>
       </div>
@@ -59,7 +61,7 @@
           <Checkbox v-model="ineligible_fulltime_active" @click="toggleIneligibleFullTime()" />
         </div>
         <div>
-          <strong>Canada Student Financial Assistance - Full Time</strong>
+          <strong>{{ $t('cfsa_fulltime') }}</strong>
 
           <MoreDetails :programs="fulltime_ineligible" />
         </div>
@@ -71,23 +73,22 @@
           <Checkbox v-model="ineligible_parttime_active" @click="toggleIneligiblePartTime()" />
         </div>
         <div>
-          <strong>Canada Student Financial Assistance - Part Time</strong>
+          <strong>{{ $t('cfsa_parttime') }}</strong>
           <MoreDetails :programs="parttime_ineligible" />
         </div>
       </div>
     </div>
-     
 
     <div class="programs" v-if="ineligible[title].length" v-for="programs, title in ineligible">
       <h4>{{title}}</h4>
       <div v-for="program, index in programs"  :key="index" :class="program.active?'active':''">
         <div>
-          <Checkbox  v-model="programs[index].active" @click="toggleApplicationProgram(program)"/>
+          <Checkbox v-model="programs[index].active" @click="toggleApplicationProgram(program)"/>
         </div>
         <div>
           <strong>{{program.name[locale]}}</strong><br />
           <small>
-            {{program.group}}
+            {{program.group[locale]}}
           </small>
         </div>
       </div>
@@ -104,8 +105,8 @@
     <div class="buttons mt-14">
       <div>
         <v-btn @click.native="next()" color="primary" x-large>
-          <span v-if="$route.query.revise">Continue</span>
-          <span v-else>Start Application</span>
+          <span v-if="$route.query.revise">{{ $t('buttons.continue') }}</span>
+          <span v-else>{{ $t('buttons.start_application') }}</span>
         </v-btn>
       </div>
       <div>
@@ -123,11 +124,13 @@
 import { mapMutations, mapGetters } from 'vuex'
 import Checkbox from '~/components/forms/Checkbox.vue';
 import MoreDetails from '~/components/MoreDetails.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Checkbox,
-    MoreDetails
+    MoreDetails,
+    YesNoRadio
   },
   computed: {
     ...mapGetters({
@@ -179,10 +182,10 @@ export default {
       eligible.forEach((program, index)=>{
         eligible[index].active = true
       })
-      return _.groupBy(eligible, (o) => { return o.group })
+      return _.groupBy(eligible, (o) => { return o.group[this.locale] })
     },
     ineligible() {
-      return _.groupBy(this.$store.getters['programs/ineligible'](this.eligibility), (o) => { return o.group })
+      return _.groupBy(this.$store.getters['programs/ineligible'](this.eligibility), (o) => { return o.group[this.locale] })
     },
     selected_programs() {
       return _.filter(this.fulltime_eligible, { active: true })
@@ -245,9 +248,9 @@ export default {
     },
     next() {
       if (this.$route.query.revise == 'true') {
-        this.$router.push('/application/submit')
+        this.$router.push(this.localePath('/application/submit'))
       } else {
-        this.$router.push('/application')
+        this.$router.push(this.localePath('/application'))
       }
     }
   }
@@ -270,7 +273,15 @@ export default {
       "scholarship": "Scholarship",
       "loan": "Loan"
     },
-    "notes": "If you would like to be assessed for one of the programs that indicate ‘you are not eligible to apply for’, please check the box next to the funding type and we will assess your application."
+    "notes": "If you would like to be assessed for one of the programs that indicate ‘you are not eligible to apply for’, please check the box next to the funding type and we will assess your application.",
+    "cfsa_programs_fulltime": "Canada Student Financial Assistance Programs - Full Time",
+    "cfsa_programs_parttime": "Canada Student Financial Assistance Programs - Part Time",
+    "cfsa_fulltime": "Canada Student Financial Assistance - Full Time",
+    "cfsa_parttime": "Canada Student Financial Assistance - Part Time",
+    "buttons": {
+      "continue": "Continue",
+      "start_application": "Start Application"
+    }
   },
   "fr": {
     "title": "Programmes admissibles",
@@ -285,7 +296,15 @@ export default {
       "scholarship": "Scholarship",
       "loan": "Loan"
     },
-    "notes": "Si vous voulez que l’on évalue votre demande pour l’un des programmes qui indiquent «&nbsp;Vous ne pouvez pas présenter une demande pour&nbsp;», veuillez cocher la case à côté du type d’aide financière et nous procéderons à l’évaluation."
+    "notes": "Si vous voulez que l’on évalue votre demande pour l’un des programmes qui indiquent «&nbsp;Vous ne pouvez pas présenter une demande pour&nbsp;», veuillez cocher la case à côté du type d’aide financière et nous procéderons à l’évaluation.",
+    "cfsa_programs_fulltime": "Aide financière du gouvernement du Canada aux étudiants à temps plein",
+    "cfsa_programs_parttime": "Canada Student Financial Assistance Programs - Part Time",
+    "cfsa_fulltime": "Canada Student Financial Assistance - Full Time",
+    "cfsa_parttime": "Canada Student Financial Assistance - Part Time",
+    "buttons": {
+      "continue": "Continue",
+      "start_application": "Start Application"
+    }
   }
 }
 </i18n>

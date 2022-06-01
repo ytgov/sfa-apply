@@ -24,7 +24,7 @@
         {{ $t('enrolled') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.parttimeeligibility.enrolled" 
         :value="eligibility.parttimeeligibility.enrolled" 
       />
@@ -35,7 +35,7 @@
         {{ $t('lived_in_yukon') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.parttimeeligibility.lived_in_yukon" 
         :value="eligibility.parttimeeligibility.lived_in_yukon" 
       />
@@ -64,6 +64,7 @@ import RadioList from '~/components/forms/RadioList.vue';
 import TextField from '~/components/forms/TextField.vue';
 import Currency  from '~/components/forms/Currency.vue';
 import NumberField from '~/components/forms/NumberField.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
@@ -72,7 +73,8 @@ export default {
     RadioList,
     TextField,
     NumberField,
-    Currency
+    Currency,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -95,7 +97,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/disabilities'
+      return this.localePath('/eligibility/disabilities')
     }
   },
   mounted() {

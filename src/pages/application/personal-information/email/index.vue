@@ -13,7 +13,7 @@
         {{ $t('would_you_like_to_use_existing_address') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="use_existing" 
         :value="use_existing" 
       />
@@ -44,6 +44,7 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 import CheckboxQuestion from '~/components/forms/CheckboxQuestion.vue';
 import TextField from '~/components/forms/TextField.vue';
 import EmailField from '~/components/forms/EmailField.vue';
@@ -54,6 +55,7 @@ export default {
     Buttons,
     Question,
     RadioList,
+    YesNoRadio,
     CheckboxQuestion,
     TextField,
     EmailField

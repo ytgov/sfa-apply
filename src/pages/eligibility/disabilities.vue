@@ -7,7 +7,7 @@
         {{ $t('permanent_disability') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio 
         v-model="eligibility.disabilities.permanent_disability" 
         :value="eligibility.disabilities.permanent_disability" 
       />
@@ -18,7 +18,7 @@
         {{ $t('service_equipment') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.disabilities.service_equipment" 
         :value="eligibility.disabilities.service_equipment" 
       />
@@ -33,12 +33,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -61,7 +63,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/review'
+      return this.localePath('/eligibility/review')
     }
   },
   mounted() {

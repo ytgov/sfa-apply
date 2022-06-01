@@ -34,12 +34,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -56,7 +58,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/residency'
+      return this.localePath('/eligibility/residency')
     }
   },
   mounted() {

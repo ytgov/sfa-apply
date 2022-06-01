@@ -8,7 +8,7 @@
         {{ $t('living_in_yukon_for_2_years') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.residency.living_in_yukon_for_2_years" 
         :value="eligibility.residency.living_in_yukon_for_2_years" 
       />
@@ -18,7 +18,7 @@
         {{ $t('did_you_move_during_2_years_more_4_months') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.residency.did_you_move_during_2_years_more_4_months" 
         :value="eligibility.residency.did_you_move_during_2_years_more_4_months" 
       />
@@ -29,7 +29,7 @@
         {{ $t('did_you_move_during_2_years_more_12_months') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.residency.did_you_move_during_2_years_more_12_months" 
         :value="eligibility.residency.did_you_move_during_2_years_more_12_months" 
       />
@@ -39,7 +39,7 @@
         {{ $t('do_you_file_with_cra_as_yukon_citizen') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.residency.do_you_file_with_cra_as_yukon_citizen" 
         :value="eligibility.residency.do_you_file_with_cra_as_yukon_citizen" 
       />
@@ -50,7 +50,7 @@
         {{ $t('valid_yukon_health_insurance') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.residency.valid_yukon_health_insurance" 
         :value="eligibility.residency.valid_yukon_health_insurance" 
       />
@@ -61,7 +61,7 @@
         {{ $t('drivers_lisence_another_juristiction') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.residency.drivers_lisence_another_juristiction" 
         :value="eligibility.residency.drivers_lisence_another_juristiction" 
       />
@@ -78,12 +78,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -109,7 +111,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/program'
+      return this.localePath('/eligibility/program')
     },
     maybe_resident() {
       return this.eligibility.residency.living_in_yukon_for_2_years && (

@@ -7,7 +7,7 @@
         {{ $t('has_completed_two_years') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.yukon_grant.has_completed_two_years" 
         :value="eligibility.yukon_grant.has_completed_two_years" 
       />
@@ -18,7 +18,7 @@
         {{ $t('out_of_school_4_years') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.yukon_grant.out_of_school_4_years" 
         :value="eligibility.yukon_grant.out_of_school_4_years" 
       />
@@ -35,12 +35,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -62,7 +64,7 @@ export default {
       return is_valid
     },
     next() {
-      return '/eligibility/marital'
+      return this.localePath('/eligibility/marital')
     }
   },
   mounted() {

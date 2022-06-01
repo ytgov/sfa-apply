@@ -7,7 +7,7 @@
         {{ $t('out_of_school') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.independentstudent.out_of_school" 
         :value="eligibility.independentstudent.out_of_school" 
       />
@@ -18,7 +18,7 @@
         {{ $t('in_labour_force') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.independentstudent.in_labour_force" 
         :value="eligibility.independentstudent.in_labour_force" 
       />
@@ -33,12 +33,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -58,12 +60,12 @@ export default {
     next() {
       if (this.eligibility.independentstudent.out_of_school == 'Yes') {
         if (this.eligibility.enrollment.time == 'Part-time') {
-          return '/eligibility/part-time-eligibility'
+          return this.localePath('/eligibility/part-time-eligibility')
         } else {
-          return '/eligibility/full-time-eligibility'
+          return this.localePath('/eligibility/full-time-eligibility')
         } 
       }
-      return '/eligibility/dependant-student-juristiction'
+      return this.localePath('/eligibility/dependant-student-juristiction')
     }
   },
   mounted() {

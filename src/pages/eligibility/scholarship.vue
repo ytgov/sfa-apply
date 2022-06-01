@@ -7,7 +7,7 @@
         {{ $t('are_you_a_high_school_student') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.scholarship.is_high_school_student" 
         :value="eligibility.scholarship.is_high_school_student" 
         @click="update()"
@@ -19,7 +19,7 @@
         {{ $t('are_you_a_high_school_graduate') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.scholarship.is_high_school_graduate" 
         :value="eligibility.scholarship.is_high_school_graduate" 
         @click="update()"
@@ -30,7 +30,7 @@
         {{ $t('are_you_pursuing_aviation') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.scholarship.is_pursuing_aviation" 
         :value="eligibility.scholarship.is_pursuing_aviation" 
         @click="update()"
@@ -42,7 +42,7 @@
         {{ $t('are_you_entering_visual_arts') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.scholarship.are_you_entering_visual_arts" 
         :value="eligibility.scholarship.are_you_entering_visual_arts" 
         @click="update()"
@@ -54,7 +54,7 @@
         {{ $t('enrolled_vocational') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="eligibility.scholarship.enrolled_vocational" 
         :value="eligibility.scholarship.enrolled_vocational" 
         @click="update()"
@@ -72,12 +72,14 @@ import { mapMutations, mapGetters } from 'vuex'
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 
 export default {
   components: {
     Buttons,
     Question,
-    RadioList
+    RadioList,
+    YesNoRadio
   },
   computed: {
     eligibility: {
@@ -108,7 +110,7 @@ export default {
       return is_valid;
     },
     next() {
-      return '/eligibility/enrollment'
+      return this.localePath('/eligibility/enrollment')
     }
   },
   mounted() {

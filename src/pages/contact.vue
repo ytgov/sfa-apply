@@ -41,6 +41,9 @@
  
           <a href="https://goo.gl/maps/TiN1QZtEbAXYuChh9" target="_blank" v-if="false">View Map</a>
         </p>
+        <p>
+          1000, boulevard Lewes (E-13) Whitehorse Y1A 2C6
+        </p>
       </v-col>
     </v-row>
   </v-container>

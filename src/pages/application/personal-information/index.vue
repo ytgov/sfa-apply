@@ -11,7 +11,7 @@
         {{ $t('use_existing_alias') }}
       </Question>
 
-      <RadioList :options="['Yes', 'No']" 
+      <YesNoRadio
         v-model="profile.tombstone.use_existing_alias" 
         :value="profile.tombstone.use_existing_alias" 
       />
@@ -59,6 +59,7 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import Buttons from '~/components/forms/Buttons.vue';
 import Question from '~/components/forms/Question.vue';
 import RadioList from '~/components/forms/RadioList.vue';
+import YesNoRadio from '~/components/forms/YesNoRadio.vue';
 import SinNumber from '~/components/forms/SinNumber.vue';
 import DateSelector from '~/components/forms/DateSelector.vue';
 
@@ -69,7 +70,8 @@ export default {
     Question,
     RadioList,
     SinNumber,
-    DateSelector
+    DateSelector,
+    YesNoRadio
   },
   computed: {
     student: {

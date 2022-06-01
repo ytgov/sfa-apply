@@ -229,7 +229,10 @@ var invalid_citizenship = (eligibility) => {
 export const state = () => ({
   list: [
      {
-      group: 'Yukon Territory Programs',
+      group: {
+        en: 'Yukon Territory Programs',
+        fr: 'Programmes du territoire du Yukon'
+      },
       type: 'scholarship',
       name: {
         en: 'Yukon Excellence Award',
@@ -238,7 +241,10 @@ export const state = () => ({
       qualified: "yukon_excellence_award"
     },
     {
-      group: 'Yukon Territory Programs',
+      group: {
+        en: 'Yukon Territory Programs',
+        fr: 'Programmes du territoire du Yukon'
+      },
       type: 'scholarship',
       name: {
         en: 'Yukon Scolarship',
@@ -247,7 +253,10 @@ export const state = () => ({
       qualified: "yukon_grant"
     },
     {
-      group: 'Yukon Territory Programs',
+      group: {
+        en: 'Yukon Territory Programs',
+        fr: 'Programmes du territoire du Yukon'
+      },
       type: 'scholarship',
       name: {
         en: 'Student Training Allowance',
@@ -256,7 +265,10 @@ export const state = () => ({
       qualified: "student_training_allowance"
     },
     {
-      group: 'Scholarships',
+      group: {
+        en: 'Scholarships',
+        fr: 'Bourses d’études'
+      },
       type: 'scholarship',
       name: {
         en: 'Canadian Army Yukon Scolarships',
@@ -265,7 +277,10 @@ export const state = () => ({
       qualified: "army_yukon_scholarship"
     },
     {
-      group: 'Scholarships',
+      group: {
+        en: 'Scholarships',
+        fr: 'Bourses d’études'
+      },
       type: 'scholarship',
       name: {
         en: 'Nicolas John Hararch Scolarship',
@@ -274,7 +289,10 @@ export const state = () => ({
       qualified: "nicolas_john_hararch_scolarship"
     },
     {
-      group: 'Scholarships',
+      group: {
+        en: 'Scholarships',
+        fr: 'Bourses d’études'
+      },
       type: 'scholarship',
       name: {
         en: 'Yukon Art Society Scolarship',
@@ -283,7 +301,10 @@ export const state = () => ({
       qualified: "yukon_art_society_scolarship"
     },
     {
-      group: 'Scholarships',
+      group: {
+        en: 'Scholarships',
+        fr: 'Bourses d’études'
+      },
       type: 'scholarship',
       name: {
         en: 'Huskies CB Radio Club Scolarship',
@@ -292,7 +313,10 @@ export const state = () => ({
       qualified: 'huskies_cb_radio_club_scolarship'
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: ''
+      },
       type: 'loan',
       name: {
         en: 'Canada Student Loan - Part-time',
@@ -312,7 +336,10 @@ export const state = () => ({
       enrollment: 'part-time'
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'loan',
       name: {
         en: 'Canada Student Loan - Part-time Students with Dependants',
@@ -322,7 +349,10 @@ export const state = () => ({
       enrollment: 'part-time'
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'grant',
       name: {
         en: 'Canada Student Grant - Part-time Students with Disabilities',
@@ -333,7 +363,10 @@ export const state = () => ({
       disabilities: true
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'grant',
       name: {
         en: 'Canada Student Grant - Part-time Services and Equipment for Students with Disabilities',
@@ -344,7 +377,10 @@ export const state = () => ({
       disabilities: true
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'loan',
       name: {
         en: 'Canada Student Loan - Full-time',
@@ -354,7 +390,10 @@ export const state = () => ({
       enrollment: 'full-time'
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'grant',
       name: {
         en: 'Canada Student Grant - Full-time',
@@ -364,7 +403,10 @@ export const state = () => ({
       enrollment: 'full-time'
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'loan',
       name: {
         en: 'Canada Student Grant - Full-time Students with Dependants',
@@ -374,7 +416,10 @@ export const state = () => ({
       enrollment: 'full-time'
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'grant',
       name: {
         en: 'Canada Student Grant - Full-time Students with Disabilities',
@@ -385,7 +430,10 @@ export const state = () => ({
       disabilities: true
     },
     {
-      group: 'Canada Student Financial Assistance Programs',
+      group: {
+        en: 'Canada Student Financial Assistance Programs',
+        fr: 'Canada Student Financial Assistance Programs'
+      },
       type: 'grant',
       name: {
         en: 'Canada Student Grant - Full-time Services and Equipment for Students with Disabilities',
